@@ -48,15 +48,14 @@ class Torpedo {
         self.positionX = positionX
         self.positionY = positionY
         if soundPlayed == false {
-            if let me = appDelegate.universe.me {
-                let taxiDistance = abs(me.positionX - self.positionX) + abs(me.positionY - self.positionY)
-                if taxiDistance < NetrekMath.displayDistance / 4 {
-                    let volume = 1.0 - (4.0 * Float(taxiDistance) / (NetrekMath.displayDistanceFloat))
-                    
-                    appDelegate.soundController?.play(sound: .torpedo, volume: volume)
-                    debugPrint("playing torpedo sound volume \(volume)")
-                    soundPlayed = true
-                }
+            let me = appDelegate.universe.me
+            let taxiDistance = abs(me.positionX - self.positionX) + abs(me.positionY - self.positionY)
+            if taxiDistance < NetrekMath.displayDistance / 4 {
+                let volume = 1.0 - (4.0 * Float(taxiDistance) / (NetrekMath.displayDistanceFloat))
+                
+                appDelegate.soundController?.play(sound: .torpedo, volume: volume)
+                debugPrint("playing torpedo sound volume \(volume)")
+                soundPlayed = true
             }
         }
     }

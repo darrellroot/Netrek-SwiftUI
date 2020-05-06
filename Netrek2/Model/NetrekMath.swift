@@ -9,10 +9,12 @@
 import Foundation
 import AppKit
 class NetrekMath {
-    
+
     static let displayDistance = 3000
     static let displayDistanceFloat: Float = 3000.0
+
     static let galacticSize = 10000
+
     static let actionThreshold = 100
     static let planetDiameter = 112
     static let planetFontSize: CGFloat = 80.0
@@ -84,12 +86,12 @@ class NetrekMath {
             return "I"
         }
     }
-    static func playerLetter(playerID: Int) -> String {
+    static func playerLetter(playerId: Int) -> String {
         let playerLetter: String
-        if playerID < 16 {
-            playerLetter = String(format: "%x", playerID)
+        if playerId < 16 {
+            playerLetter = String(format: "%x", playerId)
         } else {
-            switch playerID {
+            switch playerId {
             case 16:
                 playerLetter = "g"
             case 17:

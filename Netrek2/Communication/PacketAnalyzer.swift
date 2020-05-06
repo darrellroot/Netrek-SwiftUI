@@ -166,14 +166,16 @@ class PacketAnalyzer {
             let shipType = Int(data[2])
             let team = Int(data[3])
             debugPrint("Received SP_PLAYER_INFO 2 playerID \(playerID) shipType \(shipType) team \(team)")
-            universe.updatePlayer(playerID: playerID, shipType: shipType, team: team)
+            DispatchQueue.main.async {
+                self.universe.updatePlayer(playerId: playerID, shipType: shipType, team: team)
+            }
        
         case 3:
             // SP_KILLS
             let playerID = Int(data[1])
             let killsInt = data.subdata(in: (4..<8)).to(type: UInt32.self).byteSwapped
             let kills: Double = Double(killsInt) / 100.0
-            universe.updatePlayer(playerID: playerID, kills: kills)
+            universe.updatePlayer(playerId: playerID, kills: kills)
             debugPrint("Received SP_KILLS 3 playerID \(playerID) killsInt \(killsInt) kills \(kills)")
 
         case 4:
@@ -183,7 +185,7 @@ class PacketAnalyzer {
             let speed = Int(data[3])
             let positionX = NetrekMath.netrekX2GameX(Int(data.subdata(in: (4..<8)).to(type: UInt32.self).byteSwapped))
             let positionY = NetrekMath.netrekY2GameY(Int(data.subdata(in: (8..<12)).to(type: UInt32.self).byteSwapped))
-            universe.updatePlayer(playerID: playerID, directionNetrek: directionNetrek, speed: speed, positionX: positionX, positionY: positionY)
+            universe.updatePlayer(playerId: playerID, directionNetrek: directionNetrek, speed: speed, positionX: positionX, positionY: positionY)
             debugPrint("Received SP_PLAYER 4 playerID \(playerID) directionNetrek \(directionNetrek) speed \(speed) positionX \(positionX) positionY \(positionY)")
 
         case 5:
@@ -282,7 +284,7 @@ class PacketAnalyzer {
             let whoDead = Int(data.subdata(in: (30..<32)).to(type: UInt16.self).byteSwapped)
             debugPrint("Received SP_YOU 12 \(myPlayerID) hostile \(hostile) war \(war) armies \(armies) tractor \(tractor) flags \(flags) damage \(damage) shieldStrength \(shieldStrength) fuel \(fuel) engineTemp \(engineTemp) weaponsTemp \(weaponsTemp) whyDead \(whyDead) whodead \(whoDead)")
             //printFlags(flags: flags)
-            universe.updateMe(myPlayerID: myPlayerID, hostile: hostile, war: war, armies: armies, tractor: tractor, flags: flags, damage: damage, shieldStrength: shieldStrength, fuel: fuel, engineTemp: engineTemp, weaponsTemp: weaponsTemp, whyDead: whyDead, whoDead: whoDead)
+            universe.updateMe(myPlayerId: myPlayerID, hostile: hostile, war: war, armies: armies, tractor: tractor, flags: flags, damage: damage, shieldStrength: shieldStrength, fuel: fuel, engineTemp: engineTemp, weaponsTemp: weaponsTemp, whyDead: whyDead, whoDead: whoDead)
             if appDelegate.gameState == .serverSelected || appDelegate.gameState == .serverConnected {
                 appDelegate.newGameState(.serverSlotFound)
             }
@@ -319,7 +321,7 @@ class PacketAnalyzer {
             // pad
             let armies = Int(data.subdata(in: (8..<12)).to(type: UInt32.self).byteSwapped)
             debugPrint("Received SP_PLANET 15 planetID \(planetID) owner \(owner) info \(info) flags \(flags) armies \(armies)")
-            guard let planet = universe.planets[planetID] else {
+            guard let planet = universe.planets[safe: planetID] else {
                 debugPrint("ERROR: invalid planetID \(planetID)")
                 return
             }
@@ -361,14 +363,14 @@ class PacketAnalyzer {
 
         case 18:
             //SP_FLAGS 18
-            let playerID = Int(data[1])
+            let playerId = Int(data[1])
             let tractor = Int(data[2])
             let flags = data.subdata(in: (4..<8)).to(type: UInt32.self).byteSwapped
 
-            debugPrint("Received SP_FLAGS 18 playerID \(playerID) tractor \(tractor) flags \(flags)")
+            debugPrint("Received SP_FLAGS 18 playerID \(playerId) tractor \(tractor) flags \(flags)")
 
-            guard let player = universe.players[playerID] else {
-                debugPrint("PacketAnalyzer type 18 invalid player id \(playerID)")
+            guard let player = universe.players[safe: playerId] else {
+                debugPrint("PacketAnalyzer type 18 invalid player id \(playerId)")
                 printData(data, success: false)
 
                 return
@@ -391,7 +393,7 @@ class PacketAnalyzer {
             // SP_PSTATUS
             let playerID = Int(data[1])
             let status = Int(data[2])
-            guard let player = universe.players[playerID] else {
+            guard let player = universe.players[safe: playerID] else {
                 debugPrint("PacketAnalyzer type 20 invalid player id \(playerID)")
                 printData(data, success: false)
                 return
@@ -411,7 +413,7 @@ class PacketAnalyzer {
             let war = UInt32(data[2])
             let hostile = UInt32(data[3])
             debugPrint("Received SP_HOSTILE 22 playerID \(playerID) war \(war) hostile \(hostile)")
-            universe.updatePlayer(playerID: playerID, war: war, hostile: hostile)
+            universe.updatePlayer(playerId: playerID, war: war, hostile: hostile)
             
         case 23:
             // SP_STATS 23
@@ -433,7 +435,7 @@ class PacketAnalyzer {
             let starbaseMaxKills100 = Int(data.subdata(in: (52..<56)).to(type: UInt32.self).byteSwapped)
             let maxKills = Double(maxKills100) / 100.0
             let starbaseMaxKills = Double(starbaseMaxKills100) / 100.0
-            appDelegate.universe.updatePlayer(playerID: playerID, tournamentKills: tournamentKills, tournamentLosses: tournamentLosses, tournamentTicks: tournamentTicks, tournamentPlanets: tournamentPlanets, tournamentArmies: tournamentArmies)
+            appDelegate.universe.updatePlayer(playerId: playerID, tournamentKills: tournamentKills, tournamentLosses: tournamentLosses, tournamentTicks: tournamentTicks, tournamentPlanets: tournamentPlanets, tournamentArmies: tournamentArmies)
             debugPrint("Received SP_STATS 23  tkills \(tournamentKills) tlosses \(tournamentLosses) overallKills \(overallKills) overallLosses \(overallLosses) tTicks \(tournamentTicks) tPlanets \(tournamentPlanets) tArmies \(tournamentArmies) sbKills \(starbaseKills) sbLosses \(starbaseLosses) intramuralArmies \(intramuralArmies) intramuralPlanets \(intramuralPlanets) maxKills \(maxKills) starbaseMaxKills \(starbaseMaxKills)")
             //TODO need to process this data
         case 24:
@@ -458,7 +460,7 @@ class PacketAnalyzer {
                 login = loginStringWithNulls.filter { $0 != "\0" }
             }
             debugPrint("Received SP_PL_LOGIN 24 playerID: \(playerID) rank: \(rank) name: \(name) login: \(login)")
-            universe.updatePlayer(playerID: playerID, rank: rank, name: name, login: login)
+            universe.updatePlayer(playerId: playerID, rank: rank, name: name, login: login)
         /*case 25:
             // is reserved, but I got one on pickled.netrek.org
             break*/
@@ -481,7 +483,7 @@ class PacketAnalyzer {
             if name == "Praxis" {
                 name = "Prague"
             }
-            universe.createPlanet(planetID: planetID, positionX: positionX, positionY: positionY, name: name)
+            universe.createPlanet(planetId: planetID, positionX: positionX, positionY: positionY, name: name)
             /*if let planet = universe.planets[planetID] {
                 //debugPrint(planet)
             }*/

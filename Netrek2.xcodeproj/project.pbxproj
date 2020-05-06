@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F44288C2463555A0051D7BE /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44288B2463555A0051D7BE /* PlanetView.swift */; };
+		2F44288D24635BDA0051D7BE /* NetrekMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8952462208D003CA91F /* NetrekMath.swift */; };
+		2F44288E24635BF20051D7BE /* NetrekMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8952462208D003CA91F /* NetrekMath.swift */; };
 		2F97D84E24620CCF003CA91F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D84D24620CCF003CA91F /* AppDelegate.swift */; };
 		2F97D85024620CCF003CA91F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D84F24620CCF003CA91F /* ContentView.swift */; };
 		2F97D85224620CD0003CA91F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D85124620CD0003CA91F /* Assets.xcassets */; };
@@ -35,8 +38,6 @@
 		2F97D8912462200E003CA91F /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D88F2462200E003CA91F /* Team.swift */; };
 		2F97D89324622061003CA91F /* ShipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D89224622061003CA91F /* ShipType.swift */; };
 		2F97D89424622061003CA91F /* ShipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D89224622061003CA91F /* ShipType.swift */; };
-		2F97D8962462208D003CA91F /* NetrekMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8952462208D003CA91F /* NetrekMath.swift */; };
-		2F97D8972462208D003CA91F /* NetrekMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8952462208D003CA91F /* NetrekMath.swift */; };
 		2F97D89A24622CDA003CA91F /* Universe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D89924622CDA003CA91F /* Universe.swift */; };
 		2F97D89B24622CDA003CA91F /* Universe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D89924622CDA003CA91F /* Universe.swift */; };
 		2F97D89D24622CED003CA91F /* ShipInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D89C24622CED003CA91F /* ShipInfo.swift */; };
@@ -103,6 +104,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F44288B2463555A0051D7BE /* PlanetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		2F97D84A24620CCF003CA91F /* Netrek2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netrek2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F97D84D24620CCF003CA91F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F97D84F24620CCF003CA91F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -268,7 +270,6 @@
 				2F97D87C246216D7003CA91F /* GameState.swift */,
 				2F97D88F2462200E003CA91F /* Team.swift */,
 				2F97D89224622061003CA91F /* ShipType.swift */,
-				2F97D8952462208D003CA91F /* NetrekMath.swift */,
 				2F97D8AE246232C0003CA91F /* Zposition.swift */,
 				2F97D8CD24623422003CA91F /* LoginDefault.swift */,
 				2F97D8D424623572003CA91F /* AlertCondition.swift */,
@@ -291,6 +292,7 @@
 		2F97D89824622CCE003CA91F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2F97D8952462208D003CA91F /* NetrekMath.swift */,
 				2F97D89924622CDA003CA91F /* Universe.swift */,
 				2F97D89C24622CED003CA91F /* ShipInfo.swift */,
 				2F97D89F24622D19003CA91F /* Planet.swift */,
@@ -331,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				2F97D8EA24624014003CA91F /* TacticalView.swift */,
+				2F44288B2463555A0051D7BE /* PlanetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -452,16 +455,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F44288D24635BDA0051D7BE /* NetrekMath.swift in Sources */,
 				2F97D8AC24622D36003CA91F /* Player.swift in Sources */,
 				2F97D8E12462366F003CA91F /* UserDefaults-extensions.swift in Sources */,
 				2F97D87D246216D7003CA91F /* GameState.swift in Sources */,
 				2F97D8DE2462364F003CA91F /* PlayerStatus.swift in Sources */,
+				2F44288C2463555A0051D7BE /* PlanetView.swift in Sources */,
 				2F97D88024621E94003CA91F /* MakePacket.swift in Sources */,
 				2F97D8902462200E003CA91F /* Team.swift in Sources */,
 				2F97D8A024622D1A003CA91F /* Planet.swift in Sources */,
 				2F97D8EB24624014003CA91F /* TacticalView.swift in Sources */,
 				2F97D87124620F02003CA91F /* MetaServerEntry.swift in Sources */,
-				2F97D8962462208D003CA91F /* NetrekMath.swift in Sources */,
 				2F97D8DB24623623003CA91F /* Rank.swift in Sources */,
 				2F97D88D24621FE8003CA91F /* packets.swift in Sources */,
 				2F97D88724621FBE003CA91F /* PacketAnalyzer.swift in Sources */,
@@ -493,6 +497,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F44288E24635BF20051D7BE /* NetrekMath.swift in Sources */,
 				2F97D86424620CD0003CA91F /* Netrek2Tests.swift in Sources */,
 				2F97D89424622061003CA91F /* ShipType.swift in Sources */,
 				2F97D87E246216D7003CA91F /* GameState.swift in Sources */,
@@ -518,7 +523,6 @@
 				2F97D8B0246232C0003CA91F /* Zposition.swift in Sources */,
 				2F97D89E24622CED003CA91F /* ShipInfo.swift in Sources */,
 				2F97D8912462200E003CA91F /* Team.swift in Sources */,
-				2F97D8972462208D003CA91F /* NetrekMath.swift in Sources */,
 				2F97D8E22462366F003CA91F /* UserDefaults-extensions.swift in Sources */,
 				2F97D8AD24622D36003CA91F /* Player.swift in Sources */,
 				2F97D89B24622CDA003CA91F /* Universe.swift in Sources */,

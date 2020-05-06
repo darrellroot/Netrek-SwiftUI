@@ -23,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var reader: TcpReader?
     private(set) var gameState: GameState = .noServerSelected
     var analyzer: PacketAnalyzer?
-    let universe = Universe()
+    @ObservedObject var universe = Universe()
     var clientTypeSent = false
     var soundController: SoundController?
 
@@ -54,7 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     let timerInterval = 1.0 / Double(UPDATE_RATE)
     var timer: Timer?
-    var timerCount = 0
+    @State var timerCount = 0
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let loginName = defaults.string(forKey: LoginDefault.loginName.rawValue) {
@@ -83,7 +83,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.disableShipMenu()
 
         // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView().environmentObject(universe)
+        let tacticalView = TacticalView(universe: universe)//.environmentObject(universe)
 
         // Create the window and set the content view. 
         window = NSWindow(
@@ -92,7 +92,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             backing: .buffered, defer: false)
         window.center()
         window.setFrameAutosaveName("Main Window")
-        window.contentView = NSHostingView(rootView: contentView)
+        window.contentView = NSHostingView(rootView: tacticalView)
         window.makeKeyAndOrderFront(nil)
     }
 
@@ -136,7 +136,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @objc func manualServer(sender: NSMenuItem) {
-        debugPrint("manual server selected")
+        debugPrint("manual server 192.168.0.10 selected")
+        if let reader = TcpReader(hostname: "192.168.0.10", port: 2592, delegate: self) {
+               self.reader = reader
+               self.newGameState(.serverSelected)
+           } else {
+               debugPrint("AppDelegate failed to start reader")
+           }
+
     }
 
     @objc func selectServer(sender: NSMenuItem) {
@@ -263,6 +270,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if timerCount % 50 == 0 {
             //self.tacticalViewController?.updateHint()
         }
+        self.universe.objectWillChange.send()
         switch self.gameState {
             
         case .noServerSelected:

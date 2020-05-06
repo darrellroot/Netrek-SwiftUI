@@ -39,8 +39,8 @@ class Laser {
         }
     }
     public func displayLaser() {
-        guard let source = appDelegate.universe.players[self.laserID] else { return }
-        guard let me = appDelegate.universe.me else { return }
+        guard let source = appDelegate.universe.players[safe: self.laserID] else { return }
+        let me = appDelegate.universe.me
         let taxiDistance = abs(me.positionX - source.positionX) + abs(me.positionY - source.positionY)
         guard taxiDistance < NetrekMath.displayDistance / 2 else { return }
         let volume = 1.0 - (2.0 * Float(taxiDistance) / (NetrekMath.displayDistanceFloat))
@@ -48,7 +48,7 @@ class Laser {
         switch self.status{
             
         case 1: // hit
-            guard let target = appDelegate.universe.players[target] else {
+            guard let target = appDelegate.universe.players[safe: target] else {
                 return
             }
             let sourcePoint = CGPoint(x: source.positionX, y: source.positionY)

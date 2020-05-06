@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class Player: CustomStringConvertible {
+class Player: CustomStringConvertible, ObservableObject {
     //static let shieldFactory = ShieldFactory()
     
     static let textureFedSc = SKTexture(imageNamed: "mactrek-outlinefleet-sc")
@@ -71,10 +71,10 @@ class Player: CustomStringConvertible {
     static let PRESSORFLAG: UInt32 = 0x800000
     static let DOCKOKFLAG: UInt32 = 0x1000000
 
-    let appDelegate = NSApplication.shared.delegate as! AppDelegate
+    lazy var appDelegate = NSApplication.shared.delegate as! AppDelegate
 
     var detonated = false //set to true when blowing up
-    private(set) var playerID: Int = 0
+    private(set) var playerId: Int = 0
     //private(set) var hostile = 0
     private(set) var hostile: [Team:Bool] = [:]
     private(set) var war: [Team:Bool] = [:]
@@ -97,9 +97,9 @@ class Player: CustomStringConvertible {
     
     private(set) var playing = false
     private(set) var team: Team = .independent
-    private(set) var ship: ShipType?
-    private(set) var positionX: Int = 0
-    private(set) var positionY: Int = 0
+    @Published private(set) var ship: ShipType?
+    @Published private(set) var positionX: Int = 0
+    @Published private(set) var positionY: Int = 0
     private(set) var me: Bool = false
     private(set) var name: String = "nobody"
     //
@@ -163,8 +163,8 @@ class Player: CustomStringConvertible {
     //var shieldNode = SKShapeNode(circleOfRadius: CGFloat(NetrekMath.playerSize)/1.8)
     
     
-    init(playerID: Int) {
-        self.playerID = playerID
+    init(playerId: Int) {
+        self.playerId = playerId
         self.remakeNode()
         //shieldNode = SKSpriteNode(texture: shieldTexture)
         //shieldNode.colorBlendFactor = 1.0
@@ -173,7 +173,7 @@ class Player: CustomStringConvertible {
     }
     
     deinit {
-        debugPrint("player ID \(playerID) deinit")
+        debugPrint("player ID \(playerId) deinit")
     }
     public func reset() {
         if playerTacticalNode.parent != nil {
@@ -184,13 +184,13 @@ class Player: CustomStringConvertible {
 
     public var description: String {
         get {
-            return "Player \(String(describing: playerID)) name \(name) armies \(armies) damage \(damage) shield \(shieldStrength) fuel \(fuel) eTmp \(engineTemp) ship \(String(describing: ship)) team \(String(describing: team)) wTmp \(weaponsTemp) playing \(playing) positionX \(positionX) positionY \(positionY) login \(login) rank \(rank)"
+            return "Player \(String(describing: playerId)) name \(name) armies \(armies) damage \(damage) shield \(shieldStrength) fuel \(fuel) eTmp \(engineTemp) ship \(String(describing: ship)) team \(String(describing: team)) wTmp \(weaponsTemp) playing \(playing) positionX \(positionX) positionY \(positionY) login \(login) rank \(rank)"
         }
     }
     public func showInfo() {
         if self.cloak == true { return }
         let infoString: String = "\(self.name) \(self.ship?.description ?? "??") \(self.kills) kills"
-        let playerLetter = NetrekMath.playerLetter(playerID: self.playerID)
+        let playerLetter = NetrekMath.playerLetter(playerId: self.playerId)
         //appDelegate.messageViewController?.gotMessage("\(self.team.letter)\(playerLetter) \(infoString)")
         let playerInfoLabel = SKLabelNode(text: infoString)
         playerInfoLabel.fontSize = NetrekMath.planetFontSize
@@ -369,9 +369,9 @@ class Player: CustomStringConvertible {
         }
     }
     
-    public func updateMe(myPlayerID: Int, hostile: UInt32, war: UInt32, armies: Int, tractor: Int, flags: UInt32, damage: Int, shieldStrength: Int, fuel: Int, engineTemp: Int, weaponsTemp: Int, whyDead: Int, whoDead: Int) {
-        if self.playerID != myPlayerID {
-            debugPrint("Player.updateMe: ERROR: inconsistent player ID \(myPlayerID) versus \(String(describing: self.playerID))")
+    public func updateMe(myPlayerId: Int, hostile: UInt32, war: UInt32, armies: Int, tractor: Int, flags: UInt32, damage: Int, shieldStrength: Int, fuel: Int, engineTemp: Int, weaponsTemp: Int, whyDead: Int, whoDead: Int) {
+        if self.playerId != myPlayerId {
+            debugPrint("Player.updateMe: ERROR: inconsistent player ID \(myPlayerId) versus \(String(describing: self.playerId))")
         }
         self.me = true
         //self.hostile = hostile //TODO break this up
@@ -571,7 +571,7 @@ class Player: CustomStringConvertible {
         }*/
     }
     // from SP_STATS 23
-    public func updatePlayer(playerID: Int, tournamentKills: Int, tournamentLosses: Int, tournamentTicks: Int, tournamentPlanets: Int, tournamentArmies: Int) {
+    public func updatePlayer(playerId: Int, tournamentKills: Int, tournamentLosses: Int, tournamentTicks: Int, tournamentPlanets: Int, tournamentArmies: Int) {
         self.tournamentKills = tournamentKills
         self.tournamentLosses = tournamentLosses
         self.tournamentTicks = tournamentTicks

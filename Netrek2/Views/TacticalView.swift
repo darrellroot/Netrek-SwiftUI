@@ -9,13 +9,26 @@
 import SwiftUI
 
 struct TacticalView: View {
+    //@EnvironmentObject var universe: Universe
+    @ObservedObject var universe: Universe
+    //@ObservedObject var players: [Player] = universe.players.values
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geo in
+            ZStack {
+                ForEach(0 ..< self.universe.maxPlanets) { planetId in
+                    PlanetView(planet: self.universe.planets[planetId], me: self.universe.me)
+                }
+                Text("\(self.universe.players.count) players")
+                Text("\(self.universe.planets.count) planets")
+                Text("\(self.universe.torpedoes.count) torpedoes")
+            }
+        }.frame(minWidth: 500, idealWidth: 800, maxWidth: nil, minHeight: 500, idealHeight: 800, maxHeight: nil, alignment: .center)
     }
 }
+//.offset(x: CGFloat(Int.random(in: -200 ..< 200)), y: CGFloat(Int.random(in: -200 ..< 200)))
 
-struct TacticalView_Previews: PreviewProvider {
+/*struct TacticalView_Previews: PreviewProvider {
     static var previews: some View {
         TacticalView()
     }
-}
+}*/

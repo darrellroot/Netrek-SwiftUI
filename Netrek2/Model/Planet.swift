@@ -15,11 +15,14 @@ enum PlanetFlags: UInt16 {
     case agri = 0x040
 }
 
-class Planet: CustomStringConvertible {
-    private(set) var planetID: Int
-    private(set) var name: String
-    private(set) var positionX: Int
-    private(set) var positionY: Int
+class Planet: CustomStringConvertible, ObservableObject, Identifiable {
+    private(set) var planetId: Int
+    var id: Int {
+        return self.planetId
+    }
+    @Published private(set) var name: String
+    @Published private(set) var positionX: Int
+    @Published private(set) var positionY: Int
     private(set) var owner: Team = .independent
     private(set) var info: Int = 0
     private(set) var flags: UInt16 = 0
@@ -43,21 +46,21 @@ class Planet: CustomStringConvertible {
     //let planetInfoRemove = SKAction.removeFromParent()
     let planetInfoAction = SKAction.sequence([SKAction.fadeOut(withDuration: 3.0),SKAction.removeFromParent()])
     
-    let appDelegate = NSApplication.shared.delegate as! AppDelegate
+    lazy var appDelegate = NSApplication.shared.delegate as! AppDelegate
 
     var description: String {
         get {
-            return "planet planetID: \(planetID) name: \(name) position: \(positionX) \(positionY)"
+            return "planet planetID: \(planetId) name: \(name) position: \(positionX) \(positionY)"
         }
     }
-    init(planetID: Int) {
-        self.planetID = planetID
+    init(planetId: Int) {
+        self.planetId = planetId
         self.name = "unknown"
         self.positionX = 0
         self.positionY = 0
     }
     deinit {
-        debugPrint("planet ID \(planetID) deinit")
+        debugPrint("planet ID \(planetId) deinit")
     }
 
     public func reset() {
