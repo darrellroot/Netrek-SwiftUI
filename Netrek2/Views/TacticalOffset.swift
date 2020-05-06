@@ -1,0 +1,36 @@
+//
+//  TacticalOffset.swift
+//  Netrek2
+//
+//  Created by Darrell Root on 5/6/20.
+//  Copyright © 2020 Darrell Root. All rights reserved.
+//
+
+import Foundation
+import SwiftUI
+
+protocol TacticalOffset {
+}
+
+extension TacticalOffset {
+    func xOffset(positionX: Int, myPositionX: Int, geo: GeometryProxy) -> CGFloat {
+        let viewPositionX: Int
+        if myPositionX > -20000 && myPositionX < 20000 {
+            viewPositionX = myPositionX
+        } else {
+            viewPositionX = 5000
+        }
+        let x = CGFloat(positionX - viewPositionX) * (CGFloat(NetrekMath.displayDistance) / CGFloat(NetrekMath.galacticSize)) * geo.size.width / 1000
+        return x
+    }
+    func yOffset(positionY: Int, myPositionY: Int, geo: GeometryProxy) -> CGFloat {
+        let viewPositionY: Int
+        if myPositionY > -20000 && myPositionY < 20000 {
+            viewPositionY = myPositionY
+        } else {
+            viewPositionY = 5000
+        }
+        let y = CGFloat(positionY - viewPositionY) * (CGFloat(NetrekMath.displayDistance) / CGFloat(NetrekMath.galacticSize)) * geo.size.height / 1000
+        return y
+    }
+}

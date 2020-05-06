@@ -10,6 +10,8 @@
 		2F44288C2463555A0051D7BE /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44288B2463555A0051D7BE /* PlanetView.swift */; };
 		2F44288D24635BDA0051D7BE /* NetrekMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8952462208D003CA91F /* NetrekMath.swift */; };
 		2F44288E24635BF20051D7BE /* NetrekMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8952462208D003CA91F /* NetrekMath.swift */; };
+		2F44289024636B690051D7BE /* TacticalOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44288F24636B690051D7BE /* TacticalOffset.swift */; };
+		2F44289124636B690051D7BE /* TacticalOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44288F24636B690051D7BE /* TacticalOffset.swift */; };
 		2F97D84E24620CCF003CA91F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D84D24620CCF003CA91F /* AppDelegate.swift */; };
 		2F97D85024620CCF003CA91F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D84F24620CCF003CA91F /* ContentView.swift */; };
 		2F97D85224620CD0003CA91F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D85124620CD0003CA91F /* Assets.xcassets */; };
@@ -105,6 +107,7 @@
 
 /* Begin PBXFileReference section */
 		2F44288B2463555A0051D7BE /* PlanetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
+		2F44288F24636B690051D7BE /* TacticalOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacticalOffset.swift; sourceTree = "<group>"; };
 		2F97D84A24620CCF003CA91F /* Netrek2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netrek2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F97D84D24620CCF003CA91F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F97D84F24620CCF003CA91F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -334,6 +337,7 @@
 			children = (
 				2F97D8EA24624014003CA91F /* TacticalView.swift */,
 				2F44288B2463555A0051D7BE /* PlanetView.swift */,
+				2F44288F24636B690051D7BE /* TacticalOffset.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -490,6 +494,7 @@
 				2F97D8D8246235C9003CA91F /* KeychainService.swift in Sources */,
 				2F97D87624621199003CA91F /* Collection-extensions.swift in Sources */,
 				2F97D84E24620CCF003CA91F /* AppDelegate.swift in Sources */,
+				2F44289024636B690051D7BE /* TacticalOffset.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +516,7 @@
 				2F97D87724621199003CA91F /* Collection-extensions.swift in Sources */,
 				2F97D8A924622D36003CA91F /* Laser.swift in Sources */,
 				2F97D8DC24623623003CA91F /* Rank.swift in Sources */,
+				2F44289124636B690051D7BE /* TacticalOffset.swift in Sources */,
 				2F97D8D3246234A7003CA91F /* LoginInformationController.swift in Sources */,
 				2F97D88B24621FE3003CA91F /* Globals.swift in Sources */,
 				2F97D8DF2462364F003CA91F /* PlayerStatus.swift in Sources */,

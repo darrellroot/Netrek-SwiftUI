@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct PlanetView: View {
+struct PlanetView: View, TacticalOffset {
     @ObservedObject var planet: Planet
     @ObservedObject var me: Player
     var body: some View {
@@ -16,34 +16,11 @@ struct PlanetView: View {
             VStack {
                 Circle()
                     .foregroundColor(Color.red)
+                    .frame(width: 40, height: 40, alignment: .center)
                 Text(self.planet.name)
             }
-            .frame(width: 40, height: 40, alignment: .center)
-            .offset(x: self.xOffset(geo: geo), y: self.yOffset(geo: geo))
-
+            .offset(x: self.xOffset(positionX: self.planet.positionX, myPositionX: self.me.positionX,geo: geo), y: self.yOffset(positionY: self.planet.positionY, myPositionY: self.me.positionY, geo: geo))
         }
-    }
-    func xOffset(geo: GeometryProxy) -> CGFloat {
-        let viewPositionX: Int
-        if me.positionX > -20000 && me.positionX < 20000 {
-            viewPositionX = me.positionX
-        } else {
-            viewPositionX = 5000
-        }
-        let x = CGFloat(planet.positionX - viewPositionX) * (CGFloat(NetrekMath.displayDistance) / CGFloat(NetrekMath.galacticSize)) * geo.size.width / 1000
-        debugPrint("planet \(planet.name) xpos \(planet.positionX) mx \(me.positionX) x \(x)")
-        return x
-    }
-    func yOffset(geo: GeometryProxy) -> CGFloat {
-        let viewPositionY: Int
-        if me.positionY > -20000 && me.positionY < 20000 {
-            viewPositionY = me.positionY
-        } else {
-            viewPositionY = 5000
-        }
-        let y = CGFloat(planet.positionY - viewPositionY) * (CGFloat(NetrekMath.displayDistance) / CGFloat(NetrekMath.galacticSize)) * geo.size.height / 1000
-        debugPrint("planet \(planet.name) ypos \(planet.positionY) my \(me.positionY) y \(y)")
-        return y
     }
 }
 

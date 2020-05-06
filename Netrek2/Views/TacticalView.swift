@@ -18,9 +18,6 @@ struct TacticalView: View {
                 ForEach(0 ..< self.universe.maxPlanets) { planetId in
                     PlanetView(planet: self.universe.planets[planetId], me: self.universe.me)
                 }
-                Text("\(self.universe.players.count) players")
-                Text("\(self.universe.planets.count) planets")
-                Text("\(self.universe.torpedoes.count) torpedoes")
             }
         }.frame(minWidth: 500, idealWidth: 800, maxWidth: nil, minHeight: 500, idealHeight: 800, maxHeight: nil, alignment: .center)
     }
