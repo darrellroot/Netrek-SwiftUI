@@ -395,33 +395,31 @@ class KeymapController {
                 }
                 
             case .refit:
-                appDelegate.messageViewController?.gotMessage("To refit, orbit home planet and select LAUNCH SHIP menu item")
+                //appDelegate.messageViewController?.gotMessage("To refit, orbit home planet and select LAUNCH SHIP menu item")
                 break
             case .setCourse:
                 guard let location = location else {
                     debugPrint("KeymapController.execute.setCourse location is nil...holding steady")
                     return
                 }
-                if let me = appDelegate.universe.me {
-                    let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(me.positionX), mePositionY: Double(me.positionY), destinationX: Double(location.x), destinationY: Double(location.y))
-                    if let cpDirection = MakePacket.cpDirection(netrekDirection: netrekDirection) {
-                        appDelegate.reader?.send(content: cpDirection)
-                    }
+                let me = appDelegate.universe.me
+                let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(me.positionX), mePositionY: Double(me.positionY), destinationX: Double(location.x), destinationY: Double(location.y))
+                if let cpDirection = MakePacket.cpDirection(netrekDirection: netrekDirection) {
+                    appDelegate.reader?.send(content: cpDirection)
                 }
 
             case .toggleShields:
                 guard appDelegate.gameState == .gameActive else { return }
 
-                if let shieldsUp = appDelegate.universe.me?.shieldsUp {
-                    if shieldsUp {
-                        let cpShield = MakePacket.cpShield(up: false)
-                        appDelegate.reader?.send(content: cpShield)
-                    } else {
-                        let cpShield = MakePacket.cpShield(up: true)
-                        appDelegate.reader?.send(content: cpShield)
-                    }
-                    appDelegate.soundController?.play(sound: .shield, volume: 1.0)
+                let shieldsUp = appDelegate.universe.me.shieldsUp
+                if shieldsUp {
+                    let cpShield = MakePacket.cpShield(up: false)
+                    appDelegate.reader?.send(content: cpShield)
+                } else {
+                    let cpShield = MakePacket.cpShield(up: true)
+                    appDelegate.reader?.send(content: cpShield)
                 }
+                appDelegate.soundController?.play(sound: .shield, volume: 1.0)
             case .tractorPressorOff:
                 let cpTractor = MakePacket.cpTractor(on: false, playerID: 0)
                 appDelegate.reader?.send(content: cpTractor)
@@ -439,9 +437,9 @@ class KeymapController {
                 }
                 //guard let me = appDelegate.universe.me else { return }
                 if target.me == true { return }
-                guard target.playerID >= 0 else { return }
-                guard target.playerID < 256 else { return }
-                let playerID = UInt8(target.playerID)
+                guard target.playerId >= 0 else { return }
+                guard target.playerId < 256 else { return }
+                let playerID = UInt8(target.playerId)
                 let cpTractor = MakePacket.cpTractor(on: true, playerID: playerID)
                 appDelegate.reader?.send(content: cpTractor)
 
@@ -455,11 +453,11 @@ class KeymapController {
                 guard let target = closestPlayerOptional else {
                     return
                 }
-                guard let me = appDelegate.universe.me else { return }
+                let me = appDelegate.universe.me
                 if target.me == true { return }
-                guard target.playerID >= 0 else { return }
-                guard target.playerID < 256 else { return }
-                let playerID = UInt8(target.playerID)
+                guard target.playerId >= 0 else { return }
+                guard target.playerId < 256 else { return }
+                let playerID = UInt8(target.playerId)
                 let cpTractor = MakePacket.cpTractor(on: !me.tractorFlag, playerID: playerID)
                     appDelegate.reader?.send(content: cpTractor)
             case .pressorOn:
@@ -474,9 +472,9 @@ class KeymapController {
                 }
                 //guard let me = appDelegate.universe.me else { return }
                 if target.me == true { return }
-                guard target.playerID >= 0 else { return }
-                guard target.playerID < 256 else { return }
-                let playerID = UInt8(target.playerID)
+                guard target.playerId >= 0 else { return }
+                guard target.playerId < 256 else { return }
+                let playerID = UInt8(target.playerId)
                 let cpPressor = MakePacket.cpPressor(on: true, playerID: playerID)
                 appDelegate.reader?.send(content: cpPressor)
 
@@ -490,20 +488,19 @@ class KeymapController {
                 guard let closestPlayer = closestPlayerOptional else {
                     return
                 }
-                guard let me = appDelegate.universe.me else { return }
+                let me = appDelegate.universe.me
                 if closestPlayer.me == true { return }
-                guard closestPlayer.playerID >= 0 else { return }
-                guard closestPlayer.playerID < 256 else { return }
-                let playerID = UInt8(closestPlayer.playerID)
+                guard closestPlayer.playerId >= 0 else { return }
+                guard closestPlayer.playerId < 256 else { return }
+                let playerID = UInt8(closestPlayer.playerId)
                 let cpPressor = MakePacket.cpPressor(on: !me.pressor, playerID: playerID)
                 appDelegate.reader?.send(content: cpPressor)
 
             case .orbit:
-                if let orbitState = appDelegate.universe.me?.orbit {
-                    let cpOrbit = MakePacket.cpOrbit(state: !orbitState)
-                    appDelegate.reader?.send(content: cpOrbit)
-
-                }
+                let orbitState = appDelegate.universe.me.orbit
+                let cpOrbit = MakePacket.cpOrbit(state: !orbitState)
+                appDelegate.reader?.send(content: cpOrbit)
+                
             case .lowerShields:
                 guard appDelegate.gameState == .gameActive else { return }
 
@@ -521,10 +518,9 @@ class KeymapController {
             case .repair:
                 guard appDelegate.gameState == .gameActive else { return }
 
-                if let repairState = appDelegate.universe.me?.repair {
-                    let cpRepair = MakePacket.cpRepair(state: !repairState )
-                    appDelegate.reader?.send(content: cpRepair)
-                }
+                let repairState = appDelegate.universe.me.repair
+                let cpRepair = MakePacket.cpRepair(state: !repairState )
+                appDelegate.reader?.send(content: cpRepair)
             case .fireLaser:
                 guard appDelegate.gameState == .gameActive else { return }
 
@@ -533,11 +529,10 @@ class KeymapController {
                     debugPrint("KeymapController.execute.fireLaser location is nil...holding fire")
                     return
                 }
-                if let me = appDelegate.universe.me {
-                    let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(me.positionX), mePositionY: Double(me.positionY), destinationX: Double(targetLocation.x), destinationY: Double(targetLocation.y))
-                    let cpLaser = MakePacket.cpLaser(netrekDirection: netrekDirection)
-                    appDelegate.reader?.send(content: cpLaser)
-                }
+                let me = appDelegate.universe.me
+                let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(me.positionX), mePositionY: Double(me.positionY), destinationX: Double(targetLocation.x), destinationY: Double(targetLocation.y))
+                let cpLaser = MakePacket.cpLaser(netrekDirection: netrekDirection)
+                appDelegate.reader?.send(content: cpLaser)
 
             case .fireTorpedo:
                 guard appDelegate.gameState == .gameActive else { return }
@@ -547,11 +542,10 @@ class KeymapController {
                     debugPrint("KeymapController.execute.fireTorpedo location is nil...holding fire")
                     return
                 }
-                if let me = appDelegate.universe.me {
-                    let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(me.positionX), mePositionY: Double(me.positionY), destinationX: Double(targetLocation.x), destinationY: Double(targetLocation.y))
-                    let cpTorp = MakePacket.cpTorp(netrekDirection: netrekDirection)
-                    appDelegate.reader?.send(content: cpTorp)
-                 }
+                let me = appDelegate.universe.me
+                let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(me.positionX), mePositionY: Double(me.positionY), destinationX: Double(targetLocation.x), destinationY: Double(targetLocation.y))
+                let cpTorp = MakePacket.cpTorp(netrekDirection: netrekDirection)
+                appDelegate.reader?.send(content: cpTorp)
             case .firePlasma:
                 guard appDelegate.gameState == .gameActive else { return }
 
@@ -560,11 +554,10 @@ class KeymapController {
                     debugPrint("KeymapController.execute.firePlasma location is nil...holding fire")
                     return
                 }
-                if let me = appDelegate.universe.me {
-                    let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(me.positionX), mePositionY: Double(me.positionY), destinationX: Double(targetLocation.x), destinationY: Double(targetLocation.y))
-                    let cpPlasma = MakePacket.cpPlasma(netrekDirection: netrekDirection)
+                let me = appDelegate.universe.me
+                let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(me.positionX), mePositionY: Double(me.positionY), destinationX: Double(targetLocation.x), destinationY: Double(targetLocation.y))
+                let cpPlasma = MakePacket.cpPlasma(netrekDirection: netrekDirection)
                     appDelegate.reader?.send(content: cpPlasma)
-                }
             case .quitGame:
                 debugPrint("Quitting game")
                 let cpQuit = MakePacket.cpQuit()
@@ -585,14 +578,14 @@ class KeymapController {
                 var closestPlayerDistance = 10000
                 var closestPlayer: Player?
                 
-                for planet in appDelegate.universe.planets.values {
+                for planet in appDelegate.universe.planets {
                     let thisPlanetDistance = abs(planet.positionX - lockLocationX) + abs(planet.positionY - lockLocationY)
                     if thisPlanetDistance < closestPlanetDistance {
                         closestPlanetDistance = thisPlanetDistance
                         closestPlanet = planet
                     }
                 }
-                for player in appDelegate.universe.players.values {
+                for player in appDelegate.universe.players {
                     if player.ship == .starbase && player.me == false {
                         let thisPlayerDistance = abs(player.positionX - lockLocationX) + abs(player.positionY - lockLocationY)
                         if thisPlayerDistance < closestPlayerDistance {
@@ -604,19 +597,19 @@ class KeymapController {
                 if closestPlayerDistance < closestPlanetDistance {
                     // lock onto player
                     guard let player = closestPlayer else { return }
-                    guard player.playerID > 0 && player.playerID < 256 else {
-                        debugPrint("keymap.playerlock invalid playerID \(player.playerID)")
+                    guard player.playerId > 0 && player.playerId < 256 else {
+                        debugPrint("keymap.playerlock invalid playerID \(player.playerId)")
                         return
                     }
-                    let cpPlayerLock = MakePacket.cpPlayerLock(playerID: UInt8(player.playerID))
+                    let cpPlayerLock = MakePacket.cpPlayerLock(playerID: UInt8(player.playerId))
                     appDelegate.reader?.send(content: cpPlayerLock)
                 } else {
                     guard let planet = closestPlanet else { return }
-                    guard planet.planetID > 0 && planet.planetID < 256 else {
-                        debugPrint("keymap.planetlock invalid planetID \(planet.planetID)")
+                    guard planet.planetId > 0 && planet.planetId < 256 else {
+                        debugPrint("keymap.planetlock invalid planetID \(planet.planetId)")
                         return
                     }
-                    let cpPlanetLock = MakePacket.cpPlanetLock(planetID: UInt8(planet.planetID))
+                    let cpPlanetLock = MakePacket.cpPlanetLock(planetID: UInt8(planet.planetId))
                     appDelegate.reader?.send(content: cpPlanetLock)
                 }
 
@@ -632,14 +625,14 @@ class KeymapController {
                 var closestPlayerDistance = 10000
                 var closestPlayer: Player?
                 
-                for planet in appDelegate.universe.planets.values {
+                for planet in appDelegate.universe.planets {
                     let thisPlanetDistance = abs(planet.positionX - lockLocationX) + abs(planet.positionY - lockLocationY)
                     if thisPlanetDistance < closestPlanetDistance {
                         closestPlanetDistance = thisPlanetDistance
                         closestPlanet = planet
                     }
                 }
-                for player in appDelegate.universe.players.values {
+                for player in appDelegate.universe.players {
                     if player.me == false {
                         let thisPlayerDistance = abs(player.positionX - lockLocationX) + abs(player.positionY - lockLocationY)
                         if thisPlayerDistance < closestPlayerDistance {
@@ -651,19 +644,19 @@ class KeymapController {
                 if closestPlayerDistance < closestPlanetDistance {
                     // lock onto player
                     guard let player = closestPlayer else { return }
-                    guard player.playerID > 0 && player.playerID < 256 else {
-                        debugPrint("keymap.playerlock invalid playerID \(player.playerID)")
+                    guard player.playerId > 0 && player.playerId < 256 else {
+                        debugPrint("keymap.playerlock invalid playerID \(player.playerId)")
                         return
                     }
-                    let cpPlayerLock = MakePacket.cpPlayerLock(playerID: UInt8(player.playerID))
+                    let cpPlayerLock = MakePacket.cpPlayerLock(playerID: UInt8(player.playerId))
                     appDelegate.reader?.send(content: cpPlayerLock)
                 } else {
                     guard let planet = closestPlanet else { return }
-                    guard planet.planetID > 0 && planet.planetID < 256 else {
-                        debugPrint("keymap.planetlock invalid planetID \(planet.planetID)")
+                    guard planet.planetId > 0 && planet.planetId < 256 else {
+                        debugPrint("keymap.planetlock invalid planetID \(planet.planetId)")
                         return
                     }
-                    let cpPlanetLock = MakePacket.cpPlanetLock(planetID: UInt8(planet.planetID))
+                    let cpPlanetLock = MakePacket.cpPlanetLock(planetID: UInt8(planet.planetId))
                     appDelegate.reader?.send(content: cpPlanetLock)
                 }
             }
@@ -672,7 +665,7 @@ class KeymapController {
     private func findClosestPlanet(location: CGPoint) -> (planet: Planet?,distance: Int) {
         var closestPlanetDistance = 10000
         var closestPlanet: Planet?
-        for planet in appDelegate.universe.planets.values {
+        for planet in appDelegate.universe.planets {
             let thisPlanetDistance = abs(planet.positionX - Int(location.x)) + abs(planet.positionY - Int(location.y))
             if thisPlanetDistance < closestPlanetDistance {
                 closestPlanetDistance = thisPlanetDistance
@@ -684,7 +677,7 @@ class KeymapController {
     private func findClosestPlayer(location: CGPoint) -> (player: Player?, distance: Int) {
         var closestPlayerDistance = 10000
         var closestPlayer: Player?
-        for player in appDelegate.universe.players.values {
+        for player in appDelegate.universe.players {
             if player.me == false {
                 let thisPlayerDistance = abs(player.positionX - Int(location.x)) + abs(player.positionY - Int(location.y))
                 if thisPlayerDistance < closestPlayerDistance {

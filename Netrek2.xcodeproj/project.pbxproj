@@ -17,8 +17,8 @@
 		2F44289624639C840051D7BE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44289524639C840051D7BE /* PlayerView.swift */; };
 		2F45A7FA2464763200AA2A3F /* PointingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7F92464763200AA2A3F /* PointingView.swift */; };
 		2F45A7FC24647A4C00AA2A3F /* KeymapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7FB24647A4C00AA2A3F /* KeymapController.swift */; };
+		2F45A7FF246480EE00AA2A3F /* NSCommandedWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7FE246480EE00AA2A3F /* NSCommandedWindow.swift */; };
 		2F97D84E24620CCF003CA91F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D84D24620CCF003CA91F /* AppDelegate.swift */; };
-		2F97D85024620CCF003CA91F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D84F24620CCF003CA91F /* ContentView.swift */; };
 		2F97D85524620CD0003CA91F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D85424620CD0003CA91F /* Preview Assets.xcassets */; };
 		2F97D85824620CD0003CA91F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D85624620CD0003CA91F /* Main.storyboard */; };
 		2F97D86424620CD0003CA91F /* Netrek2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D86324620CD0003CA91F /* Netrek2Tests.swift */; };
@@ -116,9 +116,9 @@
 		2F44289524639C840051D7BE /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		2F45A7F92464763200AA2A3F /* PointingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointingView.swift; sourceTree = "<group>"; };
 		2F45A7FB24647A4C00AA2A3F /* KeymapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeymapController.swift; sourceTree = "<group>"; };
+		2F45A7FE246480EE00AA2A3F /* NSCommandedWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCommandedWindow.swift; sourceTree = "<group>"; };
 		2F97D84A24620CCF003CA91F /* Netrek2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netrek2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F97D84D24620CCF003CA91F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2F97D84F24620CCF003CA91F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2F97D85424620CD0003CA91F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2F97D85724620CD0003CA91F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2F97D85924620CD0003CA91F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -186,6 +186,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F45A7FD2464807F00AA2A3F /* Gobal Group */ = {
+			isa = PBXGroup;
+			children = (
+				2F97D84D24620CCF003CA91F /* AppDelegate.swift */,
+				2F97D85624620CD0003CA91F /* Main.storyboard */,
+				2F44289224636E540051D7BE /* Assets.xcassets */,
+				2F45A7FE246480EE00AA2A3F /* NSCommandedWindow.swift */,
+			);
+			path = "Gobal Group";
+			sourceTree = "<group>";
+		};
 		2F97D84124620CCF003CA91F = {
 			isa = PBXGroup;
 			children = (
@@ -207,21 +218,18 @@
 		2F97D84C24620CCF003CA91F /* Netrek2 */ = {
 			isa = PBXGroup;
 			children = (
+				2F45A7FD2464807F00AA2A3F /* Gobal Group */,
+				2F97D85A24620CD0003CA91F /* Netrek2.entitlements */,
+				2F97D85924620CD0003CA91F /* Info.plist */,
 				2F97D8E924623FFD003CA91F /* Views */,
 				2F97D8D02462349D003CA91F /* Controllers */,
-				2F97D8B1246232FB003CA91F /* Sounds */,
 				2F97D89824622CCE003CA91F /* Model */,
 				2F97D88224621F21003CA91F /* Protocols */,
 				2F97D87B246216C6003CA91F /* Enumerations */,
 				2F97D8742462118D003CA91F /* Extensions */,
 				2F97D86F24620EEA003CA91F /* DataTypes */,
 				2F97D86E24620D16003CA91F /* Communication */,
-				2F97D84D24620CCF003CA91F /* AppDelegate.swift */,
-				2F44289224636E540051D7BE /* Assets.xcassets */,
-				2F97D84F24620CCF003CA91F /* ContentView.swift */,
-				2F97D85624620CD0003CA91F /* Main.storyboard */,
-				2F97D85924620CD0003CA91F /* Info.plist */,
-				2F97D85A24620CD0003CA91F /* Netrek2.entitlements */,
+				2F97D8B1246232FB003CA91F /* Sounds */,
 				2F97D85324620CD0003CA91F /* Preview Content */,
 			);
 			path = Netrek2;
@@ -497,12 +505,12 @@
 				2F97D8CE24623422003CA91F /* LoginDefault.swift in Sources */,
 				2F45A7FC24647A4C00AA2A3F /* KeymapController.swift in Sources */,
 				2F44289624639C840051D7BE /* PlayerView.swift in Sources */,
+				2F45A7FF246480EE00AA2A3F /* NSCommandedWindow.swift in Sources */,
 				2F97D89A24622CDA003CA91F /* Universe.swift in Sources */,
 				2F97D8A824622D36003CA91F /* Laser.swift in Sources */,
 				2F97D8792462156C003CA91F /* TcpReader.swift in Sources */,
 				2F97D8AF246232C0003CA91F /* Zposition.swift in Sources */,
 				2F97D8D2246234A7003CA91F /* LoginInformationController.swift in Sources */,
-				2F97D85024620CCF003CA91F /* ContentView.swift in Sources */,
 				2F97D89D24622CED003CA91F /* ShipInfo.swift in Sources */,
 				2F97D89324622061003CA91F /* ShipType.swift in Sources */,
 				2F97D8D8246235C9003CA91F /* KeychainService.swift in Sources */,

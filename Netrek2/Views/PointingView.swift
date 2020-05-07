@@ -59,6 +59,10 @@ class PointingNSHostingView<Content>: NSHostingView<Content> where Content : Vie
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func keyDown(with event: NSEvent) {
+        debugPrint("keydown")
+        self.onPoint(event, self.convert(event.locationInWindow, from: nil))
+    }
     override func mouseDown(with event: NSEvent) {
         self.onPoint(event, self.convert(event.locationInWindow, from: nil))
         //print("left mouse \(NSEvent.mouseLocation)")

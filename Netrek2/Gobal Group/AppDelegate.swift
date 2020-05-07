@@ -88,7 +88,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let tacticalView = TacticalView(universe: universe)//.environmentObject(universe)
 
         // Create the window and set the content view. 
-        window = NSWindow(
+        window = NSCommandedWindow(
             contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)
