@@ -18,6 +18,7 @@ struct TacticalView: View, TacticalOffset {
         RightClickableView()
     }*/
 
+    let appDelegate = NSApplication.shared.delegate as! AppDelegate
     //@EnvironmentObject var universe: Universe
     @ObservedObject var universe: Universe
     @State var pt: CGPoint = CGPoint() {
@@ -27,14 +28,24 @@ struct TacticalView: View, TacticalOffset {
     }
     //@ObservedObject var players: [Player] = universe.players.values
     var body: some View {
-        let myGesture = DragGesture(minimumDistance: 0, coordinateSpace: .global).onEnded({
-            self.pt = $0.startLocation
-        })
         return GeometryReader { geo in
             ZStack {
-                //Rectangle().gesture(myGesture)
                 Rectangle().pointingMouse { event, location in
                     debugPrint("event \(event) location \(location)")
+                    switch event.type {
+                        
+                    case .leftMouseDown:
+                        appDelegate.keymapController.execute(.leftMouse,location: location)
+                    case .rightMouseDown:
+                        <#code#>
+                    case .keyDown:
+                        <#code#>
+                    case .otherMouseDown:
+                        <#code#>
+
+                    default:
+                        break
+                    }
                 }
                 ForEach(0 ..< self.universe.maxPlanets) { planetId in
                     PlanetView(planet: self.universe.planets[planetId], me: self.universe.me)

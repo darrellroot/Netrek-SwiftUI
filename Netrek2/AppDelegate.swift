@@ -51,6 +51,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var preferredTeam: Team = .federation
     var preferredShip: ShipType = .cruiser
+    var keymapController: KeymapController!
 
     let timerInterval = 1.0 / Double(UPDATE_RATE)
     var timer: Timer?
@@ -69,6 +70,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.loginPassword = loginPassword
         }
         self.soundController = SoundController()
+        self.keymapController = KeymapController()
 
         metaServer = MetaServer(hostname: "metaserver.netrek.org", port: 3521)
         if let metaServer = metaServer {

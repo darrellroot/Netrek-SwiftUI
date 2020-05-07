@@ -28,19 +28,6 @@ struct PointingAreaView<Content>: View where Content : View {
         PointingAreaRepresentable(onPoint: onPoint, content: self.content())
     }
 }
-struct TrackingAreaView<Content>: View where Content : View {
-    let onMove: (NSPoint) -> Void
-    let content: () -> Content
-    
-    init(onMove: @escaping (NSPoint) -> Void, @ViewBuilder content: @escaping () -> Content) {
-        self.onMove = onMove
-        self.content = content
-    }
-    
-    var body: some View {
-        TrackingAreaRepresentable(onMove: onMove, content: self.content())
-    }
-}
 struct PointingAreaRepresentable<Content>: NSViewRepresentable where Content: View {
     let onPoint: (NSEvent,NSPoint) -> Void
     let content: Content
@@ -53,30 +40,6 @@ struct PointingAreaRepresentable<Content>: NSViewRepresentable where Content: Vi
     }
 }
 
-
-final class RightClickableView<Content> : NSViewRepresentable where Content: View {
-    //let onMove: (NSPoint) -> Void
-    let content: Content = Text("test") as! Content
-     
-     func makeNSView(context: Context) -> NSHostingView<Content> {
-         return TrackingNSHostingView(rootView: self.content)
-        //return TrackingNSHostingView(onMove: onMove, rootView: self.content)
-     }
-     
-     func updateNSView(_ nsView: NSHostingView<Content>, context: Context) {
-     }
-}
-struct TrackingAreaRepresentable<Content>: NSViewRepresentable where Content: View {
-    let onMove: (NSPoint) -> Void
-    let content: Content
-    
-    func makeNSView(context: Context) -> NSHostingView<Content> {
-        return TrackingNSHostingView(onMove: onMove, rootView: self.content)
-    }
-    
-    func updateNSView(_ nsView: NSHostingView<Content>, context: Context) {
-    }
-}
 class PointingNSHostingView<Content>: NSHostingView<Content> where Content : View {
     let onPoint: (NSEvent,NSPoint) -> Void
 
@@ -102,43 +65,6 @@ class PointingNSHostingView<Content>: NSHostingView<Content> where Content : Vie
     }
     override func rightMouseDown(with event: NSEvent) {
         self.onPoint(event, self.convert(event.locationInWindow, from: nil))
-        //print("right mouse \(NSEvent.mouseLocation)")
-    }
-}
-
-class TrackingNSHostingView<Content>: NSHostingView<Content> where Content : View {
-    let onMove: (NSPoint) -> Void
-    
-    init(onMove: @escaping (NSPoint) -> Void, rootView: Content) {
-        self.onMove = onMove
-        
-        super.init(rootView: rootView)
-        
-        //setupTrackingArea()
-    }
-    
-    required init(rootView: Content) {
-        fatalError("init(rootView:) has not been implemented")
-    }
-    
-    @objc required dynamic init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    /*func setupTrackingArea() {
-        let options: NSTrackingArea.Options = [.mouseMoved, .activeAlways, .inVisibleRect]
-        self.addTrackingArea(NSTrackingArea.init(rect: .zero, options: options, owner: self, userInfo: nil))
-    }*/
-        
-    /*override func mouseMoved(with event: NSEvent) {
-        self.onMove(self.convert(event.locationInWindow, from: nil))
-    }*/
-    override func mouseDown(with event: NSEvent) {
-        self.onMove(self.convert(event.locationInWindow, from: nil))
-        //print("left mouse \(NSEvent.mouseLocation)")
-    }
-    override func rightMouseDown(with event: NSEvent) {
-        self.onMove(self.convert(event.locationInWindow, from: nil))
         //print("right mouse \(NSEvent.mouseLocation)")
     }
 }

@@ -16,6 +16,7 @@
 		2F44289424636E540051D7BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F44289224636E540051D7BE /* Assets.xcassets */; };
 		2F44289624639C840051D7BE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44289524639C840051D7BE /* PlayerView.swift */; };
 		2F45A7FA2464763200AA2A3F /* PointingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7F92464763200AA2A3F /* PointingView.swift */; };
+		2F45A7FC24647A4C00AA2A3F /* KeymapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7FB24647A4C00AA2A3F /* KeymapController.swift */; };
 		2F97D84E24620CCF003CA91F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D84D24620CCF003CA91F /* AppDelegate.swift */; };
 		2F97D85024620CCF003CA91F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D84F24620CCF003CA91F /* ContentView.swift */; };
 		2F97D85524620CD0003CA91F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D85424620CD0003CA91F /* Preview Assets.xcassets */; };
@@ -114,6 +115,7 @@
 		2F44289224636E540051D7BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F44289524639C840051D7BE /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		2F45A7F92464763200AA2A3F /* PointingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointingView.swift; sourceTree = "<group>"; };
+		2F45A7FB24647A4C00AA2A3F /* KeymapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeymapController.swift; sourceTree = "<group>"; };
 		2F97D84A24620CCF003CA91F /* Netrek2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netrek2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F97D84D24620CCF003CA91F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F97D84F24620CCF003CA91F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 			children = (
 				2F97D8D1246234A7003CA91F /* LoginInformationController.swift */,
 				2F97D8D7246235C9003CA91F /* KeychainService.swift */,
+				2F45A7FB24647A4C00AA2A3F /* KeymapController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				2F97D8D524623572003CA91F /* AlertCondition.swift in Sources */,
 				2F97D87324620F0B003CA91F /* MetaServer.swift in Sources */,
 				2F97D8CE24623422003CA91F /* LoginDefault.swift in Sources */,
+				2F45A7FC24647A4C00AA2A3F /* KeymapController.swift in Sources */,
 				2F44289624639C840051D7BE /* PlayerView.swift in Sources */,
 				2F97D89A24622CDA003CA91F /* Universe.swift in Sources */,
 				2F97D8A824622D36003CA91F /* Laser.swift in Sources */,
