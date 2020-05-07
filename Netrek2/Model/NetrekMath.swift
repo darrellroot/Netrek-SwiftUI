@@ -23,6 +23,9 @@ class NetrekMath {
     static let torpedoSize = 10
     static let appDelegate = NSApplication.shared.delegate as! AppDelegate
 
+    
+    // size = 112 / 3000 * width
+    
     static func sanitizeString(_ input: String) -> String {
         var outputString = input.replacingOccurrences(of: "Romulus", with: "Rome")
         outputString = outputString.replacingOccurrences(of: "Klingus", with: "Kazari")

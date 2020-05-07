@@ -12,40 +12,6 @@ import SpriteKit
 class Player: CustomStringConvertible, ObservableObject {
     //static let shieldFactory = ShieldFactory()
     
-    static let textureFedSc = SKTexture(imageNamed: "mactrek-outlinefleet-sc")
-    static let textureFedDd = SKTexture(imageNamed: "mactrek-outlinefleet-dd")
-    static let textureFedCa = SKTexture(imageNamed: "mactrek-outlinefleet-ca")
-    static let textureFedBb = SKTexture(imageNamed: "mactrek-outlinefleet-bb")
-    static let textureFedAs = SKTexture(imageNamed: "mactrek-outlinefleet-as")
-    static let textureFedSb = SKTexture(imageNamed: "mactrek-outlinefleet-sb")
-    
-    static let textureRomSc = SKTexture(imageNamed: "mactrek-redfleet-sc")
-    static let textureRomDd = SKTexture(imageNamed: "mactrek-redfleet-dd")
-    static let textureRomCa = SKTexture(imageNamed: "mactrek-redfleet-ca")
-    static let textureRomBb = SKTexture(imageNamed: "mactrek-redfleet-bb")
-    static let textureRomAs = SKTexture(imageNamed: "mactrek-redfleet-as")
-    static let textureRomSb = SKTexture(imageNamed: "mactrek-redfleet-sb")
-    
-    static let textureKazSc = SKTexture(imageNamed: "kli-sc")
-    static let textureKazDd = SKTexture(imageNamed: "kli-dd")
-    static let textureKazCa = SKTexture(imageNamed: "kli-ca")
-    static let textureKazBb = SKTexture(imageNamed: "kli-bb")
-    static let textureKazAs = SKTexture(imageNamed: "kli-as")
-    static let textureKazSb = SKTexture(imageNamed: "kli-sb")
-
-    static let textureOriSc = SKTexture(imageNamed: "ori-sc")
-    static let textureOriDd = SKTexture(imageNamed: "ori-dd")
-    static let textureOriCa = SKTexture(imageNamed: "ori-ca")
-    static let textureOriBb = SKTexture(imageNamed: "ori-bb")
-    static let textureOriAs = SKTexture(imageNamed: "ori-as")
-    static let textureOriSb = SKTexture(imageNamed: "ori-sb")
-
-    static let textureIndSc = SKTexture(imageNamed: "mactrek-outlinefleet-sc")
-    static let textureIndDd = SKTexture(imageNamed: "mactrek-outlinefleet-dd")
-    static let textureIndCa = SKTexture(imageNamed: "mactrek-outlinefleet-ca")
-    static let textureIndBb = SKTexture(imageNamed: "mactrek-outlinefleet-bb")
-    static let textureIndAs = SKTexture(imageNamed: "mactrek-outlinefleet-as")
-    static let textureIndSb = SKTexture(imageNamed: "mactrek-outlinefleet-sb")
 
 
     static let SHIELDFLAG: UInt32 = 0x0001
@@ -74,7 +40,10 @@ class Player: CustomStringConvertible, ObservableObject {
     lazy var appDelegate = NSApplication.shared.delegate as! AppDelegate
 
     var detonated = false //set to true when blowing up
+
     private(set) var playerId: Int = 0
+    @Published private(set) var imageName: String = "mactrek-outlinefleet-ca"
+
     //private(set) var hostile = 0
     private(set) var hostile: [Team:Bool] = [:]
     private(set) var war: [Team:Bool] = [:]
@@ -96,8 +65,16 @@ class Player: CustomStringConvertible, ObservableObject {
     private(set) var tournamentArmies: Int = 0
     
     private(set) var playing = false
-    private(set) var team: Team = .independent
-    @Published private(set) var ship: ShipType?
+    private(set) var team: Team = .independent {
+        didSet {
+            self.updateImage()
+        }
+    }
+    @Published private(set) var ship: ShipType? {
+        didSet {
+            self.updateImage()
+        }
+    }
     @Published private(set) var positionX: Int = 0
     @Published private(set) var positionY: Int = 0
     private(set) var me: Bool = false
@@ -154,22 +131,15 @@ class Player: CustomStringConvertible, ObservableObject {
     private(set) var dockok = false
     
 
-    private(set) var direction: CGFloat = 0.0 // 2 * Double.pi = 360 degrees
+    private(set) var direction: Double = 0.0 // 2 * Double.pi = 360 degrees
     private(set) var speed = 0
     var playerTacticalNode = SKSpriteNode()
     let playerInfoAction = SKAction.sequence([SKAction.fadeOut(withDuration: 3.0),SKAction.removeFromParent()])
-    //let shieldTexture = Player.shieldFactory.shieldTexture()
-    //var shieldNode = SKSpriteNode()
-    //var shieldNode = SKShapeNode(circleOfRadius: CGFloat(NetrekMath.playerSize)/1.8)
     
     
     init(playerId: Int) {
         self.playerId = playerId
         self.remakeNode()
-        //shieldNode = SKSpriteNode(texture: shieldTexture)
-        //shieldNode.colorBlendFactor = 1.0
-        //shieldNode.lineWidth = CGFloat(NetrekMath.playerSize) / 10.0
-        //shieldNode.strokeColor = .green
     }
     
     deinit {
@@ -203,6 +173,82 @@ class Player: CustomStringConvertible, ObservableObject {
         //this action includes fading and removing from parent
         playerInfoLabel.run(playerInfoAction)
     }
+
+    func updateImage() {
+        switch (self.team, self.ship ?? .cruiser) {
+        case (.federation,.scout):
+            self.imageName = "mactrek-outlinefleet-sc"
+        case (.federation,.destroyer):
+            self.imageName = "mactrek-outlinefleet-dd"
+        case (.federation,.cruiser):
+            self.imageName = "mactrek-outlinefleet-ca"
+        case (.federation,.battleship):
+            self.imageName = "mactrek-outlinefleet-bb"
+        case (.federation,.assault):
+            self.imageName = "mactrek-outlinefleet-as"
+        case (.federation,.starbase):
+            self.imageName = "mactrek-outlinefleet-sb"
+        case (.federation,.battlecruiser):
+            self.imageName = "mactrek-outlinefleet-ca"
+        case (.roman,.scout):
+            self.imageName = "mactrek-redfleet-sc"
+        case (.roman,.destroyer):
+            self.imageName = "mactrek-redfleet-dd"
+        case (.roman,.cruiser):
+            self.imageName = "mactrek-redfleet-ca"
+        case (.roman,.battleship):
+            self.imageName = "mactrek-redfleet-bb"
+        case (.roman,.assault):
+            self.imageName = "mactrek-redfleet-bb"
+        case (.roman,.starbase):
+            self.imageName = "mactrek-redfleet-sb"
+        case (.roman,.battlecruiser):
+            self.imageName = "mactrek-redfleet-ca"
+        case (.kazari,.scout):
+            self.imageName = "kli-sc"
+        case (.kazari,.destroyer):
+            self.imageName = "kli-dd"
+        case (.kazari,.cruiser):
+            self.imageName = "kli-ca"
+        case (.kazari,.battleship):
+            self.imageName = "kli-bb"
+        case (.kazari,.assault):
+            self.imageName = "kli-as"
+        case (.kazari,.starbase):
+            self.imageName = "kli-sb"
+        case (.kazari,.battlecruiser):
+            self.imageName = "kli-ca"
+        case (.orion,.scout):
+            self.imageName = "ori-sc"
+        case (.orion,.destroyer):
+            self.imageName = "ori-dd"
+        case (.orion,.cruiser):
+            self.imageName = "ori-ca"
+        case (.orion,.battleship):
+            self.imageName = "ori-bb"
+        case (.orion,.assault):
+            self.imageName = "ori-as"
+        case (.orion,.starbase):
+            self.imageName = "ori-sb"
+        case (.orion,.battlecruiser):
+            self.imageName = "ori-ca"
+
+        case (.independent,.scout), (.ogg, .scout):
+            self.imageName = "mactrek-outlinefleet-sc"
+        case (.independent,.destroyer), (.ogg, .destroyer):
+            self.imageName = "mactrek-outlinefleet-dd"
+        case (.independent,.cruiser), (.ogg, .cruiser):
+            self.imageName = "mactrek-outlinefleet-ca"
+        case (.independent,.battleship), (.ogg, .battleship):
+            self.imageName = "mactrek-outlinefleet-bb"
+        case (.independent,.assault), (.ogg, .assault):
+            self.imageName = "mactrek-outlinefleet-as"
+        case (.independent,.starbase), (.ogg, .starbase):
+            self.imageName = "mactrek-outlinefleet-sb"
+        case (.independent,.battlecruiser), (.ogg, .battlecruiser):
+            self.imageName = "mactrek-outlinefleet-ca"
+            }
+    }
     public func remakeNode() {
         //private(set) var status = 0  //free=0 outfit=1 alive=2 explode=3 dead=4 observe=5
         /*if self.shieldNode.parent != nil {
@@ -215,91 +261,7 @@ class Player: CustomStringConvertible, ObservableObject {
         let playerSize = CGSize(width: NetrekMath.playerSize, height: NetrekMath.playerSize)
         let playerColor = NetrekMath.color(team: self.team)
         
-        switch (self.team, self.ship ?? .cruiser) {
-        case (.federation,.scout):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureFedSc, color: playerColor, size: playerSize)
-        case (.federation,.destroyer):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureFedDd, color: playerColor, size: playerSize)
-        case (.federation,.cruiser):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureFedCa, color: playerColor, size: playerSize)
-        case (.federation,.battleship):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureFedBb, color: playerColor, size: playerSize)
-        case (.federation,.assault):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureFedAs, color: playerColor, size: playerSize)
-        case (.federation,.starbase):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureFedSb, color: playerColor, size: playerSize)
-        case (.federation,.battlecruiser):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureFedCa, color: playerColor, size: playerSize)
-
-        case (.roman,.scout):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureRomSc, color: playerColor, size: playerSize)
-        case (.roman,.destroyer):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureRomDd, color: playerColor, size: playerSize)
-        case (.roman,.cruiser):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureRomCa, color: playerColor, size: playerSize)
-        case (.roman,.battleship):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureRomBb, color: playerColor, size: playerSize)
-        case (.roman,.assault):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureRomAs, color: playerColor, size: playerSize)
-        case (.roman,.starbase):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureRomSb, color: playerColor, size: playerSize)
-        case (.roman,.battlecruiser):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureRomCa, color: playerColor, size: playerSize)
-
-        case (.kazari,.scout):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureKazSc, color: playerColor, size: playerSize)
-        case (.kazari,.destroyer):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureKazDd, color: playerColor, size: playerSize)
-        case (.kazari,.cruiser):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureKazCa, color: playerColor, size: playerSize)
-        case (.kazari,.battleship):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureKazBb, color: playerColor, size: playerSize)
-        case (.kazari,.assault):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureKazAs, color: playerColor, size: playerSize)
-        case (.kazari,.starbase):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureKazSb, color: playerColor, size: playerSize)
-        case (.kazari,.battlecruiser):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureKazCa, color: playerColor, size: playerSize)
-
-        case (.orion,.scout):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureOriSc, color: playerColor, size: playerSize)
-        case (.orion,.destroyer):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureOriDd, color: playerColor, size: playerSize)
-        case (.orion,.cruiser):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureOriCa, color: playerColor, size: playerSize)
-        case (.orion,.battleship):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureOriBb, color: playerColor, size: playerSize)
-        case (.orion,.assault):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureOriAs, color: playerColor, size: playerSize)
-        case (.orion,.starbase):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureOriSb, color: playerColor, size: playerSize)
-        case (.orion,.battlecruiser):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureOriCa, color: playerColor, size: playerSize)
-
-        case (.independent,.scout), (.ogg, .scout):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureOriSc, color: playerColor, size: playerSize)
-        case (.independent,.destroyer), (.ogg, .destroyer):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureOriDd, color: playerColor, size: playerSize)
-        case (.independent,.cruiser), (.ogg, .cruiser):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureOriCa, color: playerColor, size: playerSize)
-        case (.independent,.battleship), (.ogg, .battleship):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureOriBb, color: playerColor, size: playerSize)
-        case (.independent,.assault), (.ogg, .assault):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureOriAs, color: playerColor, size: playerSize)
-        case (.independent,.starbase), (.ogg, .starbase):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureOriSb, color: playerColor, size: playerSize)
-        case (.independent,.battlecruiser), (.ogg, .battlecruiser):
-            self.playerTacticalNode = SKSpriteNode(texture: Player.textureOriCa, color: playerColor, size: playerSize)
-
-        }
-        self.playerTacticalNode.zPosition = ZPosition.ship.rawValue
-        self.playerTacticalNode.zRotation = self.direction
-        //self.playerTacticalNode.size = CGSize(width: NetrekMath.playerSize, height: NetrekMath.playerSize)
-        /*self.shieldNode.color = NetrekMath.color(team: self.team)
-        self.playerTacticalNode.addChild(self.shieldNode)*/
-        //debugPrint("player tac node user interaction \(self.playerTacticalNode.isUserInteractionEnabled)")
         self.updateNode()
-    //appDelegate.tacticalViewController?.scene.addChild(self.playerTacticalNode)
     }
     private func updateNode() {
         //    private(set) var status = 0  //free=0 outfit=1 alive=2 explode=3 dead=4 observe=5
@@ -336,7 +298,7 @@ class Player: CustomStringConvertible, ObservableObject {
         }*/
         if self.slotStatus == .alive && self.positionX > 0 && self.positionX < NetrekMath.galacticSize && self.positionY > 0 && self.positionY < NetrekMath.galacticSize {
             self.playerTacticalNode.position = CGPoint(x: positionX, y: positionY)
-            self.playerTacticalNode.zRotation = self.direction
+            //self.playerTacticalNode.zRotation = self.direction
             /*let deltaX = self.positionX - self.lastPositionX
             let deltaY = self.positionY - self.lastPositionY
             let deltaTime = self.updateTime.timeIntervalSince(self.lastUpdateTime)

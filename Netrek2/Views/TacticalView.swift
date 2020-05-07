@@ -18,8 +18,17 @@ struct TacticalView: View {
                 ForEach(0 ..< self.universe.maxPlanets) { planetId in
                     PlanetView(planet: self.universe.planets[planetId], me: self.universe.me)
                 }
+                ForEach(0 ..< self.universe.maxPlayers) { playerId in
+                    PlayerView(player: self.universe.players[playerId], me: self.universe.me)
+                }
             }
         }.frame(minWidth: 500, idealWidth: 800, maxWidth: nil, minHeight: 500, idealHeight: 800, maxHeight: nil, alignment: .center)
+            /*.gesture(DragGesture(minimumDistance: 0.0)
+                .onChanged { tap in
+                    let location = tap.location
+                    debugPrint("tap location \(location)")
+                }
+            )*/
     }
 }
 //.offset(x: CGFloat(Int.random(in: -200 ..< 200)), y: CGFloat(Int.random(in: -200 ..< 200)))

@@ -13,6 +13,14 @@ protocol TacticalOffset {
 }
 
 extension TacticalOffset {
+    func planetWidth(screenWidth: CGFloat) -> CGFloat {
+        return CGFloat(NetrekMath.planetDiameter) * screenWidth / CGFloat(NetrekMath.displayDistance)
+    }
+    func playerWidth(screenWidth: CGFloat) -> CGFloat {
+        return CGFloat(NetrekMath.playerSize) * screenWidth / CGFloat(NetrekMath.displayDistance)
+    }
+
+    
     func xOffset(positionX: Int, myPositionX: Int, geo: GeometryProxy) -> CGFloat {
         let viewPositionX: Int
         if myPositionX > -20000 && myPositionX < 20000 {

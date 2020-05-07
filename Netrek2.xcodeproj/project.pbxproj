@@ -12,9 +12,11 @@
 		2F44288E24635BF20051D7BE /* NetrekMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8952462208D003CA91F /* NetrekMath.swift */; };
 		2F44289024636B690051D7BE /* TacticalOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44288F24636B690051D7BE /* TacticalOffset.swift */; };
 		2F44289124636B690051D7BE /* TacticalOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44288F24636B690051D7BE /* TacticalOffset.swift */; };
+		2F44289324636E540051D7BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F44289224636E540051D7BE /* Assets.xcassets */; };
+		2F44289424636E540051D7BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F44289224636E540051D7BE /* Assets.xcassets */; };
+		2F44289624639C840051D7BE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44289524639C840051D7BE /* PlayerView.swift */; };
 		2F97D84E24620CCF003CA91F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D84D24620CCF003CA91F /* AppDelegate.swift */; };
 		2F97D85024620CCF003CA91F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D84F24620CCF003CA91F /* ContentView.swift */; };
-		2F97D85224620CD0003CA91F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D85124620CD0003CA91F /* Assets.xcassets */; };
 		2F97D85524620CD0003CA91F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D85424620CD0003CA91F /* Preview Assets.xcassets */; };
 		2F97D85824620CD0003CA91F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D85624620CD0003CA91F /* Main.storyboard */; };
 		2F97D86424620CD0003CA91F /* Netrek2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D86324620CD0003CA91F /* Netrek2Tests.swift */; };
@@ -108,10 +110,11 @@
 /* Begin PBXFileReference section */
 		2F44288B2463555A0051D7BE /* PlanetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		2F44288F24636B690051D7BE /* TacticalOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacticalOffset.swift; sourceTree = "<group>"; };
+		2F44289224636E540051D7BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2F44289524639C840051D7BE /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		2F97D84A24620CCF003CA91F /* Netrek2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netrek2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F97D84D24620CCF003CA91F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F97D84F24620CCF003CA91F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		2F97D85124620CD0003CA91F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F97D85424620CD0003CA91F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2F97D85724620CD0003CA91F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2F97D85924620CD0003CA91F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -210,8 +213,8 @@
 				2F97D86F24620EEA003CA91F /* DataTypes */,
 				2F97D86E24620D16003CA91F /* Communication */,
 				2F97D84D24620CCF003CA91F /* AppDelegate.swift */,
+				2F44289224636E540051D7BE /* Assets.xcassets */,
 				2F97D84F24620CCF003CA91F /* ContentView.swift */,
-				2F97D85124620CD0003CA91F /* Assets.xcassets */,
 				2F97D85624620CD0003CA91F /* Main.storyboard */,
 				2F97D85924620CD0003CA91F /* Info.plist */,
 				2F97D85A24620CD0003CA91F /* Netrek2.entitlements */,
@@ -338,6 +341,7 @@
 				2F97D8EA24624014003CA91F /* TacticalView.swift */,
 				2F44288B2463555A0051D7BE /* PlanetView.swift */,
 				2F44288F24636B690051D7BE /* TacticalOffset.swift */,
+				2F44289524639C840051D7BE /* PlayerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -425,6 +429,7 @@
 			files = (
 				2F97D8BA246232FC003CA91F /* 175265__jonccox__gun-thumper.wav in Resources */,
 				2F97D8BE246232FC003CA91F /* 399303__deleted-user-5405837__explosion-012.mp3 in Resources */,
+				2F44289324636E540051D7BE /* Assets.xcassets in Resources */,
 				2F97D8BC246232FC003CA91F /* 175267__jonccox__gun-plasma.wav in Resources */,
 				2F97D8C8246232FC003CA91F /* 71852__ludvique__digital-whoosh-soft.wav in Resources */,
 				2F97D8C4246232FC003CA91F /* 175270__jonccox__gun-zap.wav in Resources */,
@@ -433,7 +438,6 @@
 				2F97D85524620CD0003CA91F /* Preview Assets.xcassets in Resources */,
 				2F97D8C6246232FC003CA91F /* 175266__jonccox__gun-spark.wav in Resources */,
 				2F97D8C2246232FC003CA91F /* 175262__jonccox__gun-cannon.wav in Resources */,
-				2F97D85224620CD0003CA91F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +452,7 @@
 				2F97D8BF246232FC003CA91F /* 399303__deleted-user-5405837__explosion-012.mp3 in Resources */,
 				2F97D8BB246232FC003CA91F /* 175265__jonccox__gun-thumper.wav in Resources */,
 				2F97D8C1246232FC003CA91F /* 175269__jonccox__gun-zap2.wav in Resources */,
+				2F44289424636E540051D7BE /* Assets.xcassets in Resources */,
 				2F97D8C3246232FC003CA91F /* 175262__jonccox__gun-cannon.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,6 +488,7 @@
 				2F97D8D524623572003CA91F /* AlertCondition.swift in Sources */,
 				2F97D87324620F0B003CA91F /* MetaServer.swift in Sources */,
 				2F97D8CE24623422003CA91F /* LoginDefault.swift in Sources */,
+				2F44289624639C840051D7BE /* PlayerView.swift in Sources */,
 				2F97D89A24622CDA003CA91F /* Universe.swift in Sources */,
 				2F97D8A824622D36003CA91F /* Laser.swift in Sources */,
 				2F97D8792462156C003CA91F /* TcpReader.swift in Sources */,

@@ -406,15 +406,27 @@
                                     <items>
                                         <menuItem title="Federation" tag="1" id="yUT-P7-rWj">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="selectTeam:" target="Voe-Tx-rLC" id="h1p-8T-tiB"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem title="Roman" tag="2" id="sLb-mT-H30">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="selectTeam:" target="Voe-Tx-rLC" id="rbd-ON-Jh5"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem title="Kazari" tag="4" id="Rhf-YO-DtP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="selectTeam:" target="Voe-Tx-rLC" id="672-VC-1yj"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem title="Orion" tag="8" id="EdL-QH-veU">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="selectTeam:" target="Voe-Tx-rLC" id="3EG-6r-7Bi"/>
+                                            </connections>
                                         </menuItem>
                                     </items>
                                 </menu>
@@ -433,16 +445,42 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Launch Ship" autoenablesItems="NO" id="mux-tf-U4e">
                                     <items>
-                                        <menuItem title="Scout" keyEquivalent="s" id="QRh-LN-HNg" userLabel="Scout"/>
-                                        <menuItem title="Destroyer" tag="1" keyEquivalent="d" id="84Q-kJ-X0w"/>
-                                        <menuItem title="Cruiser" tag="2" keyEquivalent="c" id="6wd-lC-4p7"/>
-                                        <menuItem title="Battleship" tag="3" keyEquivalent="b" id="SZG-VC-qcr"/>
-                                        <menuItem title="Assault" tag="4" keyEquivalent="a" id="a3Y-32-U0w"/>
+                                        <menuItem title="Scout" keyEquivalent="s" id="QRh-LN-HNg" userLabel="Scout">
+                                            <connections>
+                                                <action selector="selectShip:" target="Voe-Tx-rLC" id="6gV-0E-SUE"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Destroyer" tag="1" keyEquivalent="d" id="84Q-kJ-X0w">
+                                            <connections>
+                                                <action selector="selectShip:" target="Voe-Tx-rLC" id="ZZe-Z0-0dh"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Cruiser" tag="2" keyEquivalent="c" id="6wd-lC-4p7">
+                                            <connections>
+                                                <action selector="selectShip:" target="Voe-Tx-rLC" id="oKo-f6-wFX"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Battleship" tag="3" keyEquivalent="b" id="SZG-VC-qcr">
+                                            <connections>
+                                                <action selector="selectShip:" target="Voe-Tx-rLC" id="ras-aa-jNy"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Assault" tag="4" keyEquivalent="a" id="a3Y-32-U0w">
+                                            <connections>
+                                                <action selector="selectShip:" target="Voe-Tx-rLC" id="MRM-eQ-xtW"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Starbase" tag="5" id="RRF-bo-joZ">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="selectShip:" target="Voe-Tx-rLC" id="osa-IH-24M"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem title="Battlecruiser" tag="6" id="f4M-rp-Ctm">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="selectShip:" target="Voe-Tx-rLC" id="3lP-Yk-ZIF"/>
+                                            </connections>
                                         </menuItem>
                                     </items>
                                 </menu>

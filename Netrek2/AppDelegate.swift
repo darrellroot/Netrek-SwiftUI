@@ -187,7 +187,40 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.selectShipBattlecruiser.isEnabled = true
         }
     }
+    @IBAction func selectTeam(_ sender: NSMenuItem) {
+        let tag = sender.tag
+        for team in Team.allCases {
+            if tag == team.rawValue {
+                self.preferredTeam = team
+                self.updateTeamMenu()
+            }
+        }
+    }
 
+    @IBAction func selectShip(_ sender: NSMenuItem) {
+        let tag = sender.tag
+        for ship in ShipType.allCases {
+            if tag == ship.rawValue {
+                self.preferredShip = ship
+            }
+        }
+        if self.gameState == .loginAccepted {
+            if let reader = self.reader {
+                let cpUpdates = MakePacket.cpUpdates()
+                    reader.send(content: cpUpdates)
+                let cpOutfit = MakePacket.cpOutfit(team: self.preferredTeam, ship: self.preferredShip)
+                reader.send(content: cpOutfit)
+            }
+        }
+        if self.gameState == .gameActive {
+            if let reader = self.reader {
+                let cpRefit = MakePacket.cpRefit(newShip: self.preferredShip)
+                reader.send(content: cpRefit)
+            }
+        }
+    }
+
+    
     private func disableServerMenu() {
         DispatchQueue.main.async {
             debugPrint("disable server menu")

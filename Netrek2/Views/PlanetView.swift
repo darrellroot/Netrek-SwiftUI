@@ -12,15 +12,27 @@ struct PlanetView: View, TacticalOffset {
     @ObservedObject var planet: Planet
     @ObservedObject var me: Player
     var body: some View {
-        GeometryReader { geo in
+        return GeometryReader { geo in
             VStack {
-                Circle()
-                    .foregroundColor(Color.red)
-                    .frame(width: 40, height: 40, alignment: .center)
+                //self.planet.image
+                Image(self.planet.imageName)
+                .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: self.planetWidth(screenWidth: geo.size.width), height: self.planetWidth(screenWidth: geo.size.height))
+                    .colorMultiply(Color.red)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        debugPrint("tap")
+                }
+
+
                 Text(self.planet.name)
+
             }
             .offset(x: self.xOffset(positionX: self.planet.positionX, myPositionX: self.me.positionX,geo: geo), y: self.yOffset(positionY: self.planet.positionY, myPositionY: self.me.positionY, geo: geo))
+
         }
+        
     }
 }
 
