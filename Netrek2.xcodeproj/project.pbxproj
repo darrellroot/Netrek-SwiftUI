@@ -15,6 +15,7 @@
 		2F44289324636E540051D7BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F44289224636E540051D7BE /* Assets.xcassets */; };
 		2F44289424636E540051D7BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F44289224636E540051D7BE /* Assets.xcassets */; };
 		2F44289624639C840051D7BE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44289524639C840051D7BE /* PlayerView.swift */; };
+		2F45A7FA2464763200AA2A3F /* PointingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7F92464763200AA2A3F /* PointingView.swift */; };
 		2F97D84E24620CCF003CA91F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D84D24620CCF003CA91F /* AppDelegate.swift */; };
 		2F97D85024620CCF003CA91F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D84F24620CCF003CA91F /* ContentView.swift */; };
 		2F97D85524620CD0003CA91F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D85424620CD0003CA91F /* Preview Assets.xcassets */; };
@@ -112,6 +113,7 @@
 		2F44288F24636B690051D7BE /* TacticalOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacticalOffset.swift; sourceTree = "<group>"; };
 		2F44289224636E540051D7BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F44289524639C840051D7BE /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		2F45A7F92464763200AA2A3F /* PointingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointingView.swift; sourceTree = "<group>"; };
 		2F97D84A24620CCF003CA91F /* Netrek2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netrek2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F97D84D24620CCF003CA91F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F97D84F24620CCF003CA91F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				2F44288B2463555A0051D7BE /* PlanetView.swift */,
 				2F44288F24636B690051D7BE /* TacticalOffset.swift */,
 				2F44289524639C840051D7BE /* PlayerView.swift */,
+				2F45A7F92464763200AA2A3F /* PointingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				2F97D8AA24622D36003CA91F /* Torpedo.swift in Sources */,
 				2F97D88424621F29003CA91F /* NetworkDelegate.swift in Sources */,
 				2F97D88A24621FE3003CA91F /* Globals.swift in Sources */,
+				2F45A7FA2464763200AA2A3F /* PointingView.swift in Sources */,
 				2F97D8CB24623315003CA91F /* SoundController.swift in Sources */,
 				2F97D8E7246236EE003CA91F /* Data-extensions.swift in Sources */,
 				2F97D8E4246236A2003CA91F /* SlotStatus.swift in Sources */,

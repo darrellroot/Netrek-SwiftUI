@@ -8,13 +8,34 @@
 
 import SwiftUI
 
-struct TacticalView: View {
+
+struct TacticalView: View, TacticalOffset {
+    /*func updateNSView(_ nsView: RightClickableView, context: NSViewRepresentableContext<TacticalView>) {
+        print("Update")
+    }
+
+    func makeNSView(context: Context) -> RightClickableView {
+        RightClickableView()
+    }*/
+
     //@EnvironmentObject var universe: Universe
     @ObservedObject var universe: Universe
+    @State var pt: CGPoint = CGPoint() {
+        didSet {
+            debugPrint("point \(pt)")
+        }
+    }
     //@ObservedObject var players: [Player] = universe.players.values
     var body: some View {
-        GeometryReader { geo in
+        let myGesture = DragGesture(minimumDistance: 0, coordinateSpace: .global).onEnded({
+            self.pt = $0.startLocation
+        })
+        return GeometryReader { geo in
             ZStack {
+                //Rectangle().gesture(myGesture)
+                Rectangle().pointingMouse { event, location in
+                    debugPrint("event \(event) location \(location)")
+                }
                 ForEach(0 ..< self.universe.maxPlanets) { planetId in
                     PlanetView(planet: self.universe.planets[planetId], me: self.universe.me)
                 }
