@@ -7,23 +7,27 @@
 //
 
 import Foundation
-import SpriteKit
+import SwiftUI
 
-class Torpedo {
+class Torpedo: ObservableObject {
     
-    let appDelegate = NSApplication.shared.delegate as! AppDelegate
+    lazy var appDelegate = NSApplication.shared.delegate as! AppDelegate
 
     var torpedoNumber: Int = 0
-    var status: UInt8 = 0
+    @Published var status: UInt8 = 0 {
+        didSet {
+            debugPrint("torpedo status \(status)")
+        }
+    }
     //public var displayed: Bool = false
     private(set) var war: [Team:Bool] = [:]
     var directionNetrek: Int = 0  // netrek format direction for now
     var direction: Double = 0.0 // in radians
-    var positionX: Int = 0
-    var positionY: Int = 0
+    @Published var positionX: Int = 0
+    @Published var positionY: Int = 0
     private var soundPlayed = false
-    var torpedoNode = SKSpriteNode(color: .red,
-                                   size: CGSize(width: NetrekMath.torpedoSize, height: NetrekMath.torpedoSize))
+    /*var torpedoNode = SKSpriteNode(color: .red,
+                                   size: CGSize(width: NetrekMath.torpedoSize, height: NetrekMath.torpedoSize))*/
 
     init(torpedoID: Int) {
         self.torpedoNumber = torpedoID

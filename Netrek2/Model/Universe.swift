@@ -11,11 +11,15 @@ import Foundation
 class Universe: ObservableObject {
     var players: [Player] = []
     var planets: [Planet] = []
-    var torpedoes: [Int: Torpedo] = [:]
+    var torpedoes: [Torpedo] = []
     var lasers: [Int: Laser] = [:]
     var plasmas: [Int: Plasma] = [:]
     var shipInfo: [ShipType:ShipInfo] = [:]
-    var me: Player
+    @Published var me: Player {
+        didSet {
+            debugPrint("me set \(me.playerId)")
+        }
+    }
     let maxPlanets = 40
     let maxPlayers = 32
     let maxTorpedoes = 32 * 8
@@ -29,6 +33,9 @@ class Universe: ObservableObject {
         for playerId in 0 ..< maxPlayers {
             players.append(Player(playerId: playerId))
         }
+        for torpedoId in 0 ..< maxTorpedoes {
+            torpedoes.append(Torpedo(torpedoID: torpedoId))
+        }
         self.me = players[0]
     }
     public func reset() {
@@ -39,7 +46,7 @@ class Universe: ObservableObject {
         for planet in planets {
             planet.reset()
         }
-        torpedoes = [:]
+        torpedoes = []
         lasers = [:]
         plasmas = [:]
         shipInfo = [:]
@@ -153,11 +160,11 @@ class Universe: ObservableObject {
             debugPrint("Universe.updatePlayer invalid torpedoNumber \(torpedoNumber)")
             return
         }
-        if self.torpedoes[torpedoNumber] == nil {
+        /*if self.torpedoes[torpedoNumber] == nil {
             let newTorpedo = Torpedo(torpedoID: torpedoNumber)
             self.torpedoes[torpedoNumber] = newTorpedo
-        }
-        self.torpedoes[torpedoNumber]?.update(war: war, status: status)
+        }*/
+        self.torpedoes[torpedoNumber].update(war: war, status: status)
     }
     public func updateTorpedo(torpedoNumber: Int, directionNetrek: Int, positionX: Int, positionY: Int) {
         guard torpedoNumber >= 0 && torpedoNumber < maxTorpedoes else {
@@ -168,7 +175,7 @@ class Universe: ObservableObject {
             let newTorpedo = Torpedo(torpedoID: torpedoNumber)
             self.torpedoes[torpedoNumber] = newTorpedo
         }
-        self.torpedoes[torpedoNumber]?.update(directionNetrek: directionNetrek, positionX: positionX, positionY: positionY)
+        self.torpedoes[torpedoNumber].update(directionNetrek: directionNetrek, positionX: positionX, positionY: positionY)
     }
     public func updateLaser(laserID: Int, status: Int, directionNetrek: UInt8, positionX: Int, positionY: Int, target: Int) {
         guard laserID >= 0 && laserID < maxLasers else {

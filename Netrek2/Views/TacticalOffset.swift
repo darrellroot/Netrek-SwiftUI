@@ -19,6 +19,11 @@ extension TacticalOffset {
     func playerWidth(screenWidth: CGFloat) -> CGFloat {
         return CGFloat(NetrekMath.playerSize) * screenWidth / CGFloat(NetrekMath.displayDistance)
     }
+    func torpedoWidth(screenWidth: CGFloat) -> CGFloat {
+        return CGFloat(NetrekMath.torpedoSize) * screenWidth / CGFloat(NetrekMath.displayDistance)
+    }
+
+
 
     
     func xOffset(positionX: Int, myPositionX: Int, geo: GeometryProxy) -> CGFloat {

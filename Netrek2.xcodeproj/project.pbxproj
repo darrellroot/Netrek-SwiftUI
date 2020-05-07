@@ -15,6 +15,7 @@
 		2F44289324636E540051D7BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F44289224636E540051D7BE /* Assets.xcassets */; };
 		2F44289424636E540051D7BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F44289224636E540051D7BE /* Assets.xcassets */; };
 		2F44289624639C840051D7BE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44289524639C840051D7BE /* PlayerView.swift */; };
+		2F44596B2464B45E00C3F9A1 /* TorpedoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44596A2464B45E00C3F9A1 /* TorpedoView.swift */; };
 		2F45A7FA2464763200AA2A3F /* PointingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7F92464763200AA2A3F /* PointingView.swift */; };
 		2F45A7FC24647A4C00AA2A3F /* KeymapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7FB24647A4C00AA2A3F /* KeymapController.swift */; };
 		2F45A7FF246480EE00AA2A3F /* NSCommandedWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7FE246480EE00AA2A3F /* NSCommandedWindow.swift */; };
@@ -114,6 +115,7 @@
 		2F44288F24636B690051D7BE /* TacticalOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacticalOffset.swift; sourceTree = "<group>"; };
 		2F44289224636E540051D7BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F44289524639C840051D7BE /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		2F44596A2464B45E00C3F9A1 /* TorpedoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorpedoView.swift; sourceTree = "<group>"; };
 		2F45A7F92464763200AA2A3F /* PointingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointingView.swift; sourceTree = "<group>"; };
 		2F45A7FB24647A4C00AA2A3F /* KeymapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeymapController.swift; sourceTree = "<group>"; };
 		2F45A7FE246480EE00AA2A3F /* NSCommandedWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCommandedWindow.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				2F44288F24636B690051D7BE /* TacticalOffset.swift */,
 				2F44289524639C840051D7BE /* PlayerView.swift */,
 				2F45A7F92464763200AA2A3F /* PointingView.swift */,
+				2F44596A2464B45E00C3F9A1 /* TorpedoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				2F45A7FC24647A4C00AA2A3F /* KeymapController.swift in Sources */,
 				2F44289624639C840051D7BE /* PlayerView.swift in Sources */,
 				2F45A7FF246480EE00AA2A3F /* NSCommandedWindow.swift in Sources */,
+				2F44596B2464B45E00C3F9A1 /* TorpedoView.swift in Sources */,
 				2F97D89A24622CDA003CA91F /* Universe.swift in Sources */,
 				2F97D8A824622D36003CA91F /* Laser.swift in Sources */,
 				2F97D8792462156C003CA91F /* TcpReader.swift in Sources */,

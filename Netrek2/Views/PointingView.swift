@@ -71,4 +71,9 @@ class PointingNSHostingView<Content>: NSHostingView<Content> where Content : Vie
         self.onPoint(event, self.convert(event.locationInWindow, from: nil))
         //print("right mouse \(NSEvent.mouseLocation)")
     }
+    override func otherMouseDown(with event: NSEvent) {
+        self.onPoint(event, self.convert(event.locationInWindow, from: nil))
+        //print("right mouse \(NSEvent.mouseLocation)")
+    }
+
 }

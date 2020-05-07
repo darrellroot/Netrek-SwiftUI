@@ -10,13 +10,6 @@ import SwiftUI
 
 
 struct TacticalView: View, TacticalOffset {
-    /*func updateNSView(_ nsView: RightClickableView, context: NSViewRepresentableContext<TacticalView>) {
-        print("Update")
-    }
-
-    func makeNSView(context: Context) -> RightClickableView {
-        RightClickableView()
-    }*/
 
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
     //@EnvironmentObject var universe: Universe
@@ -35,15 +28,20 @@ struct TacticalView: View, TacticalOffset {
                     switch event.type {
                         
                     case .leftMouseDown:
-                        self.appDelegate.keymapController.execute(.leftMouse,location: location)
+                        self.mouseDown(control: .leftMouse,eventLocation: location, size: geo.size)
+                        //self.appDelegate.keymapController.execute(.leftMouse,location: location)
                     case .rightMouseDown:
-                        self.appDelegate.keymapController.execute(.rightMouse,location: location)
+                        self.mouseDown(control: .rightMouse,eventLocation: location, size: geo.size)
+
+                        //self.appDelegate.keymapController.execute(.rightMouse,location: location)
                     case .keyDown:
                         debugPrint("keydown not implemented")
                         self.keyDown(with: event, location: location)
                         //self.appDelegate.keymapController.execute(,location: location)
                     case .otherMouseDown:
-                        self.appDelegate.keymapController.execute(.otherMouse,location: location)
+                        self.mouseDown(control: .otherMouse,eventLocation: location, size: geo.size)
+
+                        //self.appDelegate.keymapController.execute(.otherMouse,location: location)
                     default:
                         break
                     }
@@ -54,6 +52,9 @@ struct TacticalView: View, TacticalOffset {
                 ForEach(0 ..< self.universe.maxPlayers) { playerId in
                     PlayerView(player: self.universe.players[playerId], me: self.universe.me)
                 }
+                ForEach(0 ..< self.universe.maxTorpedoes) { torpedoId in
+                    TorpedoView(torpedo: self.universe.torpedoes[torpedoId], me: self.universe.me)
+                }
             }
         }.frame(minWidth: 500, idealWidth: 800, maxWidth: nil, minHeight: 500, idealHeight: 800, maxHeight: nil, alignment: .center)
             /*.gesture(DragGesture(minimumDistance: 0.0)
@@ -63,6 +64,20 @@ struct TacticalView: View, TacticalOffset {
                 }
             )*/
     }
+    func mouseDown(control: Control, eventLocation: NSPoint, size: CGSize) {
+        let meX = universe.me.positionX
+        let meY = universe.me.positionY
+        let diffX = Int(eventLocation.x) - (Int(size.width) / 2)
+        let diffY = Int(eventLocation.y) - (Int(size.height) / 2)
+        let deltaX = NetrekMath.displayDistance * diffX / Int(size.width)
+        let deltaY = NetrekMath.displayDistance * diffY / Int(size.height)
+        let finalX = deltaX + meX
+        let finalY = deltaY + meY
+        let location = CGPoint(x: finalX, y: finalY)
+        self.appDelegate.keymapController.execute(control,location: location)
+
+    }
+    
     
     func keyDown(with event: NSEvent, location: CGPoint) {
         debugPrint("TacticalScene.keyDown characters \(String(describing: event.characters))")

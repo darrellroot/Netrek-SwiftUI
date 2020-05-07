@@ -71,8 +71,10 @@ class Planet: CustomStringConvertible, ObservableObject, Identifiable {
             case (true, true, true):
             imageName = "planet-repair-fuel-army"
         }
-        self.imageName = imageName
-        self.image = Image(imageName)
+        DispatchQueue.main.async {
+            self.imageName = imageName
+            self.image = Image(imageName)
+        }
         debugPrint("planet \(self.name) image \(imageName)")
     }
     
@@ -132,17 +134,19 @@ class Planet: CustomStringConvertible, ObservableObject, Identifiable {
         //self.remakeNode()
     }
     public func update(owner: Int, info: Int, flags: UInt16, armies: Int) {
-        self.agri = flags & PlanetFlags.agri.rawValue != 0
-        self.fuel = flags & PlanetFlags.fuel.rawValue != 0
-        self.repair = flags & PlanetFlags.repair.rawValue != 0
-        self.flags = flags
-        self.info = info
-        self.armies = armies
-        for team in Team.allCases {
-            if owner == team.rawValue {
-                self.owner = team
-                //self.remakeNode()
-                return
+        DispatchQueue.main.async {
+            self.agri = flags & PlanetFlags.agri.rawValue != 0
+            self.fuel = flags & PlanetFlags.fuel.rawValue != 0
+            self.repair = flags & PlanetFlags.repair.rawValue != 0
+            self.flags = flags
+            self.info = info
+            self.armies = armies
+            for team in Team.allCases {
+                if owner == team.rawValue {
+                    self.owner = team
+                    //self.remakeNode()
+                    return
+                }
             }
         }
         //self.remakeNode()

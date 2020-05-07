@@ -461,8 +461,10 @@ class Player: CustomStringConvertible, ObservableObject {
         }
         self.lastUpdateTime = self.updateTime
         self.updateTime = Date()
-        self.positionX = positionX
-        self.positionY = positionY
+        DispatchQueue.main.async {
+            self.positionX = positionX
+            self.positionY = positionY
+        }
         self.updateNode()
         /* for debugging only
          if me && self.direction < CGFloat.pi {

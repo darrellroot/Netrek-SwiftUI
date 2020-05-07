@@ -21,13 +21,7 @@ struct PlanetView: View, TacticalOffset {
                     .frame(width: self.planetWidth(screenWidth: geo.size.width), height: self.planetWidth(screenWidth: geo.size.height))
                     .colorMultiply(Color.red)
                     .contentShape(Rectangle())
-                    .onTapGesture {
-                        debugPrint("tap")
-                }
-
-
                 Text(self.planet.name)
-
             }
             .offset(x: self.xOffset(positionX: self.planet.positionX, myPositionX: self.me.positionX,geo: geo), y: self.yOffset(positionY: self.planet.positionY, myPositionY: self.me.positionY, geo: geo))
 

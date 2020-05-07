@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 
+//from https://www.reddit.com/r/swift/comments/ct6gbd/handling_keyboard_events_in_swiftui/fcl3fri/
 class NSCommandedWindow : NSWindow {
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
     
