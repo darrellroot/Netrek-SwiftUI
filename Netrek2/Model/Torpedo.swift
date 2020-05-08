@@ -52,7 +52,7 @@ class Torpedo: ObservableObject {
         self.positionX = positionX
         self.positionY = positionY
         if soundPlayed == false {
-            let me = appDelegate.universe.me
+            let me = appDelegate.universe.players[appDelegate.universe.me]
             let taxiDistance = abs(me.positionX - self.positionX) + abs(me.positionY - self.positionY)
             if taxiDistance < NetrekMath.displayDistance / 4 {
                 let volume = 1.0 - (4.0 * Float(taxiDistance) / (NetrekMath.displayDistanceFloat))

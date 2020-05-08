@@ -41,7 +41,7 @@ class Laser {
     public func displayLaser() {
         guard let source = appDelegate.universe.players[safe: self.laserID] else { return }
         let me = appDelegate.universe.me
-        let taxiDistance = abs(me.positionX - source.positionX) + abs(me.positionY - source.positionY)
+        let taxiDistance = abs(appDelegate.universe.players[me].positionX - source.positionX) + abs(appDelegate.universe.players[me].positionY - source.positionY)
         guard taxiDistance < NetrekMath.displayDistance / 2 else { return }
         let volume = 1.0 - (2.0 * Float(taxiDistance) / (NetrekMath.displayDistanceFloat))
         appDelegate.soundController?.play(sound: .laser, volume: volume)

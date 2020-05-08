@@ -266,6 +266,9 @@ class KeymapController {
     //appDelegate.keymapController.setKeymap(control: control, command: command)
 
     func execute(_ control: Control, location: CGPoint?) {
+        let universe = appDelegate.universe
+        let players = appDelegate.universe.players
+        let me = appDelegate.universe.me
         if let command = keymap[control] {
             switch command {
                 
@@ -298,32 +301,27 @@ class KeymapController {
             case .speedTwelve:
                 self.setSpeed(12)
             case .speedMax:
-                if let myShipType = appDelegate.universe.me.ship, let myShipInfo = appDelegate.universe.shipInfo[myShipType] {
+                if let myShipType = players[me].ship, let myShipInfo = universe.shipInfo[myShipType] {
                     self.setSpeed(myShipInfo.maxSpeed)
                 }
             case .speedHalf:
-                if let myShipType = appDelegate.universe.me.ship, let myShipInfo = appDelegate.universe.shipInfo[myShipType] {
+                if let myShipType = players[me].ship, let myShipInfo = universe.shipInfo[myShipType] {
                     self.setSpeed(myShipInfo.maxSpeed / 2)
                 }
             case .speedIncrease:
-                let currentSpeed = appDelegate.universe.me.speed
+                let currentSpeed = players[me].speed
                 if currentSpeed < 12 {
                     self.setSpeed(currentSpeed + 1)
                 }
             case .speedDecrease:
-                let currentSpeed = appDelegate.universe.me.speed
+                let currentSpeed = players[me].speed
                 if currentSpeed > 0 {
                     self.setSpeed(currentSpeed + 1)
                 }
-
-                
                 /*
                  case speedMax = "Set speed maximum"
                  case speedHalf = "Set speed half"
-                 case speedDecrease = "Decrease speed 1"
-                 case speedIncrease = "Speed increase 1"
                  */
-
             case .beamUp:
                 let cpBeam = MakePacket.cpBeam(state: true)
                 appDelegate.reader?.send(content: cpBeam)
@@ -331,7 +329,7 @@ class KeymapController {
                 let cpBeam = MakePacket.cpBeam(state: false)
                 appDelegate.reader?.send(content: cpBeam)
             case .bomb:
-                let bombState = appDelegate.universe.me.bomb
+                let bombState = players[me].bomb
                 let cpBomb = MakePacket.cpBomb(state: !bombState )
                 appDelegate.reader?.send(content: cpBomb)
             case .cloakUp:
@@ -347,7 +345,7 @@ class KeymapController {
 
             case .cloak:
                 guard appDelegate.gameState == .gameActive else { return }
-                let cloakState = appDelegate.universe.me.cloak
+                let cloakState = players[me].cloak
                 let cpCloak = MakePacket.cpCloak(state: !cloakState )
                 appDelegate.reader?.send(content: cpCloak)
                 appDelegate.soundController?.play(sound: .shield, volume: 1.0)
@@ -366,14 +364,14 @@ class KeymapController {
                 let me = appDelegate.universe.me
                 guard appDelegate.gameState == .gameActive else { return }
                 for count in 0..<8 {
-                    let myTorpNum = UInt8(me.playerId * 8 + count)
+                    let myTorpNum = UInt8(me * 8 + count)
                     let cpDetMyTorps = MakePacket.cpDetMyTorps(torpNum: myTorpNum)
                     appDelegate.reader?.send(content: cpDetMyTorps)
                 }
                 appDelegate.soundController?.play(sound: .detonate, volume: 0.5)
             case .dockingPermission:
                 let me = appDelegate.universe.me
-                let cpDockperm = MakePacket.cpDockperm(state: !me.dockok)
+                let cpDockperm = MakePacket.cpDockperm(state: !players[me].dockok)
                 appDelegate.reader?.send(content: cpDockperm)
             case .information:
                 guard let location = location else {
@@ -403,7 +401,7 @@ class KeymapController {
                     return
                 }
                 let me = appDelegate.universe.me
-                let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(me.positionX), mePositionY: Double(me.positionY), destinationX: Double(location.x), destinationY: Double(location.y))
+                let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(players[me].positionX), mePositionY: Double(players[me].positionY), destinationX: Double(location.x), destinationY: Double(location.y))
                 if let cpDirection = MakePacket.cpDirection(netrekDirection: netrekDirection) {
                     appDelegate.reader?.send(content: cpDirection)
                 }
@@ -411,7 +409,7 @@ class KeymapController {
             case .toggleShields:
                 guard appDelegate.gameState == .gameActive else { return }
 
-                let shieldsUp = appDelegate.universe.me.shieldsUp
+                let shieldsUp = players[me].shieldsUp
                 if shieldsUp {
                     let cpShield = MakePacket.cpShield(up: false)
                     appDelegate.reader?.send(content: cpShield)
@@ -458,7 +456,7 @@ class KeymapController {
                 guard target.playerId >= 0 else { return }
                 guard target.playerId < 256 else { return }
                 let playerID = UInt8(target.playerId)
-                let cpTractor = MakePacket.cpTractor(on: !me.tractorFlag, playerID: playerID)
+                let cpTractor = MakePacket.cpTractor(on: !players[me].tractorFlag, playerID: playerID)
                     appDelegate.reader?.send(content: cpTractor)
             case .pressorOn:
                 debugPrint("PressorBeam location \(String(describing: location))")
@@ -493,11 +491,11 @@ class KeymapController {
                 guard closestPlayer.playerId >= 0 else { return }
                 guard closestPlayer.playerId < 256 else { return }
                 let playerID = UInt8(closestPlayer.playerId)
-                let cpPressor = MakePacket.cpPressor(on: !me.pressor, playerID: playerID)
+                let cpPressor = MakePacket.cpPressor(on: !players[me].pressor, playerID: playerID)
                 appDelegate.reader?.send(content: cpPressor)
 
             case .orbit:
-                let orbitState = appDelegate.universe.me.orbit
+                let orbitState = universe.players[me].orbit
                 let cpOrbit = MakePacket.cpOrbit(state: !orbitState)
                 appDelegate.reader?.send(content: cpOrbit)
                 
@@ -518,7 +516,7 @@ class KeymapController {
             case .repair:
                 guard appDelegate.gameState == .gameActive else { return }
 
-                let repairState = appDelegate.universe.me.repair
+                let repairState = players[me].repair
                 let cpRepair = MakePacket.cpRepair(state: !repairState )
                 appDelegate.reader?.send(content: cpRepair)
             case .fireLaser:
@@ -530,7 +528,7 @@ class KeymapController {
                     return
                 }
                 let me = appDelegate.universe.me
-                let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(me.positionX), mePositionY: Double(me.positionY), destinationX: Double(targetLocation.x), destinationY: Double(targetLocation.y))
+                let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(players[me].positionX), mePositionY: Double(players[me].positionY), destinationX: Double(targetLocation.x), destinationY: Double(targetLocation.y))
                 let cpLaser = MakePacket.cpLaser(netrekDirection: netrekDirection)
                 appDelegate.reader?.send(content: cpLaser)
 
@@ -543,7 +541,7 @@ class KeymapController {
                     return
                 }
                 let me = appDelegate.universe.me
-                let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(me.positionX), mePositionY: Double(me.positionY), destinationX: Double(targetLocation.x), destinationY: Double(targetLocation.y))
+                let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(players[me].positionX), mePositionY: Double(players[me].positionY), destinationX: Double(targetLocation.x), destinationY: Double(targetLocation.y))
                 let cpTorp = MakePacket.cpTorp(netrekDirection: netrekDirection)
                 appDelegate.reader?.send(content: cpTorp)
             case .firePlasma:
@@ -555,7 +553,7 @@ class KeymapController {
                     return
                 }
                 let me = appDelegate.universe.me
-                let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(me.positionX), mePositionY: Double(me.positionY), destinationX: Double(targetLocation.x), destinationY: Double(targetLocation.y))
+                let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(players[me].positionX), mePositionY: Double(players[me].positionY), destinationX: Double(targetLocation.x), destinationY: Double(targetLocation.y))
                 let cpPlasma = MakePacket.cpPlasma(netrekDirection: netrekDirection)
                     appDelegate.reader?.send(content: cpPlasma)
             case .quitGame:

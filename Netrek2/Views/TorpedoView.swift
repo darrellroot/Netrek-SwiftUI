@@ -21,7 +21,7 @@ struct TorpedoView: View, TacticalOffset {
                         .contentShape(Rectangle())
                 .offset(x: self.xOffset(positionX: self.torpedo.positionX, myPositionX: self.me.positionX,geo: geo), y: self.yOffset(positionY: self.torpedo.positionY, myPositionY: self.me.positionY, geo: geo))
                 .opacity(self.torpedo.status == 1 ? 1 : 0)
-                    .animation(Animation.linear)
+                    //.animation(Animation.linear)
             }
         //}
     }

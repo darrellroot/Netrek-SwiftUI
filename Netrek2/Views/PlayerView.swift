@@ -23,6 +23,8 @@ struct PlayerView: View, TacticalOffset {
                 Text(self.player.name)
             }
             .offset(x: self.xOffset(positionX: self.player.positionX, myPositionX: self.me.positionX,geo: geo), y: self.yOffset(positionY: self.player.positionY, myPositionY: self.me.positionY, geo: geo))
+            //.animation(Animation.linear)
+
         }
     }
 }

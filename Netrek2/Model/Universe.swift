@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class Universe: ObservableObject {
     var players: [Player] = []
@@ -15,9 +16,9 @@ class Universe: ObservableObject {
     var lasers: [Int: Laser] = [:]
     var plasmas: [Int: Plasma] = [:]
     var shipInfo: [ShipType:ShipInfo] = [:]
-    @Published var me: Player {
+    @Published var me: Int = 0 {
         didSet {
-            debugPrint("me set \(me.playerId)")
+            debugPrint("me set \(me)")
         }
     }
     let maxPlanets = 40
@@ -36,7 +37,7 @@ class Universe: ObservableObject {
         for torpedoId in 0 ..< maxTorpedoes {
             torpedoes.append(Torpedo(torpedoID: torpedoId))
         }
-        self.me = players[0]
+        //self.me = players[0]
     }
     public func reset() {
         //called when we disconnect from server
@@ -50,7 +51,7 @@ class Universe: ObservableObject {
         lasers = [:]
         plasmas = [:]
         shipInfo = [:]
-        me = players[0]
+        me = 0
     }
     public func createPlanet(planetId: Int, positionX: Int, positionY: Int, name: String) {
         guard planetId >= 0 else {
@@ -150,10 +151,16 @@ class Universe: ObservableObject {
             let newPlayer = Player(playerId: myPlayerId)
             self.players[myPlayerId] = newPlayer
         }
-        if self.me == nil {
-            self.me = self.players[myPlayerId]
+        guard myPlayerId > 0 && myPlayerId < self.maxPlayers else {
+            debugPrint("Fatal Error: unexpected myPlayerId \(myPlayerId)")
+            return
         }
-        self.me.updateMe(myPlayerId: myPlayerId, hostile: hostile, war: war, armies: armies, tractor: tractor, flags: flags, damage: damage, shieldStrength: shieldStrength, fuel: fuel, engineTemp: engineTemp, weaponsTemp: weaponsTemp, whyDead: whyDead, whoDead: whoDead)
+        me = myPlayerId
+        debugPrint("Me updated to \(myPlayerId)")
+        /*if self.me == nil {
+            self.me = self.players[myPlayerId]
+        }*/
+        self.players[me].updateMe(myPlayerId: myPlayerId, hostile: hostile, war: war, armies: armies, tractor: tractor, flags: flags, damage: damage, shieldStrength: shieldStrength, fuel: fuel, engineTemp: engineTemp, weaponsTemp: weaponsTemp, whyDead: whyDead, whoDead: whoDead)
     }
     public func updateTorpedo(torpedoNumber: Int, war: UInt8, status: UInt8) {
         guard torpedoNumber >= 0 && torpedoNumber < maxTorpedoes else {

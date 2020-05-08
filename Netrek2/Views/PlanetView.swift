@@ -24,7 +24,7 @@ struct PlanetView: View, TacticalOffset {
                 Text(self.planet.name)
             }
             .offset(x: self.xOffset(positionX: self.planet.positionX, myPositionX: self.me.positionX,geo: geo), y: self.yOffset(positionY: self.planet.positionY, myPositionY: self.me.positionY, geo: geo))
-
+            .animation(Animation.linear)
         }
         
     }

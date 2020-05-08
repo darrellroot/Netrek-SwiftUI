@@ -47,13 +47,13 @@ struct TacticalView: View, TacticalOffset {
                     }
                 }
                 ForEach(0 ..< self.universe.maxPlanets) { planetId in
-                    PlanetView(planet: self.universe.planets[planetId], me: self.universe.me)
+                    PlanetView(planet: self.universe.planets[planetId], me: self.universe.players[self.universe.me])
                 }
                 ForEach(0 ..< self.universe.maxPlayers) { playerId in
-                    PlayerView(player: self.universe.players[playerId], me: self.universe.me)
+                    PlayerView(player: self.universe.players[playerId], me: self.universe.players[self.universe.me])
                 }
                 ForEach(0 ..< self.universe.maxTorpedoes) { torpedoId in
-                    TorpedoView(torpedo: self.universe.torpedoes[torpedoId], me: self.universe.me)
+                    TorpedoView(torpedo: self.universe.torpedoes[torpedoId], me: self.universe.players[self.universe.me])
                 }
             }
         }.frame(minWidth: 500, idealWidth: 800, maxWidth: nil, minHeight: 500, idealHeight: 800, maxHeight: nil, alignment: .center)
@@ -65,8 +65,8 @@ struct TacticalView: View, TacticalOffset {
             )*/
     }
     func mouseDown(control: Control, eventLocation: NSPoint, size: CGSize) {
-        let meX = universe.me.positionX
-        let meY = universe.me.positionY
+        let meX = universe.players[universe.me].positionX
+        let meY = universe.players[universe.me].positionY
         let diffX = Int(eventLocation.x) - (Int(size.width) / 2)
         let diffY = Int(eventLocation.y) - (Int(size.height) / 2)
         let deltaX = NetrekMath.displayDistance * diffX / Int(size.width)

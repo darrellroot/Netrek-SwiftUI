@@ -44,7 +44,7 @@ class Plasma {
         self.positionY = positionY
         if soundPlayed == false {
             let me = appDelegate.universe.me
-            let taxiDistance = abs(me.positionX - self.positionX) + abs(me.positionY - self.positionY)
+            let taxiDistance = abs(appDelegate.universe.players[me].positionX - self.positionX) + abs(appDelegate.universe.players[me].positionY - self.positionY)
             if taxiDistance < NetrekMath.displayDistance / 3 {
                 let volume = 1.0 - (3.0 * Float(taxiDistance) / (NetrekMath.displayDistanceFloat))
                 appDelegate.soundController?.play(sound: .plasma, volume: volume)
