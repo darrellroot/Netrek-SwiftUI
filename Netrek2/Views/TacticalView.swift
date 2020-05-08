@@ -89,8 +89,8 @@ struct TacticalView: View, TacticalOffset {
             debugPrint("TacticalScene.keyDown unable to find keymapController")
             return
         }
-        //var location: CGPoint? = nil
-        /*if let windowLocation = self.view?.window?.mouseLocationOutsideOfEventStream {
+        /*var location: CGPoint? = nil
+        if let windowLocation = self.view?.window?.mouseLocationOutsideOfEventStream {
             if let viewLocation = self.view?.convert(windowLocation, from: self.view?.window?.contentView) {
                 location = self.scene?.convertPoint(fromView: viewLocation)
             }

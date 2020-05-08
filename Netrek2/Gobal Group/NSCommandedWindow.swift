@@ -14,7 +14,6 @@ class NSCommandedWindow : NSWindow {
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
     
     override func keyDown(with event: NSEvent) {
-        debugPrint("TacticalScene.keyDown characters \(String(describing: event.characters))")
         guard let keymap = appDelegate.keymapController else {
             debugPrint("TacticalScene.keyDown unable to find keymapController")
             return
@@ -25,6 +24,8 @@ class NSCommandedWindow : NSWindow {
             //location = self.scene?.convertPoint(fromView: viewLocation)
             location = viewLocation
         }
+        debugPrint("TacticalScene.keyDown characters \(String(describing: event.characters)) location \(location)")
+
         
         switch event.characters?.first {
         case "0":

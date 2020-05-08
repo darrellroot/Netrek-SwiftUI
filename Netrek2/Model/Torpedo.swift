@@ -25,6 +25,8 @@ class Torpedo: ObservableObject {
     var direction: Double = 0.0 // in radians
     @Published var positionX: Int = 0
     @Published var positionY: Int = 0
+    @Published var color: Color = Color.red
+
     private var soundPlayed = false
     /*var torpedoNode = SKSpriteNode(color: .red,
                                    size: CGSize(width: NetrekMath.torpedoSize, height: NetrekMath.torpedoSize))*/
@@ -40,7 +42,13 @@ class Torpedo: ObservableObject {
                 self.war[team] = false
             }
         }
+        let myTeam = appDelegate.universe.players[appDelegate.universe.me].team
         DispatchQueue.main.async {
+            if self.war[myTeam] == true {
+                self.color = Color.red
+            } else {
+                self.color = Color.green
+            }
             self.status = status
         }
         if status == 1 {

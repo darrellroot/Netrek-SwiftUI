@@ -23,7 +23,7 @@ struct PlanetView: View, TacticalOffset {
                     .contentShape(Rectangle())
                 Text(self.planet.name)
             }
-            .offset(x: self.xOffset(positionX: self.planet.positionX, myPositionX: self.me.positionX,geo: geo), y: self.yOffset(positionY: self.planet.positionY, myPositionY: self.me.positionY, geo: geo))
+            .offset(x: self.xOffset(positionX: self.planet.positionX, myPositionX: self.me.positionX,tacticalWidth: geo.size.width), y: self.yOffset(positionY: self.planet.positionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height))
             .animation(Animation.linear)
         }
         

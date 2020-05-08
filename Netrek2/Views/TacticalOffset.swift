@@ -26,24 +26,24 @@ extension TacticalOffset {
 
 
     
-    func xOffset(positionX: Int, myPositionX: Int, geo: GeometryProxy) -> CGFloat {
+    func xOffset(positionX: Int, myPositionX: Int, tacticalWidth: CGFloat) -> CGFloat {
         let viewPositionX: Int
         if myPositionX > -20000 && myPositionX < 20000 {
             viewPositionX = myPositionX
         } else {
             viewPositionX = 5000
         }
-        let x = CGFloat(positionX - viewPositionX) * (CGFloat(NetrekMath.displayDistance) / CGFloat(NetrekMath.galacticSize)) * geo.size.width / 1000
+        let x = CGFloat(positionX - viewPositionX) * (CGFloat(NetrekMath.displayDistance) / CGFloat(NetrekMath.galacticSize)) * tacticalWidth / 1000
         return x
     }
-    func yOffset(positionY: Int, myPositionY: Int, geo: GeometryProxy) -> CGFloat {
+    func yOffset(positionY: Int, myPositionY: Int, tacticalHeight: CGFloat) -> CGFloat {
         let viewPositionY: Int
         if myPositionY > -20000 && myPositionY < 20000 {
             viewPositionY = myPositionY
         } else {
             viewPositionY = 5000
         }
-        let y = CGFloat(viewPositionY - positionY) * (CGFloat(NetrekMath.displayDistance) / CGFloat(NetrekMath.galacticSize)) * geo.size.height / 1000
+        let y = CGFloat(viewPositionY - positionY) * (CGFloat(NetrekMath.displayDistance) / CGFloat(NetrekMath.galacticSize)) * tacticalHeight / 1000
         return y
     }
 }

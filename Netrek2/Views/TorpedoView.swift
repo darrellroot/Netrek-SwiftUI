@@ -15,11 +15,10 @@ struct TorpedoView: View, TacticalOffset {
     var body: some View {
         //if torpedo.status == 1 {
             return GeometryReader { geo in
-                Color.red
+                self.torpedo.color
                     .frame(width: self.torpedoWidth(screenWidth: geo.size.width), height: self.torpedoWidth(screenWidth: geo.size.height))
-                        .colorMultiply(Color.red)
                         .contentShape(Rectangle())
-                .offset(x: self.xOffset(positionX: self.torpedo.positionX, myPositionX: self.me.positionX,geo: geo), y: self.yOffset(positionY: self.torpedo.positionY, myPositionY: self.me.positionY, geo: geo))
+                    .offset(x: self.xOffset(positionX: self.torpedo.positionX, myPositionX: self.me.positionX,tacticalWidth: geo.size.width), y: self.yOffset(positionY: self.torpedo.positionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height))
                 .opacity(self.torpedo.status == 1 ? 1 : 0)
                     //.animation(Animation.linear)
             }
