@@ -43,7 +43,7 @@ extension TacticalOffset {
         } else {
             viewPositionY = 5000
         }
-        let y = CGFloat(positionY - viewPositionY) * (CGFloat(NetrekMath.displayDistance) / CGFloat(NetrekMath.galacticSize)) * geo.size.height / 1000
+        let y = CGFloat(viewPositionY - positionY) * (CGFloat(NetrekMath.displayDistance) / CGFloat(NetrekMath.galacticSize)) * geo.size.height / 1000
         return y
     }
 }

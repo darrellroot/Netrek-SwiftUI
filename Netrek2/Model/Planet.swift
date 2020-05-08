@@ -24,7 +24,7 @@ class Planet: CustomStringConvertible, ObservableObject, Identifiable {
     @Published private(set) var name: String
     @Published private(set) var positionX: Int
     @Published private(set) var positionY: Int
-    private(set) var owner: Team = .independent
+    @Published private(set) var owner: Team = .independent
     private(set) var info: Int = 0
     private(set) var flags: UInt16 = 0
     @Published private(set) var agri: Bool = false {

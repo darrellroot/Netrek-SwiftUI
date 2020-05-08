@@ -13,15 +13,24 @@ struct PlayerView: View, TacticalOffset {
     @ObservedObject var me: Player
     var body: some View {
         return GeometryReader { geo in
-            VStack {
-                //self.planet.image
-                Image(self.player.imageName)
-                .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: self.playerWidth(screenWidth: geo.size.width), height: self.playerWidth(screenWidth: geo.size.height))
-                    .rotationEffect(Angle(radians: self.player.direction))
-                Text(self.player.name)
+            ZStack {
+                Circle()
+                    .stroke(Color.green)
+                    .frame(width: self.playerWidth(screenWidth: geo.size.width * 1.1), height: self.playerWidth(screenWidth: geo.size.height * 1.1 ))
+                    .opacity(self.player.shieldsUp ? 1.0 : 0.0)
+                VStack {
+                    //self.planet.image
+                    Text("\(self.player.ship?.description ?? "") \(self.player.kills)")
+                    Image(self.player.imageName)
+                    .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: self.playerWidth(screenWidth: geo.size.width), height: self.playerWidth(screenWidth: geo.size.height))
+                        .rotationEffect(Angle(radians: -self.player.direction))
+                    Text(self.player.name)
+                }
             }
+            .opacity(self.player.cloak && self.me === self.player ? 0.4 : 1.0)
+            .opacity(self.player.cloak && self.me !== self.player ? 0.0 : 1.0)
             .offset(x: self.xOffset(positionX: self.player.positionX, myPositionX: self.me.positionX,geo: geo), y: self.yOffset(positionY: self.player.positionY, myPositionY: self.me.positionY, geo: geo))
             //.animation(Animation.linear)
 

@@ -14,12 +14,12 @@ struct PlanetView: View, TacticalOffset {
     var body: some View {
         return GeometryReader { geo in
             VStack {
-                //self.planet.image
+                Text(" ")
                 Image(self.planet.imageName)
                 .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: self.planetWidth(screenWidth: geo.size.width), height: self.planetWidth(screenWidth: geo.size.height))
-                    .colorMultiply(Color.red)
+                    .colorMultiply(NetrekMath.color(team: self.planet.owner))
                     .contentShape(Rectangle())
                 Text(self.planet.name)
             }
@@ -28,6 +28,7 @@ struct PlanetView: View, TacticalOffset {
         }
         
     }
+    
 }
 
 /*struct PlanetView_Previews: PreviewProvider {

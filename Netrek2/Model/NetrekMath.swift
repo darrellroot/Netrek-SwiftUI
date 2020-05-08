@@ -8,6 +8,8 @@
 
 import Foundation
 import AppKit
+import SwiftUI
+
 class NetrekMath {
 
     static let displayDistance = 3000
@@ -133,7 +135,24 @@ class NetrekMath {
         }
         return playerLetter
     }
-    static public func color(team: Team) -> NSColor {
+    static public func color(team: Team) -> Color {
+        switch team {
+            
+        case .independent:
+            return Color.gray
+        case .federation:
+            return Color.yellow
+        case .roman:
+            return Color.red
+        case .kazari:
+            return Color.green
+        case .orion:
+            return Color.blue
+        case .ogg:
+            return Color.gray
+        }
+    }
+    /*static public func color(team: Team) -> NSColor {
         switch team {
             
         case .independent:
@@ -150,5 +169,5 @@ class NetrekMath {
             return NSColor.gray
         }
         
-    }
+    }*/
 }

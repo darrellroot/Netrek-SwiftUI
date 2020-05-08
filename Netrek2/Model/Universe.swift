@@ -147,20 +147,15 @@ class Universe: ObservableObject {
             debugPrint("Universe.updateMe invalid playerID \(myPlayerId)")
             return
         }
-        if self.players[myPlayerId] == nil {
-            let newPlayer = Player(playerId: myPlayerId)
-            self.players[myPlayerId] = newPlayer
-        }
         guard myPlayerId > 0 && myPlayerId < self.maxPlayers else {
             debugPrint("Fatal Error: unexpected myPlayerId \(myPlayerId)")
             return
         }
-        me = myPlayerId
-        debugPrint("Me updated to \(myPlayerId)")
-        /*if self.me == nil {
-            self.me = self.players[myPlayerId]
-        }*/
-        self.players[me].updateMe(myPlayerId: myPlayerId, hostile: hostile, war: war, armies: armies, tractor: tractor, flags: flags, damage: damage, shieldStrength: shieldStrength, fuel: fuel, engineTemp: engineTemp, weaponsTemp: weaponsTemp, whyDead: whyDead, whoDead: whoDead)
+        DispatchQueue.main.async {
+            self.me = myPlayerId
+            debugPrint("Me updated to \(myPlayerId)")
+            self.players[self.me].updateMe(myPlayerId: myPlayerId, hostile: hostile, war: war, armies: armies, tractor: tractor, flags: flags, damage: damage, shieldStrength: shieldStrength, fuel: fuel, engineTemp: engineTemp, weaponsTemp: weaponsTemp, whyDead: whyDead, whoDead: whoDead)
+        }
     }
     public func updateTorpedo(torpedoNumber: Int, war: UInt8, status: UInt8) {
         guard torpedoNumber >= 0 && torpedoNumber < maxTorpedoes else {

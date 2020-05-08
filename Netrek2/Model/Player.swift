@@ -85,7 +85,7 @@ class Player: CustomStringConvertible, ObservableObject {
     private(set) var lastUpdateTime = Date()
     private(set) var updateTime = Date()
     // from flags
-    private(set) var shieldsUp = false
+    @Published private(set) var shieldsUp = false
     //
     // from packet type 24
     private(set) var rank: Rank = .ensign
@@ -167,10 +167,7 @@ class Player: CustomStringConvertible, ObservableObject {
         playerInfoLabel.fontName = "Courier"
         playerInfoLabel.position = CGPoint(x: self.positionX, y: self.positionY - 2 * NetrekMath.playerSize)
         playerInfoLabel.zPosition = ZPosition.ship.rawValue
-        playerInfoLabel.fontColor = NetrekMath.color(team: self.team)
-        //playerTacticalNode.addChild(playerInfoLabel)
-    //appDelegate.tacticalViewController?.scene.addChild(playerInfoLabel)
-        //this action includes fading and removing from parent
+        //playerInfoLabel.fontColor = NetrekMath.color(team: self.team)
         playerInfoLabel.run(playerInfoAction)
     }
 
@@ -361,12 +358,12 @@ class Player: CustomStringConvertible, ObservableObject {
         self.weaponsTemp = weaponsTemp
         self.whyDead = whyDead
         self.whoDead = whoDead
-        if flags & PlayerStatus.shield.rawValue != 0 {
-            self.shieldsUp = true
-            //self.shieldNode.isHidden = false
-        } else {
-            self.shieldsUp = false
-            //self.shieldNode.isHidden = true
+        DispatchQueue.main.async {
+            if flags & PlayerStatus.shield.rawValue != 0 {
+                self.shieldsUp = true
+            } else {
+                self.shieldsUp = false
+            }
         }
         if flags & PlayerStatus.repair.rawValue != 0 {
             self.repair = true
@@ -476,17 +473,17 @@ class Player: CustomStringConvertible, ObservableObject {
     public func update(tractor: Int, flags: UInt32) {
         self.tractor = tractor
         self.flags = flags
-        if flags & PlayerStatus.shield.rawValue != 0 {
-            self.shieldsUp = true
-            //self.shieldNode.isHidden = false
-        } else {
-            self.shieldsUp = false
-            //self.shieldNode.isHidden = true
-        }
-        if flags & PlayerStatus.cloak.rawValue != 0 {
-            self.cloak = true
-        } else {
-            self.cloak = false
+        DispatchQueue.main.async {
+            if flags & PlayerStatus.shield.rawValue != 0 {
+                self.shieldsUp = true
+            } else {
+                self.shieldsUp = false
+            }
+            if flags & PlayerStatus.cloak.rawValue != 0 {
+                self.cloak = true
+            } else {
+                self.cloak = false
+            }
         }
     }
     // from SP_PSTATUS_20

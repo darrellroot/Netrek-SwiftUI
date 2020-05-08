@@ -40,7 +40,9 @@ class Torpedo: ObservableObject {
                 self.war[team] = false
             }
         }
-        self.status = status
+        DispatchQueue.main.async {
+            self.status = status
+        }
         if status == 1 {
             soundPlayed = false
         }
@@ -49,8 +51,10 @@ class Torpedo: ObservableObject {
         if self.status == 0 {
             return
         }
-        self.positionX = positionX
-        self.positionY = positionY
+        DispatchQueue.main.async {
+            self.positionX = positionX
+            self.positionY = positionY
+        }
         if soundPlayed == false {
             let me = appDelegate.universe.players[appDelegate.universe.me]
             let taxiDistance = abs(me.positionX - self.positionX) + abs(me.positionY - self.positionY)

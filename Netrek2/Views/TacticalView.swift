@@ -30,6 +30,10 @@ struct TacticalView: View, TacticalOffset {
                     case .leftMouseDown:
                         self.mouseDown(control: .leftMouse,eventLocation: location, size: geo.size)
                         //self.appDelegate.keymapController.execute(.leftMouse,location: location)
+                    case .leftMouseDragged:
+                        self.mouseDown(control: .leftMouse,eventLocation: location, size: geo.size)
+                    case .rightMouseDragged:
+                        self.mouseDown(control: .leftMouse,eventLocation: location, size: geo.size)
                     case .rightMouseDown:
                         self.mouseDown(control: .rightMouse,eventLocation: location, size: geo.size)
 
@@ -71,8 +75,8 @@ struct TacticalView: View, TacticalOffset {
         let diffY = Int(eventLocation.y) - (Int(size.height) / 2)
         let deltaX = NetrekMath.displayDistance * diffX / Int(size.width)
         let deltaY = NetrekMath.displayDistance * diffY / Int(size.height)
-        let finalX = deltaX + meX
-        let finalY = deltaY + meY
+        let finalX = meX + deltaX
+        let finalY = meY - deltaY
         let location = CGPoint(x: finalX, y: finalY)
         self.appDelegate.keymapController.execute(control,location: location)
 
