@@ -17,15 +17,25 @@ struct LaserView: View, TacticalOffset {
     var body: some View {
         //if torpedo.status == 1 {
             return GeometryReader { geo in
+                /*Path { path in
+                    debugPrint("drawing laser")
+                    path.move(to: CGPoint(x: 20, y: 20))
+                    path.addLine(to: CGPoint(x:300, y: 300))*/
                 Path { path in
-                    path.move(to: CGPoint(x: 0, y: 0))
-                    path.addLine(to: CGPoint(x: 100, y: 100))
+                    path.move(to: CGPoint(x: self.xAbsolute(positionX: self.laser.positionX, myPositionX: self.me.positionX, tacticalWidth: geo.size.width), y: self.yAbsolute(positionY: self.laser.positionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height)))
+                    path.addLine(to: CGPoint(x: self.xAbsolute(positionX: self.laser.targetPositionX, myPositionX: self.me.positionX, tacticalWidth: geo.size.width), y: self.yAbsolute(positionY: self.laser.targetPositionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height)))
+                    /*if self.laser.laserId == self.appDelegate.universe.me && self.laser.status != 0 {
+                        debugPrint("laser my position \(self.me.positionX) \(self.me.positionY)")
+                        debugPrint("laser start \(self.laser.positionX) \(self.laser.positionY)")
+                        debugPrint("laser end \(self.laser.targetPositionX) \(self.laser.targetPositionY)")
+                        debugPrint("laser stats \(self.laser.status) \(self.xAbsolute(positionX: self.laser.positionX, myPositionX: self.me.positionX, tacticalWidth: geo.size.width)) \(self.yAbsolute(positionY: self.laser.positionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height)) \(self.xAbsolute(positionX: self.laser.targetPositionX, myPositionX: self.me.positionX, tacticalWidth: geo.size.width))  \(self.yAbsolute(positionY: self.laser.targetPositionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height))")
+                    }*/
                 }.stroke(Color.red, lineWidth: 3)
 
             
                     //.frame(width: self.torpedoWidth(screenWidth: geo.size.width), height: self.torpedoWidth(screenWidth: geo.size.height))
                         .contentShape(Rectangle())
-                .offset(x: self.sourceX(tacWidth: geo.size.width), y: self.sourceY(tacHeight: geo.size.height))
+                    //.offset(x: self.viewXOffset(positionX: self.laser.positionX, myPositionX: self.me.positionX, tacticalWidth: geo.size.width), y: self.viewYOffset(positionY: self.laser.positionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height))
                     //.offset(x: self.xOffset(positionX: self.laser.positionX, myPositionX: self.me.positionX,tacticalWidth: geo.size.width), y: self.yOffset(positionY: self.laser.positionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height))
                 .opacity(self.laser.status != 0 ? 1 : 0)
                     //.animation(Animation.linear)

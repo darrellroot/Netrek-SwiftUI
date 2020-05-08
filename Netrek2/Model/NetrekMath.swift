@@ -152,6 +152,8 @@ class NetrekMath {
             return Color.gray
         }
     }
+    
+    
     /*static public func color(team: Team) -> NSColor {
         switch team {
             

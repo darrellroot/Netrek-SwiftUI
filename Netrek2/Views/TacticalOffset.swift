@@ -23,6 +23,7 @@ extension TacticalOffset {
         return CGFloat(NetrekMath.torpedoSize) * screenWidth / CGFloat(NetrekMath.displayDistance)
     }
 
+    //This calculation is relative to NSView
     func viewXOffset(positionX: Int, myPositionX: Int, tacticalWidth: CGFloat) -> CGFloat {
         // from NSView coordinates
         let screenDelta = CGFloat(positionX) - tacticalWidth / 2
@@ -30,6 +31,7 @@ extension TacticalOffset {
         let screenNetrekDelta = screenPercentDelta * CGFloat(NetrekMath.displayDistance)
         return CGFloat(myPositionX) + screenNetrekDelta
     }
+    //This calculation is relative to NSView
     func viewYOffset(positionY: Int, myPositionY: Int, tacticalHeight: CGFloat) -> CGFloat {
         // from NSView coordinates
         let screenDelta = CGFloat(positionY) - tacticalHeight / 2
@@ -37,8 +39,15 @@ extension TacticalOffset {
         let screenNetrekDelta = screenPercentDelta * CGFloat(NetrekMath.displayDistance)
         return CGFloat(myPositionY) + screenNetrekDelta
     }
-
     
+    func xAbsolute(positionX: Int, myPositionX: Int, tacticalWidth: CGFloat) -> CGFloat {
+        return xOffset(positionX: positionX, myPositionX: myPositionX, tacticalWidth: tacticalWidth) + tacticalWidth / 2
+    }
+    func yAbsolute(positionY: Int, myPositionY: Int, tacticalHeight: CGFloat) -> CGFloat {
+        return yOffset(positionY: positionY, myPositionY: myPositionY, tacticalHeight: tacticalHeight) + tacticalHeight / 2
+    }
+
+    //This calculation is relative to SwiftUI view
     func xOffset(positionX: Int, myPositionX: Int, tacticalWidth: CGFloat) -> CGFloat {
         let viewPositionX: Int
         if myPositionX > -20000 && myPositionX < 20000 {
@@ -49,6 +58,7 @@ extension TacticalOffset {
         let x = CGFloat(positionX - viewPositionX) * (CGFloat(NetrekMath.displayDistance) / CGFloat(NetrekMath.galacticSize)) * tacticalWidth / 1000
         return x
     }
+    //This calculation is relative to SwiftUI view
     func yOffset(positionY: Int, myPositionY: Int, tacticalHeight: CGFloat) -> CGFloat {
         let viewPositionY: Int
         if myPositionY > -20000 && myPositionY < 20000 {
