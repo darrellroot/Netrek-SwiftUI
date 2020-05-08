@@ -9,15 +9,15 @@
 import Foundation
 import SpriteKit
 
-class Laser {
-    let appDelegate = NSApplication.shared.delegate as! AppDelegate
+class Laser: ObservableObject {
+    lazy var appDelegate = NSApplication.shared.delegate as! AppDelegate
 
-    private(set) var laserID = 0
-    private(set) var status = 0
-    private(set) var directionNetrek: UInt8 = 0 // 256= full circle
+    private(set) var laserId: Int
+    @Published private(set) var status = 0
+    @Published private(set) var directionNetrek: UInt8 = 0 // 256= full circle
     private(set) var direction = 0.0 //radians
-    private(set) var positionX = 0
-    private(set) var positionY = 0
+    @Published private(set) var positionX = 0
+    @Published private(set) var positionY = 0
     private(set) var target = 0
     var laserNode = SKShapeNode()
     //let waitAction = SKAction.wait(forDuration: 1.0)
@@ -25,21 +25,27 @@ class Laser {
     let laserAction = SKAction.sequence([SKAction.fadeOut(withDuration: 1.0),SKAction.removeFromParent()])
     let laserRange = 600.0 // game units
     
+    init(laserId: Int) {
+        self.laserId = laserId
+    }
     
-    public func update(laserID: Int, status: Int, directionNetrek: UInt8, positionX: Int, positionY: Int, target: Int) {
-        self.laserID = laserID
-        self.status = status
-        self.directionNetrek = directionNetrek
-        self.direction = 2.0 * Double.pi * Double(directionNetrek) / 256.0
-        self.positionX = positionX
-        self.positionY = positionY
-        self.target = target
-        if self.status != 0 {
-            self.displayLaser()
+    
+    public func update(laserId: Int, status: Int, directionNetrek: UInt8, positionX: Int, positionY: Int, target: Int) {
+        DispatchQueue.main.async {
+            self.laserId = laserId
+            self.status = status
+            self.directionNetrek = directionNetrek
+            self.direction = 2.0 * Double.pi * Double(directionNetrek) / 256.0
+            self.positionX = positionX
+            self.positionY = positionY
+            self.target = target
+            if self.status != 0 {
+                self.displayLaser()
+            }
         }
     }
     public func displayLaser() {
-        guard let source = appDelegate.universe.players[safe: self.laserID] else { return }
+        guard let source = appDelegate.universe.players[safe: self.laserId] else { return }
         let me = appDelegate.universe.me
         let taxiDistance = abs(appDelegate.universe.players[me].positionX - source.positionX) + abs(appDelegate.universe.players[me].positionY - source.positionY)
         guard taxiDistance < NetrekMath.displayDistance / 2 else { return }

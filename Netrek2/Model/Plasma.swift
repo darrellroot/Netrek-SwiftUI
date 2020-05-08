@@ -10,9 +10,9 @@ import Foundation
 import SpriteKit
 
 class Plasma {
-    let appDelegate = NSApplication.shared.delegate as! AppDelegate
+    lazy var appDelegate = NSApplication.shared.delegate as! AppDelegate
 
-    private(set) var plasmaID = 0
+    private(set) var plasmaId: Int
     private(set) var status = 0
     private(set) var war: [Team:Bool] = [:]
     private(set) var directionNetrek = 0
@@ -23,9 +23,12 @@ class Plasma {
     var plasmaNode = SKSpriteNode(color: .orange,
                                    size: CGSize(width: NetrekMath.torpedoSize * 2, height: NetrekMath.torpedoSize * 2))
 
+    init(plasmaId: Int) {
+        self.plasmaId = plasmaId
+    }
     //from SP_PLASMA_INFO 8
-    public func update(plasmaID: Int, war: UInt8, status: Int) {
-        self.plasmaID = plasmaID
+    public func update(plasmaId: Int, war: UInt8, status: Int) {
+        self.plasmaId = plasmaId
         for team in Team.allCases {
             if UInt8(team.rawValue) & war != 0 {
                 self.war[team] = true

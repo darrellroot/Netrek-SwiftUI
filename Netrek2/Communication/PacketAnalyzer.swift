@@ -208,29 +208,29 @@ class PacketAnalyzer {
             
         case 7:
             // SP_LASER 7
-            let laserID = Int(data[1])
+            let laserId = Int(data[1])
             let status = Int(data[2]) // LA_HIT etc...
             let directionNetrek = UInt8(data[3])
             let positionX = NetrekMath.netrekX2GameX(Int(data.subdata(in: (4..<8)).to(type: UInt32.self).byteSwapped))
             let positionY = NetrekMath.netrekY2GameY(Int(data.subdata(in: (8..<12)).to(type: UInt32.self).byteSwapped))
             let target = Int(data.subdata(in: (12..<16)).to(type: Int32.self).byteSwapped)
-            debugPrint("Received SP_LASER 7 laserID \(laserID) status \(status) directionNetrek \(directionNetrek) positionX \(positionX) positionY \(positionY) target \(target)")
-            universe.updateLaser(laserID: laserID, status: status, directionNetrek: directionNetrek, positionX: positionX, positionY: positionY, target: target)
+            debugPrint("Received SP_LASER 7 laserId \(laserId) status \(status) directionNetrek \(directionNetrek) positionX \(positionX) positionY \(positionY) target \(target)")
+            universe.updateLaser(laserId: laserId, status: status, directionNetrek: directionNetrek, positionX: positionX, positionY: positionY, target: target)
         case 8:
             //SP_PLASMA_INFO
             let war = UInt8(data[1])
             let status = Int(data[2])
-            let plasmaID = Int(data.subdata(in: (4..<6)).to(type: UInt16.self).byteSwapped)
-            universe.updatePlasma(plasmaID: plasmaID, war: war, status: status)
-            debugPrint("Received SP_PLASMA 8 plasmaID \(plasmaID) war \(war) status \(status)")
+            let plasmaId = Int(data.subdata(in: (4..<6)).to(type: UInt16.self).byteSwapped)
+            universe.updatePlasma(plasmaId: plasmaId, war: war, status: status)
+            debugPrint("Received SP_PLASMA 8 plasmaID \(plasmaId) war \(war) status \(status)")
 
         case 9:
             //SP_PLASMA
-            let plasmaID = Int(data.subdata(in: (2..<4)).to(type: UInt16.self).byteSwapped)
+            let plasmaId = Int(data.subdata(in: (2..<4)).to(type: UInt16.self).byteSwapped)
             let positionX = NetrekMath.netrekX2GameX(Int(data.subdata(in: (4..<8)).to(type: UInt32.self).byteSwapped))
             let positionY = NetrekMath.netrekY2GameY(Int(data.subdata(in: (8..<12)).to(type: UInt32.self).byteSwapped))
-            debugPrint("Received SP_PLASMA 9 plasmaID \(plasmaID) positionX \(positionX) positionY \(positionY)")
-            universe.updatePlasma(plasmaID: plasmaID, positionX: positionX, positionY: positionY)
+            debugPrint("Received SP_PLASMA 9 plasmaId \(plasmaId) positionX \(positionX) positionY \(positionY)")
+            universe.updatePlasma(plasmaId: plasmaId, positionX: positionX, positionY: positionY)
         
         case 10:
             // SP_WARNING

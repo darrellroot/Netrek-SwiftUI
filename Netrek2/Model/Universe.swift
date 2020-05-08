@@ -13,8 +13,8 @@ class Universe: ObservableObject {
     var players: [Player] = []
     var planets: [Planet] = []
     var torpedoes: [Torpedo] = []
-    var lasers: [Int: Laser] = [:]
-    var plasmas: [Int: Plasma] = [:]
+    var lasers: [Laser] = []
+    var plasmas: [Plasma] = []
     var shipInfo: [ShipType:ShipInfo] = [:]
     @Published var me: Int = 0 {
         didSet {
@@ -37,6 +37,12 @@ class Universe: ObservableObject {
         for torpedoId in 0 ..< maxTorpedoes {
             torpedoes.append(Torpedo(torpedoID: torpedoId))
         }
+        for laserId in 0 ..< maxLasers {
+            lasers.append(Laser(laserId: laserId))
+        }
+        for plasmaId in 0 ..< maxPlasma {
+            plasmas.append(Plasma(plasmaId: plasmaId))
+        }
         //self.me = players[0]
     }
     public func reset() {
@@ -48,8 +54,8 @@ class Universe: ObservableObject {
             planet.reset()
         }
         torpedoes = []
-        lasers = [:]
-        plasmas = [:]
+        lasers = []
+        plasmas = []
         shipInfo = [:]
         me = 0
     }
@@ -179,39 +185,27 @@ class Universe: ObservableObject {
         }
         self.torpedoes[torpedoNumber].update(directionNetrek: directionNetrek, positionX: positionX, positionY: positionY)
     }
-    public func updateLaser(laserID: Int, status: Int, directionNetrek: UInt8, positionX: Int, positionY: Int, target: Int) {
-        guard laserID >= 0 && laserID < maxLasers else {
-            debugPrint("Universe.updatePlayer invalid laserNumber \(laserID)")
+    public func updateLaser(laserId: Int, status: Int, directionNetrek: UInt8, positionX: Int, positionY: Int, target: Int) {
+        guard laserId >= 0 && laserId < maxLasers else {
+            debugPrint("Universe.updatePlayer invalid laserNumber \(laserId)")
             return
         }
-        if self.lasers[laserID] == nil {
-            let newLaser = Laser()
-            self.lasers[laserID] = newLaser
-        }
-        self.lasers[laserID]?.update(laserID: laserID, status: status, directionNetrek: directionNetrek, positionX: positionX, positionY: positionY, target: target)
+        self.lasers[laserId].update(laserId: laserId, status: status, directionNetrek: directionNetrek, positionX: positionX, positionY: positionY, target: target)
     }
 
-    public func updatePlasma(plasmaID: Int, war: UInt8, status: Int) {
-        guard plasmaID >= 0 && plasmaID < maxPlasma else {
-            debugPrint("Universe.updatePlayer invalid plasmaNumber \(plasmaID)")
+    public func updatePlasma(plasmaId: Int, war: UInt8, status: Int) {
+        guard plasmaId >= 0 && plasmaId < maxPlasma else {
+            debugPrint("Universe.updatePlayer invalid plasmaNumber \(plasmaId)")
             return
         }
-        if self.plasmas[plasmaID] == nil {
-            let newPlasma = Plasma()
-            self.plasmas[plasmaID] = newPlasma
-        }
-        self.plasmas[plasmaID]?.update(plasmaID: plasmaID, war: war, status: status)
+        self.plasmas[plasmaId].update(plasmaId: plasmaId, war: war, status: status)
     }
-    public func updatePlasma(plasmaID: Int, positionX: Int, positionY: Int) {
-        guard plasmaID >= 0 && plasmaID < maxPlasma else {
-            debugPrint("Universe.updatePlayer invalid plasmaID \(plasmaID)")
+    public func updatePlasma(plasmaId: Int, positionX: Int, positionY: Int) {
+        guard plasmaId >= 0 && plasmaId < maxPlasma else {
+            debugPrint("Universe.updatePlayer invalid plasmaID \(plasmaId)")
             return
         }
-        if self.plasmas[plasmaID] == nil {
-            let newPlasma = Plasma()
-            self.plasmas[plasmaID] = newPlasma
-        }
-        self.plasmas[plasmaID]?.update(positionX: positionX, positionY: positionY)
+        self.plasmas[plasmaId].update(positionX: positionX, positionY: positionY)
     }
     
     public func shipinfo(shipType: ShipType, torpSpeed: Int, phaserRange: Int, maxSpeed: Int, maxFuel: Int, maxShield: Int, maxDamage: Int, maxWpnTmp: Int, maxEngTmp: Int, width: Int, height: Int, maxArmies: Int) {
