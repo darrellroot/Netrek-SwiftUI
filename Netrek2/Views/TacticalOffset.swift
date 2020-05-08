@@ -23,7 +23,20 @@ extension TacticalOffset {
         return CGFloat(NetrekMath.torpedoSize) * screenWidth / CGFloat(NetrekMath.displayDistance)
     }
 
-
+    func viewXOffset(positionX: Int, myPositionX: Int, tacticalWidth: CGFloat) -> CGFloat {
+        // from NSView coordinates
+        let screenDelta = CGFloat(positionX) - tacticalWidth / 2
+        let screenPercentDelta = screenDelta / tacticalWidth
+        let screenNetrekDelta = screenPercentDelta * CGFloat(NetrekMath.displayDistance)
+        return CGFloat(myPositionX) + screenNetrekDelta
+    }
+    func viewYOffset(positionY: Int, myPositionY: Int, tacticalHeight: CGFloat) -> CGFloat {
+        // from NSView coordinates
+        let screenDelta = CGFloat(positionY) - tacticalHeight / 2
+        let screenPercentDelta = screenDelta / tacticalHeight
+        let screenNetrekDelta = screenPercentDelta * CGFloat(NetrekMath.displayDistance)
+        return CGFloat(myPositionY) + screenNetrekDelta
+    }
 
     
     func xOffset(positionX: Int, myPositionX: Int, tacticalWidth: CGFloat) -> CGFloat {

@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 //from https://www.reddit.com/r/swift/comments/ct6gbd/handling_keyboard_events_in_swiftui/fcl3fri/
-class NSCommandedWindow : NSWindow {
+class NSCommandedWindow : NSWindow, TacticalOffset {
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
     
     override func keyDown(with event: NSEvent) {
@@ -20,11 +20,16 @@ class NSCommandedWindow : NSWindow {
         }
         var location: CGPoint? = nil
         let windowLocation = self.mouseLocationOutsideOfEventStream
-        if let viewLocation = self.contentView?.convert(windowLocation, from: self.contentView?.window?.contentView) {
+        if let viewLocation = self.contentView?.convert(windowLocation, from: self.contentView?.window?.contentView), let contentView = self.contentView {
             //location = self.scene?.convertPoint(fromView: viewLocation)
-            location = viewLocation
+            //location = viewLocation
+            let netrekLocationX = viewXOffset(positionX: Int(viewLocation.x), myPositionX: appDelegate.universe.players[appDelegate.universe.me].positionX, tacticalWidth: contentView.frame.size.width)
+            let netrekLocationY = viewYOffset(positionY: Int(viewLocation.y), myPositionY: appDelegate.universe.players[appDelegate.universe.me].positionY, tacticalHeight: contentView.frame.size.height)
+            location = CGPoint(x: netrekLocationX, y: netrekLocationY)
+            debugPrint("TacticalScene.keyDown characters \(String(describing: event.characters)) location viewLocation \(viewLocation) netrekLocation \(location)")
+        } else {
+            location = CGPoint()
         }
-        debugPrint("TacticalScene.keyDown characters \(String(describing: event.characters)) location \(location)")
 
         
         switch event.characters?.first {

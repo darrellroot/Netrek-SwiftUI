@@ -194,7 +194,6 @@
 				2F97D84D24620CCF003CA91F /* AppDelegate.swift */,
 				2F97D85624620CD0003CA91F /* Main.storyboard */,
 				2F44289224636E540051D7BE /* Assets.xcassets */,
-				2F45A7FE246480EE00AA2A3F /* NSCommandedWindow.swift */,
 			);
 			path = "Gobal Group";
 			sourceTree = "<group>";
@@ -358,6 +357,7 @@
 				2F44288F24636B690051D7BE /* TacticalOffset.swift */,
 				2F44289524639C840051D7BE /* PlayerView.swift */,
 				2F45A7F92464763200AA2A3F /* PointingView.swift */,
+				2F45A7FE246480EE00AA2A3F /* NSCommandedWindow.swift */,
 				2F44596A2464B45E00C3F9A1 /* TorpedoView.swift */,
 			);
 			path = Views;
