@@ -642,7 +642,7 @@ class KeymapController {
                 if closestPlayerDistance < closestPlanetDistance {
                     // lock onto player
                     guard let player = closestPlayer else { return }
-                    guard player.playerId > 0 && player.playerId < 256 else {
+                    guard player.playerId >= 0 && player.playerId < 256 else {
                         debugPrint("keymap.playerlock invalid playerID \(player.playerId)")
                         return
                     }
