@@ -57,7 +57,7 @@ struct TacticalView: View, TacticalOffset {
                     PlayerView(player: self.universe.players[playerId], me: self.universe.players[self.universe.me])
                 }
                 ForEach(0 ..< self.universe.maxTorpedoes) { torpedoId in
-                    TorpedoView(torpedo: self.universe.torpedoes[torpedoId], me: self.universe.players[self.universe.me])
+                        TorpedoView(torpedo: self.universe.torpedoes[torpedoId], me: self.universe.players[self.universe.me])
                 }
                 ForEach(0 ..< self.universe.maxLasers) { laserId in
                     LaserView(laser: self.universe.lasers[laserId], me: self.universe.players[self.universe.me])

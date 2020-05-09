@@ -153,7 +153,7 @@ class Universe: ObservableObject {
             debugPrint("Universe.updateMe invalid playerID \(myPlayerId)")
             return
         }
-        guard myPlayerId > 0 && myPlayerId < self.maxPlayers else {
+        guard myPlayerId >= 0 && myPlayerId < self.maxPlayers else {
             debugPrint("Fatal Error: unexpected myPlayerId \(myPlayerId)")
             return
         }

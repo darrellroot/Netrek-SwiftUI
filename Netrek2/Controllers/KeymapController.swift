@@ -650,7 +650,7 @@ class KeymapController {
                     appDelegate.reader?.send(content: cpPlayerLock)
                 } else {
                     guard let planet = closestPlanet else { return }
-                    guard planet.planetId > 0 && planet.planetId < 256 else {
+                    guard planet.planetId >= 0 && planet.planetId < 256 else {
                         debugPrint("keymap.planetlock invalid planetID \(planet.planetId)")
                         return
                     }
