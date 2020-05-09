@@ -1,0 +1,4 @@
+
+This is a very early version of a Swift Netrek Client using SwiftUI for graphics.  As of May 9th 2020 it is not ready for prime time.  I'd be very happy to get suggestions to improve SwiftUI performance.
+
+Feel free to contact me via email at feedback AT networkmom.net
