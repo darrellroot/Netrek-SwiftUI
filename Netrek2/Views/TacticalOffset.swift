@@ -22,6 +22,10 @@ extension TacticalOffset {
     func torpedoWidth(screenWidth: CGFloat) -> CGFloat {
         return CGFloat(NetrekMath.torpedoSize) * screenWidth / CGFloat(NetrekMath.displayDistance)
     }
+    func plasmaWidth(screenWidth: CGFloat) -> CGFloat {
+        return CGFloat(NetrekMath.plasmaSize) * screenWidth / CGFloat(NetrekMath.displayDistance)
+    }
+
 
     //This calculation is relative to NSView
     func viewXOffset(positionX: Int, myPositionX: Int, tacticalWidth: CGFloat) -> CGFloat {

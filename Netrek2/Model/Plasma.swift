@@ -8,20 +8,23 @@
 
 import Foundation
 import SpriteKit
+import SwiftUI
 
-class Plasma {
+class Plasma: ObservableObject {
     lazy var appDelegate = NSApplication.shared.delegate as! AppDelegate
 
     private(set) var plasmaId: Int
-    private(set) var status = 0
+    @Published private(set) var status = 0
     private(set) var war: [Team:Bool] = [:]
     private(set) var directionNetrek = 0
     private(set) var direction = 0.0
-    private(set) var positionX = 0
-    private(set) var positionY = 0
+    @Published private(set) var positionX = 0
+    @Published private(set) var positionY = 0
+    @Published var color: Color = Color.red
+
     private var soundPlayed = false
-    var plasmaNode = SKSpriteNode(color: .orange,
-                                   size: CGSize(width: NetrekMath.torpedoSize * 2, height: NetrekMath.torpedoSize * 2))
+    /*var plasmaNode = SKSpriteNode(color: .orange,
+                                   size: CGSize(width: NetrekMath.torpedoSize * 2, height: NetrekMath.torpedoSize * 2))*/
 
     init(plasmaId: Int) {
         self.plasmaId = plasmaId
@@ -36,15 +39,25 @@ class Plasma {
                 self.war[team] = false
             }
         }
-        self.status = status
+        let myTeam = appDelegate.universe.players[appDelegate.universe.me].team
+        DispatchQueue.main.async {
+            if self.war[myTeam] == true {
+                self.color = Color.red
+            } else {
+                self.color = Color.green
+            }
+            self.status = status
+        }
         if status == 1 {
             soundPlayed = false
         }
     }
     // from SP_PLASMA 9
     func update(positionX: Int, positionY: Int) {
-        self.positionX = positionX
-        self.positionY = positionY
+        DispatchQueue.main.async {
+            self.positionX = positionX
+            self.positionY = positionY
+        }
         if soundPlayed == false {
             let me = appDelegate.universe.me
             let taxiDistance = abs(appDelegate.universe.players[me].positionX - self.positionX) + abs(appDelegate.universe.players[me].positionY - self.positionY)

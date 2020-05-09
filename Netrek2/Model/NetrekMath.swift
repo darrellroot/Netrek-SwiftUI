@@ -23,6 +23,7 @@ class NetrekMath {
     static let hintFontSize: CGFloat = 200.0
     static let playerSize = 80
     static let torpedoSize = 10
+    static let plasmaSize = 25
     static let appDelegate = NSApplication.shared.delegate as! AppDelegate
 
     

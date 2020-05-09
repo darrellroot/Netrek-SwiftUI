@@ -14,11 +14,7 @@ class Torpedo: ObservableObject {
     lazy var appDelegate = NSApplication.shared.delegate as! AppDelegate
 
     var torpedoNumber: Int = 0
-    @Published var status: UInt8 = 0 {
-        didSet {
-            debugPrint("torpedo status \(status)")
-        }
-    }
+    @Published var status: UInt8 = 0
     //public var displayed: Bool = false
     private(set) var war: [Team:Bool] = [:]
     var directionNetrek: Int = 0  // netrek format direction for now

@@ -62,6 +62,9 @@ struct TacticalView: View, TacticalOffset {
                 ForEach(0 ..< self.universe.maxLasers) { laserId in
                     LaserView(laser: self.universe.lasers[laserId], me: self.universe.players[self.universe.me])
                 }
+                ForEach(0 ..< self.universe.maxPlasma) { plasmaId in
+                    PlasmaView(plasma: self.universe.plasmas[plasmaId], me: self.universe.players[self.universe.me])
+                }
             }
         }.frame(minWidth: 500, idealWidth: 800, maxWidth: nil, minHeight: 500, idealHeight: 800, maxHeight: nil, alignment: .center)
             /*.gesture(DragGesture(minimumDistance: 0.0)
