@@ -35,7 +35,7 @@ class Universe: ObservableObject {
             players.append(Player(playerId: playerId))
         }
         for torpedoId in 0 ..< maxTorpedoes {
-            torpedoes.append(Torpedo(torpedoID: torpedoId))
+            torpedoes.append(Torpedo(torpedoId: torpedoId))
         }
         for laserId in 0 ..< maxLasers {
             lasers.append(Laser(laserId: laserId))
@@ -180,7 +180,7 @@ class Universe: ObservableObject {
             return
         }
         if self.torpedoes[torpedoNumber] == nil {
-            let newTorpedo = Torpedo(torpedoID: torpedoNumber)
+            let newTorpedo = Torpedo(torpedoId: torpedoNumber)
             self.torpedoes[torpedoNumber] = newTorpedo
         }
         self.torpedoes[torpedoNumber].update(directionNetrek: directionNetrek, positionX: positionX, positionY: positionY)

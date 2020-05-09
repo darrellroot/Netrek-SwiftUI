@@ -19,6 +19,10 @@ struct TacticalView: View, TacticalOffset {
             debugPrint("point \(pt)")
         }
     }
+    var fakeTorpedo = Torpedo(torpedoId: 999)
+    var fakeLaser = Laser(laserId: 999)
+    var fakePlasma = Plasma(plasmaId: 999)
+    
     //@ObservedObject var players: [Player] = universe.players.values
     var body: some View {
         return GeometryReader { geo in
@@ -56,14 +60,26 @@ struct TacticalView: View, TacticalOffset {
                 ForEach(0 ..< self.universe.maxPlayers) { playerId in
                     PlayerView(player: self.universe.players[playerId], me: self.universe.players[self.universe.me])
                 }
-                ForEach(0 ..< self.universe.maxTorpedoes) { torpedoId in
+                /*ForEach(0 ..< self.universe.maxTorpedoes) { torpedoId in
                         TorpedoView(torpedo: self.universe.torpedoes[torpedoId], me: self.universe.players[self.universe.me])
+                }*/
+                ForEach(self.universe.torpedoes, id: \.torpedoId) { torpedo in
+                    torpedo.status != 0 ?
+                        TorpedoView(torpedo: torpedo, me: self.universe.players[self.universe.me])
+                        :
+                        TorpedoView(torpedo: self.fakeTorpedo, me: self.universe.players[self.universe.me])
                 }
-                ForEach(0 ..< self.universe.maxLasers) { laserId in
-                    LaserView(laser: self.universe.lasers[laserId], me: self.universe.players[self.universe.me])
+                ForEach(self.universe.lasers, id: \.laserId) { laser in
+                    laser.status != 0 ?
+                    LaserView(laser: laser, me: self.universe.players[self.universe.me])
+                    :
+                    LaserView(laser: self.fakeLaser, me: self.universe.players[self.universe.me])
                 }
-                ForEach(0 ..< self.universe.maxPlasma) { plasmaId in
-                    PlasmaView(plasma: self.universe.plasmas[plasmaId], me: self.universe.players[self.universe.me])
+                ForEach(self.universe.plasmas, id: \.plasmaId) { plasma in
+                    plasma.status != 0 ?
+                        PlasmaView(plasma: plasma, me: self.universe.players[self.universe.me])
+                    :
+                        PlasmaView(plasma: self.fakePlasma, me: self.universe.players[self.universe.me])
                 }
             }
         }.frame(minWidth: 500, idealWidth: 800, maxWidth: nil, minHeight: 500, idealHeight: 800, maxHeight: nil, alignment: .center)

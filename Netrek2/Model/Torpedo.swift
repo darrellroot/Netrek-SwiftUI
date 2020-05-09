@@ -8,12 +8,14 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 class Torpedo: ObservableObject {
     
     lazy var appDelegate = NSApplication.shared.delegate as! AppDelegate
 
-    var torpedoNumber: Int = 0
+    
+    var torpedoId: Int = 0
     @Published var status: UInt8 = 0
     //public var displayed: Bool = false
     private(set) var war: [Team:Bool] = [:]
@@ -27,8 +29,8 @@ class Torpedo: ObservableObject {
     /*var torpedoNode = SKSpriteNode(color: .red,
                                    size: CGSize(width: NetrekMath.torpedoSize, height: NetrekMath.torpedoSize))*/
 
-    init(torpedoID: Int) {
-        self.torpedoNumber = torpedoID
+    init(torpedoId: Int) {
+        self.torpedoId = torpedoId
     }
     func update(war: UInt8, status: UInt8) {
         for team in Team.allCases {
