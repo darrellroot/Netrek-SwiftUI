@@ -101,9 +101,7 @@ struct TacticalView: View, TacticalOffset {
         let finalY = meY - deltaY
         let location = CGPoint(x: finalX, y: finalY)
         self.appDelegate.keymapController.execute(control,location: location)
-
     }
-    
     
     func keyDown(with event: NSEvent, location: CGPoint) {
         debugPrint("TacticalScene.keyDown characters \(String(describing: event.characters))")
@@ -111,13 +109,7 @@ struct TacticalView: View, TacticalOffset {
             debugPrint("TacticalScene.keyDown unable to find keymapController")
             return
         }
-        /*var location: CGPoint? = nil
-        if let windowLocation = self.view?.window?.mouseLocationOutsideOfEventStream {
-            if let viewLocation = self.view?.convert(windowLocation, from: self.view?.window?.contentView) {
-                location = self.scene?.convertPoint(fromView: viewLocation)
-            }
-        }*/
-        
+       
         switch event.characters?.first {
         case "0":
             keymap.execute(.zeroKey, location: location)

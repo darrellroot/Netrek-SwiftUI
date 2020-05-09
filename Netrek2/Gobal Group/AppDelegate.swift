@@ -18,7 +18,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var serverFeatures: [String] = []
     var clientFeatures: [String] = ["FEATURE_PACKETS","SHIP_CAP","SP_GENERIC_32","TIPS"]
 
-    var window: NSWindow!
+    var tacticalWindow: NSWindow!
+    var strategicWindow: NSWindow!
     var metaServer: MetaServer?
     var reader: TcpReader?
     private(set) var gameState: GameState = .noServerSelected
@@ -85,17 +86,36 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.disableShipMenu()
 
         // Create the SwiftUI view that provides the window contents.
-        let tacticalView = TacticalView(universe: universe)//.environmentObject(universe)
+        let tacticalView = TacticalView(universe: universe)
+        let strategicView = StrategicView(universe: universe)
 
         // Create the window and set the content view. 
-        window = NSCommandedWindow(
+        tacticalWindow = NSCommandedWindow(
             contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)
-        window.center()
-        window.setFrameAutosaveName("Main Window")
-        window.contentView = NSHostingView(rootView: tacticalView)
-        window.makeKeyAndOrderFront(nil)
+        tacticalWindow.center()
+        tacticalWindow.setFrameAutosaveName("Tactical")
+        tacticalWindow.contentView = NSHostingView(rootView: tacticalView)
+        
+        //The title name impacts the keypress location algorithm, see NSCommmandedWindow
+        tacticalWindow.title = "Tactical"
+        
+        tacticalWindow.makeKeyAndOrderFront(nil)
+        
+        strategicWindow = NSCommandedWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
+            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+            backing: .buffered, defer: false)
+        strategicWindow.center()
+        strategicWindow.setFrameAutosaveName("Strategic")
+        
+        //The title name impacts the keypress location algorithm, see NSCommmandedWindow
+        strategicWindow.title = "Strategic"
+        
+        strategicWindow.contentView = NSHostingView(rootView: strategicView)
+        strategicWindow.makeKeyAndOrderFront(nil)
+
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

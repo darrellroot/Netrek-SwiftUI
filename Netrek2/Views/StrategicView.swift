@@ -1,43 +1,60 @@
 //
-//  NSCommandedWindow.swift
+//  StrategicView.swift
 //  Netrek2
 //
-//  Created by Darrell Root on 5/7/20.
+//  Created by Darrell Root on 5/9/20.
 //  Copyright © 2020 Darrell Root. All rights reserved.
 //
 
-import Foundation
 import SwiftUI
 
-//from https://www.reddit.com/r/swift/comments/ct6gbd/handling_keyboard_events_in_swiftui/fcl3fri/
-class NSCommandedWindow : NSWindow, TacticalOffset {
+struct StrategicView: View {
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
+
+    @ObservedObject var universe: Universe
     
-    override func keyDown(with event: NSEvent) {
+    var body: some View {
+        return GeometryReader { geo in
+            ZStack {
+            Rectangle().pointingMouse { event, location in
+                debugPrint("event \(event) location \(location)")
+                switch event.type {
+                    
+                case .leftMouseDown:
+                    self.mouseDown(control: .leftMouse,eventLocation: location, size: geo.size)
+                case .leftMouseDragged:
+                    self.mouseDown(control: .leftMouse,eventLocation: location, size: geo.size)
+                case .rightMouseDragged:
+                    self.mouseDown(control: .leftMouse,eventLocation: location, size: geo.size)
+                case .rightMouseDown:
+                    self.mouseDown(control: .rightMouse,eventLocation: location, size: geo.size)
+                case .keyDown:
+                    self.keyDown(with: event, location: location)
+                case .otherMouseDown:
+                    self.mouseDown(control: .otherMouse,eventLocation: location, size: geo.size)
+                default:
+                    break
+                }
+            }
+            }
+        }
+        .frame(minWidth: 500, idealWidth: 800, maxWidth: nil, minHeight: 500, idealHeight: 800, maxHeight: nil, alignment: .center)
+
+    }
+    func mouseDown(control: Control, eventLocation: NSPoint, size: CGSize) {
+        
+        let netrekX = CGFloat(NetrekMath.galacticSize) * eventLocation.x / size.width
+        let netrekY = CGFloat(NetrekMath.galacticSize) -  (CGFloat(NetrekMath.galacticSize) * eventLocation.y / size.height)
+        let location = CGPoint(x: netrekX, y: netrekY)
+        self.appDelegate.keymapController.execute(control,location: location)
+    }
+    func keyDown(with event: NSEvent, location: CGPoint) {
+        debugPrint("StrategicScene.keyDown characters \(String(describing: event.characters))")
         guard let keymap = appDelegate.keymapController else {
-            debugPrint("TacticalScene.keyDown unable to find keymapController")
+            debugPrint("StrategicScene.keyDown unable to find keymapController")
             return
         }
-        var location: CGPoint? = nil
-        let windowLocation = self.mouseLocationOutsideOfEventStream
-        if let viewLocation = self.contentView?.convert(windowLocation, from: self.contentView?.window?.contentView), let contentView = self.contentView {
-            //location = self.scene?.convertPoint(fromView: viewLocation)
-            //location = viewLocation
-            if self.title == "Strategic" {
-                let netrekX = CGFloat(NetrekMath.galacticSize) * viewLocation.x / contentView.frame.size.width
-                let netrekY = (CGFloat(NetrekMath.galacticSize) * viewLocation.y / contentView.frame.size.height)
-                location = CGPoint(x: netrekX, y: netrekY)
-            } else {
-                let netrekLocationX = viewXOffset(positionX: Int(viewLocation.x), myPositionX: appDelegate.universe.players[appDelegate.universe.me].positionX, tacticalWidth: contentView.frame.size.width)
-                let netrekLocationY = viewYOffset(positionY: Int(viewLocation.y), myPositionY: appDelegate.universe.players[appDelegate.universe.me].positionY, tacticalHeight: contentView.frame.size.height)
-                location = CGPoint(x: netrekLocationX, y: netrekLocationY)
-            }
-            debugPrint("TacticalScene.keyDown characters \(String(describing: event.characters)) location viewLocation \(viewLocation) netrekLocation \(location)")
-        } else {
-            location = CGPoint()
-        }
-
-        
+       
         switch event.characters?.first {
         case "0":
             keymap.execute(.zeroKey, location: location)
@@ -192,8 +209,14 @@ class NSCommandedWindow : NSWindow, TacticalOffset {
         case "*":
             keymap.execute(.asteriskKey, location: location)
         default:
-            debugPrint("TacticalScene.keyDown unknown key \(String(describing: event.characters))")
+            debugPrint("StrategicScene.keyDown unknown key \(String(describing: event.characters))")
         }
     }
 
 }
+
+/*struct StrategicView_Previews: PreviewProvider {
+    static var previews: some View {
+        StrategicView()
+    }
+}*/

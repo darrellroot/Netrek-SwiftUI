@@ -153,24 +153,4 @@ class NetrekMath {
             return Color.gray
         }
     }
-    
-    
-    /*static public func color(team: Team) -> NSColor {
-        switch team {
-            
-        case .independent:
-            return NSColor.gray
-        case .federation:
-            return NSColor.yellow
-        case .roman:
-            return NSColor.red
-        case .kazari:
-            return NSColor.green
-        case .orion:
-            return NSColor.blue
-        case .ogg:
-            return NSColor.gray
-        }
-        
-    }*/
 }
