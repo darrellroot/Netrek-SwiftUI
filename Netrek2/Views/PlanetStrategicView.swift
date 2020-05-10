@@ -19,14 +19,6 @@ struct PlanetStrategicView: View, StrategicOffset {
         }
         
     }
-    
-    /*func screenX(netrekPositionX: Int,screenWidth: CGFloat) -> CGFloat {
-        return (screenWidth * CGFloat(netrekPositionX) / CGFloat(NetrekMath.galacticSize)) - screenWidth / 2
-    }
-    func screenY(netrekPositionY: Int,screenHeight: CGFloat) -> CGFloat {
-        return -(screenHeight * CGFloat(netrekPositionY) / CGFloat(NetrekMath.galacticSize)) + screenHeight / 2
-    }*/
-
 }
 
 /*struct PlanetView_Previews: PreviewProvider {

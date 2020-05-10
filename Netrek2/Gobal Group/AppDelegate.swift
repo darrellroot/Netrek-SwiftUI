@@ -20,6 +20,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var tacticalWindow: NSWindow!
     var strategicWindow: NSWindow!
+    var bottomWindow: NSWindow!
+    
     var metaServer: MetaServer?
     var reader: TcpReader?
     private(set) var gameState: GameState = .noServerSelected
@@ -115,6 +117,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         strategicWindow.contentView = NSHostingView(rootView: strategicView)
         strategicWindow.makeKeyAndOrderFront(nil)
+
+        let bottomView = BottomView(universe: universe)
+        bottomWindow = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 7000, height: 300),
+            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+            backing: .buffered, defer: false)
+        bottomWindow.center()
+        bottomWindow.setFrameAutosaveName("Bottom")
+        bottomWindow.title = "Bottom"
+        bottomWindow.contentView = NSHostingView(rootView: bottomView)
+        bottomWindow.makeKeyAndOrderFront(nil)
 
     }
 
