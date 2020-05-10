@@ -12,8 +12,6 @@ import SpriteKit
 class Player: CustomStringConvertible, ObservableObject {
     //static let shieldFactory = ShieldFactory()
     
-
-
     static let SHIELDFLAG: UInt32 = 0x0001
     static let REPAIRFLAG: UInt32 = 0x0002
     static let BOMBFLAG: UInt32 = 0x0004
@@ -161,7 +159,7 @@ class Player: CustomStringConvertible, ObservableObject {
         if self.cloak == true { return }
         let infoString: String = "\(self.name) \(self.ship?.description ?? "??") \(self.kills) kills"
         let playerLetter = NetrekMath.playerLetter(playerId: self.playerId)
-        //appDelegate.messageViewController?.gotMessage("\(self.team.letter)\(playerLetter) \(infoString)")
+        appDelegate.universe.gotMessage("\(self.team.letter)\(playerLetter) \(infoString)")
         let playerInfoLabel = SKLabelNode(text: infoString)
         playerInfoLabel.fontSize = NetrekMath.planetFontSize
         playerInfoLabel.fontName = "Courier"

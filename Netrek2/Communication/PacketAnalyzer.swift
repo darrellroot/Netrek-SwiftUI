@@ -149,9 +149,7 @@ class PacketAnalyzer {
                 }
  
                 messageString = NetrekMath.sanitizeString(messageString)
-            //appDelegate.messageViewController?.gotMessage(messageString)
-                //debugPrint(messageString)
-                //printData(data, success: true)
+                universe.gotMessage(messageString)
             } else {
                 debugPrint("PacketAnalyzer unable to decode message type 1")
                 printData(data, success: false)
@@ -242,7 +240,7 @@ class PacketAnalyzer {
                 messageString.append("\n")
                 messageString = NetrekMath.sanitizeString(messageString)
                 debugPrint("Received SP_WARNING 10 sent to messages")
-                //appDelegate.messageViewController?.gotMessage(messageString)
+                universe.gotMessage(messageString)
                 //debugPrint(messageString)
                 //printData(data, success: true)
             } else {
@@ -259,7 +257,7 @@ class PacketAnalyzer {
                 var messageString = messageStringWithNulls.filter { $0 != "\0" }
                 messageString.append("\n")
                 messageString = NetrekMath.sanitizeString(messageString)
-                //appDelegate.messageViewController?.gotMessage(messageString)
+                universe.gotMessage(messageString)
                 //debugPrint(messageString)
                 //printData(data, success: true)
             } else {
@@ -310,7 +308,8 @@ class PacketAnalyzer {
             let timeProd = (data.subdata(in: (24..<28)).to(type: Int32.self).byteSwapped)
             debugPrint("Received SP_STATUS 14 tourn \(tourn) armsBomb \(armsBomb) planets \(planets) kills \(kills) losses \(losses) time \(time) timeProd \(timeProd)")
             let messageString = "Your stats: bombed \(armsBomb) armies, captured \(planets) planets, killed \(kills) enemies, died \(losses) times in \(time/3600) hours"
-            debugPrint(messageString)
+            universe.gotMessage(messageString)
+            //debugPrint(messageString)
         case 15:
             //SP_PLANET
             let planetID = Int(data[1])

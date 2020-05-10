@@ -156,7 +156,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     public func metaserverUpdated() {
         debugPrint("AppDelegate.metaserverUpdated")
         if let metaServer = metaServer {
-            //messageViewController?.gotMessage("Server list updated from metaserver")
+            universe.gotMessage("Server list updated from metaserver")
             serverMenu.removeAllItems()
             for (index,server) in metaServer.servers.enumerated() {
                 let newItem = NSMenuItem(title: server.description, action: #selector(self.selectServer), keyEquivalent: "")
@@ -389,7 +389,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             enableServerMenu()
             disableShipMenu()
             self.gameState = newState
-            //self.messageViewController?.gotMessage("AppDelegate GameState \(newState) we may have been ghostbusted!  Resetting.  Try again\n")
+            universe.gotMessage("AppDelegate GameState \(newState) we may have been ghostbusted!  Resetting.  Try again\n")
             debugPrint("AppDelegate GameState \(newState) we may have been ghostbusted!  Resetting.  Try again\n")
             self.refreshMetaserver()
             break

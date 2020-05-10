@@ -393,7 +393,7 @@ class KeymapController {
                 }
                 
             case .refit:
-                //appDelegate.messageViewController?.gotMessage("To refit, orbit home planet and select LAUNCH SHIP menu item")
+                universe.gotMessage("To refit, orbit home planet and select LAUNCH SHIP menu item")
                 break
             case .setCourse:
                 guard let location = location else {

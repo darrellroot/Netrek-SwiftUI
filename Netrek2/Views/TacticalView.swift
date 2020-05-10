@@ -57,25 +57,23 @@ struct TacticalView: View, TacticalOffset {
                 ForEach(0 ..< self.universe.maxPlanets) { planetId in
                     PlanetView(planet: self.universe.planets[planetId], me: self.universe.players[self.universe.me])
                 }
-                ForEach(0 ..< self.universe.maxPlayers) { playerId in
-                    PlayerView(player: self.universe.players[playerId], me: self.universe.players[self.universe.me])
+                ForEach(self.universe.activePlayers, id: \.playerId) { player in
+                    PlayerView(player: player, me: self.universe.players[self.universe.me])
                 }
-                /*ForEach(0 ..< self.universe.maxTorpedoes) { torpedoId in
-                        TorpedoView(torpedo: self.universe.torpedoes[torpedoId], me: self.universe.players[self.universe.me])
-                }*/
-                ForEach(self.universe.torpedoes, id: \.torpedoId) { torpedo in
+                ForEach(self.universe.activeTorpedoes, id: \.torpedoId) { torpedo in
+
                     torpedo.status != 0 ?
                         TorpedoView(torpedo: torpedo, me: self.universe.players[self.universe.me])
                         :
                         TorpedoView(torpedo: self.fakeTorpedo, me: self.universe.players[self.universe.me])
                 }
-                ForEach(self.universe.lasers, id: \.laserId) { laser in
+                ForEach(self.universe.activeLasers, id: \.laserId) { laser in
                     laser.status != 0 ?
                     LaserView(laser: laser, me: self.universe.players[self.universe.me])
                     :
                     LaserView(laser: self.fakeLaser, me: self.universe.players[self.universe.me])
                 }
-                ForEach(self.universe.plasmas, id: \.plasmaId) { plasma in
+                ForEach(self.universe.activePlasmas, id: \.plasmaId) { plasma in
                     plasma.status != 0 ?
                         PlasmaView(plasma: plasma, me: self.universe.players[self.universe.me])
                     :

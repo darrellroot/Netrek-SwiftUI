@@ -11,10 +11,23 @@ import SwiftUI
 
 class Universe: ObservableObject {
     var players: [Player] = []
+    var activePlayers: [Player] {
+        return players.filter({$0.slotStatus != .free && $0.slotStatus != .observe} )
+    }
     var planets: [Planet] = []
     var torpedoes: [Torpedo] = []
+    var activeTorpedoes: [Torpedo] {
+        return torpedoes.filter({$0.status != 0 } )
+    }
     var lasers: [Laser] = []
+    var activeLasers: [Laser] {
+        return lasers.filter({$0.status != 0 } )
+    }
     var plasmas: [Plasma] = []
+    var activePlasmas: [Plasma] {
+        return plasmas.filter({$0.status != 0 } )
+    }
+
     var shipInfo: [ShipType:ShipInfo] = [:]
     @Published var me: Int = 0 {
         didSet {
@@ -27,6 +40,19 @@ class Universe: ObservableObject {
     let maxLasers = 32
     let maxPlasma = 32
     
+    @Published private(set) var messages: [String] = []
+    var activeMessages: ArraySlice<String> {
+        if messages.count >= 10 {
+            return messages[messages.count - 10 ..< messages.count]
+        } else {
+            return messages[0 ..< messages.count]
+        }
+    }
+    func gotMessage(_ newMessage: String) {
+        DispatchQueue.main.async {
+            self.messages.append(newMessage)
+        }
+    }
     init() {
         for planetId in 0 ..< maxPlanets {
             planets.append(Planet(planetId: planetId))

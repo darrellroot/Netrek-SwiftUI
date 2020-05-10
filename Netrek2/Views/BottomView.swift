@@ -15,7 +15,7 @@ struct BottomView: View {
         HStack {
             StatisticsView(universe: universe, me: universe.players[universe.me])
             MessagesView(universe: universe)
-        }
+        }.frame(minWidth: 1000)
     }
 }
 
