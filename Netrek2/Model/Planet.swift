@@ -21,7 +21,15 @@ class Planet: CustomStringConvertible, ObservableObject, Identifiable {
     var id: Int {
         return self.planetId
     }
-    @Published private(set) var name: String
+    @Published private(set) var name: String {
+        didSet {
+            if name.count >= 3 {
+                let index3 = name.index(name.startIndex, offsetBy: 3)
+                self.shortName = String(name[..<index3])
+            }
+        }
+    }
+    @Published private(set) var shortName: String
     @Published private(set) var positionX: Int
     @Published private(set) var positionY: Int
     @Published private(set) var owner: Team = .independent
@@ -87,7 +95,8 @@ class Planet: CustomStringConvertible, ObservableObject, Identifiable {
     }
     init(planetId: Int) {
         self.planetId = planetId
-        self.name = "unknown"
+        self.name = "Unknown"
+        self.shortName = "Unk"
         self.positionX = 0
         self.positionY = 0
     }

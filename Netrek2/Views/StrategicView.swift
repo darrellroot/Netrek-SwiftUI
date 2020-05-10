@@ -10,36 +10,42 @@ import SwiftUI
 
 struct StrategicView: View {
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
-
+    
     @ObservedObject var universe: Universe
     
     var body: some View {
         return GeometryReader { geo in
             ZStack {
-            Rectangle().pointingMouse { event, location in
-                debugPrint("event \(event) location \(location)")
-                switch event.type {
-                    
-                case .leftMouseDown:
-                    self.mouseDown(control: .leftMouse,eventLocation: location, size: geo.size)
-                case .leftMouseDragged:
-                    self.mouseDown(control: .leftMouse,eventLocation: location, size: geo.size)
-                case .rightMouseDragged:
-                    self.mouseDown(control: .leftMouse,eventLocation: location, size: geo.size)
-                case .rightMouseDown:
-                    self.mouseDown(control: .rightMouse,eventLocation: location, size: geo.size)
-                case .keyDown:
-                    self.keyDown(with: event, location: location)
-                case .otherMouseDown:
-                    self.mouseDown(control: .otherMouse,eventLocation: location, size: geo.size)
-                default:
-                    break
+                Rectangle().pointingMouse { event, location in
+                    debugPrint("event \(event) location \(location)")
+                    switch event.type {
+                        
+                    case .leftMouseDown:
+                        self.mouseDown(control: .leftMouse,eventLocation: location, size: geo.size)
+                    case .leftMouseDragged:
+                        self.mouseDown(control: .leftMouse,eventLocation: location, size: geo.size)
+                    case .rightMouseDragged:
+                        self.mouseDown(control: .leftMouse,eventLocation: location, size: geo.size)
+                    case .rightMouseDown:
+                        self.mouseDown(control: .rightMouse,eventLocation: location, size: geo.size)
+                    case .keyDown:
+                        self.keyDown(with: event, location: location)
+                    case .otherMouseDown:
+                        self.mouseDown(control: .otherMouse,eventLocation: location, size: geo.size)
+                    default:
+                        break
+                    }
                 }
-            }
-            }
-        }
+                ForEach(0 ..< self.universe.maxPlanets) { planetId in
+                    PlanetStrategicView(planet: self.universe.planets[planetId])
+                }
+                ForEach(0 ..< self.universe.maxPlayers) { playerId in
+                    PlayerStrategicView(player: self.universe.players[playerId])
+                }
+            }//ZStack
+        }//Body
         .frame(minWidth: 500, idealWidth: 800, maxWidth: nil, minHeight: 500, idealHeight: 800, maxHeight: nil, alignment: .center)
-
+        
     }
     func mouseDown(control: Control, eventLocation: NSPoint, size: CGSize) {
         
@@ -54,7 +60,7 @@ struct StrategicView: View {
             debugPrint("StrategicScene.keyDown unable to find keymapController")
             return
         }
-       
+        
         switch event.characters?.first {
         case "0":
             keymap.execute(.zeroKey, location: location)
@@ -211,12 +217,13 @@ struct StrategicView: View {
         default:
             debugPrint("StrategicScene.keyDown unknown key \(String(describing: event.characters))")
         }
+        
     }
-
+    
 }
 
 /*struct StrategicView_Previews: PreviewProvider {
-    static var previews: some View {
-        StrategicView()
-    }
-}*/
+ static var previews: some View {
+ StrategicView()
+ }
+ }*/

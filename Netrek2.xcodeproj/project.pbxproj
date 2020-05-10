@@ -19,6 +19,9 @@
 		2F44596D2465EFB300C3F9A1 /* LaserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44596C2465EFB300C3F9A1 /* LaserView.swift */; };
 		2F44596F2466324100C3F9A1 /* PlasmaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44596E2466324100C3F9A1 /* PlasmaView.swift */; };
 		2F4459732467438400C3F9A1 /* StrategicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4459722467438400C3F9A1 /* StrategicView.swift */; };
+		2F44597524675CED00C3F9A1 /* PlanetStrategicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44597424675CED00C3F9A1 /* PlanetStrategicView.swift */; };
+		2F445977246763E900C3F9A1 /* PlayerStrategicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F445976246763E900C3F9A1 /* PlayerStrategicView.swift */; };
+		2F4459792467647800C3F9A1 /* StrategicOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4459782467647800C3F9A1 /* StrategicOffset.swift */; };
 		2F45A7FA2464763200AA2A3F /* PointingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7F92464763200AA2A3F /* PointingView.swift */; };
 		2F45A7FC24647A4C00AA2A3F /* KeymapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7FB24647A4C00AA2A3F /* KeymapController.swift */; };
 		2F45A7FF246480EE00AA2A3F /* NSCommandedWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7FE246480EE00AA2A3F /* NSCommandedWindow.swift */; };
@@ -122,6 +125,9 @@
 		2F44596C2465EFB300C3F9A1 /* LaserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaserView.swift; sourceTree = "<group>"; };
 		2F44596E2466324100C3F9A1 /* PlasmaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlasmaView.swift; sourceTree = "<group>"; };
 		2F4459722467438400C3F9A1 /* StrategicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategicView.swift; sourceTree = "<group>"; };
+		2F44597424675CED00C3F9A1 /* PlanetStrategicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetStrategicView.swift; sourceTree = "<group>"; };
+		2F445976246763E900C3F9A1 /* PlayerStrategicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStrategicView.swift; sourceTree = "<group>"; };
+		2F4459782467647800C3F9A1 /* StrategicOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategicOffset.swift; sourceTree = "<group>"; };
 		2F45A7F92464763200AA2A3F /* PointingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointingView.swift; sourceTree = "<group>"; };
 		2F45A7FB24647A4C00AA2A3F /* KeymapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeymapController.swift; sourceTree = "<group>"; };
 		2F45A7FE246480EE00AA2A3F /* NSCommandedWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCommandedWindow.swift; sourceTree = "<group>"; };
@@ -359,15 +365,18 @@
 			isa = PBXGroup;
 			children = (
 				2F97D8EA24624014003CA91F /* TacticalView.swift */,
+				2F4459722467438400C3F9A1 /* StrategicView.swift */,
 				2F44288B2463555A0051D7BE /* PlanetView.swift */,
+				2F44597424675CED00C3F9A1 /* PlanetStrategicView.swift */,
 				2F44288F24636B690051D7BE /* TacticalOffset.swift */,
+				2F4459782467647800C3F9A1 /* StrategicOffset.swift */,
 				2F44289524639C840051D7BE /* PlayerView.swift */,
+				2F445976246763E900C3F9A1 /* PlayerStrategicView.swift */,
 				2F45A7F92464763200AA2A3F /* PointingView.swift */,
 				2F45A7FE246480EE00AA2A3F /* NSCommandedWindow.swift */,
 				2F44596A2464B45E00C3F9A1 /* TorpedoView.swift */,
 				2F44596E2466324100C3F9A1 /* PlasmaView.swift */,
 				2F44596C2465EFB300C3F9A1 /* LaserView.swift */,
-				2F4459722467438400C3F9A1 /* StrategicView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -499,6 +508,7 @@
 				2F97D88024621E94003CA91F /* MakePacket.swift in Sources */,
 				2F97D8902462200E003CA91F /* Team.swift in Sources */,
 				2F97D8A024622D1A003CA91F /* Planet.swift in Sources */,
+				2F44597524675CED00C3F9A1 /* PlanetStrategicView.swift in Sources */,
 				2F97D8EB24624014003CA91F /* TacticalView.swift in Sources */,
 				2F97D87124620F02003CA91F /* MetaServerEntry.swift in Sources */,
 				2F4459732467438400C3F9A1 /* StrategicView.swift in Sources */,
@@ -510,6 +520,7 @@
 				2F97D8AA24622D36003CA91F /* Torpedo.swift in Sources */,
 				2F97D88424621F29003CA91F /* NetworkDelegate.swift in Sources */,
 				2F97D88A24621FE3003CA91F /* Globals.swift in Sources */,
+				2F4459792467647800C3F9A1 /* StrategicOffset.swift in Sources */,
 				2F45A7FA2464763200AA2A3F /* PointingView.swift in Sources */,
 				2F97D8CB24623315003CA91F /* SoundController.swift in Sources */,
 				2F97D8E7246236EE003CA91F /* Data-extensions.swift in Sources */,
@@ -517,6 +528,7 @@
 				2F97D8D524623572003CA91F /* AlertCondition.swift in Sources */,
 				2F97D87324620F0B003CA91F /* MetaServer.swift in Sources */,
 				2F97D8CE24623422003CA91F /* LoginDefault.swift in Sources */,
+				2F445977246763E900C3F9A1 /* PlayerStrategicView.swift in Sources */,
 				2F44596F2466324100C3F9A1 /* PlasmaView.swift in Sources */,
 				2F45A7FC24647A4C00AA2A3F /* KeymapController.swift in Sources */,
 				2F44289624639C840051D7BE /* PlayerView.swift in Sources */,
