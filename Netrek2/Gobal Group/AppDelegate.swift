@@ -20,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var tacticalWindow: NSWindow!
     var strategicWindow: NSWindow!
-    var bottomWindow: NSWindow!
+    var communicationsWindow: NSWindow!
     var manualServerWindow: NSWindow!
     
     var metaServer: MetaServer?
@@ -124,16 +124,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         strategicWindow.contentView = NSHostingView(rootView: strategicView)
         strategicWindow.makeKeyAndOrderFront(nil)
 
-        let bottomView = BottomView(universe: universe)
-        bottomWindow = NSWindow(
+        let communicationsView = CommunicationsView(universe: universe)
+        communicationsWindow = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 7000, height: 300),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)
-        bottomWindow.center()
-        bottomWindow.setFrameAutosaveName("Bottom")
-        bottomWindow.title = "Bottom"
-        bottomWindow.contentView = NSHostingView(rootView: bottomView)
-        bottomWindow.makeKeyAndOrderFront(nil)
+        communicationsWindow.center()
+        communicationsWindow.setFrameAutosaveName("Communications")
+        communicationsWindow.title = "Communications"
+        communicationsWindow.contentView = NSHostingView(rootView: communicationsView)
+        communicationsWindow.makeKeyAndOrderFront(nil)
 
     }
 

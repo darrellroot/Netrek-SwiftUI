@@ -20,12 +20,14 @@ struct StatisticsView: View {
                 Text("Damage \(me.damage)")
                 Text("Armies \(me.armies)")
                 Text("Fuel \(me.fuel)")
-            }
+                Text("Etmp \(me.engineTemp / 10)")
+                Text("Wtmp \(me.weaponsTemp / 10)")
+            }.font(.system(.body, design: .monospaced))
             HStack {
                 if me.tractorFlag { Text("Tractor") }
                 if me.pressor { Text("Pressor")}
                 if me.enginesOverheated { Text("EngineFail")}
-            }
+            }.font(.system(.body, design: .monospaced))
             ForEach(self.universe.activePlayers, id: \.playerId) { player in
                 HStack {
                     Text("\(NetrekMath.teamLetter(team: player.team))\(NetrekMath.playerLetter(playerId: player.playerId))")
@@ -40,7 +42,7 @@ struct StatisticsView: View {
                 .foregroundColor(NetrekMath.color(team: player.team))
             }
             Spacer()
-        }
+        }.padding(10)
     }
 }
 

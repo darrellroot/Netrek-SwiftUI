@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct BottomView: View {
+struct CommunicationsView: View {
     @ObservedObject var universe: Universe
 
     var body: some View {

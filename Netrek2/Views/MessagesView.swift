@@ -36,7 +36,8 @@ struct MessagesView: View {
             ForEach (universe.activeMessages, id: \.self) { message in
                 Text(message).foregroundColor(.black)
             }
-        }
+            Spacer()
+        }.padding(10)
     }
     func sendMayday() {
         guard appDelegate.gameState == .gameActive else { return }
