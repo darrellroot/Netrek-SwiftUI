@@ -15,14 +15,17 @@ struct ManualServerView: View {
     
     var body: some View {
         HStack {
-            TextField("Input server name or IP", text: $server).frame(width: 350)
+            TextField("Input server name or IP", text: $server,onCommit: self.commit).frame(width: 350)
             Button("Connect") {
-                if self.server != "" {
-                    self.appDelegate.connectToServer(server: self.server)
-                    self.presentationMode.wrappedValue.dismiss()
-                }
+                self.commit()
             }
         }.padding(20)
+    }
+    func commit() -> Void {
+        if self.server != "" {
+            self.appDelegate.connectToServer(server: self.server)
+            self.presentationMode.wrappedValue.dismiss()
+        }
     }
 }
 

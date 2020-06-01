@@ -39,6 +39,7 @@ struct StatisticsView: View {
                     .font(.system(.body, design: .monospaced))
                 .foregroundColor(NetrekMath.color(team: player.team))
             }
+            Spacer()
         }
     }
 }
