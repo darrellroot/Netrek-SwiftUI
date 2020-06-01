@@ -25,6 +25,12 @@ class Torpedo: ObservableObject {
     @Published var positionY: Int = 0
     @Published var color: Color = Color.red
 
+    public func reset() {
+        self.positionX = 0
+        self.positionY = 0
+        self.status = 0
+    }
+
     private var soundPlayed = false
     /*var torpedoNode = SKSpriteNode(color: .red,
                                    size: CGSize(width: NetrekMath.torpedoSize, height: NetrekMath.torpedoSize))*/

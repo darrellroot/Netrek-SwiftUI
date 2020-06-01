@@ -29,8 +29,10 @@ struct StatisticsView: View {
             ForEach(self.universe.activePlayers, id: \.playerId) { player in
                 HStack {
                     Text("\(NetrekMath.teamLetter(team: player.team))\(NetrekMath.playerLetter(playerId: player.playerId))")
-                    Text(player.name)
-                    Text(player.rank.description)
+                    Text("                ").overlay(Text(player.name))
+                    //Text(player.name)
+                    Text("               ").overlay(Text(player.rank.description))
+                    //Text(player.rank.description)
                     Text(player.ship?.description ?? "??")
                     Text("Kills \(player.kills,specifier: "%.2f")")
                 }.padding(.leading)

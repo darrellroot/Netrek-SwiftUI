@@ -21,6 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var tacticalWindow: NSWindow!
     var strategicWindow: NSWindow!
     var bottomWindow: NSWindow!
+    var manualServerWindow: NSWindow!
     
     var metaServer: MetaServer?
     var reader: TcpReader?
@@ -59,6 +60,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let timerInterval = 1.0 / Double(UPDATE_RATE)
     var timer: Timer?
     @State var timerCount = 0
+
+    
+    @IBAction func disconnectGame(_ sender: NSMenuItem) {
+        self.newGameState(.noServerSelected)
+    }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let loginName = defaults.string(forKey: LoginDefault.loginName.rawValue) {
@@ -171,14 +177,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @objc func manualServer(sender: NSMenuItem) {
-        debugPrint("manual server 192.168.0.10 selected")
-        if let reader = TcpReader(hostname: "192.168.0.10", port: 2592, delegate: self) {
+        let manualServerView = ManualServerView()
+        manualServerWindow = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 7000, height: 300),
+            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+            backing: .buffered, defer: false)
+        manualServerWindow.center()
+        manualServerWindow.setFrameAutosaveName("Manual Server")
+        manualServerWindow.title = "Manual Server"
+        manualServerWindow.contentView = NSHostingView(rootView: manualServerView)
+        manualServerWindow.makeKeyAndOrderFront(nil)
+        
+    }
+    
+    public func connectToServer(server: String) {
+        guard self.gameState == .noServerSelected || self.gameState == .serverSelected else {
+            debugPrint("Can only connect if not connected")
+            return
+        }
+        if let reader = TcpReader(hostname: server, port: 2592, delegate: self) {
                self.reader = reader
                self.newGameState(.serverSelected)
            } else {
                debugPrint("AppDelegate failed to start reader")
            }
-
     }
 
     @objc func selectServer(sender: NSMenuItem) {

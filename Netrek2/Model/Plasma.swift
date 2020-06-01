@@ -29,6 +29,12 @@ class Plasma: ObservableObject {
     init(plasmaId: Int) {
         self.plasmaId = plasmaId
     }
+    public func reset() {
+        self.positionX = 0
+        self.positionY = 0
+        self.status = 0
+    }
+
     //from SP_PLASMA_INFO 8
     public func update(plasmaId: Int, war: UInt8, status: Int) {
         self.plasmaId = plasmaId

@@ -50,8 +50,8 @@ class Universe: ObservableObject {
     
     @Published private(set) var messages: [String] = []
     var activeMessages: ArraySlice<String> {
-        if messages.count >= 10 {
-            return messages[messages.count - 10 ..< messages.count]
+        if messages.count >= 15 {
+            return messages[messages.count - 15 ..< messages.count]
         } else {
             return messages[0 ..< messages.count]
         }
@@ -87,9 +87,15 @@ class Universe: ObservableObject {
         for planet in planets {
             planet.reset()
         }
-        torpedoes = []
-        lasers = []
-        plasmas = []
+        for torpedo in torpedoes {
+            torpedo.reset()
+        }
+        for laser in lasers {
+            laser.reset()
+        }
+        for plasma in plasmas {
+            plasma.reset()
+        }
         shipInfo = [:]
         me = 0
     }

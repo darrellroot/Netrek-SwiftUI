@@ -90,7 +90,17 @@ class Player: CustomStringConvertible, ObservableObject {
     private(set) var login = "unknown"
     // from packet type 3
     private(set) var kills = 0.0
-    private(set) var slotStatus: SlotStatus = .free //free=0 outfit=1 alive=2 explode=3 dead=4 observe=5
+    private(set) var slotStatus: SlotStatus = .free {
+        didSet {
+            if slotStatus == .explode && (appDelegate.universe.players[appDelegate.universe.me].slotStatus == .alive || appDelegate.universe.players[appDelegate.universe.me].slotStatus == .explode) {
+                let taxiDistance = abs(appDelegate.universe.players[appDelegate.universe.me].lastAlivePositionX - self.positionX) + abs(appDelegate.universe.players[appDelegate.universe.me].lastAlivePositionY - self.positionY)
+                let volume = 1 - (Float(taxiDistance) / NetrekMath.displayDistanceFloat)
+                if volume > 0 {
+                    appDelegate.soundController?.play(sound: .explosion, volume: volume)
+                }
+            }
+        }
+    } //free=0 outfit=1 alive=2 explode=3 dead=4 observe=5
     // from packet type 4
     private(set) var lastSlotStatus: SlotStatus = .free //free=0 outfit=1 alive=2 explode=3 dead=4 observe=5
     // flags from packet type 12
@@ -253,8 +263,8 @@ class Player: CustomStringConvertible, ObservableObject {
             self.playerTacticalNode.removeFromParent()
         }
         
-        let playerSize = CGSize(width: NetrekMath.playerSize, height: NetrekMath.playerSize)
-        let playerColor = NetrekMath.color(team: self.team)
+        //let playerSize = CGSize(width: NetrekMath.playerSize, height: NetrekMath.playerSize)
+        //let playerColor = NetrekMath.color(team: self.team)
         
         self.updateNode()
     }

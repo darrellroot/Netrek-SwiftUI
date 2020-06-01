@@ -32,6 +32,14 @@ class Laser: ObservableObject {
         self.laserId = laserId
     }
     
+    public func reset() {
+        self.positionX = 0
+        self.positionY = 0
+        self.targetPositionX = 0
+        self.targetPositionY = 0
+        self.status = 0
+    }
+    
     public func update(laserId: Int, status: Int, directionNetrek: UInt8, positionX: Int, positionY: Int, target: Int) {
         DispatchQueue.main.async {
             self.laserId = laserId

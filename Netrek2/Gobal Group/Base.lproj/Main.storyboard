@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -392,6 +392,9 @@
                                         <menuItem isSeparatorItem="YES" id="QOD-IP-DE0"/>
                                         <menuItem title="Disconnect from current game" id="QSR-GB-SRZ">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="disconnectGame:" target="Voe-Tx-rLC" id="Sch-M6-5v0"/>
+                                            </connections>
                                         </menuItem>
                                     </items>
                                 </menu>
