@@ -11,9 +11,17 @@ import SwiftUI
 
 class Universe: ObservableObject {
     var players: [Player] = []
+    
     var activePlayers: [Player] {
         return players.filter({$0.slotStatus != .free && $0.slotStatus != .observe} )
     }
+    var alivePlayers: [Player] {
+        return players.filter({ $0.slotStatus == .alive})
+    }
+    var explodingPlayers: [Player] {
+        return players.filter({$0.slotStatus == .explode} )
+    }
+    
     var planets: [Planet] = []
     var torpedoes: [Torpedo] = []
     var activeTorpedoes: [Torpedo] {

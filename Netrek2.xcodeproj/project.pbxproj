@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F2C197D2484BA4800604F21 /* ExplosionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C197C2484BA4800604F21 /* ExplosionView.swift */; };
 		2F44288C2463555A0051D7BE /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44288B2463555A0051D7BE /* PlanetView.swift */; };
 		2F44288D24635BDA0051D7BE /* NetrekMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8952462208D003CA91F /* NetrekMath.swift */; };
 		2F44288E24635BF20051D7BE /* NetrekMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8952462208D003CA91F /* NetrekMath.swift */; };
@@ -120,6 +121,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F2C197C2484BA4800604F21 /* ExplosionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplosionView.swift; sourceTree = "<group>"; };
 		2F44288B2463555A0051D7BE /* PlanetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		2F44288F24636B690051D7BE /* TacticalOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacticalOffset.swift; sourceTree = "<group>"; };
 		2F44289224636E540051D7BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 				2F44596A2464B45E00C3F9A1 /* TorpedoView.swift */,
 				2F44596E2466324100C3F9A1 /* PlasmaView.swift */,
 				2F44596C2465EFB300C3F9A1 /* LaserView.swift */,
+				2F2C197C2484BA4800604F21 /* ExplosionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				2F4459732467438400C3F9A1 /* StrategicView.swift in Sources */,
 				2F97D8DB24623623003CA91F /* Rank.swift in Sources */,
 				2F44596D2465EFB300C3F9A1 /* LaserView.swift in Sources */,
+				2F2C197D2484BA4800604F21 /* ExplosionView.swift in Sources */,
 				2F97D88D24621FE8003CA91F /* packets.swift in Sources */,
 				2F97D88724621FBE003CA91F /* PacketAnalyzer.swift in Sources */,
 				2F97D8A624622D36003CA91F /* Plasma.swift in Sources */,

@@ -31,9 +31,13 @@ struct TacticalView: View, TacticalOffset {
                 ForEach(0 ..< self.universe.maxPlanets) { planetId in
                     PlanetView(planet: self.universe.planets[planetId], me: self.universe.players[self.universe.me])
                 }
-                ForEach(self.universe.activePlayers, id: \.playerId) { player in
-                    PlayerView(player: player, me: self.universe.players[self.universe.me])
+                ForEach(self.universe.alivePlayers, id: \.playerId) { player in
+                        PlayerView(player: player, me: self.universe.players[self.universe.me])
+                 }
+                ForEach(self.universe.explodingPlayers, id: \.playerId) { player in
+                    ExplosionView(player: player, me: self.universe.players[self.universe.me])
                 }
+                
                 ForEach(self.universe.activeTorpedoes, id: \.torpedoId) { torpedo in
 
                     torpedo.status != 0 ?
