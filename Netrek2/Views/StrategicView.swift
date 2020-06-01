@@ -16,7 +16,14 @@ struct StrategicView: View {
     var body: some View {
         return GeometryReader { geo in
             ZStack {
-                Rectangle().pointingMouse { event, location in
+                Rectangle()
+                ForEach(0 ..< self.universe.maxPlanets) { planetId in
+                    PlanetStrategicView(planet: self.universe.planets[planetId])
+                }
+                ForEach(0 ..< self.universe.maxPlayers) { playerId in
+                    PlayerStrategicView(player: self.universe.players[playerId])
+                }
+                Rectangle().opacity(0.01).pointingMouse { event, location in
                     debugPrint("event \(event) location \(location)")
                     switch event.type {
                         
@@ -35,12 +42,6 @@ struct StrategicView: View {
                     default:
                         break
                     }
-                }
-                ForEach(0 ..< self.universe.maxPlanets) { planetId in
-                    PlanetStrategicView(planet: self.universe.planets[planetId])
-                }
-                ForEach(0 ..< self.universe.maxPlayers) { playerId in
-                    PlayerStrategicView(player: self.universe.players[playerId])
                 }
             }//ZStack
         }//Body

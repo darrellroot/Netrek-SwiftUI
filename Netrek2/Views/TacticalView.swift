@@ -27,7 +27,33 @@ struct TacticalView: View, TacticalOffset {
     var body: some View {
         return GeometryReader { geo in
             ZStack {
-                Rectangle().pointingMouse { event, location in
+                Rectangle()
+                ForEach(0 ..< self.universe.maxPlanets) { planetId in
+                    PlanetView(planet: self.universe.planets[planetId], me: self.universe.players[self.universe.me])
+                }
+                ForEach(self.universe.activePlayers, id: \.playerId) { player in
+                    PlayerView(player: player, me: self.universe.players[self.universe.me])
+                }
+                ForEach(self.universe.activeTorpedoes, id: \.torpedoId) { torpedo in
+
+                    torpedo.status != 0 ?
+                        TorpedoView(torpedo: torpedo, me: self.universe.players[self.universe.me])
+                        :
+                        TorpedoView(torpedo: self.fakeTorpedo, me: self.universe.players[self.universe.me])
+                }
+                ForEach(self.universe.activeLasers, id: \.laserId) { laser in
+                    laser.status != 0 ?
+                    LaserView(laser: laser, me: self.universe.players[self.universe.me])
+                    :
+                    LaserView(laser: self.fakeLaser, me: self.universe.players[self.universe.me])
+                }
+                ForEach(self.universe.activePlasmas, id: \.plasmaId) { plasma in
+                    plasma.status != 0 ?
+                        PlasmaView(plasma: plasma, me: self.universe.players[self.universe.me])
+                    :
+                        PlasmaView(plasma: self.fakePlasma, me: self.universe.players[self.universe.me])
+                }
+                Rectangle().opacity(0.01).pointingMouse { event, location in
                     debugPrint("event \(event) location \(location)")
                     switch event.type {
                         
@@ -54,31 +80,8 @@ struct TacticalView: View, TacticalOffset {
                         break
                     }
                 }
-                ForEach(0 ..< self.universe.maxPlanets) { planetId in
-                    PlanetView(planet: self.universe.planets[planetId], me: self.universe.players[self.universe.me])
-                }
-                ForEach(self.universe.activePlayers, id: \.playerId) { player in
-                    PlayerView(player: player, me: self.universe.players[self.universe.me])
-                }
-                ForEach(self.universe.activeTorpedoes, id: \.torpedoId) { torpedo in
 
-                    torpedo.status != 0 ?
-                        TorpedoView(torpedo: torpedo, me: self.universe.players[self.universe.me])
-                        :
-                        TorpedoView(torpedo: self.fakeTorpedo, me: self.universe.players[self.universe.me])
-                }
-                ForEach(self.universe.activeLasers, id: \.laserId) { laser in
-                    laser.status != 0 ?
-                    LaserView(laser: laser, me: self.universe.players[self.universe.me])
-                    :
-                    LaserView(laser: self.fakeLaser, me: self.universe.players[self.universe.me])
-                }
-                ForEach(self.universe.activePlasmas, id: \.plasmaId) { plasma in
-                    plasma.status != 0 ?
-                        PlasmaView(plasma: plasma, me: self.universe.players[self.universe.me])
-                    :
-                        PlasmaView(plasma: self.fakePlasma, me: self.universe.players[self.universe.me])
-                }
+                
             }
         }.frame(minWidth: 500, idealWidth: 800, maxWidth: nil, minHeight: 500, idealHeight: 800, maxHeight: nil, alignment: .center)
             /*.gesture(DragGesture(minimumDistance: 0.0)
