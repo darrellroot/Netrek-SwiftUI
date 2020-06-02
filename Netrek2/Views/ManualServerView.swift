@@ -14,11 +14,14 @@ struct ManualServerView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        HStack {
-            TextField("Input server name or IP", text: $server,onCommit: self.commit).frame(width: 350)
-            Button("Connect") {
-                self.commit()
+        VStack {
+            HStack {
+                TextField("Input server name or IP", text: $server,onCommit: self.commit).frame(width: 350)
+                Button("Connect") {
+                    self.commit()
+                }
             }
+            Text("pickled.netrek.org is a well-known Netrek server")
         }.padding(20)
     }
     func commit() -> Void {

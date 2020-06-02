@@ -55,7 +55,7 @@ struct PreferencesView: View {
                 }//VStack
                 VStack {
                     Text("")
-                    Text("->").font(.headline)
+                    Text("->").font(.headline).offset(y: 5)
                 }//VStack
                 VStack {
                     Text("Command")

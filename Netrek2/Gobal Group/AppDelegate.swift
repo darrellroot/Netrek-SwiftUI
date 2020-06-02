@@ -21,9 +21,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var tacticalWindow: NSWindow!
     var strategicWindow: NSWindow!
     var communicationsWindow: NSWindow!
-    var manualServerWindow: NSWindow!
-    var preferencesWindow: NSWindow!
-    var loginWindow: NSWindow!
+    var manualServerWindows: [NSWindow] = []
+    var preferencesWindows: [NSWindow] = []
+    var loginWindows: [NSWindow] = []
     
     var metaServer: MetaServer?
     var reader: TcpReader?
@@ -49,15 +49,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var selectTeamKazari: NSMenuItem!
     @IBOutlet weak var selectTeamOrion: NSMenuItem!
 
-    
-    var loginName: String?
-    var loginPassword: String?
-    var loginUserName: String?
-    var loginAuthenticated = false
-
     var preferredTeam: Team = .federation
     var preferredShip: ShipType = .cruiser
     var keymapController: KeymapController!
+    let loginInformationController = LoginInformationController()
 
     let timerInterval = 1.0 / Double(UPDATE_RATE)
     var timer: Timer?
@@ -70,17 +65,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        if let loginName = defaults.string(forKey: LoginDefault.loginName.rawValue) {
-            self.loginName = loginName
-        }
-        if let loginUserName = defaults.string(forKey: LoginDefault.loginUserName.rawValue) {
-            self.loginUserName = loginUserName
-        }
-        self.loginAuthenticated = defaults.bool(forKey: LoginDefault.loginAuthenticated.rawValue)
-            
-        if let loginPassword = LoginInformationController.getPasswordKeychain() {
-            self.loginPassword = loginPassword
-        }
         self.soundController = SoundController()
         self.keymapController = KeymapController()
 
@@ -108,6 +92,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         tacticalWindow.center()
         tacticalWindow.setFrameAutosaveName("Tactical")
         tacticalWindow.contentView = NSHostingView(rootView: tacticalView)
+        tacticalWindow.standardWindowButton(NSWindow.ButtonType.closeButton)?.isHidden = true
         
         //The title name impacts the keypress location algorithm, see NSCommmandedWindow
         tacticalWindow.title = "Tactical"
@@ -123,7 +108,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         //The title name impacts the keypress location algorithm, see NSCommmandedWindow
         strategicWindow.title = "Strategic"
-        
+        strategicWindow.standardWindowButton(NSWindow.ButtonType.closeButton)?.isHidden = true
+
         strategicWindow.contentView = NSHostingView(rootView: strategicView)
         strategicWindow.makeKeyAndOrderFront(nil)
 
@@ -137,7 +123,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         communicationsWindow.title = "Communications"
         communicationsWindow.contentView = NSHostingView(rootView: communicationsView)
         communicationsWindow.makeKeyAndOrderFront(nil)
-
+        communicationsWindow.standardWindowButton(NSWindow.ButtonType.closeButton)?.isHidden = true
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -180,44 +166,80 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func preferences(_ sender: NSMenuItem) {
+        //there can only be one preferencesWindow!
+        for (index,preferencesWindow) in preferencesWindows.enumerated().reversed() {
+            if !preferencesWindow.isVisible {
+                preferencesWindows.remove(at: index)
+            }
+        }
+        if let firstPreferencesWindow = preferencesWindows.first {
+            firstPreferencesWindow.makeKeyAndOrderFront(nil)
+            return
+        }
+        //No existing preferencesWindows
         let preferencesView = PreferencesView(keymapController: keymapController)
-        preferencesWindow = NSWindow(
+        let preferencesWindow = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 400, height: 300),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)
         preferencesWindow.center()
+        preferencesWindow.isReleasedWhenClosed = false
         preferencesWindow.setFrameAutosaveName("Preferences")
         preferencesWindow.title = "Preferences"
         preferencesWindow.contentView = NSHostingView(rootView: preferencesView)
         preferencesWindow.makeKeyAndOrderFront(nil)
-
+        self.preferencesWindows.append(preferencesWindow)
     }
     @IBAction func setLoginInformation(_ sender: NSMenuItem) {
-        let loginView = LoginView()
-        loginWindow = NSWindow(
+        // there can only be one loginWindow!
+        for (index,loginWindow) in loginWindows.enumerated().reversed() {
+            if !loginWindow.isVisible {
+                loginWindows.remove(at: index)
+            }
+        }
+        if let firstLoginWindow = loginWindows.first {
+            firstLoginWindow.makeKeyAndOrderFront(nil)
+            return
+        }
+        // No existing loginwindows
+        let loginView = LoginView(loginName: loginInformationController.loginName,loginPassword: loginInformationController.loginPassword, loginUsername: loginInformationController.loginPassword, loginInformationController: loginInformationController)
+        let loginWindow = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 500, height: 700),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)
-        loginWindow.center()
+        loginWindow.isReleasedWhenClosed = false
         loginWindow.setFrameAutosaveName("Login Information")
         loginWindow.title = "Login Information"
         loginWindow.contentView = NSHostingView(rootView: loginView)
         loginWindow.makeKeyAndOrderFront(nil)
+        self.loginWindows.append(loginWindow)
     }
 
-    
     @objc func manualServer(sender: NSMenuItem) {
+        // There can only be one manualServerWindow!
+        for (index,manualServerWindow) in manualServerWindows.enumerated().reversed() {
+            if !manualServerWindow.isVisible {
+                manualServerWindows.remove(at: index)
+            }
+        }
+        if let firstManualServerWindow = manualServerWindows.first {
+            firstManualServerWindow.makeKeyAndOrderFront(nil)
+            return
+        }
+        // No existing loginwindows
+
         let manualServerView = ManualServerView()
-        manualServerWindow = NSWindow(
+        let manualServerWindow = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 500, height: 300),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)
         manualServerWindow.center()
+        manualServerWindow.isReleasedWhenClosed = false
         manualServerWindow.setFrameAutosaveName("Manual Server")
         manualServerWindow.title = "Manual Server"
         manualServerWindow.contentView = NSHostingView(rootView: manualServerView)
         manualServerWindow.makeKeyAndOrderFront(nil)
-        
+        self.manualServerWindows.append(manualServerWindow)
     }
     
     public func connectToServer(server: String) {
@@ -486,8 +508,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.gameState = newState
             debugPrint("AppDelegate.newGameState: .serverSlotFound")
             let cpLogin: Data
-            if loginAuthenticated == true, let loginName = self.loginName, let loginPassword = self.loginPassword, let loginUserName = self.loginUserName {
-                cpLogin = MakePacket.cpLogin(name: loginName, password: loginPassword, login: loginUserName)
+            if self.loginInformationController.loginAuthenticated == true && self.loginInformationController.validInfo {
+                cpLogin = MakePacket.cpLogin(name: self.loginInformationController.loginName, password: self.loginInformationController.loginPassword, login: self.loginInformationController.loginUsername)
             } else {
                 cpLogin = MakePacket.cpLogin(name: "guest", password: "", login: "")
             }

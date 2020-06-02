@@ -11,6 +11,7 @@
 		2F2C197F24857CCB00604F21 /* ManualServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C197E24857CCB00604F21 /* ManualServerView.swift */; };
 		2F2C19812485D80B00604F21 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C19802485D80B00604F21 /* PreferencesView.swift */; };
 		2F2C1983248629C000604F21 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C1982248629C000604F21 /* LoginView.swift */; };
+		2F2C1B8B2487196400604F21 /* Netrek.help in Resources */ = {isa = PBXBuildFile; fileRef = 2F2C1B8A2487196400604F21 /* Netrek.help */; };
 		2F44288C2463555A0051D7BE /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44288B2463555A0051D7BE /* PlanetView.swift */; };
 		2F44288D24635BDA0051D7BE /* NetrekMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8952462208D003CA91F /* NetrekMath.swift */; };
 		2F44288E24635BF20051D7BE /* NetrekMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8952462208D003CA91F /* NetrekMath.swift */; };
@@ -128,6 +129,7 @@
 		2F2C197E24857CCB00604F21 /* ManualServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualServerView.swift; sourceTree = "<group>"; };
 		2F2C19802485D80B00604F21 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		2F2C1982248629C000604F21 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		2F2C1B8A2487196400604F21 /* Netrek.help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Netrek.help; sourceTree = "<group>"; };
 		2F44288B2463555A0051D7BE /* PlanetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		2F44288F24636B690051D7BE /* TacticalOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacticalOffset.swift; sourceTree = "<group>"; };
 		2F44289224636E540051D7BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -214,6 +216,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F2C1AF52487183E00604F21 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2F2C1B8A2487196400604F21 /* Netrek.help */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		2F45A7FD2464807F00AA2A3F /* Gobal Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +255,7 @@
 		2F97D84C24620CCF003CA91F /* Netrek2 */ = {
 			isa = PBXGroup;
 			children = (
+				2F2C1AF52487183E00604F21 /* Resources */,
 				2F45A7FD2464807F00AA2A3F /* Gobal Group */,
 				2F97D85A24620CD0003CA91F /* Netrek2.entitlements */,
 				2F97D85924620CD0003CA91F /* Info.plist */,
@@ -466,6 +477,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"en-US",
 			);
 			mainGroup = 2F97D84124620CCF003CA91F;
 			productRefGroup = 2F97D84B24620CCF003CA91F /* Products */;
@@ -494,6 +506,7 @@
 				2F97D85524620CD0003CA91F /* Preview Assets.xcassets in Resources */,
 				2F97D8C6246232FC003CA91F /* 175266__jonccox__gun-spark.wav in Resources */,
 				2F97D8C2246232FC003CA91F /* 175262__jonccox__gun-cannon.wav in Resources */,
+				2F2C1B8B2487196400604F21 /* Netrek.help in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
