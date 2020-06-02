@@ -23,6 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var communicationsWindow: NSWindow!
     var manualServerWindow: NSWindow!
     var preferencesWindow: NSWindow!
+    var loginWindow: NSWindow!
     
     var metaServer: MetaServer?
     var reader: TcpReader?
@@ -67,6 +68,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.newGameState(.noServerSelected)
     }
 
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let loginName = defaults.string(forKey: LoginDefault.loginName.rawValue) {
             self.loginName = loginName
@@ -190,7 +192,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         preferencesWindow.makeKeyAndOrderFront(nil)
 
     }
-    
+    @IBAction func setLoginInformation(_ sender: NSMenuItem) {
+        let loginView = LoginView()
+        loginWindow = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 500, height: 700),
+            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+            backing: .buffered, defer: false)
+        loginWindow.center()
+        loginWindow.setFrameAutosaveName("Login Information")
+        loginWindow.title = "Login Information"
+        loginWindow.contentView = NSHostingView(rootView: loginView)
+        loginWindow.makeKeyAndOrderFront(nil)
+    }
+
     
     @objc func manualServer(sender: NSMenuItem) {
         let manualServerView = ManualServerView()

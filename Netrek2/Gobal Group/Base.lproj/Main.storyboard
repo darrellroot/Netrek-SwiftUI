@@ -444,6 +444,9 @@
                                     <items>
                                         <menuItem title="Set Login Information" id="JgY-7y-nxI">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="setLoginInformation:" target="Voe-Tx-rLC" id="zqO-Wf-mkO"/>
+                                            </connections>
                                         </menuItem>
                                     </items>
                                 </menu>
