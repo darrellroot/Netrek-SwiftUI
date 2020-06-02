@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2F2C197D2484BA4800604F21 /* ExplosionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C197C2484BA4800604F21 /* ExplosionView.swift */; };
 		2F2C197F24857CCB00604F21 /* ManualServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C197E24857CCB00604F21 /* ManualServerView.swift */; };
+		2F2C19812485D80B00604F21 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C19802485D80B00604F21 /* PreferencesView.swift */; };
 		2F44288C2463555A0051D7BE /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44288B2463555A0051D7BE /* PlanetView.swift */; };
 		2F44288D24635BDA0051D7BE /* NetrekMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8952462208D003CA91F /* NetrekMath.swift */; };
 		2F44288E24635BF20051D7BE /* NetrekMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8952462208D003CA91F /* NetrekMath.swift */; };
@@ -124,6 +125,7 @@
 /* Begin PBXFileReference section */
 		2F2C197C2484BA4800604F21 /* ExplosionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplosionView.swift; sourceTree = "<group>"; };
 		2F2C197E24857CCB00604F21 /* ManualServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualServerView.swift; sourceTree = "<group>"; };
+		2F2C19802485D80B00604F21 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		2F44288B2463555A0051D7BE /* PlanetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		2F44288F24636B690051D7BE /* TacticalOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacticalOffset.swift; sourceTree = "<group>"; };
 		2F44289224636E540051D7BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 				2F44596C2465EFB300C3F9A1 /* LaserView.swift */,
 				2F2C197C2484BA4800604F21 /* ExplosionView.swift */,
 				2F2C197E24857CCB00604F21 /* ManualServerView.swift */,
+				2F2C19802485D80B00604F21 /* PreferencesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				2F45A7FA2464763200AA2A3F /* PointingView.swift in Sources */,
 				2F97D8CB24623315003CA91F /* SoundController.swift in Sources */,
 				2F97D8E7246236EE003CA91F /* Data-extensions.swift in Sources */,
+				2F2C19812485D80B00604F21 /* PreferencesView.swift in Sources */,
 				2F97D8E4246236A2003CA91F /* SlotStatus.swift in Sources */,
 				2F97D8D524623572003CA91F /* AlertCondition.swift in Sources */,
 				2F97D87324620F0B003CA91F /* MetaServer.swift in Sources */,

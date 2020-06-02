@@ -22,6 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var strategicWindow: NSWindow!
     var communicationsWindow: NSWindow!
     var manualServerWindow: NSWindow!
+    var preferencesWindow: NSWindow!
     
     var metaServer: MetaServer?
     var reader: TcpReader?
@@ -176,10 +177,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    @IBAction func preferences(_ sender: NSMenuItem) {
+        let preferencesView = PreferencesView()
+        preferencesWindow = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 400, height: 300),
+            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+            backing: .buffered, defer: false)
+        preferencesWindow.center()
+        preferencesWindow.setFrameAutosaveName("Preferences")
+        preferencesWindow.title = "Preferences"
+        preferencesWindow.contentView = NSHostingView(rootView: preferencesView)
+        preferencesWindow.makeKeyAndOrderFront(nil)
+
+    }
+    
+    
     @objc func manualServer(sender: NSMenuItem) {
         let manualServerView = ManualServerView()
         manualServerWindow = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 7000, height: 300),
+            contentRect: NSRect(x: 0, y: 0, width: 500, height: 300),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)
         manualServerWindow.center()

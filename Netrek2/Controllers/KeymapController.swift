@@ -20,6 +20,7 @@ enum Control: String, CaseIterable {
     case sevenKey = "7 key"
     case eightKey = "8 key"
     case nineKey = "9 key"
+    case spacebarKey = "spacebar key"
     case rightParenKey = ") key"
     case exclamationMarkKey = "! key"
     case atKey = "@ key"
@@ -169,6 +170,7 @@ class KeymapController {
             .sevenKey:.speedSeven,
             .eightKey:.speedEight,
             .nineKey:.speedNine,
+            .spacebarKey:.nothing,
             .rightParenKey:.speedTen,
             .exclamationMarkKey:.speedEleven,
             .atKey:.speedTwelve,
