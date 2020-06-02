@@ -15,7 +15,8 @@ class ActivePreference: ObservableObject {
     @Published var currentControl: Control = Control.allCases.first! {
         didSet {
             debugPrint("current control updated")
-            self.currentCommand = appDelegate.keymapController.keymap[currentControl] ?? Command.nothing
+            self.readCommand()
+            //self.currentCommand = appDelegate.keymapController.keymap[currentControl] ?? Command.nothing
         }
     }
     @Published var currentCommand: Command = Command.allCases.first! {
@@ -31,31 +32,51 @@ class ActivePreference: ObservableObject {
     init() {
         currentCommand = appDelegate.keymapController.keymap[currentControl] ?? Command.nothing
     }
+    public func readCommand() {
+        self.currentCommand = appDelegate.keymapController.keymap[currentControl] ?? Command.nothing
+    }
 }
 struct PreferencesView: View {
-    let appDelegate = NSApplication.shared.delegate as! AppDelegate
 
     @ObservedObject var activePreference = ActivePreference()
     
+    var keymapController: KeymapController
+        
     var body: some View {
-        HStack {
-            Picker(selection: $activePreference.currentControl, label: EmptyView()) {
-                ForEach(Control.allCases, id: \.self) { control in
-                    Text(control.rawValue)
-                }
+        VStack {
+            HStack {
+                VStack {
+                    Text("Control")
+                    Picker(selection: $activePreference.currentControl, label: EmptyView()) {
+                        ForEach(Control.allCases, id: \.self) { control in
+                            Text(control.rawValue)
+                        }
+                    }
+                }//VStack
+                VStack {
+                    Text("")
+                    Text("->").font(.headline)
+                }//VStack
+                VStack {
+                    Text("Command")
+                    Picker(selection: $activePreference.currentCommand, label: EmptyView()) {
+                        ForEach(Command.allCases, id: \.self) { command in
+                            Text(command.rawValue)
+                        }
+                    }
+                }//VStack
+            }//HStack
+            Button("Reset All To Defaults") {
+                self.keymapController.resetKeymaps()
+                self.activePreference.readCommand()
             }
-            Text("->").font(.headline)
-            Picker(selection: $activePreference.currentCommand, label: EmptyView()) {
-                ForEach(Command.allCases, id: \.self) { command in
-                    Text(command.rawValue)
-                }
-            }
-        }
-    }
+        }//VStack
+        .padding(8)
+    }//var body
 }
 
 struct PreferencesView_Previews: PreviewProvider {
     static var previews: some View {
-        PreferencesView()
+        PreferencesView(keymapController: KeymapController())
     }
 }

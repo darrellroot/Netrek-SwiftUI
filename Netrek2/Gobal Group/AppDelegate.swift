@@ -178,7 +178,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func preferences(_ sender: NSMenuItem) {
-        let preferencesView = PreferencesView()
+        let preferencesView = PreferencesView(keymapController: keymapController)
         preferencesWindow = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 400, height: 300),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
