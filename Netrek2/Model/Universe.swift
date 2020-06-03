@@ -149,7 +149,7 @@ class Universe: ObservableObject {
             debugPrint("Universe.updatePlayer invalid playerID \(playerId)")
             return
         }
-        if self.players[playerId] == nil {
+        if self.players[safe: playerId] == nil {
             let newPlayer = Player(playerId: playerId)
             self.players[playerId] = newPlayer
         }
@@ -161,7 +161,7 @@ class Universe: ObservableObject {
             debugPrint("Universe.updatePlayer invalid playerID \(playerId)")
             return
         }
-        if self.players[playerId] == nil {
+        if self.players[safe: playerId] == nil {
             let newPlayer = Player(playerId: playerId)
             self.players[playerId] = newPlayer
         }
@@ -172,7 +172,7 @@ class Universe: ObservableObject {
             debugPrint("Universe.updatePlayer invalid playerID \(playerId)")
             return
         }
-        if self.players[playerId] == nil {
+        if self.players[safe: playerId] == nil {
             let newPlayer = Player(playerId: playerId)
             self.players[playerId] = newPlayer
         }
@@ -185,7 +185,7 @@ class Universe: ObservableObject {
             debugPrint("Universe.updatePlayer invalid playerID \(playerId)")
             return
         }
-        if self.players[playerId] == nil {
+        if self.players[safe: playerId] == nil {
             let newPlayer = Player(playerId: playerId)
             self.players[playerId] = newPlayer
         }
@@ -196,7 +196,7 @@ class Universe: ObservableObject {
             debugPrint("Universe.updatePlayer invalid playerID \(playerId)")
             return
         }
-        if self.players[playerId] == nil {
+        if self.players[safe: playerId] == nil {
             let newPlayer = Player(playerId: playerId)
             self.players[playerId] = newPlayer
         }
@@ -204,7 +204,7 @@ class Universe: ObservableObject {
     }
     
     public func updatePlayer(playerId: Int, tournamentKills: Int, tournamentLosses: Int, tournamentTicks: Int, tournamentPlanets: Int, tournamentArmies: Int) {
-        if self.players[playerId] == nil {
+        if self.players[safe: playerId] == nil {
             let newPlayer = Player(playerId: playerId)
             self.players[playerId] = newPlayer
         }
@@ -243,7 +243,7 @@ class Universe: ObservableObject {
             debugPrint("Universe.updatePlayer invalid torpedoNumber \(torpedoNumber)")
             return
         }
-        if self.torpedoes[torpedoNumber] == nil {
+        if self.torpedoes[safe: torpedoNumber] == nil {
             let newTorpedo = Torpedo(torpedoId: torpedoNumber)
             self.torpedoes[torpedoNumber] = newTorpedo
         }

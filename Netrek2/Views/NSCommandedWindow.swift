@@ -32,7 +32,7 @@ class NSCommandedWindow : NSWindow, TacticalOffset {
                 let netrekLocationY = viewYOffset(positionY: Int(viewLocation.y), myPositionY: appDelegate.universe.players[appDelegate.universe.me].positionY, tacticalHeight: contentView.frame.size.height)
                 location = CGPoint(x: netrekLocationX, y: netrekLocationY)
             }
-            debugPrint("TacticalScene.keyDown characters \(String(describing: event.characters)) location viewLocation \(viewLocation) netrekLocation \(location)")
+            debugPrint("TacticalScene.keyDown characters \(String(describing: event.characters)) location viewLocation \(viewLocation) netrekLocation \(String(describing: location))")
         } else {
             location = CGPoint()
         }

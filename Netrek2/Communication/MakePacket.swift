@@ -67,7 +67,7 @@ class MakePacket {
             }
         }
         let data = Data(bytes: &packet, count: message_length + 4)
-        debugPrint("Sending CP_MESSAGE 1 team: \(team) individual: \(individual) message \(message)")
+        debugPrint("Sending CP_MESSAGE 1 team: \(String(describing: team)) individual: \(individual) message \(message)")
         return data
     }
 

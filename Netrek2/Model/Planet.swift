@@ -16,6 +16,9 @@ enum PlanetFlags: UInt16 {
 }
 
 class Planet: CustomStringConvertible, ObservableObject, Identifiable {
+    
+    lazy var appDelegate = NSApplication.shared.delegate as! AppDelegate
+
     private(set) var planetId: Int
     var id: Int {
         return self.planetId
@@ -58,6 +61,7 @@ class Planet: CustomStringConvertible, ObservableObject, Identifiable {
     
     @Published private(set) var imageName: String = "planet-empty"
     
+    
     func updateImage() {
         var imageName: String
         switch (repair, fuel, armies > 4) {
@@ -85,7 +89,6 @@ class Planet: CustomStringConvertible, ObservableObject, Identifiable {
         debugPrint("planet \(self.name) image \(imageName)")
     }
     
-    lazy var appDelegate = NSApplication.shared.delegate as! AppDelegate
 
     var description: String {
         get {
@@ -130,6 +133,7 @@ class Planet: CustomStringConvertible, ObservableObject, Identifiable {
             infoString = "AGRI FUEL REPAIR\(armies) armies"
         }
         debugPrint("\(self.name) \(infoString)")
+        appDelegate.universe.gotMessage("\(self.name) \(infoString)")
     }
 
     public func update(name: String, positionX: Int, positionY: Int) {

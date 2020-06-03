@@ -452,6 +452,7 @@ class PacketAnalyzer {
             var monitor = "unknown"
             if let monitorStringWithNulls = String(data: monitorData, encoding: .utf8) {
                 monitor = monitorStringWithNulls.filter { $0 != "\0" }
+                //debugPrint("SP_PL_LOGIN 24 monitor \(monitor)")
             }
             let loginData = data.subdata(in: (36..<52))
             var login = "unknown"
