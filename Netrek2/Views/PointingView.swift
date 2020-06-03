@@ -43,6 +43,9 @@ struct PointingAreaRepresentable<Content>: NSViewRepresentable where Content: Vi
 class PointingNSHostingView<Content>: NSHostingView<Content> where Content : View {
     let onPoint: (NSEvent,NSPoint) -> Void
 
+    override func acceptsFirstMouse(for event: NSEvent?) -> Bool {
+        return true
+    }
     init(onPoint: @escaping (NSEvent, NSPoint) -> Void, rootView: Content) {
         self.onPoint = onPoint
         
