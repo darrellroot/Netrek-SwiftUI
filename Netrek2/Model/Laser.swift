@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SpriteKit
 import SwiftUI
 
 class Laser: ObservableObject {
@@ -22,10 +21,6 @@ class Laser: ObservableObject {
     @Published private(set) var targetPositionX = 0
     @Published private(set) var targetPositionY = 0
     private(set) var target = 0
-    var laserNode = SKShapeNode()
-    //let waitAction = SKAction.wait(forDuration: 1.0)
-    //let removeAction = SKAction.removeFromParent()
-    //let laserAction = SKAction.sequence([SKAction.fadeOut(withDuration: 1.0),SKAction.removeFromParent()])
     let laserRange = 600.0 // game units
     
     init(laserId: Int) {
@@ -70,32 +65,10 @@ class Laser: ObservableObject {
             //let sourcePoint = CGPoint(x: source.positionX, y: source.positionY)
             self.targetPositionX = target.positionX
             self.targetPositionY = target.positionY
-            //let destinationPoint = CGPoint(x: target.positionX, y: target.positionY)
-            //var points = [sourcePoint, destinationPoint]
-            //laserNode = SKShapeNode(points: &points, count: 2)
-            //laserNode.strokeColor = .red
-            /*laserNode.lineWidth = 10
-                DispatchQueue.main.async {
-                    debugPrint("displaying laser hit source \(sourcePoint) destination \(destinationPoint)")
-                //self.appDelegate.tacticalViewController?.scene.addChild(self.laserNode)
-                    self.laserNode.run(self.laserAction)
- 
-            }*/
         case 2: // miss
             self.direction = NetrekMath.directionNetrek2radian(self.directionNetrek)
-            //let sourcePoint = CGPoint(x: source.positionX, y: source.positionY)
             self.targetPositionX = Int(Double(source.positionX) + cos(self.direction) * laserRange)
             self.targetPositionY = Int(Double(source.positionY) + sin(self.direction) * laserRange)
-            //let destinationPoint = CGPoint(x: destinationX, y: destinationY)
-            /*var points = [sourcePoint, destinationPoint]
-            laserNode = SKShapeNode(points: &points, count: 2)
-            laserNode.strokeColor = .red
-            laserNode.lineWidth = 10
-            DispatchQueue.main.async {
-                debugPrint("displaying laser miss source \(sourcePoint) destination \(destinationPoint)")
-                //self.appDelegate.tacticalViewController?.scene.addChild(self.laserNode)
-                self.laserNode.run(self.laserAction)
-            }*/
         case 4: // hit plasma TODO
             break
 

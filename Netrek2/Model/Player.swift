@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SpriteKit
+import SwiftUI
 
 class Player: CustomStringConvertible, ObservableObject {
     //static let shieldFactory = ShieldFactory()
@@ -106,11 +106,11 @@ class Player: CustomStringConvertible, ObservableObject {
     // flags from packet type 12
     private(set) var repair = false
     private(set) var bomb = false
-    private let cloakAction = SKAction.fadeOut(withDuration: 0.7)
-    private let unCloakAction = SKAction.fadeIn(withDuration: 0.7)
-    private let playerCloakAction = SKAction.fadeAlpha(to: 0.2, duration: 0.7)
+    //private let cloakAction = SKAction.fadeOut(withDuration: 0.7)
+    //private let unCloakAction = SKAction.fadeIn(withDuration: 0.7)
+    //private let playerCloakAction = SKAction.fadeAlpha(to: 0.2, duration: 0.7)
     private(set) var orbit = false
-    private(set) var cloak = false {
+    private(set) var cloak = false /* {
         didSet {
             if oldValue == false && cloak == true {
                 if me == true {
@@ -123,7 +123,7 @@ class Player: CustomStringConvertible, ObservableObject {
                 playerTacticalNode.run(unCloakAction)
             }
         }
-    }
+    }*/
     private(set) var weaponsOverheated = false
     private(set) var enginesOverheated = false
     private(set) var beamUp = false
@@ -141,9 +141,8 @@ class Player: CustomStringConvertible, ObservableObject {
 
     private(set) var direction: Double = 0.0 // 2 * Double.pi = 360 degrees
     private(set) var speed = 0
-    var playerTacticalNode = SKSpriteNode()
-    let playerInfoAction = SKAction.sequence([SKAction.fadeOut(withDuration: 3.0),SKAction.removeFromParent()])
-    
+    //var playerTacticalNode = SKSpriteNode()
+    //let playerInfoAction = SKAction.sequence([SKAction.fadeOut(withDuration: 3.0),SKAction.removeFromParent()])
     
     init(playerId: Int) {
         self.playerId = playerId
@@ -154,10 +153,10 @@ class Player: CustomStringConvertible, ObservableObject {
         debugPrint("player ID \(playerId) deinit")
     }
     public func reset() {
-        if playerTacticalNode.parent != nil {
+        /*if playerTacticalNode.parent != nil {
             playerTacticalNode.removeAllActions()
             playerTacticalNode.removeFromParent()
-        }
+        }*/
     }
 
     public var description: String {
@@ -170,13 +169,6 @@ class Player: CustomStringConvertible, ObservableObject {
         let infoString: String = "\(self.name) \(self.ship?.description ?? "??") \(self.kills) kills"
         let playerLetter = NetrekMath.playerLetter(playerId: self.playerId)
         appDelegate.universe.gotMessage("\(self.team.letter)\(playerLetter) \(infoString)")
-        let playerInfoLabel = SKLabelNode(text: infoString)
-        playerInfoLabel.fontSize = NetrekMath.planetFontSize
-        playerInfoLabel.fontName = "Courier"
-        playerInfoLabel.position = CGPoint(x: self.positionX, y: self.positionY - 2 * NetrekMath.playerSize)
-        playerInfoLabel.zPosition = ZPosition.ship.rawValue
-        //playerInfoLabel.fontColor = NetrekMath.color(team: self.team)
-        playerInfoLabel.run(playerInfoAction)
     }
 
     func updateImage() {
@@ -255,17 +247,6 @@ class Player: CustomStringConvertible, ObservableObject {
             }
     }
     public func remakeNode() {
-        //private(set) var status = 0  //free=0 outfit=1 alive=2 explode=3 dead=4 observe=5
-        /*if self.shieldNode.parent != nil {
-            self.shieldNode.removeFromParent()
-        }*/
-        if self.playerTacticalNode.parent != nil {
-            self.playerTacticalNode.removeFromParent()
-        }
-        
-        //let playerSize = CGSize(width: NetrekMath.playerSize, height: NetrekMath.playerSize)
-        //let playerColor = NetrekMath.color(team: self.team)
-        
         self.updateNode()
     }
     private func updateNode() {
@@ -302,7 +283,7 @@ class Player: CustomStringConvertible, ObservableObject {
             self.shieldNode.isHidden = true
         }*/
         if self.slotStatus == .alive && self.positionX > 0 && self.positionX < NetrekMath.galacticSize && self.positionY > 0 && self.positionY < NetrekMath.galacticSize {
-            self.playerTacticalNode.position = CGPoint(x: positionX, y: positionY)
+            //self.playerTacticalNode.position = CGPoint(x: positionX, y: positionY)
             //self.playerTacticalNode.zRotation = self.direction
             /*let deltaX = self.positionX - self.lastPositionX
             let deltaY = self.positionY - self.lastPositionY

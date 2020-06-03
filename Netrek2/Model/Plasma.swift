@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SpriteKit
 import SwiftUI
 
 class Plasma: ObservableObject {
@@ -23,8 +22,6 @@ class Plasma: ObservableObject {
     @Published var color: Color = Color.red
 
     private var soundPlayed = false
-    /*var plasmaNode = SKSpriteNode(color: .orange,
-                                   size: CGSize(width: NetrekMath.torpedoSize * 2, height: NetrekMath.torpedoSize * 2))*/
 
     init(plasmaId: Int) {
         self.plasmaId = plasmaId

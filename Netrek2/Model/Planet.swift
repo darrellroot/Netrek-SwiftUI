@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SpriteKit
 import SwiftUI
 
 enum PlanetFlags: UInt16 {
