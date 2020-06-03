@@ -28,22 +28,22 @@ struct TacticalView: View, TacticalOffset {
         return GeometryReader { geo in
             ZStack {
                 Rectangle()
-                ForEach(0 ..< self.universe.maxPlanets) { planetId in
-                    PlanetView(planet: self.universe.planets[planetId], me: self.universe.players[self.universe.me])
+                ForEach(self.universe.visiblePlanets, id: \.planetId) { planet in
+                    PlanetView(planet: planet, me: self.universe.players[self.universe.me])
                 }
-                ForEach(self.universe.alivePlayers, id: \.playerId) { player in
+                ForEach(self.universe.visiblePlayers, id: \.playerId) { player in
                         PlayerView(player: player, me: self.universe.players[self.universe.me])
                  }
                 ForEach(self.universe.explodingPlayers, id: \.playerId) { player in
                     ExplosionView(player: player, me: self.universe.players[self.universe.me])
                 }
                 
-                ForEach(self.universe.activeTorpedoes, id: \.torpedoId) { torpedo in
+                ForEach(self.universe.visibleTorpedoes, id: \.torpedoId) { torpedo in
 
-                    torpedo.status != 0 ?
-                        TorpedoView(torpedo: torpedo, me: self.universe.players[self.universe.me])
-                        :
-                        TorpedoView(torpedo: self.fakeTorpedo, me: self.universe.players[self.universe.me])
+                    TorpedoView(torpedo: torpedo, me: self.universe.players[self.universe.me])
+                }
+                ForEach(self.universe.explodingTorpedoes, id: \.torpedoId) { torpedo in
+                    DetonationView(torpedo: torpedo, me: self.universe.players[self.universe.me])
                 }
                 ForEach(self.universe.activeLasers, id: \.laserId) { laser in
                     laser.status != 0 ?

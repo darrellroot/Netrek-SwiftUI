@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F2789DF24872C8900038FBD /* DetonationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789DE24872C8900038FBD /* DetonationView.swift */; };
 		2F2C197D2484BA4800604F21 /* ExplosionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C197C2484BA4800604F21 /* ExplosionView.swift */; };
 		2F2C197F24857CCB00604F21 /* ManualServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C197E24857CCB00604F21 /* ManualServerView.swift */; };
 		2F2C19812485D80B00604F21 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C19802485D80B00604F21 /* PreferencesView.swift */; };
@@ -125,6 +126,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F2789DE24872C8900038FBD /* DetonationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetonationView.swift; sourceTree = "<group>"; };
 		2F2C197C2484BA4800604F21 /* ExplosionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplosionView.swift; sourceTree = "<group>"; };
 		2F2C197E24857CCB00604F21 /* ManualServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualServerView.swift; sourceTree = "<group>"; };
 		2F2C19802485D80B00604F21 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 				2F44596E2466324100C3F9A1 /* PlasmaView.swift */,
 				2F44596C2465EFB300C3F9A1 /* LaserView.swift */,
 				2F2C197C2484BA4800604F21 /* ExplosionView.swift */,
+				2F2789DE24872C8900038FBD /* DetonationView.swift */,
 				2F2C197E24857CCB00604F21 /* ManualServerView.swift */,
 				2F2C19802485D80B00604F21 /* PreferencesView.swift */,
 				2F2C1982248629C000604F21 /* LoginView.swift */,
@@ -560,6 +563,7 @@
 				2F97D88A24621FE3003CA91F /* Globals.swift in Sources */,
 				2F4459792467647800C3F9A1 /* StrategicOffset.swift in Sources */,
 				2F45A7FA2464763200AA2A3F /* PointingView.swift in Sources */,
+				2F2789DF24872C8900038FBD /* DetonationView.swift in Sources */,
 				2F97D8CB24623315003CA91F /* SoundController.swift in Sources */,
 				2F97D8E7246236EE003CA91F /* Data-extensions.swift in Sources */,
 				2F2C19812485D80B00604F21 /* PreferencesView.swift in Sources */,

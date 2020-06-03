@@ -13,7 +13,9 @@ import SwiftUI
 class NetrekMath {
 
     static let displayDistance = 3000
-    static let displayDistanceFloat: Float = 3000.0
+    static let visualDisplayDistance = 6 * NetrekMath.displayDistance / 10
+    
+    static let displayDistanceFloat: Float = Float(displayDistance)
 
     static let galacticSize = 10000
 
@@ -45,7 +47,7 @@ class NetrekMath {
         if answer > 0 {
             return answer
         } else {
-            return answer - 2.0 * Double.pi
+            return answer + 2.0 * Double.pi
         }
     }
     static func directionNetrek2radian(_ directionNetrek: UInt8) -> CGFloat {

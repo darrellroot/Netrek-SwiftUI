@@ -439,7 +439,23 @@ class Player: CustomStringConvertible, ObservableObject {
     }
     // from SP_PLAYER 4
     public func update(directionNetrek: UInt8, speed: Int, positionX: Int, positionY: Int) {
-        self.direction = NetrekMath.directionNetrek2radian(UInt8(directionNetrek))
+        // To support animations, if direction change is > 270 degrees, adjust by 2 * pi
+        let oldDirection = self.direction
+        
+        //var newDirection = Double.pi * ((Double(directionNetrek) / -128.0) + 0.5)
+        var newDirection: Double = NetrekMath.directionNetrek2radian(UInt8(directionNetrek))
+        
+        while oldDirection > newDirection + Double.pi {
+            newDirection += 2 * Double.pi
+        }
+        while oldDirection < newDirection - Double.pi {
+            newDirection -= 2 * Double.pi
+        }
+        /*if me {
+            debugPrint("oldDirection \(oldDirection) newDirection \(newDirection)")
+        }*/
+        self.direction = newDirection
+        //self.direction = NetrekMath.directionNetrek2radian(UInt8(directionNetrek))
         self.speed = speed
         if self.slotStatus == .alive {
             self.lastAlivePositionX = positionX

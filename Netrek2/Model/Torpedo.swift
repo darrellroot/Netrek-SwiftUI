@@ -17,6 +17,8 @@ class Torpedo: ObservableObject {
     
     var torpedoId: Int = 0
     @Published var status: UInt8 = 0
+    //0 = inactive, 1=active, 2 = exploding?
+    
     //public var displayed: Bool = false
     private(set) var war: [Team:Bool] = [:]
     var directionNetrek: Int = 0  // netrek format direction for now

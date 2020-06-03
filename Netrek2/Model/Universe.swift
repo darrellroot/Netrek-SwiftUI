@@ -21,12 +21,29 @@ class Universe: ObservableObject {
     var explodingPlayers: [Player] {
         return players.filter({$0.slotStatus == .explode} )
     }
+    var visiblePlayers: [Player] {
+        return alivePlayers.filter({(abs($0.positionX - players[me].positionX) < NetrekMath.visualDisplayDistance) && abs($0.positionY - players[me].positionY) < NetrekMath.visualDisplayDistance })
+    }
     
     var planets: [Planet] = []
+    
+    var visiblePlanets: [Planet] {
+        return planets.filter({(abs($0.positionX - players[me].positionX) < NetrekMath.visualDisplayDistance) && abs($0.positionY - players[me].positionY) < NetrekMath.visualDisplayDistance })
+    }
+    
     var torpedoes: [Torpedo] = []
     var activeTorpedoes: [Torpedo] {
-        return torpedoes.filter({$0.status != 0 } )
+        return torpedoes.filter({$0.status == 1 } )
     }
+    var explodingTorpedoes: [Torpedo] {
+        return torpedoes.filter({$0.status == 2 || $0.status == 3 } )
+    }
+
+    
+    var visibleTorpedoes: [Torpedo] {
+        return activeTorpedoes.filter({(abs($0.positionX - players[me].positionX) < NetrekMath.visualDisplayDistance) && abs($0.positionY - players[me].positionY) < NetrekMath.visualDisplayDistance })
+    }
+    
     var lasers: [Laser] = []
     var activeLasers: [Laser] {
         return lasers.filter({$0.status != 0 } )
