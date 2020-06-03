@@ -281,6 +281,8 @@ class PacketAnalyzer {
             let whyDead = Int(data.subdata(in: (28..<30)).to(type: UInt16.self).byteSwapped)
             let whoDead = Int(data.subdata(in: (30..<32)).to(type: UInt16.self).byteSwapped)
             debugPrint("Received SP_YOU 12 \(myPlayerID) hostile \(hostile) war \(war) armies \(armies) tractor \(tractor) flags \(flags) damage \(damage) shieldStrength \(shieldStrength) fuel \(fuel) engineTemp \(engineTemp) weaponsTemp \(weaponsTemp) whyDead \(whyDead) whodead \(whoDead)")
+            //if tractor is between 64 and 95, tractor target is tractor - 40
+
             //printFlags(flags: flags)
             universe.updateMe(myPlayerId: myPlayerID, hostile: hostile, war: war, armies: armies, tractor: tractor, flags: flags, damage: damage, shieldStrength: shieldStrength, fuel: fuel, engineTemp: engineTemp, weaponsTemp: weaponsTemp, whyDead: whyDead, whoDead: whoDead)
             if appDelegate.gameState == .serverSelected || appDelegate.gameState == .serverConnected {

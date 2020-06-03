@@ -15,6 +15,19 @@ class Universe: ObservableObject {
     var activePlayers: [Player] {
         return players.filter({$0.slotStatus != .free && $0.slotStatus != .observe} )
     }
+    var visibleTractors: [Player] {
+        guard players[me].slotStatus == .alive && players[me].tractor >= 64 && players[me].tractor < 96 else {
+            return []
+        }
+        let targetId = players[me].tractor - 64
+        guard let target = players[safe: targetId] else {
+            return []
+        }
+        guard target.slotStatus == .alive, (abs(target.positionX - players[me].positionX) < NetrekMath.visualDisplayDistance) && abs(target.positionY - players[me].positionY) < NetrekMath.visualDisplayDistance else {
+            return []
+        }
+        return [target]
+    }
     var alivePlayers: [Player] {
         return players.filter({ $0.slotStatus == .alive})
     }

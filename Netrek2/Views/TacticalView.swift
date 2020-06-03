@@ -34,6 +34,10 @@ struct TacticalView: View, TacticalOffset {
                 ForEach(self.universe.visiblePlayers, id: \.playerId) { player in
                         PlayerView(player: player, me: self.universe.players[self.universe.me])
                  }
+                ForEach(self.universe.visibleTractors, id: \.playerId) { target in
+                        TractorView(target: target, me: self.universe.players[self.universe.me])
+                 }
+
                 ForEach(self.universe.explodingPlayers, id: \.playerId) { player in
                     ExplosionView(player: player, me: self.universe.players[self.universe.me])
                 }
@@ -262,8 +266,10 @@ struct TacticalView: View, TacticalOffset {
             keymap.execute(.ZKey, location: location)
         case "*":
             keymap.execute(.asteriskKey, location: location)
+        case " ":
+            keymap.execute(.spacebarKey, location: location)
         default:
-            debugPrint("TacticalScene.keyDown unknown key \(String(describing: event.characters))")
+            debugPrint("TacticalScene.TacticalView.keyDown unknown key \(String(describing: event.characters))")
         }
     }
 

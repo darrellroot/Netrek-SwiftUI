@@ -191,8 +191,10 @@ class NSCommandedWindow : NSWindow, TacticalOffset {
             keymap.execute(.ZKey, location: location)
         case "*":
             keymap.execute(.asteriskKey, location: location)
+        case " ":
+            keymap.execute(.spacebarKey, location: location)
         default:
-            debugPrint("TacticalScene.keyDown unknown key \(String(describing: event.characters))")
+            debugPrint("TacticalScene.NSCommandedWindow.keyDown unknown key \(String(describing: event.characters))")
         }
     }
 

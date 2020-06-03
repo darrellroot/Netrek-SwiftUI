@@ -339,6 +339,7 @@ class Player: CustomStringConvertible, ObservableObject {
             }
         }
         self.armies = armies
+        //if tractor is between 64 and 95, tractor target is tractor - 40
         self.tractor = tractor
         self.damage = damage
         self.shieldStrength = shieldStrength

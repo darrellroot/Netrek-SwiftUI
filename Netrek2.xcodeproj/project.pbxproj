@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F2789DF24872C8900038FBD /* DetonationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789DE24872C8900038FBD /* DetonationView.swift */; };
+		2F2789E1248852D300038FBD /* TractorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E0248852D300038FBD /* TractorView.swift */; };
 		2F2C197D2484BA4800604F21 /* ExplosionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C197C2484BA4800604F21 /* ExplosionView.swift */; };
 		2F2C197F24857CCB00604F21 /* ManualServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C197E24857CCB00604F21 /* ManualServerView.swift */; };
 		2F2C19812485D80B00604F21 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C19802485D80B00604F21 /* PreferencesView.swift */; };
@@ -127,6 +128,7 @@
 
 /* Begin PBXFileReference section */
 		2F2789DE24872C8900038FBD /* DetonationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetonationView.swift; sourceTree = "<group>"; };
+		2F2789E0248852D300038FBD /* TractorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TractorView.swift; sourceTree = "<group>"; };
 		2F2C197C2484BA4800604F21 /* ExplosionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplosionView.swift; sourceTree = "<group>"; };
 		2F2C197E24857CCB00604F21 /* ManualServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualServerView.swift; sourceTree = "<group>"; };
 		2F2C19802485D80B00604F21 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 				2F2C197E24857CCB00604F21 /* ManualServerView.swift */,
 				2F2C19802485D80B00604F21 /* PreferencesView.swift */,
 				2F2C1982248629C000604F21 /* LoginView.swift */,
+				2F2789E0248852D300038FBD /* TractorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				2F4459732467438400C3F9A1 /* StrategicView.swift in Sources */,
 				2F97D8DB24623623003CA91F /* Rank.swift in Sources */,
 				2F44596D2465EFB300C3F9A1 /* LaserView.swift in Sources */,
+				2F2789E1248852D300038FBD /* TractorView.swift in Sources */,
 				2F2C197D2484BA4800604F21 /* ExplosionView.swift in Sources */,
 				2F97D88D24621FE8003CA91F /* packets.swift in Sources */,
 				2F97D88724621FBE003CA91F /* PacketAnalyzer.swift in Sources */,
@@ -786,7 +790,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = "2.0-beta";
-				PRODUCT_BUNDLE_IDENTIFIER = training.networkmom.Netrek2;
+				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.Netrek;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -812,7 +816,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = "2.0-beta";
-				PRODUCT_BUNDLE_IDENTIFIER = training.networkmom.Netrek2;
+				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.Netrek;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
