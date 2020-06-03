@@ -33,6 +33,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var clientTypeSent = false
     var soundController: SoundController?
 
+    //set this to true when we first set the preferred team, which we only do once
+    var initialTeamSet = false
 
     @IBOutlet weak var serverMenu: NSMenu!
 
@@ -361,25 +363,60 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     public func updateTeamMenu(mask: UInt8) {
+        var fedEligible = true
+        var romEligible = true
+        var kazariEligible = true
+        var oriEligible = true
         if mask & UInt8(Team.federation.rawValue) != 0 {
             self.selectTeamFederation.indentationLevel = 0
         } else {
             self.selectTeamFederation.indentationLevel = 1
+            fedEligible = false
         }
         if mask & UInt8(Team.roman.rawValue) != 0 {
             self.selectTeamRoman.indentationLevel = 0
         } else {
             self.selectTeamRoman.indentationLevel = 1
+            romEligible = false
         }
         if mask & UInt8(Team.kazari.rawValue) != 0 {
             self.selectTeamKazari.indentationLevel = 0
         } else {
             self.selectTeamKazari.indentationLevel = 1
+            kazariEligible = false
         }
         if mask & UInt8(Team.orion.rawValue) != 0 {
             self.selectTeamOrion.indentationLevel = 0
         } else {
             self.selectTeamOrion.indentationLevel = 1
+            oriEligible = false
+        }
+        if !self.initialTeamSet && mask != 0 {
+            debugPrint("initial team set")
+            if fedEligible {
+                self.preferredTeam = .federation
+                self.initialTeamSet = true
+                self.updateTeamMenu()
+                return
+            }
+            if romEligible {
+                self.preferredTeam = .roman
+                self.initialTeamSet = true
+                self.updateTeamMenu()
+                return
+            }
+            if kazariEligible {
+                self.preferredTeam = .kazari
+                self.initialTeamSet = true
+                self.updateTeamMenu()
+                return
+            }
+            if oriEligible {
+                self.preferredTeam = .orion
+                self.initialTeamSet = true
+                self.updateTeamMenu()
+                return
+            }
         }
     }
     private func updateTeamMenu() {
