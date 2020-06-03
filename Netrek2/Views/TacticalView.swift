@@ -45,17 +45,11 @@ struct TacticalView: View, TacticalOffset {
                 ForEach(self.universe.explodingTorpedoes, id: \.torpedoId) { torpedo in
                     DetonationView(torpedo: torpedo, me: self.universe.players[self.universe.me])
                 }
-                ForEach(self.universe.activeLasers, id: \.laserId) { laser in
-                    laser.status != 0 ?
+                ForEach(self.universe.visibleLasers, id: \.laserId) { laser in
                     LaserView(laser: laser, me: self.universe.players[self.universe.me])
-                    :
-                    LaserView(laser: self.fakeLaser, me: self.universe.players[self.universe.me])
                 }
-                ForEach(self.universe.activePlasmas, id: \.plasmaId) { plasma in
-                    plasma.status != 0 ?
-                        PlasmaView(plasma: plasma, me: self.universe.players[self.universe.me])
-                    :
-                        PlasmaView(plasma: self.fakePlasma, me: self.universe.players[self.universe.me])
+                ForEach(self.universe.visiblePlasmas, id: \.plasmaId) { plasma in
+                    PlasmaView(plasma: plasma, me: self.universe.players[self.universe.me])
                 }
                 Rectangle().opacity(0.01).pointingMouse { event, location in
                     debugPrint("event \(event) location \(location)")

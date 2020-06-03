@@ -48,9 +48,16 @@ class Universe: ObservableObject {
     var activeLasers: [Laser] {
         return lasers.filter({$0.status != 0 } )
     }
+    var visibleLasers: [Laser] {
+        return activeLasers.filter({(abs($0.positionX - players[me].positionX) < NetrekMath.visualDisplayDistance) && abs($0.positionY - players[me].positionY) < NetrekMath.visualDisplayDistance })
+    }
+    
     var plasmas: [Plasma] = []
     var activePlasmas: [Plasma] {
         return plasmas.filter({$0.status != 0 } )
+    }
+    var visiblePlasmas: [Plasma] {
+        return activePlasmas.filter({(abs($0.positionX - players[me].positionX) < NetrekMath.visualDisplayDistance) && abs($0.positionY - players[me].positionY) < NetrekMath.visualDisplayDistance })
     }
 
     var shipInfo: [ShipType:ShipInfo] = [:]
