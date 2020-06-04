@@ -14,7 +14,8 @@ import Network
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     let defaults = UserDefaults.standard
-
+    let preferencesController = PreferencesController(defaults: UserDefaults.standard)
+    
     let help = Help()
     
     var serverFeatures: [String] = []
@@ -90,7 +91,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.disableShipMenu()
 
         // Create the SwiftUI view that provides the window contents.
-        let tacticalView = TacticalView(universe: universe, help: help)
+        let tacticalView = TacticalView(universe: universe, help: help, preferencesController: preferencesController)
         let strategicView = StrategicView(universe: universe)
 
         // Create the window and set the content view. 
@@ -202,7 +203,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
         //No existing preferencesWindows
-        let preferencesView = PreferencesView(keymapController: keymapController)
+        let preferencesView = PreferencesView(keymapController: keymapController, preferencesController: preferencesController)
         let preferencesWindow = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 400, height: 300),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],

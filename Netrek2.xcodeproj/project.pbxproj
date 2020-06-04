@@ -12,6 +12,7 @@
 		2F2789E324897E9500038FBD /* BoundaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E224897E9500038FBD /* BoundaryView.swift */; };
 		2F2789E52489822F00038FBD /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E42489822F00038FBD /* HelpView.swift */; };
 		2F2789E72489861600038FBD /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E62489861600038FBD /* Help.swift */; };
+		2F2789E92489B8DF00038FBD /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E82489B8DF00038FBD /* PreferencesController.swift */; };
 		2F2C197D2484BA4800604F21 /* ExplosionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C197C2484BA4800604F21 /* ExplosionView.swift */; };
 		2F2C197F24857CCB00604F21 /* ManualServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C197E24857CCB00604F21 /* ManualServerView.swift */; };
 		2F2C19812485D80B00604F21 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C19802485D80B00604F21 /* PreferencesView.swift */; };
@@ -135,6 +136,7 @@
 		2F2789E224897E9500038FBD /* BoundaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundaryView.swift; sourceTree = "<group>"; };
 		2F2789E42489822F00038FBD /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		2F2789E62489861600038FBD /* Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
+		2F2789E82489B8DF00038FBD /* PreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
 		2F2C197C2484BA4800604F21 /* ExplosionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplosionView.swift; sourceTree = "<group>"; };
 		2F2C197E24857CCB00604F21 /* ManualServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualServerView.swift; sourceTree = "<group>"; };
 		2F2C19802485D80B00604F21 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 				2F97D8D1246234A7003CA91F /* LoginInformationController.swift */,
 				2F97D8D7246235C9003CA91F /* KeychainService.swift */,
 				2F45A7FB24647A4C00AA2A3F /* KeymapController.swift */,
+				2F2789E82489B8DF00038FBD /* PreferencesController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F2789E92489B8DF00038FBD /* PreferencesController.swift in Sources */,
 				2F2789E72489861600038FBD /* Help.swift in Sources */,
 				2F44288D24635BDA0051D7BE /* NetrekMath.swift in Sources */,
 				2F97D8AC24622D36003CA91F /* Player.swift in Sources */,

@@ -39,11 +39,13 @@ class ActivePreference: ObservableObject {
 struct PreferencesView: View {
 
     @ObservedObject var activePreference = ActivePreference()
+    @State var showHints = true
     
     var keymapController: KeymapController
-        
+    @ObservedObject var preferencesController: PreferencesController
+    
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             HStack {
                 VStack {
                     Text("Control")
@@ -70,13 +72,15 @@ struct PreferencesView: View {
                 self.keymapController.resetKeymaps()
                 self.activePreference.readCommand()
             }
+            Toggle("Show Hints",isOn: $preferencesController.showHints)
+            
         }//VStack
         .padding(8)
     }//var body
 }
 
-struct PreferencesView_Previews: PreviewProvider {
+/*struct PreferencesView_Previews: PreviewProvider {
     static var previews: some View {
-        PreferencesView(keymapController: KeymapController())
+        PreferencesView(keymapController: KeymapController(), preferencesController: PreferencesController())
     }
-}
+}*/

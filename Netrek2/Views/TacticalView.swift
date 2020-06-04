@@ -15,6 +15,7 @@ struct TacticalView: View, TacticalOffset {
     //@EnvironmentObject var universe: Universe
     @ObservedObject var universe: Universe
     @ObservedObject var help: Help
+    @ObservedObject var preferencesController: PreferencesController
     @State var pt: CGPoint = CGPoint() {
         didSet {
             debugPrint("point \(pt)")
@@ -30,7 +31,7 @@ struct TacticalView: View, TacticalOffset {
             ZStack {
                 ZStack { //more than 10 items in function builder}
                     Rectangle().colorInvert()
-                    HelpView(help: self.help)
+                    HelpView(help: self.help,preferencesController: self.preferencesController)
                     BoundaryView(me: self.universe.players[self.universe.me])
                     ForEach(self.universe.visiblePlanets, id: \.planetId) { planet in
                         PlanetView(planet: planet, me: self.universe.players[self.universe.me])

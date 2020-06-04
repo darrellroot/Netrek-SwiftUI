@@ -38,6 +38,7 @@ class Help: ObservableObject {
         """
         To play:
         1) Choose "Select Server -> [server]"
+            (pickled.netrek.org is a good beginner server)
         2) Choose "Launch Ship -> cruiser"
 
         Left mouse button fires torpedoes.

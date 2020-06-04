@@ -10,10 +10,12 @@ import SwiftUI
 
 struct HelpView: View {
     @ObservedObject var help: Help
+    @ObservedObject var preferencesController: PreferencesController
     
     var body: some View {
-        Text(help.currentTip)
-        .font(.largeTitle)
+        preferencesController.showHints ? Text(help.currentTip).font(.largeTitle)
+            : Text("")
+        
     }
 }
 
