@@ -34,7 +34,7 @@ struct MessagesView: View {
             }
             
             ForEach (universe.activeMessages, id: \.self) { message in
-                Text(message).foregroundColor(.black)
+                Text(message)
             }
             Spacer()
         }.padding(10)

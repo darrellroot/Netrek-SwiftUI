@@ -14,6 +14,7 @@ struct TacticalView: View, TacticalOffset {
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
     //@EnvironmentObject var universe: Universe
     @ObservedObject var universe: Universe
+    @ObservedObject var help: Help
     @State var pt: CGPoint = CGPoint() {
         didSet {
             debugPrint("point \(pt)")
@@ -28,7 +29,8 @@ struct TacticalView: View, TacticalOffset {
         return GeometryReader { geo in
             ZStack {
                 ZStack { //more than 10 items in function builder}
-                    Rectangle()
+                    Rectangle().colorInvert()
+                    HelpView(help: self.help)
                     BoundaryView(me: self.universe.players[self.universe.me])
                     ForEach(self.universe.visiblePlanets, id: \.planetId) { planet in
                         PlanetView(planet: planet, me: self.universe.players[self.universe.me])

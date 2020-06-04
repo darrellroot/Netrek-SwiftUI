@@ -16,7 +16,7 @@ struct StrategicView: View {
     var body: some View {
         return GeometryReader { geo in
             ZStack {
-                Rectangle()
+                Rectangle().colorInvert()
                 ForEach(0 ..< self.universe.maxPlanets) { planetId in
                     PlanetStrategicView(planet: self.universe.planets[planetId])
                 }

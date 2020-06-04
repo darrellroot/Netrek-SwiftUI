@@ -15,6 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     let defaults = UserDefaults.standard
 
+    let help = Help()
+    
     var serverFeatures: [String] = []
     var clientFeatures: [String] = ["FEATURE_PACKETS","SHIP_CAP","SP_GENERIC_32","TIPS"]
 
@@ -67,6 +69,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
+        //Always run in dark mode
+        NSApp.appearance = NSAppearance(named: .darkAqua)
+
         self.soundController = SoundController()
         self.keymapController = KeymapController()
 
@@ -84,7 +90,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.disableShipMenu()
 
         // Create the SwiftUI view that provides the window contents.
-        let tacticalView = TacticalView(universe: universe)
+        let tacticalView = TacticalView(universe: universe, help: help)
         let strategicView = StrategicView(universe: universe)
 
         // Create the window and set the content view. 
@@ -167,7 +173,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     public func metaserverUpdated() {
-        return // for testing blank menu only
+        //return // for testing blank menu only
         debugPrint("AppDelegate.metaserverUpdated")
         if let metaServer = metaServer {
             universe.gotMessage("Server list updated from metaserver")
@@ -530,6 +536,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         case .noServerSelected:
             self.resetConnection()
+            help.nextTip()
             universe.reset()
             enableServerMenu()
             disableShipMenu()
@@ -540,6 +547,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             break
 
         case .serverSelected:
+            help.nextTip()
             disableShipMenu()
             disableServerMenu()
             self.gameState = newState
@@ -548,6 +556,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             break
 
         case .serverConnected:
+            help.nextTip()
             disableShipMenu()
             disableServerMenu()
             self.clientTypeSent = false
@@ -594,14 +603,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self.newGameState(.noServerSelected)
             }
         case .loginAccepted:
-        self.enableShipMenu()
-        self.disableServerMenu()
-        /*DispatchQueue.main.async {
-            self.playerListViewController?.view.needsDisplay = true
-        }*/
-        self.gameState = newState
+            help.nextTip()
+            self.enableShipMenu()
+            self.disableServerMenu()
+            /*DispatchQueue.main.async {
+                self.playerListViewController?.view.needsDisplay = true
+            }*/
+            self.gameState = newState
 
         case .gameActive:
+            help.noTip()
             self.enableShipMenu()
             self.disableServerMenu()
             /*DispatchQueue.main.async {
