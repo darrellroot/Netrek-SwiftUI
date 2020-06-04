@@ -70,6 +70,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.soundController = SoundController()
         self.keymapController = KeymapController()
 
+        setupBlankMenu()
         metaServer = MetaServer(hostname: "metaserver.netrek.org", port: 3521)
         if let metaServer = metaServer {
             metaServer.update()
@@ -127,6 +128,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         communicationsWindow.makeKeyAndOrderFront(nil)
         communicationsWindow.standardWindowButton(NSWindow.ButtonType.closeButton)?.isHidden = true
     }
+    
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
@@ -150,7 +152,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             metaServer.update()
         }
     }
+    
+    func setupBlankMenu() {
+        serverMenu.removeAllItems()
+        for (index,server) in WELLKNOWNSERVERS.enumerated() {
+            let newItem = NSMenuItem(title: server, action: #selector(self.selectWellKnownServer), keyEquivalent: "")
+            newItem.tag = index
+            serverMenu.addItem(newItem)
+        }
+        let separator = NSMenuItem.separator()
+        serverMenu.addItem(separator)
+        let customItem = NSMenuItem(title: "Manually choose server by hostname", action: #selector(self.manualServer), keyEquivalent: "")
+        serverMenu.addItem(customItem)
+    }
+
     public func metaserverUpdated() {
+        return // for testing blank menu only
         debugPrint("AppDelegate.metaserverUpdated")
         if let metaServer = metaServer {
             universe.gotMessage("Server list updated from metaserver")
@@ -255,6 +272,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
            } else {
                debugPrint("AppDelegate failed to start reader")
            }
+    }
+    
+    @objc func selectWellKnownServer(sender: NSMenuItem) {
+        let tag = sender.tag
+        if let server = WELLKNOWNSERVERS[safe: tag] {
+            print("starting game server \(server)")
+           if reader != nil {
+               self.resetConnection()
+           }
+           if let reader = TcpReader(hostname: server, port: WELLKNOWNPORT, delegate: self) {
+               self.reader = reader
+               self.newGameState(.serverSelected)
+
+           } else {
+               debugPrint("AppDelegate failed to start reader")
+           }
+       }
     }
 
     @objc func selectServer(sender: NSMenuItem) {

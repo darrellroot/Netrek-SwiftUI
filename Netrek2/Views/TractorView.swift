@@ -19,9 +19,9 @@ struct TractorView: View, TacticalOffset {
                 path.move(to: CGPoint(x: 0, y: 0))
                 path.addLine(to: CGPoint(x: self.xOffset(positionX: self.target.positionX, myPositionX: self.me.positionX, tacticalWidth: geo.size.width),y: self.yOffset(positionY: self.target.positionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height)))
             }.offset(x: geo.size.width / 2, y: geo.size.height / 2)
-                .stroke(Color.blue, style: StrokeStyle(lineWidth: self.playerWidth(screenWidth: geo.size.width * 1.1),dash: [self.playerWidth(screenWidth: geo.size.width * 1.1)], dashPhase: self.phase))
+                .stroke(self.me.pressor ? Color.blue : Color.green, style: StrokeStyle(lineWidth: self.playerWidth(screenWidth: geo.size.width * 1.1),dash: [self.playerWidth(screenWidth: geo.size.width * 1.1)], dashPhase: self.phase))
                 .opacity(0.5)
-            .onAppear { self.phase = self.playerWidth(screenWidth: geo.size.width * 1.1) }
+                .onAppear { self.phase = self.me.pressor ? self.playerWidth(screenWidth: geo.size.width * 1.1) : self.playerWidth(screenWidth: geo.size.width * -1.1) }
             .animation(Animation.linear.repeatForever(autoreverses: false))
         }
     }

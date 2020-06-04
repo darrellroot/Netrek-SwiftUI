@@ -19,6 +19,11 @@ let MAXPLAYERS = 32
 let SOCKVERSION: UInt8 = 4
 let UDPVERSION: UInt8 = 10
 
+let WELLKNOWNSERVERS = [
+    "pickled.netrek.org",
+    "continuum.us.netrek.org"
+]
+let WELLKNOWNPORT = 2592
 
 let PACKET_SIZES: [Int] = [
     0,        // NULL

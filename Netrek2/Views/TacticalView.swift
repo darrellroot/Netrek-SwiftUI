@@ -27,13 +27,16 @@ struct TacticalView: View, TacticalOffset {
     var body: some View {
         return GeometryReader { geo in
             ZStack {
-                Rectangle()
-                ForEach(self.universe.visiblePlanets, id: \.planetId) { planet in
-                    PlanetView(planet: planet, me: self.universe.players[self.universe.me])
-                }
-                ForEach(self.universe.visiblePlayers, id: \.playerId) { player in
-                        PlayerView(player: player, me: self.universe.players[self.universe.me])
-                 }
+                ZStack { //more than 10 items in function builder}
+                    Rectangle()
+                    BoundaryView(me: self.universe.players[self.universe.me])
+                    ForEach(self.universe.visiblePlanets, id: \.planetId) { planet in
+                        PlanetView(planet: planet, me: self.universe.players[self.universe.me])
+                    }
+                    ForEach(self.universe.visiblePlayers, id: \.playerId) { player in
+                            PlayerView(player: player, me: self.universe.players[self.universe.me])
+                     }
+                }//extra Zstack for 10 limit
                 ForEach(self.universe.visibleTractors, id: \.playerId) { target in
                         TractorView(target: target, me: self.universe.players[self.universe.me])
                  }
