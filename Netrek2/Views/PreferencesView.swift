@@ -72,7 +72,7 @@ struct PreferencesView: View {
                 self.keymapController.resetKeymaps()
                 self.activePreference.readCommand()
             }
-            Toggle("Show Hints",isOn: $preferencesController.showHints)
+            Toggle("Hide Hints",isOn: $preferencesController.hideHints)
             
         }//VStack
         .padding(8)

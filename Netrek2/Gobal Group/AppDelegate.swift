@@ -96,11 +96,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Create the window and set the content view. 
         tacticalWindow = NSCommandedWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
-            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+            contentRect: NSRect(x: 0, y: 800, width: 500, height: 500),
+            styleMask: [.titled, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)
-        tacticalWindow.center()
-        tacticalWindow.setFrameAutosaveName("Tactical")
+        //tacticalWindow.center()
+        tacticalWindow.setFrameAutosaveName("Tactical5")
         tacticalWindow.contentView = NSHostingView(rootView: tacticalView)
         tacticalWindow.standardWindowButton(NSWindow.ButtonType.closeButton)?.isHidden = true
         
@@ -110,11 +110,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         tacticalWindow.makeKeyAndOrderFront(nil)
         
         strategicWindow = NSCommandedWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
-            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+            contentRect: NSRect(x: 500, y: 800, width: 500, height: 500),
+            styleMask: [.titled, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)
-        strategicWindow.center()
-        strategicWindow.setFrameAutosaveName("Strategic")
+        //strategicWindow.center()
+        strategicWindow.setFrameAutosaveName("Strategic5")
         
         //The title name impacts the keypress location algorithm, see NSCommmandedWindow
         strategicWindow.title = "Strategic"
@@ -125,11 +125,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let communicationsView = CommunicationsView(universe: universe)
         communicationsWindow = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 7000, height: 300),
-            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+            contentRect: NSRect(x: 0, y: 320, width: 1000, height: 300),
+            styleMask: [.titled, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)
-        communicationsWindow.center()
-        communicationsWindow.setFrameAutosaveName("Communications")
+        //communicationsWindow.center()
+        communicationsWindow.setFrameAutosaveName("Communications5")
         communicationsWindow.title = "Communications"
         communicationsWindow.contentView = NSHostingView(rootView: communicationsView)
         communicationsWindow.makeKeyAndOrderFront(nil)

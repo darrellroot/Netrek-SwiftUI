@@ -12,18 +12,18 @@ import SwiftUI
 class PreferencesController: ObservableObject {
     //let appDelegate = NSApplication.shared.delegate as! AppDelegate
 
-    let showHintsKey = "showHints"
+    let hideHintsKey = "showHints"
     let defaults: UserDefaults
-    @Published var showHints = true {
+    @Published var hideHints = false {
         didSet {
-            defaults.set(showHints, forKey: showHintsKey)
-            debugPrint("set userdefaults showHints \(showHints)")
+            defaults.set(hideHints, forKey: hideHintsKey)
+            debugPrint("set userdefaults hideHints \(hideHints)")
         }
     }
     
     init(defaults: UserDefaults) {
         self.defaults = defaults
-        self.showHints = defaults.bool(forKey: showHintsKey)
+        self.hideHints = defaults.bool(forKey: hideHintsKey)
     }
     /*func setShowHints(_ newValue: Bool) {
         self.showHints = newValue

@@ -13,7 +13,7 @@ struct HelpView: View {
     @ObservedObject var preferencesController: PreferencesController
     
     var body: some View {
-        preferencesController.showHints ? Text(help.currentTip).font(.largeTitle)
+        !preferencesController.hideHints ? Text(help.currentTip).font(.largeTitle)
             : Text("")
         
     }
