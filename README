@@ -8,7 +8,7 @@ Netrek is the original Internet team game, originally implemented in C in 1989 b
 
 Netrek is a client-server application.  As of April 2019, Netrek servers remain implemented in C and run on UNIX/Linux computers.  There are many Netrek clients in several languages, including C, Java, Python, Objective C and even HTML5!
 
-This project is a Netrek client reimplementation using Swift for MacOS.  It does not use any source code from prior implementations, but (of course) uses the original Netrek network API to talk to the remote Netrek server over TCP.  Because we do not use any prior source code, we are going to switch from the historic copyright.h and copyright2.h licenses to the standard MIT license.  The licenses are equivalent (granting full programmer permission, but with an "AS IS" legal disclaimer).
+This project is a Netrek client reimplementation using Swift for MacOS.  It does not use any source code from prior implementations, but (of course) uses the original Netrek network API to talk to the remote Netrek server over TCP.  Because we do not use any prior source code, we switched from the historic copyright.h and copyright2.h licenses to the standard MIT license.  The licenses are equivalent (granting full programmer permission, but with an "AS IS" legal disclaimer).
 
 This client uses SwiftUI for graphics.  For an older (no longer supported) MacOS 10.14-compatible version using SpriteKit, check out https://github.com/darrellroot/SwiftNetrek or download the older binary from http://networkmom.net/netrek/
 
