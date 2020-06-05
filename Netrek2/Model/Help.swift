@@ -40,6 +40,8 @@ class Help: ObservableObject {
         1) Choose "Select Server -> [server]"
             (pickled.netrek.org is a good beginner server)
         2) Choose "Launch Ship -> cruiser"
+        
+        If that doesn't work, you may need to switch your "preferred team"
 
         Left mouse button fires torpedoes.
         Right mouse button changes direction.
@@ -62,6 +64,79 @@ class Help: ObservableObject {
         """
         Fuel is your friend.
         Conserve your fuel!
+        """
+    ,
+        """
+        a++ means that player a is carrying armies
+        """
+    ,
+        """
+        You can turn off these hints using the Netrek -> Preferences menu
+        """
+    ,
+        """
+        You can map different controls to different commands using the Netrek -> Preferences menu
+        """
+    ,
+        """
+        Agricultural planets create armies faster
+        """
+        ,
+        """
+        When orbiting a planet, use z to beam up armies and x to beam down armies.  You can carry 2 armies per kill.
+        """
+        ,
+        """
+        The object of the game is to capture all enemy planets.
+        """
+        ,
+        """
+        T activates your tractor beam
+        y activates your pressor beam
+        """
+        ,
+        """
+        When switching windows, you must press the left mouse button to set the "window focus".
+        """
+        ,
+        """
+        l locks onto a planet for direction and (once you get there) orbit.
+        """
+        ,
+        """
+        If you are going speed 0-2 over a planet, you can hit o to enter orbit.
+        """
+        ,
+        """
+        Netrek was originally implemented around 1990.  It is the original multiplayer Internet game.
+        """
+        ,
+        """
+        Hitting R will stop your ship, lower your shields, and improve your repair speed.
+        """
+        ,
+        """
+        Orbit a planet with fuel to refuel faster
+        """
+        ,
+        """
+        Your ship repairs whenever shields are down.
+        """
+        ,
+        """
+        Orbit a planet with repair facilities to repair quickly
+        """
+        ,
+        """
+        Netrek is a team game.  Use the messages window to play as a team.
+        """
+        ,
+        """
+        If "launch ship" does not work, check the communications window.  You may need to switch teams.
+        """
+        ,
+        """
+        Hit i in the tactical or strategic windows near a planet to show information about the planet in the communications window.
         """
     ]
     

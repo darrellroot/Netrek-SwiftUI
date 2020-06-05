@@ -73,8 +73,8 @@ class Player: CustomStringConvertible, ObservableObject {
             self.updateImage()
         }
     }
-    @Published private(set) var positionX: Int = 0
-    @Published private(set) var positionY: Int = 0
+    @Published private(set) var positionX: Int = NetrekMath.galacticSize / 2
+    @Published private(set) var positionY: Int = NetrekMath.galacticSize / 2
     private(set) var me: Bool = false
     private(set) var name: String = "nobody"
     //
