@@ -1,8 +1,11 @@
-Netrek is the _original_ Internet team game.  Originally implemented in 1989, Netrek allows 16 players to battle for control of the galaxy.  Netrek is the ancestor of most TCP/IP based Internet games today.
+Netrek is the _original_ Internet team game.  Originally implemented in 1989, Netrek allows 16 players to battle 
+for control of the galaxy.  Netrek is the ancestor of most TCP/IP based Internet games today.
 
-Netrek uses a client-server architecture.  This is an open-source Netrek client written in Swift and using SwiftUI for the graphical interface.
+Netrek uses a client-server architecture.  This is an open-source Netrek client written in Swift and using 
+SwiftUI for the graphical interface.
 
-This client requires MacOS 10.15 (Catalina) to run.  A binary is available for free in the MacOS App Store.  As of June 5th 2020, the current version is 2.0 build 10.
+This client requires MacOS 10.15 (Catalina) to run.  A binary is available for free in the MacOS App Store.
+As of June 5th 2020, the current version is 2.0 build 10.
 
 For the older MacOS-10.14-compatible version (using SpriteKit), check out https://github.com/darrellroot/SwiftNetrek.
 
