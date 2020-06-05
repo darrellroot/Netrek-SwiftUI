@@ -10,11 +10,11 @@
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
-                            <menuItem title="Netrek2" id="1Xt-HY-uBw">
+                            <menuItem title="Netrek" id="1Xt-HY-uBw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Netrek2" systemMenu="apple" id="uQy-DD-JDr">
+                                <menu key="submenu" title="Netrek" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About Netrek2" id="5kV-Vb-QxS">
+                                        <menuItem title="About Netrek" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
@@ -32,7 +32,7 @@
                                             <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                                        <menuItem title="Hide Netrek2" keyEquivalent="h" id="Olw-nP-bQN">
+                                        <menuItem title="Hide Netrek" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
                                                 <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
                                             </connections>
@@ -50,7 +50,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                                        <menuItem title="Quit Netrek2" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="Quit Netrek" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -499,7 +499,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="Netrek2 Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                        <menuItem title="Netrek Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
                                             </connections>
@@ -513,7 +513,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Netrek2" customModuleProvider="target">
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Netrek" customModuleProvider="target">
                     <connections>
                         <outlet property="selectShipAssault" destination="a3Y-32-U0w" id="znu-SN-FH0"/>
                         <outlet property="selectShipBattlecruiser" destination="f4M-rp-Ctm" id="ANc-aF-77U"/>

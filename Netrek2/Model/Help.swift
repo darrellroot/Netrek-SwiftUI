@@ -138,6 +138,10 @@ class Help: ObservableObject {
         """
         Hit i in the tactical or strategic windows near a planet to show information about the planet in the communications window.
         """
+        ,
+        """
+        Join the "netrek-forever" Google Group to receive notifications of recommended gametimes.
+        """
     ]
     
 }

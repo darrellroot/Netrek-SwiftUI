@@ -159,7 +159,7 @@
 		2F45A7F92464763200AA2A3F /* PointingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointingView.swift; sourceTree = "<group>"; };
 		2F45A7FB24647A4C00AA2A3F /* KeymapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeymapController.swift; sourceTree = "<group>"; };
 		2F45A7FE246480EE00AA2A3F /* NSCommandedWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCommandedWindow.swift; sourceTree = "<group>"; };
-		2F97D84A24620CCF003CA91F /* Netrek2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netrek2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F97D84A24620CCF003CA91F /* Netrek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netrek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F97D84D24620CCF003CA91F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F97D85424620CD0003CA91F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2F97D85724620CD0003CA91F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -258,7 +258,7 @@
 		2F97D84B24620CCF003CA91F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2F97D84A24620CCF003CA91F /* Netrek2.app */,
+				2F97D84A24620CCF003CA91F /* Netrek.app */,
 				2F97D85F24620CD0003CA91F /* Netrek2Tests.xctest */,
 			);
 			name = Products;
@@ -434,9 +434,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2F97D84924620CCF003CA91F /* Netrek2 */ = {
+		2F97D84924620CCF003CA91F /* Netrek */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2F97D86824620CD0003CA91F /* Build configuration list for PBXNativeTarget "Netrek2" */;
+			buildConfigurationList = 2F97D86824620CD0003CA91F /* Build configuration list for PBXNativeTarget "Netrek" */;
 			buildPhases = (
 				2F97D84624620CCF003CA91F /* Sources */,
 				2F97D84724620CCF003CA91F /* Frameworks */,
@@ -446,9 +446,9 @@
 			);
 			dependencies = (
 			);
-			name = Netrek2;
+			name = Netrek;
 			productName = Netrek2;
-			productReference = 2F97D84A24620CCF003CA91F /* Netrek2.app */;
+			productReference = 2F97D84A24620CCF003CA91F /* Netrek.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2F97D85E24620CD0003CA91F /* Netrek2Tests */ = {
@@ -502,7 +502,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2F97D84924620CCF003CA91F /* Netrek2 */,
+				2F97D84924620CCF003CA91F /* Netrek */,
 				2F97D85E24620CD0003CA91F /* Netrek2Tests */,
 			);
 		};
@@ -656,7 +656,7 @@
 /* Begin PBXTargetDependency section */
 		2F97D86124620CD0003CA91F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2F97D84924620CCF003CA91F /* Netrek2 */;
+			target = 2F97D84924620CCF003CA91F /* Netrek */;
 			targetProxy = 2F97D86024620CD0003CA91F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -794,7 +794,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Netrek2/Preview Content\"";
 				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -805,8 +805,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = "2.0-beta";
-				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.Netrek;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.netrek;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -820,7 +820,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Netrek2/Preview Content\"";
 				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -831,8 +831,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = "2.0-beta";
-				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.Netrek;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.netrek;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -894,7 +894,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2F97D86824620CD0003CA91F /* Build configuration list for PBXNativeTarget "Netrek2" */ = {
+		2F97D86824620CD0003CA91F /* Build configuration list for PBXNativeTarget "Netrek" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2F97D86924620CD0003CA91F /* Debug */,

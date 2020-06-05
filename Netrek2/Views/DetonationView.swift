@@ -18,7 +18,7 @@ struct DetonationView: View, TacticalOffset {
         return GeometryReader { geo in
             Circle()
                 .scale(self.scale)
-                .fill(Color.orange)
+                .fill(Color.red)
                 .opacity(self.opacity)
                 .frame(width: self.torpedoWidth(screenWidth: geo.size.width * 1.1), height: self.torpedoWidth(screenWidth: geo.size.height * 1.1 ))
             .offset(x: self.xOffset(positionX: self.torpedo.positionX, myPositionX: self.me.positionX,tacticalWidth: geo.size.width), y: self.yOffset(positionY: self.torpedo.positionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height))
