@@ -1,3 +1,15 @@
-This is a very early version of a Swift Netrek Client using SwiftUI for graphics.  As of May 9th 2020 it is not ready for prime time.  I'd be very happy to get suggestions to improve SwiftUI performance.
+# SwiftNetrek 2.0 build 10
 
-Feel free to contact me via email at feedback AT networkmom.net
+SwiftNetrek - 5 June 2020
+
+If you just want to grab a MacOS 10.15 or later binary to play Netrek, download "Netrek" from the MacOS App Store.  Free download.
+
+Netrek is the original Internet team game, originally implemented in C in 1989 by Kevin Smith and Scott Silvey for UNIX Workstations running X-windows.  Netrek was based on XTrek, written by Chris Guthrie in 1986.  XTrek used XWindow remote displays to allow one host to run several clients on a LAN.  Netrek was open sourced with very lenient copyright notices.
+
+Netrek is a client-server application.  As of April 2019, Netrek servers remain implemented in C and run on UNIX/Linux computers.  There are many Netrek clients in several languages, including C, Java, Python, Objective C and even HTML5!
+
+This project is a Netrek client reimplementation using Swift for MacOS.  It does not use any source code from prior implementations, but (of course) uses the original Netrek network API to talk to the remote Netrek server over TCP.  Because we do not use any prior source code, we switched from the historic copyright.h and copyright2.h licenses to the standard MIT license.  The licenses are equivalent (granting full programmer permission, but with an "AS IS" legal disclaimer).
+
+This client uses SwiftUI for graphics.  For an older (no longer supported) MacOS 10.14-compatible version using SpriteKit, check out https://github.com/darrellroot/SwiftNetrek or download the older binary from http://networkmom.net/netrek/
+
+HELP BUNDLE NOTE: Do not directly modify files under Netrek/Resources/Netrek.help.  That directory is built from Netrek.pchelp by the HelpCrafter application.
