@@ -1,13 +1,12 @@
 //
 //  TacticalView.swift
-//  Netrek2
+//  NetrekIPad
 //
-//  Created by Darrell Root on 5/5/20.
+//  Created by Darrell Root on 6/7/20.
 //  Copyright © 2020 Darrell Root. All rights reserved.
 //
 
 import SwiftUI
-
 
 struct TacticalView: View, TacticalOffset {
 
@@ -20,7 +19,7 @@ struct TacticalView: View, TacticalOffset {
     //@EnvironmentObject var universe: Universe
     @ObservedObject var universe: Universe
     @ObservedObject var help: Help
-    @ObservedObject var preferencesController: PreferencesController
+    //@ObservedObject var preferencesController: PreferencesController
     @State var pt: CGPoint = CGPoint() {
         didSet {
             debugPrint("point \(pt)")
@@ -36,7 +35,7 @@ struct TacticalView: View, TacticalOffset {
             ZStack {
                 ZStack { //more than 10 items in function builder}
                     Rectangle().colorInvert()
-                    HelpView(help: self.help,preferencesController: self.preferencesController)
+                    HelpView(help: self.help)
                     BoundaryView(me: self.universe.players[self.universe.me])
                     ForEach(self.universe.visiblePlanets, id: \.planetId) { planet in
                         PlanetView(planet: planet, me: self.universe.players[self.universe.me])
@@ -66,8 +65,9 @@ struct TacticalView: View, TacticalOffset {
                 ForEach(self.universe.visiblePlasmas, id: \.plasmaId) { plasma in
                     PlasmaView(plasma: plasma, me: self.universe.players[self.universe.me])
                 }
-                Rectangle().opacity(0.01).pointingMouse { event, location in
-                    debugPrint("event \(event) location \(location)")
+                //Rectangle().opacity(0.01).pointingMouse { event, location in
+                Rectangle().opacity(0.01)
+                    /*debugPrint("event \(event) location \(location)")
                     switch event.type {
                         
                     case .leftMouseDown:
@@ -92,7 +92,7 @@ struct TacticalView: View, TacticalOffset {
                     default:
                         break
                     }
-                }
+                }*/
 
                 
             }
@@ -104,7 +104,7 @@ struct TacticalView: View, TacticalOffset {
                 }
             )*/
     }
-    func mouseDown(control: Control, eventLocation: NSPoint, size: CGSize) {
+    /*func mouseDown(control: Control, eventLocation: NSPoint, size: CGSize) {
         let meX = universe.players[universe.me].positionX
         let meY = universe.players[universe.me].positionY
         let diffX = Int(eventLocation.x) - (Int(size.width) / 2)
@@ -115,9 +115,9 @@ struct TacticalView: View, TacticalOffset {
         let finalY = meY - deltaY
         let location = CGPoint(x: finalX, y: finalY)
         self.appDelegate.keymapController.execute(control,location: location)
-    }
+    }*/
     
-    func keyDown(with event: NSEvent, location: CGPoint) {
+    /*func keyDown(with event: NSEvent, location: CGPoint) {
         debugPrint("TacticalScene.keyDown characters \(String(describing: event.characters))")
         guard let keymap = appDelegate.keymapController else {
             debugPrint("TacticalScene.keyDown unable to find keymapController")
@@ -282,7 +282,7 @@ struct TacticalView: View, TacticalOffset {
         default:
             debugPrint("TacticalScene.TacticalView.keyDown unknown key \(String(describing: event.characters))")
         }
-    }
+    }*/
 
 }
 //.offset(x: CGFloat(Int.random(in: -200 ..< 200)), y: CGFloat(Int.random(in: -200 ..< 200)))

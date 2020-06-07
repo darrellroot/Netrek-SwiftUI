@@ -57,6 +57,18 @@
 		2F213112248D565E001D3B83 /* EligibleTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F213111248D565E001D3B83 /* EligibleTeams.swift */; };
 		2F213114248D6D63001D3B83 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F213113248D6D63001D3B83 /* ContentView.swift */; };
 		2F213116248D6EEC001D3B83 /* SelectTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F213115248D6EEC001D3B83 /* SelectTeamView.swift */; };
+		2F213118248D8933001D3B83 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E42489822F00038FBD /* HelpView.swift */; };
+		2F213119248D893E001D3B83 /* BoundaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E224897E9500038FBD /* BoundaryView.swift */; };
+		2F21311A248D8949001D3B83 /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44288B2463555A0051D7BE /* PlanetView.swift */; };
+		2F21311B248D8954001D3B83 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44289524639C840051D7BE /* PlayerView.swift */; };
+		2F21311C248D8975001D3B83 /* TractorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E0248852D300038FBD /* TractorView.swift */; };
+		2F21311D248D897D001D3B83 /* ExplosionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C197C2484BA4800604F21 /* ExplosionView.swift */; };
+		2F21311E248D8980001D3B83 /* DetonationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789DE24872C8900038FBD /* DetonationView.swift */; };
+		2F21311F248D8988001D3B83 /* TorpedoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44596A2464B45E00C3F9A1 /* TorpedoView.swift */; };
+		2F213120248D898B001D3B83 /* PlasmaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44596E2466324100C3F9A1 /* PlasmaView.swift */; };
+		2F213121248D898E001D3B83 /* LaserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44596C2465EFB300C3F9A1 /* LaserView.swift */; };
+		2F213122248D89B9001D3B83 /* TacticalOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44288F24636B690051D7BE /* TacticalOffset.swift */; };
+		2F213125248D8AE9001D3B83 /* TacticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F213124248D8AE9001D3B83 /* TacticalView.swift */; };
 		2F2789DF24872C8900038FBD /* DetonationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789DE24872C8900038FBD /* DetonationView.swift */; };
 		2F2789E1248852D300038FBD /* TractorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E0248852D300038FBD /* TractorView.swift */; };
 		2F2789E324897E9500038FBD /* BoundaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E224897E9500038FBD /* BoundaryView.swift */; };
@@ -202,6 +214,7 @@
 		2F213111248D565E001D3B83 /* EligibleTeams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EligibleTeams.swift; sourceTree = "<group>"; };
 		2F213113248D6D63001D3B83 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2F213115248D6EEC001D3B83 /* SelectTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTeamView.swift; sourceTree = "<group>"; };
+		2F213124248D8AE9001D3B83 /* TacticalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacticalView.swift; sourceTree = "<group>"; };
 		2F2789DE24872C8900038FBD /* DetonationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetonationView.swift; sourceTree = "<group>"; };
 		2F2789E0248852D300038FBD /* TractorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TractorView.swift; sourceTree = "<group>"; };
 		2F2789E224897E9500038FBD /* BoundaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundaryView.swift; sourceTree = "<group>"; };
@@ -353,6 +366,7 @@
 		2F2130E3248C108E001D3B83 /* Global Group */ = {
 			isa = PBXGroup;
 			children = (
+				2F213123248D8AC9001D3B83 /* Views */,
 				2F213110248D5647001D3B83 /* Model */,
 				2F2130C2248C0F87001D3B83 /* AppDelegate.swift */,
 				2F2130C4248C0F87001D3B83 /* SceneDelegate.swift */,
@@ -367,6 +381,7 @@
 				2F2130E5248C10E8001D3B83 /* PickServerView.swift */,
 				2F213113248D6D63001D3B83 /* ContentView.swift */,
 				2F213115248D6EEC001D3B83 /* SelectTeamView.swift */,
+				2F213124248D8AE9001D3B83 /* TacticalView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -386,6 +401,13 @@
 				2F213111248D565E001D3B83 /* EligibleTeams.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2F213123248D8AC9001D3B83 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		2F2C1AF52487183E00604F21 /* Resources */ = {
@@ -775,11 +797,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F213119248D893E001D3B83 /* BoundaryView.swift in Sources */,
 				2F21310F248D5526001D3B83 /* Help.swift in Sources */,
 				2F2130F2248CC15A001D3B83 /* PlayerStatus.swift in Sources */,
 				2F213109248D5322001D3B83 /* UserDefaults-extensions.swift in Sources */,
 				2F2130FB248CC317001D3B83 /* SoundController.swift in Sources */,
 				2F2130EA248CBE4D001D3B83 /* Universe.swift in Sources */,
+				2F21311C248D8975001D3B83 /* TractorView.swift in Sources */,
 				2F213108248D5304001D3B83 /* LoginDefault.swift in Sources */,
 				2F21310B248D53BD001D3B83 /* MakePacket.swift in Sources */,
 				2F213107248D524C001D3B83 /* PreferencesController.swift in Sources */,
@@ -788,13 +812,18 @@
 				2F213105248D522D001D3B83 /* LoginInformationController.swift in Sources */,
 				2F213114248D6D63001D3B83 /* ContentView.swift in Sources */,
 				2F21310A248D533F001D3B83 /* Globals.swift in Sources */,
+				2F213118248D8933001D3B83 /* HelpView.swift in Sources */,
 				2F2130FA248CC2C3001D3B83 /* ShipInfo.swift in Sources */,
 				2F2130F8248CC260001D3B83 /* Collection-extensions.swift in Sources */,
 				2F21310D248D53CC001D3B83 /* PacketAnalyzer.swift in Sources */,
 				2F213106248D5234001D3B83 /* KeychainService.swift in Sources */,
+				2F213120248D898B001D3B83 /* PlasmaView.swift in Sources */,
 				2F2130F1248CC0ED001D3B83 /* Team.swift in Sources */,
+				2F21311F248D8988001D3B83 /* TorpedoView.swift in Sources */,
 				2F21310E248D5479001D3B83 /* Data-extensions.swift in Sources */,
+				2F213121248D898E001D3B83 /* LaserView.swift in Sources */,
 				2F213116248D6EEC001D3B83 /* SelectTeamView.swift in Sources */,
+				2F21311E248D8980001D3B83 /* DetonationView.swift in Sources */,
 				2F2130F4248CC16B001D3B83 /* TcpReader.swift in Sources */,
 				2F2130F5248CC1B1001D3B83 /* ShipType.swift in Sources */,
 				2F2130E7248C1204001D3B83 /* MetaServer.swift in Sources */,
@@ -805,13 +834,18 @@
 				2F2130EC248CBE7C001D3B83 /* Player.swift in Sources */,
 				2F2130F9248CC290001D3B83 /* NetworkDelegate.swift in Sources */,
 				2F2130EB248CBE76001D3B83 /* Planet.swift in Sources */,
+				2F21311A248D8949001D3B83 /* PlanetView.swift in Sources */,
 				2F2130EF248CBE8A001D3B83 /* Torpedo.swift in Sources */,
+				2F21311D248D897D001D3B83 /* ExplosionView.swift in Sources */,
+				2F213122248D89B9001D3B83 /* TacticalOffset.swift in Sources */,
+				2F213125248D8AE9001D3B83 /* TacticalView.swift in Sources */,
 				2F2130E6248C10E8001D3B83 /* PickServerView.swift in Sources */,
 				2F2130C5248C0F87001D3B83 /* SceneDelegate.swift in Sources */,
 				2F2130F7248CC239001D3B83 /* SlotStatus.swift in Sources */,
 				2F2130F6248CC232001D3B83 /* Rank.swift in Sources */,
 				2F213104248D4ED0001D3B83 /* GameState.swift in Sources */,
 				2F2130F0248CBEAD001D3B83 /* NetrekMath.swift in Sources */,
+				2F21311B248D8954001D3B83 /* PlayerView.swift in Sources */,
 				2F2130ED248CBE80001D3B83 /* Plasma.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

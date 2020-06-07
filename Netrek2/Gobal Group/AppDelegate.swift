@@ -361,13 +361,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    @IBAction func selectShip(_ sender: NSMenuItem) {
-        let tag = sender.tag
-        for ship in ShipType.allCases {
-            if tag == ship.rawValue {
-                self.preferredShip = ship
-            }
-        }
+    func selectShip(ship: ShipType) {
+        self.preferredShip = ship
         if self.gameState == .loginAccepted {
             if let reader = self.reader {
                 let cpUpdates = MakePacket.cpUpdates()
@@ -380,6 +375,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if let reader = self.reader {
                 let cpRefit = MakePacket.cpRefit(newShip: self.preferredShip)
                 reader.send(content: cpRefit)
+            }
+        }
+    }
+    @IBAction func selectShip(_ sender: NSMenuItem) {
+        let tag = sender.tag
+        for ship in ShipType.allCases {
+            if tag == ship.rawValue {
+                selectShip(ship: ship)
+                return
             }
         }
     }

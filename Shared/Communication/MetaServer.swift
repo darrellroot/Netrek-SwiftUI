@@ -23,18 +23,22 @@ class MetaServer: ObservableObject {
     let defaultSession = URLSession(configuration: .default)
     let newlineCharacters = NSCharacterSet.newlines
     let whiteSpace = NSCharacterSet.whitespaces
-    init?(primary: String, backup: String, port: Int) {
-        self.metahosts = [primary,backup]
-        self.port = port
-        let primaryUrlString = "http://\(primary):\(port)"
-        //guard let urlComponents = URLComponents(string: urlString ) else { return nil }
-        //guard let url = urlComponents.url else { return nil }
-        //self.url = url
-    }
-    
     
     @Published var servers: [String:MetaServerEntry] = [:]  // hostname:MetaServerEntry
     
+    init?(primary: String, backup: String, port: Int) {
+        self.metahosts = [primary,backup]
+        self.port = port
+        //let primaryUrlString = "http://\(primary):\(port)"
+        //guard let urlComponents = URLComponents(string: urlString ) else { return nil }
+        //guard let url = urlComponents.url else { return nil }
+        //self.url = url
+        let pickled = MetaServerEntry(hostname: "pickled.netrek.org", port: 2592, age: 1000, players: 0, type: .bronco)
+        let continuum = MetaServerEntry(hostname: "continuum.us.netrek.org", port: 2592, age: 1000, players: 0, type: .bronco)
+            self.servers[pickled.hostname] = pickled
+            self.servers[continuum.hostname] = continuum
+    }
+
     func update() {
         for host in metahosts {
             update(metahost: host)

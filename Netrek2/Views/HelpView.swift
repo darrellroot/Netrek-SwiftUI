@@ -10,12 +10,16 @@ import SwiftUI
 
 struct HelpView: View {
     @ObservedObject var help: Help
+    #if os(macOS)
     @ObservedObject var preferencesController: PreferencesController
+    #endif
     
     var body: some View {
-        !preferencesController.hideHints ? Text(help.currentTip).font(.largeTitle)
-            : Text("")
-        
+        #if os(macOS)
+        return !preferencesController.hideHints ? Text(help.currentTip).font(.largeTitle) : Text("")
+        #elseif os(iOS)
+        return Text(help.currentTip).font(.largeTitle)
+        #endif
     }
 }
 

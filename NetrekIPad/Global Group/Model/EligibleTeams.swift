@@ -15,6 +15,7 @@ class EligibleTeams: ObservableObject {
     @Published var kazariEligible = true
     @Published var oriEligible = true
     @Published var preferredTeam: Team = .federation
+    @Published var preferredShip: ShipType = .cruiser
     var initialTeamSet = false
     
     public func updateEligibleTeams(mask: UInt8) {

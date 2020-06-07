@@ -130,6 +130,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
         }
         return false
     }
+    func selectShip(ship: ShipType) {
+        self.eligibleTeams.preferredShip = ship
+        if self.gameState == .loginAccepted {
+            if let reader = self.reader {
+                let cpUpdates = MakePacket.cpUpdates()
+                    reader.send(content: cpUpdates)
+                let cpOutfit = MakePacket.cpOutfit(team: self.eligibleTeams.preferredTeam, ship: self.eligibleTeams.preferredShip)
+                reader.send(content: cpOutfit)
+            }
+        }
+        if self.gameState == .gameActive {
+            if let reader = self.reader {
+                let cpRefit = MakePacket.cpRefit(newShip: self.eligibleTeams.preferredShip)
+                reader.send(content: cpRefit)
+            }
+        }
+    }
+
     public func newGameState(_ newState: GameState ) {
         debugPrint("Game State: moving from \(self.gameState.rawValue) to \(newState.rawValue)\n")
         switch newState {
@@ -161,7 +179,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
             //disableShipMenu()
             //disableServerMenu()
             self.clientTypeSent = false
-            self.gameState = newState
+            DispatchQueue.main.sync {
+                self.gameState = newState
+            }
             
             guard let reader = reader else {
                 self.newGameState(.noServerSelected)

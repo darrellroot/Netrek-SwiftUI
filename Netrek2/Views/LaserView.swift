@@ -9,7 +9,11 @@
 import SwiftUI
 
 struct LaserView: View, TacticalOffset {
-    let appDelegate = NSApplication.shared.delegate! as! AppDelegate
+    #if os(macOS)
+    let appDelegate = NSApplication.shared.delegate as! AppDelegate
+    #elseif os(iOS)
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    #endif
     @State var opacity = 1.0
     @ObservedObject var laser: Laser
     @ObservedObject var me: Player
