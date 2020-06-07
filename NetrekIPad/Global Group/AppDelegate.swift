@@ -10,32 +10,32 @@ import UIKit
 import SwiftUI
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
     
     let defaults = UserDefaults.standard
     
     let help = Help()
-
+    
     var serverFeatures: [String] = []
     var clientFeatures: [String] = ["FEATURE_PACKETS","SHIP_CAP","SP_GENERIC_32","TIPS"]
-
+    
     var metaServer: MetaServer = MetaServer(primary: "metaserver.netrek.org", backup:
         "metaserver.eu.netrek.org", port: 3521)!
     
     var reader: TcpReader?
-    private(set) var gameState: GameState = .noServerSelected
+    @Published private(set) var gameState: GameState = .noServerSelected
     var analyzer: PacketAnalyzer?
     @ObservedObject var universe = Universe()
     var clientTypeSent = false
     var soundController: SoundController?
-
+    
     //set this to true when we first set the preferred team, which we only do once
     //var initialTeamSet = false
-
+    
     @ObservedObject var eligibleTeams = EligibleTeams()
     
     let loginInformationController = LoginInformationController()
-
+    
     let timerInterval = 1.0 / Double(UPDATE_RATE)
     var timer: Timer?
     @State var timerCount = 0
@@ -109,6 +109,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    public func selectServer(hostname: String) -> Bool {
+        guard gameState == .noServerSelected else {
+            debugPrint("AppDelegate.selectServer: Error cannot select server \(hostname) while gameState is \(self.gameState)")
+            return false
+        }
+        if let server = metaServer.servers[hostname] {
+            debugPrint("starting game server \(server.description)")
+            if reader != nil {
+                self.resetConnection()
+            }
+            if let reader = TcpReader(hostname: server.hostname, port: server.port, delegate: self) {
+                self.reader = reader
+                self.newGameState(.serverSelected)
+                return true
+            } else {
+                debugPrint("AppDelegate failed to start reader")
+                return false
+            }
+        }
+        return false
+    }
     public func newGameState(_ newState: GameState ) {
         debugPrint("Game State: moving from \(self.gameState.rawValue) to \(newState.rawValue)\n")
         switch newState {

@@ -55,6 +55,8 @@
 		2F21310E248D5479001D3B83 /* Data-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8E6246236EE003CA91F /* Data-extensions.swift */; };
 		2F21310F248D5526001D3B83 /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E62489861600038FBD /* Help.swift */; };
 		2F213112248D565E001D3B83 /* EligibleTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F213111248D565E001D3B83 /* EligibleTeams.swift */; };
+		2F213114248D6D63001D3B83 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F213113248D6D63001D3B83 /* ContentView.swift */; };
+		2F213116248D6EEC001D3B83 /* SelectTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F213115248D6EEC001D3B83 /* SelectTeamView.swift */; };
 		2F2789DF24872C8900038FBD /* DetonationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789DE24872C8900038FBD /* DetonationView.swift */; };
 		2F2789E1248852D300038FBD /* TractorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E0248852D300038FBD /* TractorView.swift */; };
 		2F2789E324897E9500038FBD /* BoundaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E224897E9500038FBD /* BoundaryView.swift */; };
@@ -198,6 +200,8 @@
 		2F2130DB248C0F88001D3B83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F2130E5248C10E8001D3B83 /* PickServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickServerView.swift; sourceTree = "<group>"; };
 		2F213111248D565E001D3B83 /* EligibleTeams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EligibleTeams.swift; sourceTree = "<group>"; };
+		2F213113248D6D63001D3B83 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2F213115248D6EEC001D3B83 /* SelectTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTeamView.swift; sourceTree = "<group>"; };
 		2F2789DE24872C8900038FBD /* DetonationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetonationView.swift; sourceTree = "<group>"; };
 		2F2789E0248852D300038FBD /* TractorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TractorView.swift; sourceTree = "<group>"; };
 		2F2789E224897E9500038FBD /* BoundaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundaryView.swift; sourceTree = "<group>"; };
@@ -361,6 +365,8 @@
 			isa = PBXGroup;
 			children = (
 				2F2130E5248C10E8001D3B83 /* PickServerView.swift */,
+				2F213113248D6D63001D3B83 /* ContentView.swift */,
+				2F213115248D6EEC001D3B83 /* SelectTeamView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -780,6 +786,7 @@
 				2F2130E8248C1212001D3B83 /* MetaServerEntry.swift in Sources */,
 				2F213112248D565E001D3B83 /* EligibleTeams.swift in Sources */,
 				2F213105248D522D001D3B83 /* LoginInformationController.swift in Sources */,
+				2F213114248D6D63001D3B83 /* ContentView.swift in Sources */,
 				2F21310A248D533F001D3B83 /* Globals.swift in Sources */,
 				2F2130FA248CC2C3001D3B83 /* ShipInfo.swift in Sources */,
 				2F2130F8248CC260001D3B83 /* Collection-extensions.swift in Sources */,
@@ -787,6 +794,7 @@
 				2F213106248D5234001D3B83 /* KeychainService.swift in Sources */,
 				2F2130F1248CC0ED001D3B83 /* Team.swift in Sources */,
 				2F21310E248D5479001D3B83 /* Data-extensions.swift in Sources */,
+				2F213116248D6EEC001D3B83 /* SelectTeamView.swift in Sources */,
 				2F2130F4248CC16B001D3B83 /* TcpReader.swift in Sources */,
 				2F2130F5248CC1B1001D3B83 /* ShipType.swift in Sources */,
 				2F2130E7248C1204001D3B83 /* MetaServer.swift in Sources */,

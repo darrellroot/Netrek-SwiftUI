@@ -15,6 +15,23 @@ class Universe: ObservableObject {
     var activePlayers: [Player] {
         return players.filter({$0.slotStatus != .free && $0.slotStatus != .observe} )
     }
+    
+    var federationPlayers: Int {
+        return players.filter({$0.slotStatus != .free && $0.slotStatus != .observe && $0.team == .federation}).count
+    }
+    var romanPlayers: Int {
+        return players.filter({$0.slotStatus != .free && $0.slotStatus != .observe && $0.team == .roman}).count
+    }
+    var kazariPlayers: Int {
+        return players.filter({$0.slotStatus != .free && $0.slotStatus != .observe && $0.team == .kazari}).count
+    }
+    var orionPlayers: Int {
+        return players.filter({$0.slotStatus != .free && $0.slotStatus != .observe && $0.team == .orion}).count
+    }
+
+
+
+    
     var visibleTractors: [Player] {
         guard players[me].slotStatus == .alive && players[me].tractor >= 64 && players[me].tractor < 96 else {
             return []

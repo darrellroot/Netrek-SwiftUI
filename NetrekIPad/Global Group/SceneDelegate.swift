@@ -20,12 +20,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        let pickServerView = PickServerView(metaServer: appDelegate.metaServer, universe: appDelegate.universe)
+        //let pickServerView = PickServerView(metaServer: appDelegate.metaServer, universe: appDelegate.universe)
+        let contentView = ContentView(metaServer: appDelegate.metaServer, universe: appDelegate.universe, appDelegate: appDelegate)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: pickServerView)
+            window.rootViewController = UIHostingController(rootView: contentView)
             self.window = window
             window.makeKeyAndVisible()
         }
