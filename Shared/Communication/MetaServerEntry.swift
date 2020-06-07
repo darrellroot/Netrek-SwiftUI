@@ -61,9 +61,45 @@ enum MetaServerType: String, CaseIterable {
     case dead = "D"
     case tournament = "T"
     case sturgeon = "S"
+    
+    var description: String {
+        switch self {
+        case .bronco:
+            return "Bronco"
+        case .chaos:
+            return "Chaos"
+        case .paradise:
+            return "Paradise"
+        case .hockey:
+            return "Hockey"
+        case .other:
+            return "Other"
+        case .blessed:
+            return "Blessed"
+        case .dead:
+            return "Dead"
+        case .tournament:
+            return "Tournament"
+        case .sturgeon:
+            return "Sturgeon"
+        }
+    }
 }
 
-class MetaServerEntry: CustomStringConvertible {
+class MetaServerEntry: CustomStringConvertible, Hashable {
+    static func == (lhs: MetaServerEntry, rhs: MetaServerEntry) -> Bool {
+        if lhs.hostname == rhs.hostname && lhs.port == rhs.port && lhs.type == rhs.type {
+            return true
+        } else {
+            return false
+        }
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(hostname)
+        hasher.combine(port)
+        hasher.combine(type)
+    }
+    
     var hostname: String
     var port: Int
     var type: MetaServerType

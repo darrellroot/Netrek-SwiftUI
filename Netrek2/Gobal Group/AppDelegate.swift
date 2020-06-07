@@ -36,6 +36,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var clientTypeSent = false
     var soundController: SoundController?
 
+    var serverByTag: [Int:String] = [:]
+    
     //set this to true when we first set the preferred team, which we only do once
     var initialTeamSet = false
 
@@ -78,7 +80,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.keymapController = KeymapController()
 
         setupBlankMenu()
-        metaServer = MetaServer(hostname: "metaserver.netrek.org", port: 3521)
+        metaServer = MetaServer(primary: "metaserver.netrek.org", backup: "metaserver.eu.netrek.org", port: 3521)
         if let metaServer = metaServer {
             metaServer.update()
         }
@@ -148,13 +150,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     @IBAction func refreshMetaserverNetrekOrg(_ sender: NSMenuItem) {
-        metaServer = MetaServer(hostname: "metaserver.netrek.org", port: 3521)
+        metaServer = MetaServer(primary: "metaserver.netrek.org",backup: "metaserver.eu.netrek.org", port: 3521)
         if let metaServer = metaServer {
             metaServer.update()
         }
     }
     @IBAction func refreshMetaserverEuNetrekOrg(_ sender: NSMenuItem) {
-        metaServer = MetaServer(hostname: "metaserver.eu.netrek.org", port: 3521)
+        metaServer = MetaServer(primary: "metaserver.netrek.org", backup: "metaserver.eu.netrek.org", port: 3521)
         if let metaServer = metaServer {
             metaServer.update()
         }
@@ -179,9 +181,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let metaServer = metaServer {
             universe.gotMessage("Server list updated from metaserver")
             serverMenu.removeAllItems()
-            for (index,server) in metaServer.servers.enumerated() {
-                let newItem = NSMenuItem(title: server.description, action: #selector(self.selectServer), keyEquivalent: "")
+            let servers = Array(metaServer.servers.values).map { $0.hostname}.sorted()
+            
+            serverByTag = [:]
+            
+            for (index,serverName) in servers.enumerated() {
+                let newItem: NSMenuItem
+                if let server = metaServer.servers[serverName] {
+                    newItem = NSMenuItem(title: server.description, action: #selector(self.selectServer), keyEquivalent: "")
+                } else {
+                    newItem = NSMenuItem(title: serverName, action: #selector(self.selectServer), keyEquivalent: "")
+                }
                 newItem.tag = index
+                serverByTag[index] = serverName
                 serverMenu.addItem(newItem)
             }
             let separator = NSMenuItem.separator()
@@ -300,7 +312,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc func selectServer(sender: NSMenuItem) {
         let tag = sender.tag
-        if let server = metaServer?.servers[safe: tag] {
+        if let serverName = serverByTag[tag], let server = metaServer?.servers[serverName] {
             print("starting game server \(server.description)")
             if reader != nil {
                 self.resetConnection()

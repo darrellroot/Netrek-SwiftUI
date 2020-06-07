@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F2130C3248C0F87001D3B83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2130C2248C0F87001D3B83 /* AppDelegate.swift */; };
+		2F2130C5248C0F87001D3B83 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2130C4248C0F87001D3B83 /* SceneDelegate.swift */; };
+		2F2130C9248C0F88001D3B83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F2130C8248C0F88001D3B83 /* Assets.xcassets */; };
+		2F2130CC248C0F88001D3B83 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F2130CB248C0F88001D3B83 /* Preview Assets.xcassets */; };
+		2F2130CF248C0F88001D3B83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F2130CD248C0F88001D3B83 /* LaunchScreen.storyboard */; };
+		2F2130DA248C0F88001D3B83 /* NetrekIPadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2130D9248C0F88001D3B83 /* NetrekIPadTests.swift */; };
+		2F2130E6248C10E8001D3B83 /* PickServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2130E5248C10E8001D3B83 /* PickServerView.swift */; };
+		2F2130E7248C1204001D3B83 /* MetaServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D87224620F0B003CA91F /* MetaServer.swift */; };
+		2F2130E8248C1212001D3B83 /* MetaServerEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D87024620F02003CA91F /* MetaServerEntry.swift */; };
 		2F2789DF24872C8900038FBD /* DetonationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789DE24872C8900038FBD /* DetonationView.swift */; };
 		2F2789E1248852D300038FBD /* TractorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E0248852D300038FBD /* TractorView.swift */; };
 		2F2789E324897E9500038FBD /* BoundaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E224897E9500038FBD /* BoundaryView.swift */; };
@@ -121,6 +130,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2F2130D6248C0F88001D3B83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2F97D84224620CCF003CA91F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2F2130BF248C0F86001D3B83;
+			remoteInfo = NetrekIPad;
+		};
 		2F97D86024620CD0003CA91F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2F97D84224620CCF003CA91F /* Project object */;
@@ -131,6 +147,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F2130C0248C0F86001D3B83 /* NetrekIPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetrekIPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F2130C2248C0F87001D3B83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2F2130C4248C0F87001D3B83 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		2F2130C8248C0F88001D3B83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2F2130CB248C0F88001D3B83 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2F2130CE248C0F88001D3B83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2F2130D0248C0F88001D3B83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F2130D5248C0F88001D3B83 /* NetrekIPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetrekIPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F2130D9248C0F88001D3B83 /* NetrekIPadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetrekIPadTests.swift; sourceTree = "<group>"; };
+		2F2130DB248C0F88001D3B83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F2130E5248C10E8001D3B83 /* PickServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickServerView.swift; sourceTree = "<group>"; };
 		2F2789DE24872C8900038FBD /* DetonationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetonationView.swift; sourceTree = "<group>"; };
 		2F2789E0248852D300038FBD /* TractorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TractorView.swift; sourceTree = "<group>"; };
 		2F2789E224897E9500038FBD /* BoundaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundaryView.swift; sourceTree = "<group>"; };
@@ -211,6 +238,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2F2130BD248C0F86001D3B83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F2130D2248C0F88001D3B83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2F97D84724620CCF003CA91F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -228,6 +269,70 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F2130C1248C0F87001D3B83 /* NetrekIPad */ = {
+			isa = PBXGroup;
+			children = (
+				2F2130E4248C10A4001D3B83 /* Views */,
+				2F2130E3248C108E001D3B83 /* Global Group */,
+				2F2130CD248C0F88001D3B83 /* LaunchScreen.storyboard */,
+				2F2130D0248C0F88001D3B83 /* Info.plist */,
+				2F2130CA248C0F88001D3B83 /* Preview Content */,
+			);
+			path = NetrekIPad;
+			sourceTree = "<group>";
+		};
+		2F2130CA248C0F88001D3B83 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2F2130CB248C0F88001D3B83 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2F2130D8248C0F88001D3B83 /* NetrekIPadTests */ = {
+			isa = PBXGroup;
+			children = (
+				2F2130D9248C0F88001D3B83 /* NetrekIPadTests.swift */,
+				2F2130DB248C0F88001D3B83 /* Info.plist */,
+			);
+			path = NetrekIPadTests;
+			sourceTree = "<group>";
+		};
+		2F2130E2248C0FC4001D3B83 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				2F2130E9248C1221001D3B83 /* Communication */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		2F2130E3248C108E001D3B83 /* Global Group */ = {
+			isa = PBXGroup;
+			children = (
+				2F2130C2248C0F87001D3B83 /* AppDelegate.swift */,
+				2F2130C4248C0F87001D3B83 /* SceneDelegate.swift */,
+				2F2130C8248C0F88001D3B83 /* Assets.xcassets */,
+			);
+			path = "Global Group";
+			sourceTree = "<group>";
+		};
+		2F2130E4248C10A4001D3B83 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2F2130E5248C10E8001D3B83 /* PickServerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2F2130E9248C1221001D3B83 /* Communication */ = {
+			isa = PBXGroup;
+			children = (
+				2F97D87224620F0B003CA91F /* MetaServer.swift */,
+				2F97D87024620F02003CA91F /* MetaServerEntry.swift */,
+			);
+			path = Communication;
+			sourceTree = "<group>";
+		};
 		2F2C1AF52487183E00604F21 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,8 +354,11 @@
 		2F97D84124620CCF003CA91F = {
 			isa = PBXGroup;
 			children = (
+				2F2130E2248C0FC4001D3B83 /* Shared */,
+				2F2130C1248C0F87001D3B83 /* NetrekIPad */,
 				2F97D84C24620CCF003CA91F /* Netrek2 */,
 				2F97D86224620CD0003CA91F /* Netrek2Tests */,
+				2F2130D8248C0F88001D3B83 /* NetrekIPadTests */,
 				2F97D84B24620CCF003CA91F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -260,6 +368,8 @@
 			children = (
 				2F97D84A24620CCF003CA91F /* Netrek.app */,
 				2F97D85F24620CD0003CA91F /* Netrek2Tests.xctest */,
+				2F2130C0248C0F86001D3B83 /* NetrekIPad.app */,
+				2F2130D5248C0F88001D3B83 /* NetrekIPadTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -277,7 +387,6 @@
 				2F97D88224621F21003CA91F /* Protocols */,
 				2F97D87B246216C6003CA91F /* Enumerations */,
 				2F97D8742462118D003CA91F /* Extensions */,
-				2F97D86F24620EEA003CA91F /* DataTypes */,
 				2F97D86E24620D16003CA91F /* Communication */,
 				2F97D8B1246232FB003CA91F /* Sounds */,
 				2F97D85324620CD0003CA91F /* Preview Content */,
@@ -312,15 +421,6 @@
 				2F97D8782462156C003CA91F /* TcpReader.swift */,
 			);
 			path = Communication;
-			sourceTree = "<group>";
-		};
-		2F97D86F24620EEA003CA91F /* DataTypes */ = {
-			isa = PBXGroup;
-			children = (
-				2F97D87224620F0B003CA91F /* MetaServer.swift */,
-				2F97D87024620F02003CA91F /* MetaServerEntry.swift */,
-			);
-			path = DataTypes;
 			sourceTree = "<group>";
 		};
 		2F97D8742462118D003CA91F /* Extensions */ = {
@@ -434,6 +534,41 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2F2130BF248C0F86001D3B83 /* NetrekIPad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F2130E0248C0F88001D3B83 /* Build configuration list for PBXNativeTarget "NetrekIPad" */;
+			buildPhases = (
+				2F2130BC248C0F86001D3B83 /* Sources */,
+				2F2130BD248C0F86001D3B83 /* Frameworks */,
+				2F2130BE248C0F86001D3B83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NetrekIPad;
+			productName = NetrekIPad;
+			productReference = 2F2130C0248C0F86001D3B83 /* NetrekIPad.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2F2130D4248C0F88001D3B83 /* NetrekIPadTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F2130E1248C0F88001D3B83 /* Build configuration list for PBXNativeTarget "NetrekIPadTests" */;
+			buildPhases = (
+				2F2130D1248C0F88001D3B83 /* Sources */,
+				2F2130D2248C0F88001D3B83 /* Frameworks */,
+				2F2130D3248C0F88001D3B83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2F2130D7248C0F88001D3B83 /* PBXTargetDependency */,
+			);
+			name = NetrekIPadTests;
+			productName = NetrekIPadTests;
+			productReference = 2F2130D5248C0F88001D3B83 /* NetrekIPadTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		2F97D84924620CCF003CA91F /* Netrek */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F97D86824620CD0003CA91F /* Build configuration list for PBXNativeTarget "Netrek" */;
@@ -475,10 +610,17 @@
 		2F97D84224620CCF003CA91F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1140;
+				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Darrell Root";
 				TargetAttributes = {
+					2F2130BF248C0F86001D3B83 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					2F2130D4248C0F88001D3B83 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 2F2130BF248C0F86001D3B83;
+					};
 					2F97D84924620CCF003CA91F = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -504,11 +646,30 @@
 			targets = (
 				2F97D84924620CCF003CA91F /* Netrek */,
 				2F97D85E24620CD0003CA91F /* Netrek2Tests */,
+				2F2130BF248C0F86001D3B83 /* NetrekIPad */,
+				2F2130D4248C0F88001D3B83 /* NetrekIPadTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2F2130BE248C0F86001D3B83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F2130CF248C0F88001D3B83 /* LaunchScreen.storyboard in Resources */,
+				2F2130CC248C0F88001D3B83 /* Preview Assets.xcassets in Resources */,
+				2F2130C9248C0F88001D3B83 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F2130D3248C0F88001D3B83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2F97D84824620CCF003CA91F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -547,6 +708,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2F2130BC248C0F86001D3B83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F2130E8248C1212001D3B83 /* MetaServerEntry.swift in Sources */,
+				2F2130E7248C1204001D3B83 /* MetaServer.swift in Sources */,
+				2F2130C3248C0F87001D3B83 /* AppDelegate.swift in Sources */,
+				2F2130E6248C10E8001D3B83 /* PickServerView.swift in Sources */,
+				2F2130C5248C0F87001D3B83 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F2130D1248C0F88001D3B83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F2130DA248C0F88001D3B83 /* NetrekIPadTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2F97D84624620CCF003CA91F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -654,6 +835,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2F2130D7248C0F88001D3B83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2F2130BF248C0F86001D3B83 /* NetrekIPad */;
+			targetProxy = 2F2130D6248C0F88001D3B83 /* PBXContainerItemProxy */;
+		};
 		2F97D86124620CD0003CA91F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2F97D84924620CCF003CA91F /* Netrek */;
@@ -662,6 +848,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2F2130CD248C0F88001D3B83 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2F2130CE248C0F88001D3B83 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		2F97D85624620CD0003CA91F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -673,6 +867,98 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2F2130DC248C0F88001D3B83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"NetrekIPad/Preview Content\"";
+				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = NetrekIPad/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.NetrekIPad;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		2F2130DD248C0F88001D3B83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"NetrekIPad/Preview Content\"";
+				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = NetrekIPad/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.NetrekIPad;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2F2130DE248C0F88001D3B83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
+				INFOPLIST_FILE = NetrekIPadTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.NetrekIPadTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetrekIPad.app/NetrekIPad";
+			};
+			name = Debug;
+		};
+		2F2130DF248C0F88001D3B83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
+				INFOPLIST_FILE = NetrekIPadTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.NetrekIPadTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetrekIPad.app/NetrekIPad";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		2F97D86624620CD0003CA91F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -885,6 +1171,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2F2130E0248C0F88001D3B83 /* Build configuration list for PBXNativeTarget "NetrekIPad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F2130DC248C0F88001D3B83 /* Debug */,
+				2F2130DD248C0F88001D3B83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F2130E1248C0F88001D3B83 /* Build configuration list for PBXNativeTarget "NetrekIPadTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F2130DE248C0F88001D3B83 /* Debug */,
+				2F2130DF248C0F88001D3B83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2F97D84524620CCF003CA91F /* Build configuration list for PBXProject "Netrek2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
