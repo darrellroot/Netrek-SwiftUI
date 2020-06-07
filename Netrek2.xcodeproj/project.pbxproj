@@ -16,6 +16,45 @@
 		2F2130E6248C10E8001D3B83 /* PickServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2130E5248C10E8001D3B83 /* PickServerView.swift */; };
 		2F2130E7248C1204001D3B83 /* MetaServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D87224620F0B003CA91F /* MetaServer.swift */; };
 		2F2130E8248C1212001D3B83 /* MetaServerEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D87024620F02003CA91F /* MetaServerEntry.swift */; };
+		2F2130EA248CBE4D001D3B83 /* Universe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D89924622CDA003CA91F /* Universe.swift */; };
+		2F2130EB248CBE76001D3B83 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D89F24622D19003CA91F /* Planet.swift */; };
+		2F2130EC248CBE7C001D3B83 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8A524622D36003CA91F /* Player.swift */; };
+		2F2130ED248CBE80001D3B83 /* Plasma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8A224622D36003CA91F /* Plasma.swift */; };
+		2F2130EE248CBE84001D3B83 /* Laser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8A324622D36003CA91F /* Laser.swift */; };
+		2F2130EF248CBE8A001D3B83 /* Torpedo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8A424622D36003CA91F /* Torpedo.swift */; };
+		2F2130F0248CBEAD001D3B83 /* NetrekMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8952462208D003CA91F /* NetrekMath.swift */; };
+		2F2130F1248CC0ED001D3B83 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D88F2462200E003CA91F /* Team.swift */; };
+		2F2130F2248CC15A001D3B83 /* PlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8DD2462364F003CA91F /* PlayerStatus.swift */; };
+		2F2130F3248CC15F001D3B83 /* AlertCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8D424623572003CA91F /* AlertCondition.swift */; };
+		2F2130F4248CC16B001D3B83 /* TcpReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8782462156C003CA91F /* TcpReader.swift */; };
+		2F2130F5248CC1B1001D3B83 /* ShipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D89224622061003CA91F /* ShipType.swift */; };
+		2F2130F6248CC232001D3B83 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8DA24623623003CA91F /* Rank.swift */; };
+		2F2130F7248CC239001D3B83 /* SlotStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8E3246236A2003CA91F /* SlotStatus.swift */; };
+		2F2130F8248CC260001D3B83 /* Collection-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D87524621199003CA91F /* Collection-extensions.swift */; };
+		2F2130F9248CC290001D3B83 /* NetworkDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D88324621F29003CA91F /* NetworkDelegate.swift */; };
+		2F2130FA248CC2C3001D3B83 /* ShipInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D89C24622CED003CA91F /* ShipInfo.swift */; };
+		2F2130FB248CC317001D3B83 /* SoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8CA24623315003CA91F /* SoundController.swift */; };
+		2F2130FC248CC31C001D3B83 /* 175265__jonccox__gun-thumper.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D8B2246232FB003CA91F /* 175265__jonccox__gun-thumper.wav */; };
+		2F2130FD248CC320001D3B83 /* 175267__jonccox__gun-plasma.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D8B3246232FB003CA91F /* 175267__jonccox__gun-plasma.wav */; };
+		2F2130FE248CC323001D3B83 /* 399303__deleted-user-5405837__explosion-012.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D8B4246232FB003CA91F /* 399303__deleted-user-5405837__explosion-012.mp3 */; };
+		2F2130FF248CC326001D3B83 /* 175269__jonccox__gun-zap2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D8B5246232FB003CA91F /* 175269__jonccox__gun-zap2.wav */; };
+		2F213100248CC329001D3B83 /* 175262__jonccox__gun-cannon.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D8B6246232FB003CA91F /* 175262__jonccox__gun-cannon.wav */; };
+		2F213101248CC32C001D3B83 /* 175270__jonccox__gun-zap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D8B7246232FB003CA91F /* 175270__jonccox__gun-zap.wav */; };
+		2F213102248CC330001D3B83 /* 175266__jonccox__gun-spark.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D8B8246232FB003CA91F /* 175266__jonccox__gun-spark.wav */; };
+		2F213103248CC333001D3B83 /* 71852__ludvique__digital-whoosh-soft.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D8B9246232FB003CA91F /* 71852__ludvique__digital-whoosh-soft.wav */; };
+		2F213104248D4ED0001D3B83 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D87C246216D7003CA91F /* GameState.swift */; };
+		2F213105248D522D001D3B83 /* LoginInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8D1246234A7003CA91F /* LoginInformationController.swift */; };
+		2F213106248D5234001D3B83 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8D7246235C9003CA91F /* KeychainService.swift */; };
+		2F213107248D524C001D3B83 /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E82489B8DF00038FBD /* PreferencesController.swift */; };
+		2F213108248D5304001D3B83 /* LoginDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8CD24623422003CA91F /* LoginDefault.swift */; };
+		2F213109248D5322001D3B83 /* UserDefaults-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8E02462366F003CA91F /* UserDefaults-extensions.swift */; };
+		2F21310A248D533F001D3B83 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D88924621FE3003CA91F /* Globals.swift */; };
+		2F21310B248D53BD001D3B83 /* MakePacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D87F24621E94003CA91F /* MakePacket.swift */; };
+		2F21310C248D53C7001D3B83 /* packets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D88C24621FE8003CA91F /* packets.swift */; };
+		2F21310D248D53CC001D3B83 /* PacketAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D88624621FBE003CA91F /* PacketAnalyzer.swift */; };
+		2F21310E248D5479001D3B83 /* Data-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8E6246236EE003CA91F /* Data-extensions.swift */; };
+		2F21310F248D5526001D3B83 /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E62489861600038FBD /* Help.swift */; };
+		2F213112248D565E001D3B83 /* EligibleTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F213111248D565E001D3B83 /* EligibleTeams.swift */; };
 		2F2789DF24872C8900038FBD /* DetonationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789DE24872C8900038FBD /* DetonationView.swift */; };
 		2F2789E1248852D300038FBD /* TractorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E0248852D300038FBD /* TractorView.swift */; };
 		2F2789E324897E9500038FBD /* BoundaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E224897E9500038FBD /* BoundaryView.swift */; };
@@ -158,6 +197,7 @@
 		2F2130D9248C0F88001D3B83 /* NetrekIPadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetrekIPadTests.swift; sourceTree = "<group>"; };
 		2F2130DB248C0F88001D3B83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F2130E5248C10E8001D3B83 /* PickServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickServerView.swift; sourceTree = "<group>"; };
+		2F213111248D565E001D3B83 /* EligibleTeams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EligibleTeams.swift; sourceTree = "<group>"; };
 		2F2789DE24872C8900038FBD /* DetonationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetonationView.swift; sourceTree = "<group>"; };
 		2F2789E0248852D300038FBD /* TractorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TractorView.swift; sourceTree = "<group>"; };
 		2F2789E224897E9500038FBD /* BoundaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundaryView.swift; sourceTree = "<group>"; };
@@ -309,6 +349,7 @@
 		2F2130E3248C108E001D3B83 /* Global Group */ = {
 			isa = PBXGroup;
 			children = (
+				2F213110248D5647001D3B83 /* Model */,
 				2F2130C2248C0F87001D3B83 /* AppDelegate.swift */,
 				2F2130C4248C0F87001D3B83 /* SceneDelegate.swift */,
 				2F2130C8248C0F88001D3B83 /* Assets.xcassets */,
@@ -331,6 +372,14 @@
 				2F97D87024620F02003CA91F /* MetaServerEntry.swift */,
 			);
 			path = Communication;
+			sourceTree = "<group>";
+		};
+		2F213110248D5647001D3B83 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2F213111248D565E001D3B83 /* EligibleTeams.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		2F2C1AF52487183E00604F21 /* Resources */ = {
@@ -657,8 +706,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F2130FC248CC31C001D3B83 /* 175265__jonccox__gun-thumper.wav in Resources */,
+				2F2130FE248CC323001D3B83 /* 399303__deleted-user-5405837__explosion-012.mp3 in Resources */,
+				2F2130FD248CC320001D3B83 /* 175267__jonccox__gun-plasma.wav in Resources */,
+				2F213103248CC333001D3B83 /* 71852__ludvique__digital-whoosh-soft.wav in Resources */,
+				2F213101248CC32C001D3B83 /* 175270__jonccox__gun-zap.wav in Resources */,
 				2F2130CF248C0F88001D3B83 /* LaunchScreen.storyboard in Resources */,
+				2F2130FF248CC326001D3B83 /* 175269__jonccox__gun-zap2.wav in Resources */,
 				2F2130CC248C0F88001D3B83 /* Preview Assets.xcassets in Resources */,
+				2F213102248CC330001D3B83 /* 175266__jonccox__gun-spark.wav in Resources */,
+				2F213100248CC329001D3B83 /* 175262__jonccox__gun-cannon.wav in Resources */,
 				2F2130C9248C0F88001D3B83 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -712,11 +769,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F21310F248D5526001D3B83 /* Help.swift in Sources */,
+				2F2130F2248CC15A001D3B83 /* PlayerStatus.swift in Sources */,
+				2F213109248D5322001D3B83 /* UserDefaults-extensions.swift in Sources */,
+				2F2130FB248CC317001D3B83 /* SoundController.swift in Sources */,
+				2F2130EA248CBE4D001D3B83 /* Universe.swift in Sources */,
+				2F213108248D5304001D3B83 /* LoginDefault.swift in Sources */,
+				2F21310B248D53BD001D3B83 /* MakePacket.swift in Sources */,
+				2F213107248D524C001D3B83 /* PreferencesController.swift in Sources */,
 				2F2130E8248C1212001D3B83 /* MetaServerEntry.swift in Sources */,
+				2F213112248D565E001D3B83 /* EligibleTeams.swift in Sources */,
+				2F213105248D522D001D3B83 /* LoginInformationController.swift in Sources */,
+				2F21310A248D533F001D3B83 /* Globals.swift in Sources */,
+				2F2130FA248CC2C3001D3B83 /* ShipInfo.swift in Sources */,
+				2F2130F8248CC260001D3B83 /* Collection-extensions.swift in Sources */,
+				2F21310D248D53CC001D3B83 /* PacketAnalyzer.swift in Sources */,
+				2F213106248D5234001D3B83 /* KeychainService.swift in Sources */,
+				2F2130F1248CC0ED001D3B83 /* Team.swift in Sources */,
+				2F21310E248D5479001D3B83 /* Data-extensions.swift in Sources */,
+				2F2130F4248CC16B001D3B83 /* TcpReader.swift in Sources */,
+				2F2130F5248CC1B1001D3B83 /* ShipType.swift in Sources */,
 				2F2130E7248C1204001D3B83 /* MetaServer.swift in Sources */,
+				2F2130F3248CC15F001D3B83 /* AlertCondition.swift in Sources */,
+				2F2130EE248CBE84001D3B83 /* Laser.swift in Sources */,
+				2F21310C248D53C7001D3B83 /* packets.swift in Sources */,
 				2F2130C3248C0F87001D3B83 /* AppDelegate.swift in Sources */,
+				2F2130EC248CBE7C001D3B83 /* Player.swift in Sources */,
+				2F2130F9248CC290001D3B83 /* NetworkDelegate.swift in Sources */,
+				2F2130EB248CBE76001D3B83 /* Planet.swift in Sources */,
+				2F2130EF248CBE8A001D3B83 /* Torpedo.swift in Sources */,
 				2F2130E6248C10E8001D3B83 /* PickServerView.swift in Sources */,
 				2F2130C5248C0F87001D3B83 /* SceneDelegate.swift in Sources */,
+				2F2130F7248CC239001D3B83 /* SlotStatus.swift in Sources */,
+				2F2130F6248CC232001D3B83 /* Rank.swift in Sources */,
+				2F213104248D4ED0001D3B83 /* GameState.swift in Sources */,
+				2F2130F0248CBEAD001D3B83 /* NetrekMath.swift in Sources */,
+				2F2130ED248CBE80001D3B83 /* Plasma.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

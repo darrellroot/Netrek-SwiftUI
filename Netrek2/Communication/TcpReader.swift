@@ -7,12 +7,16 @@
 //
 
 import Foundation
-import AppKit
+import SwiftUI
 import Network
 
 class TcpReader {
     //var timer: Timer?
+    #if os(macOS)
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
+    #elseif os(iOS)
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    #endif
     let hostname: String
     let port: Int
     let connection: NWConnection

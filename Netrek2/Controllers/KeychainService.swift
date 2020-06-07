@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Cocoa
+import SwiftUI
 import Security
 
 // see https://stackoverflow.com/a/37539998/1694526

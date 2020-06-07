@@ -6,7 +6,7 @@
 //  Copyright © 2019 Network Mom LLC. All rights reserved.
 //
 
-import Cocoa
+import SwiftUI
 import Security
 
 // The ViewController stuff here may no longer be necessary, but static functions still used 5/5/20

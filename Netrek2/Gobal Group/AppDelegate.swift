@@ -499,9 +499,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func timerFired() {
         timerCount = timerCount + 1
         //debugPrint("AppDelegate.timerFired \(Date())")
-        if timerCount % 50 == 0 {
-            //self.tacticalViewController?.updateHint()
-        }
         self.universe.objectWillChange.send()
         switch self.gameState {
             
@@ -516,28 +513,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         case .loginAccepted:
             break
         case .gameActive:
-            if (timerCount % 200) == 0 {
-                debugPrint("AppDelegate.timer.gameActive: updating sendMessageViewController")
-                /*DispatchQueue.main.async {
-                    self.sendMessageViewController?.updateMenu()
-                }*/
-            }
             if (timerCount % 100) == 0 {
                 debugPrint("Setting needs display for playerListViewController")
-                /*DispatchQueue.main.async {
-                    self.playerListViewController?.view.needsDisplay = true
-                }*/
                 // send cpUpdate once every 10 seconds to prevent ghostbust
                 let cpUpdates = MakePacket.cpUpdates()
                 reader?.send(content: cpUpdates)
             }
-            if (timerCount % 10) == 0 {
-                /*DispatchQueue.main.async {
-                    self.strategicViewController?.view.needsDisplay = true
-                    self.hudViewController?.view.needsDisplay = true
-                }*/
-            }
-            //TODO send ping every x timer counts
             break
         }
     }

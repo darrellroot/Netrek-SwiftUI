@@ -10,11 +10,15 @@ import SwiftUI
 
 struct PickServerView: View {
     @ObservedObject var metaServer: MetaServer
+    @ObservedObject var universe: Universe
     
     var body: some View {
         List {
             ForEach(metaServer.servers.keys.sorted(), id: \.self) { hostname in
                 Text("\(hostname) \(self.metaServer.servers[hostname]?.type.description ?? "Unknown") players \(self.metaServer.servers[hostname]?.players ?? 0)")
+                    .onTapGesture {
+                        debugPrint("server \(hostname) selected")
+                }
             }
         }
     }

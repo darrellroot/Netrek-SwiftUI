@@ -12,7 +12,11 @@ import Combine
 
 class Torpedo: ObservableObject {
     
+    #if os(macOS)
     lazy var appDelegate = NSApplication.shared.delegate as! AppDelegate
+    #elseif os(iOS)
+    lazy var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    #endif
 
     
     var torpedoId: Int = 0

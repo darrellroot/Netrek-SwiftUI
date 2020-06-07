@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Cocoa
+import SwiftUI
 import AVFoundation
 
 enum Sound: String, CaseIterable {
@@ -28,7 +28,12 @@ class SoundController {
     //private var audioList: [AVAudioPlayer] = []
     private var soundList: [Sound:[AVAudioPlayer]] = [:]
     init() {
+        #if os(macOS)
         appDelegate = NSApplication.shared.delegate as! AppDelegate
+        #elseif os(iOS)
+        appDelegate = UIApplication.shared.delegate as! AppDelegate
+        #endif
+
         self.soundDisabled = appDelegate.defaults.bool(forKey: soundDisabledKey)
         
         for soundCandidate in Sound.allCases {

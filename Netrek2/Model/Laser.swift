@@ -10,7 +10,11 @@ import Foundation
 import SwiftUI
 
 class Laser: ObservableObject {
+    #if os(macOS)
     lazy var appDelegate = NSApplication.shared.delegate as! AppDelegate
+    #elseif os(iOS)
+    lazy var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    #endif
 
     private(set) var laserId: Int
     @Published private(set) var status = 0

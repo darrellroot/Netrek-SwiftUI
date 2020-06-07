@@ -7,10 +7,14 @@
 //
 
 import Foundation
-import AppKit
+import SwiftUI
 class PacketAnalyzer {
     
+    #if os(macOS)
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
+    #elseif os(iOS)
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    #endif
     let universe: Universe
     var leftOverData: Data?
     
@@ -385,7 +389,11 @@ class PacketAnalyzer {
             //SP_MASK
             let mask = UInt8(data[1])
             DispatchQueue.main.async {
+                #if os(macOS)
                 self.appDelegate.updateTeamMenu(mask: mask)
+                #elseif os(iOS)
+                self.appDelegate.eligibleTeams.updateEligibleTeams(mask: mask)
+                #endif
             }
             // pad2
             // pad3

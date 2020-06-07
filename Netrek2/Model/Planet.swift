@@ -17,7 +17,11 @@ enum PlanetFlags: UInt16 {
 
 class Planet: CustomStringConvertible, ObservableObject, Identifiable {
     
+    #if os(macOS)
     lazy var appDelegate = NSApplication.shared.delegate as! AppDelegate
+    #elseif os(iOS)
+    lazy var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    #endif
 
     private(set) var planetId: Int
     var id: Int {
