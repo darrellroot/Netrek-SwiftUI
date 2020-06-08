@@ -34,7 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
     
     @ObservedObject var eligibleTeams = EligibleTeams()
     
-    let loginInformationController = LoginInformationController()
+    var keymapController: KeymapController!
+    
+    let loginInformationController =  LoginInformationController()
     
     let timerInterval = 1.0 / Double(UPDATE_RATE)
     var timer: Timer?
@@ -43,6 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         //metaServer = MetaServer(hostname: "metaserver.netrek.org", port: 3521)
+        
+        self.soundController = SoundController()
+        self.keymapController = KeymapController()
         metaServer.update()
         /*if let metaServer = metaServer {
          metaServer.update()
@@ -135,7 +140,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
         if self.gameState == .loginAccepted {
             if let reader = self.reader {
                 let cpUpdates = MakePacket.cpUpdates()
-                    reader.send(content: cpUpdates)
+                reader.send(content: cpUpdates)
                 let cpOutfit = MakePacket.cpOutfit(team: self.eligibleTeams.preferredTeam, ship: self.eligibleTeams.preferredShip)
                 reader.send(content: cpOutfit)
             }
@@ -147,7 +152,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
             }
         }
     }
-
+    
     public func newGameState(_ newState: GameState ) {
         debugPrint("Game State: moving from \(self.gameState.rawValue) to \(newState.rawValue)\n")
         switch newState {
@@ -155,18 +160,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
             
         case .noServerSelected:
             self.resetConnection()
-            help.nextTip()
-            universe.reset()
+            self.help.nextTip()
+            self.universe.reset()
             //enableServerMenu()
             //disableShipMenu()
             self.gameState = newState
-            universe.gotMessage("AppDelegate GameState \(newState) we may have been ghostbusted!  Resetting.  Try again\n")
+            self.universe.gotMessage("AppDelegate GameState \(newState) we may have been ghostbusted!  Resetting.  Try again\n")
             debugPrint("AppDelegate GameState \(newState) we may have been ghostbusted!  Resetting.  Try again\n")
             self.refreshMetaserver()
             break
             
         case .serverSelected:
-            help.nextTip()
+            self.help.nextTip()
             //disableShipMenu()
             //disableServerMenu()
             self.gameState = newState
@@ -175,15 +180,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
             break
             
         case .serverConnected:
-            help.nextTip()
+            self.help.nextTip()
             //disableShipMenu()
             //disableServerMenu()
             self.clientTypeSent = false
-            DispatchQueue.main.sync {
+            DispatchQueue.main.async {
                 self.gameState = newState
             }
             
-            guard let reader = reader else {
+            guard let reader = self.reader else {
                 self.newGameState(.noServerSelected)
                 return
             }
@@ -191,7 +196,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
             DispatchQueue.global(qos: .background).async{
                 reader.send(content: cpSocket)
             }
-            for feature in clientFeatures {
+            for feature in self.clientFeatures {
                 let cpFeature: Data
                 if feature == "SP_GENERIC_32" {
                     cpFeature = MakePacket.cpFeatures(feature: feature,arg1: 2)
@@ -206,7 +211,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
         case .serverSlotFound:
             //disableShipMenu()
             //disableServerMenu()
-            self.gameState = newState
+            DispatchQueue.main.async {
+                self.gameState = newState
+            }
             debugPrint("AppDelegate.newGameState: .serverSlotFound")
             let cpLogin: Data
             if self.loginInformationController.loginAuthenticated == true && self.loginInformationController.validInfo {
@@ -214,7 +221,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
             } else {
                 cpLogin = MakePacket.cpLogin(name: "guest", password: "", login: "")
             }
-            if let reader = reader {
+            if let reader = self.reader {
                 DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 0.2) {
                     
                     reader.send(content: cpLogin)
@@ -225,27 +232,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
             }
             
         case .loginAccepted:
-            help.nextTip()
+            self.help.nextTip()
             //self.enableShipMenu()
             //self.disableServerMenu()
             /*DispatchQueue.main.async {
              self.playerListViewController?.view.needsDisplay = true
              }*/
-            self.gameState = newState
+            DispatchQueue.main.async {
+                self.gameState = newState
+            }
             
         case .gameActive:
-            help.noTip()
+            self.help.noTip()
             //self.enableShipMenu()
             //self.disableServerMenu()
             /*DispatchQueue.main.async {
              self.playerListViewController?.view.needsDisplay = true
              }*/
-            self.gameState = newState
-            if !clientTypeSent {
+            DispatchQueue.main.async {
+                self.gameState = newState
+            }
+            if !self.clientTypeSent {
                 let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
                 let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "unknown"
                 let data = MakePacket.cpMessage(message: "I am using the Swift Netrek Client version \(appVersion) build \(buildVersion) on IPadOS", team: .ogg, individual: 0)
-                clientTypeSent = true
+                self.clientTypeSent = true
                 self.reader?.send(content: data)
             }
         }

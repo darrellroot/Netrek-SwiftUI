@@ -71,7 +71,8 @@ struct TacticalView: View, TacticalOffset {
                     switch event.type {
                         
                     case .leftMouseDown:
-                        self.mouseDown(control: .leftMouse,eventLocation: location, size: geo.size)
+                        self.mouseDown(control: .left:
+                        Mouse,eventLocation: location, size: geo.size)
                         //self.appDelegate.keymapController.execute(.leftMouse,location: location)
                     case .leftMouseDragged:
                         self.mouseDown(control: .leftMouse,eventLocation: location, size: geo.size)

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AppKit
+import SwiftUI
 
 enum Control: String, CaseIterable {
     case zeroKey = "0 key"
@@ -147,7 +147,11 @@ enum Command: String, CaseIterable {
 
 class KeymapController {
     
+    #if os(macOS)
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
+    #elseif os(iOS)
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    #endif
 
     var keymap: [Control:Command] = [:]
 

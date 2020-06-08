@@ -16,18 +16,20 @@ struct ContentView: View {
     //let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     var body: some View {
-        switch appDelegate.gameState {
-        case .noServerSelected:
+        switch (appDelegate.gameState, universe.players[universe.me].slotStatus) {
+        case (.noServerSelected,_):
             return AnyView(PickServerView(metaServer: metaServer, universe: universe))
-        case .serverSelected:
+        case (.serverSelected,_):
             return AnyView(Text("Server Selected"))
-        case .serverConnected:
+        case (.serverConnected,_):
             return AnyView(Text("Server Connected"))
-        case .serverSlotFound:
+        case (.serverSlotFound,_):
             return AnyView(Text("Server Slot Found"))
-        case .loginAccepted:
+        case (.loginAccepted,.explode):
+            return AnyView(TacticalView(universe: universe, help: appDelegate.help))
+        case (.loginAccepted,_):
             return AnyView(SelectTeamView(eligibleTeams: self.appDelegate.eligibleTeams, universe: universe))
-        case .gameActive:
+        case (.gameActive,_):
             return AnyView(TacticalView(universe: universe, help: appDelegate.help))
         default:
             return AnyView(Text("not implemented"))

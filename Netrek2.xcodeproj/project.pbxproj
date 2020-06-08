@@ -69,6 +69,7 @@
 		2F213121248D898E001D3B83 /* LaserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44596C2465EFB300C3F9A1 /* LaserView.swift */; };
 		2F213122248D89B9001D3B83 /* TacticalOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44288F24636B690051D7BE /* TacticalOffset.swift */; };
 		2F213125248D8AE9001D3B83 /* TacticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F213124248D8AE9001D3B83 /* TacticalView.swift */; };
+		2F213126248D9911001D3B83 /* KeymapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7FB24647A4C00AA2A3F /* KeymapController.swift */; };
 		2F2789DF24872C8900038FBD /* DetonationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789DE24872C8900038FBD /* DetonationView.swift */; };
 		2F2789E1248852D300038FBD /* TractorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E0248852D300038FBD /* TractorView.swift */; };
 		2F2789E324897E9500038FBD /* BoundaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E224897E9500038FBD /* BoundaryView.swift */; };
@@ -798,6 +799,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F213119248D893E001D3B83 /* BoundaryView.swift in Sources */,
+				2F213126248D9911001D3B83 /* KeymapController.swift in Sources */,
 				2F21310F248D5526001D3B83 /* Help.swift in Sources */,
 				2F2130F2248CC15A001D3B83 /* PlayerStatus.swift in Sources */,
 				2F213109248D5322001D3B83 /* UserDefaults-extensions.swift in Sources */,

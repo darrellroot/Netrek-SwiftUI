@@ -11,6 +11,14 @@ import SwiftUI
 struct PlayerView: View, TacticalOffset {
     @ObservedObject var player: Player
     @ObservedObject var me: Player
+    
+    #if os(macOS)
+    let appDelegate = NSApplication.shared.delegate as! AppDelegate
+    #elseif os(iOS)
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    #endif
+
+    
     var body: some View {
         return GeometryReader { geo in
             ZStack {
@@ -18,6 +26,7 @@ struct PlayerView: View, TacticalOffset {
                     .stroke(Color.green)
                     .frame(width: self.playerWidth(screenWidth: geo.size.width * 1.1), height: self.playerWidth(screenWidth: geo.size.height * 1.1 ))
                     .opacity(self.player.shieldsUp ? 1.0 : 0.0)
+                    .opacity(Double(self.player.shieldStrength) / 100.0)
                 VStack {
                     //self.planet.image
                     Text(self.player.name).foregroundColor(NetrekMath.color(team: self.player.team))
