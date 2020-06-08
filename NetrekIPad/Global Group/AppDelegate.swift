@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
     let defaults = UserDefaults.standard
     
     let help = Help()
-    
+    //did not work
+    //var audioController: AudioController?
     var serverFeatures: [String] = []
     var clientFeatures: [String] = ["FEATURE_PACKETS","SHIP_CAP","SP_GENERIC_32","TIPS"]
     
@@ -135,6 +136,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
         }
         return false
     }
+    /*func enableSpeech() {
+        self.audioController = AudioController(keymapController: keymapController)
+    }*/
     func selectShip(ship: ShipType) {
         self.eligibleTeams.preferredShip = ship
         if self.gameState == .loginAccepted {

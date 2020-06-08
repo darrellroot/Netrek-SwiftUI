@@ -216,6 +216,7 @@
 		2F213113248D6D63001D3B83 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2F213115248D6EEC001D3B83 /* SelectTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTeamView.swift; sourceTree = "<group>"; };
 		2F213124248D8AE9001D3B83 /* TacticalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacticalView.swift; sourceTree = "<group>"; };
+		2F213128248EB317001D3B83 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		2F2789DE24872C8900038FBD /* DetonationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetonationView.swift; sourceTree = "<group>"; };
 		2F2789E0248852D300038FBD /* TractorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TractorView.swift; sourceTree = "<group>"; };
 		2F2789E224897E9500038FBD /* BoundaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundaryView.swift; sourceTree = "<group>"; };
@@ -330,6 +331,7 @@
 		2F2130C1248C0F87001D3B83 /* NetrekIPad */ = {
 			isa = PBXGroup;
 			children = (
+				2F213127248EB301001D3B83 /* Controllers */,
 				2F2130E4248C10A4001D3B83 /* Views */,
 				2F2130E3248C108E001D3B83 /* Global Group */,
 				2F2130CD248C0F88001D3B83 /* LaunchScreen.storyboard */,
@@ -409,6 +411,14 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		2F213127248EB301001D3B83 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2F213128248EB317001D3B83 /* AudioController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		2F2C1AF52487183E00604F21 /* Resources */ = {
