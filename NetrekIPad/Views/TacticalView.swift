@@ -43,9 +43,6 @@ struct TacticalView: View, TacticalOffset {
                         .font(.headline)
                     }
                     BoundaryView(me: self.universe.players[self.universe.me])
-                    ForEach(self.universe.visiblePlanets, id: \.planetId) { planet in
-                        PlanetView(planet: planet, me: self.universe.players[self.universe.me])
-                    }
                 }//extra Zstack for 10 limit
                 ForEach(self.universe.visibleTractors, id: \.playerId) { target in
                     TractorView(target: target, me: self.universe.players[self.universe.me])
@@ -94,12 +91,19 @@ struct TacticalView: View, TacticalOffset {
                             }
                         }
                 )
+                ForEach(self.universe.visiblePlanets, id: \.planetId) { planet in
+                    PlanetView(planet: planet, me: self.universe.players[self.universe.me], imageSize: self.planetWidth(screenWidth: geo.size.width),screenWidth: geo.size.width, screenHeight: geo.size.height)
+                    .frame(width: self.planetWidth(screenWidth: geo.size.width * 3), height: self.planetWidth(screenWidth: geo.size.height * 3))
+                        .onTapGesture {
+                            debugPrint("tap gesture planet lock on")
+                            self.appDelegate.keymapController.execute(.lKey, location: CGPoint(x: planet.positionX, y: planet.positionY))
+                    }
+
+                }
+
                 ForEach(self.universe.visiblePlayers, id: \.playerId) { player in
                     PlayerView(player: player, me: self.universe.players[self.universe.me], imageSize: self.playerWidth(screenWidth: geo.size.width), screenWidth: geo.size.width, screenHeight: geo.size.height)
-                        //.offset(x: self.xOffset(positionX: player.positionX, myPositionX: self.universe.players[self.universe.me].positionX,tacticalWidth: geo.size.width), y: self.yOffset(positionY: player.positionY, myPositionY: self.universe.players[self.universe.me].positionY, tacticalHeight: geo.size.height))
-
                         .frame(width: self.playerWidth(screenWidth: geo.size.width * 3), height: self.playerWidth(screenWidth: geo.size.height * 3))
-                            
                         //.border(Color.orange)
                         .onTapGesture {
                             debugPrint("tap gesture laser")

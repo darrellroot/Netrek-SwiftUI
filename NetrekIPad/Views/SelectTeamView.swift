@@ -79,12 +79,6 @@ struct SelectTeamView: View {
                         self.appDelegate.selectShip(ship: .assault)
                 }
 
-                Text("Launch Starbase")
-                    .padding(8)
-                    .onTapGesture {
-                        self.appDelegate.selectShip(ship: .starbase)
-                }
-
             }//VStack launch ship
                 .font(.title)
             Spacer()

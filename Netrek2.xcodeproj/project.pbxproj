@@ -217,6 +217,7 @@
 		2F213115248D6EEC001D3B83 /* SelectTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTeamView.swift; sourceTree = "<group>"; };
 		2F213124248D8AE9001D3B83 /* TacticalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacticalView.swift; sourceTree = "<group>"; };
 		2F213128248EB317001D3B83 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
+		2F21312A248FFE39001D3B83 /* KnownIssues.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = KnownIssues.rtf; sourceTree = "<group>"; };
 		2F2789DE24872C8900038FBD /* DetonationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetonationView.swift; sourceTree = "<group>"; };
 		2F2789E0248852D300038FBD /* TractorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TractorView.swift; sourceTree = "<group>"; };
 		2F2789E224897E9500038FBD /* BoundaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundaryView.swift; sourceTree = "<group>"; };
@@ -442,6 +443,7 @@
 		2F97D84124620CCF003CA91F = {
 			isa = PBXGroup;
 			children = (
+				2F21312A248FFE39001D3B83 /* KnownIssues.rtf */,
 				2F2130E2248C0FC4001D3B83 /* Shared */,
 				2F2130C1248C0F87001D3B83 /* NetrekIPad */,
 				2F97D84C24620CCF003CA91F /* Netrek2 */,
