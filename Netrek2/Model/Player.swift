@@ -322,6 +322,10 @@ class Player: CustomStringConvertible, ObservableObject {
     }
     
     public func updateMe(myPlayerId: Int, hostile: UInt32, war: UInt32, armies: Int, tractor: Int, flags: UInt32, damage: Int, shieldStrength: Int, fuel: Int, engineTemp: Int, weaponsTemp: Int, whyDead: Int, whoDead: Int) {
+        
+        // try to call this in the main queue
+        // or we get intermittent crashes
+        
         if self.playerId != myPlayerId {
             debugPrint("Player.updateMe: ERROR: inconsistent player ID \(myPlayerId) versus \(String(describing: self.playerId))")
         }
@@ -352,12 +356,10 @@ class Player: CustomStringConvertible, ObservableObject {
         self.weaponsTemp = weaponsTemp
         self.whyDead = whyDead
         self.whoDead = whoDead
-        DispatchQueue.main.async {
-            if flags & PlayerStatus.shield.rawValue != 0 {
-                self.shieldsUp = true
-            } else {
-                self.shieldsUp = false
-            }
+        if flags & PlayerStatus.shield.rawValue != 0 {
+            self.shieldsUp = true
+        } else {
+            self.shieldsUp = false
         }
         if flags & PlayerStatus.repair.rawValue != 0 {
             self.repair = true

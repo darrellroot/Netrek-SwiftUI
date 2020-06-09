@@ -380,7 +380,9 @@ class PacketAnalyzer {
 
                 return
             }
-            player.update(tractor: tractor, flags: flags)
+            DispatchQueue.main.async {
+                player.update(tractor: tractor, flags: flags)
+            }
             //debugPrint(player)
             //printData(data, success: true)
 

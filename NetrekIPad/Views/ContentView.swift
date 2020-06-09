@@ -30,7 +30,7 @@ struct ContentView: View {
         case (.loginAccepted,_):
             return AnyView(SelectTeamView(eligibleTeams: self.appDelegate.eligibleTeams, universe: universe))
         case (.gameActive,_):
-            return AnyView(TacticalView(universe: universe, help: appDelegate.help))
+            return AnyView(TacticalHudView(universe: universe, help: appDelegate.help))
         default:
             return AnyView(Text("not implemented"))
         }
