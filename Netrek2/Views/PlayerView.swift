@@ -11,6 +11,9 @@ import SwiftUI
 struct PlayerView: View, TacticalOffset {
     @ObservedObject var player: Player
     @ObservedObject var me: Player
+    var imageSize: CGFloat
+    var screenWidth: CGFloat
+    var screenHeight: CGFloat
     
     #if os(macOS)
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
@@ -24,7 +27,7 @@ struct PlayerView: View, TacticalOffset {
             ZStack {
                 Circle()
                     .stroke(Color.green)
-                    .frame(width: self.playerWidth(screenWidth: geo.size.width * 1.1), height: self.playerWidth(screenWidth: geo.size.height * 1.1 ))
+                    .frame(width: self.imageSize, height: self.imageSize)
                     .opacity(self.player.shieldsUp ? 1.0 : 0.0)
                     .opacity(Double(self.player.shieldStrength) / 100.0)
                 VStack {
@@ -33,14 +36,16 @@ struct PlayerView: View, TacticalOffset {
                     Image(self.player.imageName)
                     .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: self.playerWidth(screenWidth: geo.size.width), height: self.playerWidth(screenWidth: geo.size.height))
+                        .frame(width: self.imageSize, height: self.imageSize)
                         .rotationEffect(Angle(radians: -self.player.direction))
                     Text("\(self.player.ship?.description ?? "") \(self.player.kills, specifier: "%.2f")").foregroundColor(NetrekMath.color(team: self.player.team))
                 }
             }
             .opacity(self.player.cloak && self.me === self.player ? 0.4 : 1.0)
             .opacity(self.player.cloak && self.me !== self.player ? 0.0 : 1.0)
-            .offset(x: self.xOffset(positionX: self.player.positionX, myPositionX: self.me.positionX,tacticalWidth: geo.size.width), y: self.yOffset(positionY: self.player.positionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height))
+            //.offset(x: self.xOffset(positionX: self.player.positionX, myPositionX: self.me.positionX,tacticalWidth: geo.size.width), y: self.yOffset(positionY: self.player.positionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height))
+                .offset(x: self.xOffset(positionX: self.player.positionX, myPositionX: self.me.positionX,tacticalWidth: self.screenWidth), y: self.yOffset(positionY: self.player.positionY, myPositionY: self.me.positionY, tacticalHeight: self.screenHeight))
+
             .animation(Animation.linear)
 
         }

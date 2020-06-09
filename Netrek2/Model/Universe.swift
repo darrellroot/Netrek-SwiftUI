@@ -110,6 +110,17 @@ class Universe: ObservableObject {
             return messages[0 ..< messages.count]
         }
     }
+    var recentMessages: [String] {
+        if messages.count >= 10 {
+            return Array(messages[messages.count - 10 ..< messages.count])
+        } else {
+            return Array(messages[0 ..< messages.count])
+        }
+    }
+
+    var lastMessage: String {
+        return self.messages.last ?? ""
+    }
     func gotMessage(_ newMessage: String) {
         DispatchQueue.main.async {
             self.messages.append(newMessage)

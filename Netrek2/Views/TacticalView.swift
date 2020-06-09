@@ -41,9 +41,16 @@ struct TacticalView: View, TacticalOffset {
                     ForEach(self.universe.visiblePlanets, id: \.planetId) { planet in
                         PlanetView(planet: planet, me: self.universe.players[self.universe.me])
                     }
-                    ForEach(self.universe.visiblePlayers, id: \.playerId) { player in
+                    /*ForEach(self.universe.visiblePlayers, id: \.playerId) { player in
                             PlayerView(player: player, me: self.universe.players[self.universe.me])
-                     }
+                     }*/
+                    ForEach(self.universe.visiblePlayers, id: \.playerId) { player in
+                        PlayerView(player: player, me: self.universe.players[self.universe.me], imageSize: self.playerWidth(screenWidth: geo.size.width))
+                            .offset(x: self.xOffset(positionX: player.positionX, myPositionX: self.universe.players[self.universe.me].positionX,tacticalWidth: geo.size.width), y: self.yOffset(positionY: player.positionY, myPositionY: self.universe.players[self.universe.me].positionY, tacticalHeight: geo.size.height))
+
+                            .frame(width: self.playerWidth(screenWidth: geo.size.width * 3), height: self.playerWidth(screenWidth: geo.size.height * 3))
+                                
+                    }
                 }//extra Zstack for 10 limit
                 ForEach(self.universe.visibleTractors, id: \.playerId) { target in
                         TractorView(target: target, me: self.universe.players[self.universe.me])
@@ -71,8 +78,7 @@ struct TacticalView: View, TacticalOffset {
                     switch event.type {
                         
                     case .leftMouseDown:
-                        self.mouseDown(control: .left:
-                        Mouse,eventLocation: location, size: geo.size)
+                        self.mouseDown(control: .leftMouse,eventLocation: location, size: geo.size)
                         //self.appDelegate.keymapController.execute(.leftMouse,location: location)
                     case .leftMouseDragged:
                         self.mouseDown(control: .leftMouse,eventLocation: location, size: geo.size)

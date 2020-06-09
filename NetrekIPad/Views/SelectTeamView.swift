@@ -44,6 +44,7 @@ struct SelectTeamView: View {
                     .onTapGesture {
                         self.eligibleTeams.preferredTeam = .orion
                 }
+
                 
             }//VStack teams
             
@@ -87,6 +88,13 @@ struct SelectTeamView: View {
             }//VStack launch ship
                 .font(.title)
             Spacer()
+            VStack(alignment: .leading) {
+                ForEach(self.universe.recentMessages, id: \.self) { message in
+                    Text(message)
+                    .font(.headline)
+                }
+            }
+
         }
     }
 }

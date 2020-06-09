@@ -37,12 +37,14 @@ struct TacticalView: View, TacticalOffset {
                 ZStack { //more than 10 items in function builder}
                     Rectangle().colorInvert()
                     HelpView(help: self.help)
+                    VStack {
+                        Spacer()
+                        Text(self.universe.lastMessage)
+                        .font(.headline)
+                    }
                     BoundaryView(me: self.universe.players[self.universe.me])
                     ForEach(self.universe.visiblePlanets, id: \.planetId) { planet in
                         PlanetView(planet: planet, me: self.universe.players[self.universe.me])
-                    }
-                    ForEach(self.universe.visiblePlayers, id: \.playerId) { player in
-                        PlayerView(player: player, me: self.universe.players[self.universe.me])
                     }
                 }//extra Zstack for 10 limit
                 ForEach(self.universe.visibleTractors, id: \.playerId) { target in
@@ -92,6 +94,21 @@ struct TacticalView: View, TacticalOffset {
                             }
                         }
                 )
+                ForEach(self.universe.visiblePlayers, id: \.playerId) { player in
+                    PlayerView(player: player, me: self.universe.players[self.universe.me], imageSize: self.playerWidth(screenWidth: geo.size.width), screenWidth: geo.size.width, screenHeight: geo.size.height)
+                        //.offset(x: self.xOffset(positionX: player.positionX, myPositionX: self.universe.players[self.universe.me].positionX,tacticalWidth: geo.size.width), y: self.yOffset(positionY: player.positionY, myPositionY: self.universe.players[self.universe.me].positionY, tacticalHeight: geo.size.height))
+
+                        .frame(width: self.playerWidth(screenWidth: geo.size.width * 3), height: self.playerWidth(screenWidth: geo.size.height * 3))
+                            
+                        //.border(Color.orange)
+                        .onTapGesture {
+                            debugPrint("tap gesture laser")
+                            if player.team != self.universe.players[self.universe.me].team {
+                                self.appDelegate.keymapController.execute(.otherMouse, location: CGPoint(x: player.positionX, y: player.positionY))
+                            }
+                    }
+                }
+
                 
                 /*debugPrint("event \(event) location \(location)")
                  switch event.type {
