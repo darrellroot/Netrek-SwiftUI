@@ -48,7 +48,6 @@
 		2F213107248D524C001D3B83 /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E82489B8DF00038FBD /* PreferencesController.swift */; };
 		2F213108248D5304001D3B83 /* LoginDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8CD24623422003CA91F /* LoginDefault.swift */; };
 		2F213109248D5322001D3B83 /* UserDefaults-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8E02462366F003CA91F /* UserDefaults-extensions.swift */; };
-		2F21310A248D533F001D3B83 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D88924621FE3003CA91F /* Globals.swift */; };
 		2F21310B248D53BD001D3B83 /* MakePacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D87F24621E94003CA91F /* MakePacket.swift */; };
 		2F21310C248D53C7001D3B83 /* packets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D88C24621FE8003CA91F /* packets.swift */; };
 		2F21310D248D53CC001D3B83 /* PacketAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D88624621FBE003CA91F /* PacketAnalyzer.swift */; };
@@ -104,6 +103,10 @@
 		2F45A7FA2464763200AA2A3F /* PointingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7F92464763200AA2A3F /* PointingView.swift */; };
 		2F45A7FC24647A4C00AA2A3F /* KeymapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7FB24647A4C00AA2A3F /* KeymapController.swift */; };
 		2F45A7FF246480EE00AA2A3F /* NSCommandedWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7FE246480EE00AA2A3F /* NSCommandedWindow.swift */; };
+		2F53CB82249153C100677187 /* ServerSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB81249153C100677187 /* ServerSelectedView.swift */; };
+		2F53CB852491563000677187 /* Publishers+keyboardHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB842491563000677187 /* Publishers+keyboardHeight.swift */; };
+		2F53CB872491575B00677187 /* Notification+keyboardHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB862491575B00677187 /* Notification+keyboardHeight.swift */; };
+		2F53CB8924915A2500677187 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D88924621FE3003CA91F /* Globals.swift */; };
 		2F97D84E24620CCF003CA91F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D84D24620CCF003CA91F /* AppDelegate.swift */; };
 		2F97D85524620CD0003CA91F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D85424620CD0003CA91F /* Preview Assets.xcassets */; };
 		2F97D85824620CD0003CA91F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D85624620CD0003CA91F /* Main.storyboard */; };
@@ -250,6 +253,9 @@
 		2F45A7F92464763200AA2A3F /* PointingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointingView.swift; sourceTree = "<group>"; };
 		2F45A7FB24647A4C00AA2A3F /* KeymapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeymapController.swift; sourceTree = "<group>"; };
 		2F45A7FE246480EE00AA2A3F /* NSCommandedWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCommandedWindow.swift; sourceTree = "<group>"; };
+		2F53CB81249153C100677187 /* ServerSelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSelectedView.swift; sourceTree = "<group>"; };
+		2F53CB842491563000677187 /* Publishers+keyboardHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publishers+keyboardHeight.swift"; sourceTree = "<group>"; };
+		2F53CB862491575B00677187 /* Notification+keyboardHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+keyboardHeight.swift"; sourceTree = "<group>"; };
 		2F97D84A24620CCF003CA91F /* Netrek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netrek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F97D84D24620CCF003CA91F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F97D85424620CD0003CA91F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -336,6 +342,7 @@
 		2F2130C1248C0F87001D3B83 /* NetrekIPad */ = {
 			isa = PBXGroup;
 			children = (
+				2F53CB832491561700677187 /* Extensions */,
 				2F213127248EB301001D3B83 /* Controllers */,
 				2F2130E4248C10A4001D3B83 /* Views */,
 				2F2130E3248C108E001D3B83 /* Global Group */,
@@ -366,6 +373,7 @@
 		2F2130E2248C0FC4001D3B83 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				2F53CB882491597200677187 /* Global */,
 				2F2130E9248C1221001D3B83 /* Communication */,
 			);
 			path = Shared;
@@ -386,12 +394,13 @@
 		2F2130E4248C10A4001D3B83 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2F2130E5248C10E8001D3B83 /* PickServerView.swift */,
 				2F213113248D6D63001D3B83 /* ContentView.swift */,
+				2F2130E5248C10E8001D3B83 /* PickServerView.swift */,
+				2F53CB81249153C100677187 /* ServerSelectedView.swift */,
 				2F213115248D6EEC001D3B83 /* SelectTeamView.swift */,
-				2F213124248D8AE9001D3B83 /* TacticalView.swift */,
 				2F21312B24900024001D3B83 /* TacticalHudView.swift */,
 				2F21312D2490018B001D3B83 /* LeftTacticalControlView.swift */,
+				2F213124248D8AE9001D3B83 /* TacticalView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -444,6 +453,23 @@
 				2F44289224636E540051D7BE /* Assets.xcassets */,
 			);
 			path = "Gobal Group";
+			sourceTree = "<group>";
+		};
+		2F53CB832491561700677187 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2F53CB842491563000677187 /* Publishers+keyboardHeight.swift */,
+				2F53CB862491575B00677187 /* Notification+keyboardHeight.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2F53CB882491597200677187 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				2F97D88924621FE3003CA91F /* Globals.swift */,
+			);
+			path = Global;
 			sourceTree = "<group>";
 		};
 		2F97D84124620CCF003CA91F = {
@@ -512,7 +538,6 @@
 			children = (
 				2F97D88C24621FE8003CA91F /* packets.swift */,
 				2F97D88624621FBE003CA91F /* PacketAnalyzer.swift */,
-				2F97D88924621FE3003CA91F /* Globals.swift */,
 				2F97D87F24621E94003CA91F /* MakePacket.swift */,
 				2F97D8782462156C003CA91F /* TcpReader.swift */,
 			);
@@ -828,11 +853,12 @@
 				2F21310B248D53BD001D3B83 /* MakePacket.swift in Sources */,
 				2F213107248D524C001D3B83 /* PreferencesController.swift in Sources */,
 				2F2130E8248C1212001D3B83 /* MetaServerEntry.swift in Sources */,
+				2F53CB8924915A2500677187 /* Globals.swift in Sources */,
+				2F53CB852491563000677187 /* Publishers+keyboardHeight.swift in Sources */,
 				2F213112248D565E001D3B83 /* EligibleTeams.swift in Sources */,
 				2F21312C24900024001D3B83 /* TacticalHudView.swift in Sources */,
 				2F213105248D522D001D3B83 /* LoginInformationController.swift in Sources */,
 				2F213114248D6D63001D3B83 /* ContentView.swift in Sources */,
-				2F21310A248D533F001D3B83 /* Globals.swift in Sources */,
 				2F213118248D8933001D3B83 /* HelpView.swift in Sources */,
 				2F2130FA248CC2C3001D3B83 /* ShipInfo.swift in Sources */,
 				2F2130F8248CC260001D3B83 /* Collection-extensions.swift in Sources */,
@@ -842,6 +868,7 @@
 				2F2130F1248CC0ED001D3B83 /* Team.swift in Sources */,
 				2F21311F248D8988001D3B83 /* TorpedoView.swift in Sources */,
 				2F21310E248D5479001D3B83 /* Data-extensions.swift in Sources */,
+				2F53CB82249153C100677187 /* ServerSelectedView.swift in Sources */,
 				2F213121248D898E001D3B83 /* LaserView.swift in Sources */,
 				2F213116248D6EEC001D3B83 /* SelectTeamView.swift in Sources */,
 				2F21311E248D8980001D3B83 /* DetonationView.swift in Sources */,
@@ -862,6 +889,7 @@
 				2F213122248D89B9001D3B83 /* TacticalOffset.swift in Sources */,
 				2F213125248D8AE9001D3B83 /* TacticalView.swift in Sources */,
 				2F2130E6248C10E8001D3B83 /* PickServerView.swift in Sources */,
+				2F53CB872491575B00677187 /* Notification+keyboardHeight.swift in Sources */,
 				2F2130C5248C0F87001D3B83 /* SceneDelegate.swift in Sources */,
 				2F2130F7248CC239001D3B83 /* SlotStatus.swift in Sources */,
 				2F2130F6248CC232001D3B83 /* Rank.swift in Sources */,

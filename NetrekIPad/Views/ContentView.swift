@@ -20,7 +20,7 @@ struct ContentView: View {
         case (.noServerSelected,_):
             return AnyView(PickServerView(metaServer: metaServer, universe: universe))
         case (.serverSelected,_):
-            return AnyView(Text("Server Selected"))
+            return AnyView(ServerSelectedView(appDelegate: appDelegate, server: appDelegate.reader?.hostname ?? "unknown"))
         case (.serverConnected,_):
             return AnyView(Text("Server Connected"))
         case (.serverSlotFound,_):

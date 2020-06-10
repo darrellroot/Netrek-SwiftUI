@@ -7,17 +7,27 @@
 //
 
 import SwiftUI
-import Speech
+//import Speech
+import Combine
 
 struct PickServerView: View {
     @ObservedObject var metaServer: MetaServer
     @ObservedObject var universe: Universe
-    @State var manualServer: String = ""
+    @State var manualServer = "" // see serverBinding below
+    
+    @State private var keyboardHeight: CGFloat = 0
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var body: some View {
-        VStack(alignment: .leading) {
+        let serverBinding = Binding<String> ( get: {
+            self.manualServer
+        }, set: {
+            self.manualServer = $0.lowercased()
+        })
+
+        
+        return VStack(alignment: .leading) {
             HStack {
                 Spacer()
                 Text("Netrek").font(.largeTitle)
@@ -36,7 +46,8 @@ struct PickServerView: View {
             Spacer()
             HStack {
                 Text("Manually Enter Server Hostname or IP Address").font(.title)
-                TextField("servername", text: $manualServer).font(.title)
+                TextField("servername", text: serverBinding)
+                    .font(.title)
                 Button("Connect to Manual Server") {
                     _ = self.appDelegate.selectServer(hostname: self.manualServer)
                 }
@@ -60,8 +71,12 @@ struct PickServerView: View {
                     }
                 }
             }*/
+        }// main Vstack
+            .padding(.bottom, keyboardHeight)
+            .onReceive(Publishers.keyboardHeight) {
+                self.keyboardHeight = $0
         }
-    }
+    }//var body
 }
 
 /*struct PickServer_Previews: PreviewProvider {

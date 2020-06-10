@@ -120,12 +120,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
             debugPrint("AppDelegate.selectServer: Error cannot select server \(hostname) while gameState is \(self.gameState)")
             return false
         }
+        
+        if reader != nil {
+            self.resetConnection()
+        }
+
         if let server = metaServer.servers[hostname] {
-            debugPrint("starting game server \(server.description)")
-            if reader != nil {
-                self.resetConnection()
+            debugPrint("starting game server \(hostname)")
+            if let reader = TcpReader(hostname: hostname, port: server.port, delegate: self) {
+                self.reader = reader
+                self.newGameState(.serverSelected)
+                return true
+            } else {
+                debugPrint("AppDelegate failed to start reader")
+                return false
             }
-            if let reader = TcpReader(hostname: server.hostname, port: server.port, delegate: self) {
+        } else {
+            if let reader = TcpReader(hostname: hostname, port: WELLKNOWNPORT, delegate: self) {
                 self.reader = reader
                 self.newGameState(.serverSelected)
                 return true
@@ -134,7 +145,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
                 return false
             }
         }
-        return false
     }
     /*func enableSpeech() {
         self.audioController = AudioController(keymapController: keymapController)
