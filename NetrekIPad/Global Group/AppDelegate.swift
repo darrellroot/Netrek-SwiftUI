@@ -179,7 +179,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
             //disableShipMenu()
             //disableServerMenu()
             self.gameState = newState
-            self.analyzer = PacketAnalyzer()
+            self.analyzer = PacketAnalyzer(appDelegate: self)
             // no need to do anything here, handled in the menu function
             break
             
@@ -259,7 +259,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
             if !self.clientTypeSent {
                 let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
                 let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "unknown"
-                let data = MakePacket.cpMessage(message: "I am using the Swift Netrek Client version \(appVersion) build \(buildVersion) on IPadOS", team: .ogg, individual: 0)
+                let data = MakePacket.cpMessage(message: "I am using the Swift Netrek Client version \(appVersion) build \(buildVersion) on iPadOS", team: .ogg, individual: 0)
                 self.clientTypeSent = true
                 self.reader?.send(content: data)
             }

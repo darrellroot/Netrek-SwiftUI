@@ -10,11 +10,12 @@ import Foundation
 import SwiftUI
 class PacketAnalyzer {
     
-    #if os(macOS)
+    /*#if os(macOS)
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
     #elseif os(iOS)
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    #endif
+    #endif*/
+    let appDelegate: AppDelegate
     let universe: Universe
     var leftOverData: Data?
     
@@ -24,7 +25,8 @@ class PacketAnalyzer {
     let playerMax = 100 // we ignore player updates for more than this
 
     
-    init() {
+    init(appDelegate: AppDelegate) {
+        self.appDelegate = appDelegate
         universe = appDelegate.universe
     }
     

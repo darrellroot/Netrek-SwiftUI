@@ -151,6 +151,11 @@ class Player: CustomStringConvertible, ObservableObject {
     init(playerId: Int) {
         self.playerId = playerId
         self.remakeNode()
+        
+        //initializing hostile dictionary to minimize runtime errors later
+        for team in Team.allCases {
+            self.hostile[team] = false
+        }
     }
     
     deinit {

@@ -26,7 +26,7 @@ struct ContentView: View {
         case (.serverSlotFound,_):
             return AnyView(Text("Server Slot Found"))
         case (.loginAccepted,.explode):
-            return AnyView(TacticalView(universe: universe, help: appDelegate.help))
+            return AnyView(TacticalHudView(universe: universe, help: appDelegate.help))
         case (.loginAccepted,_):
             return AnyView(SelectTeamView(eligibleTeams: self.appDelegate.eligibleTeams, universe: universe))
         case (.gameActive,_):

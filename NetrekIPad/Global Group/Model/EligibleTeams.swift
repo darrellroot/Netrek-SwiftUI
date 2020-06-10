@@ -19,6 +19,7 @@ class EligibleTeams: ObservableObject {
     var initialTeamSet = false
     
     public func updateEligibleTeams(mask: UInt8) {
+        debugPrint("start update eligible teams")
         if mask & UInt8(Team.federation.rawValue) != 0 {
             self.fedEligible = true
         } else {
