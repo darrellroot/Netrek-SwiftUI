@@ -48,16 +48,16 @@ struct PickServerView: View {
             }.font(.title)
             Spacer()
             HStack {
-                Text("Manually Enter Server Hostname or IP Address").font(.title)
+                Text("Manually Enter Server Hostname or IP Address")
                 TextField("servername", text: serverBinding)
-                    .font(.title)
                 Button("Connect to Manual Server") {
                     _ = self.appDelegate.selectServer(hostname: self.manualServer)
                 }
-            }
+            }.font(.title)
             Spacer()
             Text("How To Play")
                 .font(.title)
+                .foregroundColor(Color.blue)
                 .onTapGesture {
                     self.displayHelp = true
             }
