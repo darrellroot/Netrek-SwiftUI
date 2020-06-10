@@ -13,6 +13,8 @@ import Combine
 struct PickServerView: View {
     @ObservedObject var metaServer: MetaServer
     @ObservedObject var universe: Universe
+    @Binding var displayHelp: Bool
+
     @State var manualServer = "" // see serverBinding below
     
     @State private var keyboardHeight: CGFloat = 0
@@ -34,15 +36,16 @@ struct PickServerView: View {
                 Spacer()
             }
             Text("Pick Server").font(.title)
-            List {
+            VStack(alignment: .leading) {
                 ForEach(metaServer.servers.keys.sorted(), id: \.self) { hostname in
                     Text("\(hostname) \(self.metaServer.servers[hostname]?.type.description ?? "Unknown") players \(self.metaServer.servers[hostname]?.players ?? 0)")
-                        .onTapGesture {
-                            debugPrint("server \(hostname) selected")
-                            _ = self.appDelegate.selectServer(hostname: hostname)
+                            .onTapGesture {
+                                debugPrint("server \(hostname) selected")
+                                _ = self.appDelegate.selectServer(hostname: hostname)
                     }
+                    .padding(8)
                 }
-            }
+            }.font(.title)
             Spacer()
             HStack {
                 Text("Manually Enter Server Hostname or IP Address").font(.title)
@@ -53,6 +56,11 @@ struct PickServerView: View {
                 }
             }
             Spacer()
+            Text("How To Play")
+                .font(.title)
+                .onTapGesture {
+                    self.displayHelp = true
+            }
             /* speech commands did not work, may try again
             Button("Enable Speech Commands") {
                 SFSpeechRecognizer.requestAuthorization { authStatus in
@@ -71,6 +79,7 @@ struct PickServerView: View {
                     }
                 }
             }*/
+            
         }// main Vstack
             .padding(.bottom, keyboardHeight)
             .onReceive(Publishers.keyboardHeight) {

@@ -23,9 +23,10 @@ struct TacticalHudView: View {
         return GeometryReader { geo in
             HStack {
                 LeftTacticalControlView(me: self.universe.players[self.universe.me])
-                    .frame(width: geo.size.width * 0.1, height: geo.size.height)
-                TacticalView(universe: self.universe, help: self.help)
-                    .frame(width: geo.size.width * 0.9, height: geo.size.height)
+                    .frame(width: geo.size.width * 0.09, height: geo.size.height)
+                    .border(Color.blue)
+                TacticalView(universe: self.universe, me: self.universe.players[self.universe.me], help: self.help)
+                    .frame(width: geo.size.width * 0.88, height: geo.size.height)
             }
         }
     }

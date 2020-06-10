@@ -18,6 +18,7 @@ struct TacticalView: View, TacticalOffset {
     
     //@EnvironmentObject var universe: Universe
     @ObservedObject var universe: Universe
+    @ObservedObject var me: Player
     @ObservedObject var help: Help
     //@ObservedObject var preferencesController: PreferencesController
     @State var pt: CGPoint = CGPoint() {
@@ -144,6 +145,7 @@ struct TacticalView: View, TacticalOffset {
                 
             }
         }.frame(minWidth: 500, idealWidth: 800, maxWidth: nil, minHeight: 500, idealHeight: 800, maxHeight: nil, alignment: .center)
+        .border(me.alertCondition.color)
         /*.gesture(DragGesture(minimumDistance: 0.0)
          .onChanged { tap in
          let location = tap.location

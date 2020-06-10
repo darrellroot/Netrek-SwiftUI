@@ -107,6 +107,7 @@
 		2F53CB852491563000677187 /* Publishers+keyboardHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB842491563000677187 /* Publishers+keyboardHeight.swift */; };
 		2F53CB872491575B00677187 /* Notification+keyboardHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB862491575B00677187 /* Notification+keyboardHeight.swift */; };
 		2F53CB8924915A2500677187 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D88924621FE3003CA91F /* Globals.swift */; };
+		2F53CB8D249167AE00677187 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB8C249167AE00677187 /* HowToPlayView.swift */; };
 		2F97D84E24620CCF003CA91F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D84D24620CCF003CA91F /* AppDelegate.swift */; };
 		2F97D85524620CD0003CA91F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D85424620CD0003CA91F /* Preview Assets.xcassets */; };
 		2F97D85824620CD0003CA91F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D85624620CD0003CA91F /* Main.storyboard */; };
@@ -256,6 +257,7 @@
 		2F53CB81249153C100677187 /* ServerSelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSelectedView.swift; sourceTree = "<group>"; };
 		2F53CB842491563000677187 /* Publishers+keyboardHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publishers+keyboardHeight.swift"; sourceTree = "<group>"; };
 		2F53CB862491575B00677187 /* Notification+keyboardHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+keyboardHeight.swift"; sourceTree = "<group>"; };
+		2F53CB8C249167AE00677187 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
 		2F97D84A24620CCF003CA91F /* Netrek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netrek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F97D84D24620CCF003CA91F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F97D85424620CD0003CA91F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				2F213113248D6D63001D3B83 /* ContentView.swift */,
+				2F53CB8C249167AE00677187 /* HowToPlayView.swift */,
 				2F2130E5248C10E8001D3B83 /* PickServerView.swift */,
 				2F53CB81249153C100677187 /* ServerSelectedView.swift */,
 				2F213115248D6EEC001D3B83 /* SelectTeamView.swift */,
@@ -854,6 +857,7 @@
 				2F213107248D524C001D3B83 /* PreferencesController.swift in Sources */,
 				2F2130E8248C1212001D3B83 /* MetaServerEntry.swift in Sources */,
 				2F53CB8924915A2500677187 /* Globals.swift in Sources */,
+				2F53CB8D249167AE00677187 /* HowToPlayView.swift in Sources */,
 				2F53CB852491563000677187 /* Publishers+keyboardHeight.swift in Sources */,
 				2F213112248D565E001D3B83 /* EligibleTeams.swift in Sources */,
 				2F21312C24900024001D3B83 /* TacticalHudView.swift in Sources */,

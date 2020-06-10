@@ -12,7 +12,11 @@ class Help: ObservableObject {
     
     @Published var currentTip = Help.tips[0]
 
+    #if os(macOS)
     var tipCount = 0
+    #elseif os(iOS)
+    var tipCount = 4
+    #endif
     
     func nextTip() {
         tipCount += 1
