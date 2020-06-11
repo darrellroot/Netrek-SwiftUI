@@ -14,7 +14,7 @@ struct LeftTacticalControlView: View {
     @State var captainSelfDestruct = false
     @State var firstSelfDestruct = false
     
-    let numButtons: CGFloat = 14.0
+    let numButtons: CGFloat = 12.0
     
     var body: some View {
         GeometryReader { geo in
@@ -90,18 +90,6 @@ struct LeftTacticalControlView: View {
                     .background(self.me.shieldsUp ? Color.green : Color.black)
                     .border(Color.blue)
                 } // VStack for 10
-                Spacer()
-                Button("Request Escort") {
-                    self.appDelegate.messagesController?.sendEscort()
-                }
-                .frame(width: geo.size.width,height: geo.size.height / self.numButtons)
-                .border(Color.blue)
-                Spacer()
-                Button("Send MAYDAY") {
-                    self.appDelegate.messagesController?.sendMayday()
-                }
-                .frame(width: geo.size.width,height: geo.size.height / self.numButtons)
-                .border(Color.blue)
                 Spacer()
                 Button("1st Officer: Self Destruct") {
                     self.firstSelfDestruct.toggle()

@@ -74,10 +74,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
         self.keymapController = KeymapController()
         self.messagesController = MessagesController(universe: self.universe)
         metaServer.update()
-        /*if let metaServer = metaServer {
-         metaServer.update()
-         }*/
         
+        timer = Timer(timeInterval: timerInterval , target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
+        timer?.tolerance = timerInterval / 10.0
+        if let timer = timer {
+            RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
+        }
+
         // Override point for customization after application launch.
         return true
     }
