@@ -109,6 +109,8 @@
 		2F53CB8F2491A28300677187 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8A524622D36003CA91F /* Player.swift */; };
 		2F53CB912491A36E00677187 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB902491A36E00677187 /* GameScreen.swift */; };
 		2F53CB942491AB4100677187 /* MessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB932491AB4100677187 /* MessagesController.swift */; };
+		2F53CB962491F2E000677187 /* TeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB952491F2E000677187 /* TeamListView.swift */; };
+		2F53CB982491F33B00677187 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB972491F33B00677187 /* MessagesView.swift */; };
 		2F97D84E24620CCF003CA91F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D84D24620CCF003CA91F /* AppDelegate.swift */; };
 		2F97D85524620CD0003CA91F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D85424620CD0003CA91F /* Preview Assets.xcassets */; };
 		2F97D85824620CD0003CA91F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D85624620CD0003CA91F /* Main.storyboard */; };
@@ -261,6 +263,8 @@
 		2F53CB8C249167AE00677187 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
 		2F53CB902491A36E00677187 /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
 		2F53CB932491AB4100677187 /* MessagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesController.swift; sourceTree = "<group>"; };
+		2F53CB952491F2E000677187 /* TeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListView.swift; sourceTree = "<group>"; };
+		2F53CB972491F33B00677187 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		2F97D84A24620CCF003CA91F /* Netrek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netrek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F97D84D24620CCF003CA91F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F97D85424620CD0003CA91F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -409,6 +413,8 @@
 				2F2130E5248C10E8001D3B83 /* PickServerView.swift */,
 				2F53CB81249153C100677187 /* ServerSelectedView.swift */,
 				2F213115248D6EEC001D3B83 /* SelectTeamView.swift */,
+				2F53CB972491F33B00677187 /* MessagesView.swift */,
+				2F53CB952491F2E000677187 /* TeamListView.swift */,
 				2F21312B24900024001D3B83 /* TacticalHudView.swift */,
 				2F21312D2490018B001D3B83 /* LeftTacticalControlView.swift */,
 				2F213124248D8AE9001D3B83 /* TacticalView.swift */,
@@ -848,6 +854,7 @@
 				2F213109248D5322001D3B83 /* UserDefaults-extensions.swift in Sources */,
 				2F2130FB248CC317001D3B83 /* SoundController.swift in Sources */,
 				2F2130EA248CBE4D001D3B83 /* Universe.swift in Sources */,
+				2F53CB962491F2E000677187 /* TeamListView.swift in Sources */,
 				2F53CB912491A36E00677187 /* GameScreen.swift in Sources */,
 				2F21311C248D8975001D3B83 /* TractorView.swift in Sources */,
 				2F213108248D5304001D3B83 /* LoginDefault.swift in Sources */,
@@ -872,6 +879,7 @@
 				2F21311F248D8988001D3B83 /* TorpedoView.swift in Sources */,
 				2F21310E248D5479001D3B83 /* Data-extensions.swift in Sources */,
 				2F53CB82249153C100677187 /* ServerSelectedView.swift in Sources */,
+				2F53CB982491F33B00677187 /* MessagesView.swift in Sources */,
 				2F213121248D898E001D3B83 /* LaserView.swift in Sources */,
 				2F213116248D6EEC001D3B83 /* SelectTeamView.swift in Sources */,
 				2F21311E248D8980001D3B83 /* DetonationView.swift in Sources */,

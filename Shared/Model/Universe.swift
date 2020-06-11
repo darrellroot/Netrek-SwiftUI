@@ -15,7 +15,10 @@ class Universe: ObservableObject {
     var activePlayers: [Player] {
         return players.filter({$0.slotStatus != .free && $0.slotStatus != .observe} )
     }
-    
+    var allPlayers: [Player] {
+        return players.filter({$0.slotStatus == .alive || $0.slotStatus == .outfit })
+    }
+
     var federationPlayers: Int {
         return players.filter({$0.slotStatus != .free && $0.slotStatus != .observe && $0.team == .federation}).count
     }
@@ -54,6 +57,16 @@ class Universe: ObservableObject {
     var visiblePlayers: [Player] {
         return alivePlayers.filter({(abs($0.positionX - players[me].positionX) < NetrekMath.visualDisplayDistance) && abs($0.positionY - players[me].positionY) < NetrekMath.visualDisplayDistance })
     }
+    
+    var visibleFriendlyPlayers: [Player] {
+        return alivePlayers.filter({(abs($0.positionX - players[me].positionX) < NetrekMath.visualDisplayDistance) && abs($0.positionY - players[me].positionY) < NetrekMath.visualDisplayDistance && $0.team == players[me].team })
+    }
+
+    var visibleEnemyPlayers: [Player] {
+        return alivePlayers.filter({(abs($0.positionX - players[me].positionX) < NetrekMath.visualDisplayDistance) && abs($0.positionY - players[me].positionY) < NetrekMath.visualDisplayDistance && $0.team != players[me].team })
+    }
+
+    
     
     var planets: [Planet] = []
     

@@ -25,7 +25,7 @@ struct LeftTacticalControlView: View {
                         if self.captainSelfDestruct && self.firstSelfDestruct {
                             self.appDelegate.newGameState(.noServerSelected)
                         } else {
-                            self.appDelegate.universe.gotMessage("You notice everyone looking at you")
+                            self.appDelegate.universe.gotMessage("You notice everyone on the bridge looking at you")
                         }
                     }
                     .frame(width: geo.size.width,height: geo.size.height / self.numButtons)
@@ -108,7 +108,7 @@ struct LeftTacticalControlView: View {
                     if self.captainSelfDestruct && self.firstSelfDestruct {
                         self.appDelegate.newGameState(.noServerSelected)
                     } else {
-                        self.appDelegate.universe.gotMessage("You notice everyone looking at the First Officer")
+                        self.appDelegate.universe.gotMessage("You notice everyone on the bridge looking at the First Officer")
                     }
                 }
                 .frame(width: geo.size.width,height: geo.size.height / self.numButtons)

@@ -506,24 +506,26 @@ class Player: CustomStringConvertible, ObservableObject {
     }
     // from SP_PSTATUS_20
     public func update(sp_pstatus: Int) {
-        switch sp_pstatus {
-        case 0:
-            self.slotStatus = .free
-        case 1:
-            self.slotStatus = .outfit
-        case 2:
-            self.slotStatus = .alive
-            self.detonated = false
-            self.updateNode()
-        case 3:
-            self.slotStatus = .explode
-            self.updateNode()
-        case 4:
-            self.slotStatus = .dead
-        case 5:
-            self.slotStatus = .observe
-        default:
-            debugPrint("Player.update.SP_PSTATUS invalid slot status \(sp_pstatus)")
+        DispatchQueue.main.async {
+            switch sp_pstatus {
+            case 0:
+                self.slotStatus = .free
+            case 1:
+                self.slotStatus = .outfit
+            case 2:
+                self.slotStatus = .alive
+                self.detonated = false
+                self.updateNode()
+            case 3:
+                self.slotStatus = .explode
+                self.updateNode()
+            case 4:
+                self.slotStatus = .dead
+            case 5:
+                self.slotStatus = .observe
+            default:
+                debugPrint("Player.update.SP_PSTATUS invalid slot status \(sp_pstatus)")
+            }
         }
     }
 

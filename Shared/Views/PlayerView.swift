@@ -42,7 +42,7 @@ struct PlayerView: View, TacticalOffset {
                 }
             }
             .opacity(self.player.cloak && self.me === self.player ? 0.4 : 1.0)
-            .opacity(self.player.cloak && self.me !== self.player ? 0.0 : 1.0)
+            .opacity(self.player.cloak && self.me !== self.player ? 0.1 : 1.0)
             //.offset(x: self.xOffset(positionX: self.player.positionX, myPositionX: self.me.positionX,tacticalWidth: geo.size.width), y: self.yOffset(positionY: self.player.positionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height))
                 .offset(x: self.xOffset(positionX: self.player.positionX, myPositionX: self.me.positionX,tacticalWidth: self.screenWidth), y: self.yOffset(positionY: self.player.positionY, myPositionY: self.me.positionY, tacticalHeight: self.screenHeight))
 

@@ -44,15 +44,15 @@ struct TacticalView: View, TacticalOffset {
                         .font(.headline)
                     }
                     BoundaryView(me: self.universe.players[self.universe.me])
-                }//extra Zstack for 10 limit
-                ForEach(self.universe.visibleTractors, id: \.playerId) { target in
-                    TractorView(target: target, me: self.universe.players[self.universe.me])
-                }
-                
-                ForEach(self.universe.explodingPlayers, id: \.playerId) { player in
-                    ExplosionView(player: player, me: self.universe.players[self.universe.me])
-                }
-                
+                    
+                    ForEach(self.universe.visibleTractors, id: \.playerId) { target in
+                        TractorView(target: target, me: self.universe.players[self.universe.me])
+                    }
+                    
+                    ForEach(self.universe.explodingPlayers, id: \.playerId) { player in
+                        ExplosionView(player: player, me: self.universe.players[self.universe.me])
+                    }
+                }//extra zstack for 10
                 ForEach(self.universe.visibleTorpedoes, id: \.torpedoId) { torpedo in
                     
                     TorpedoView(torpedo: torpedo, me: self.universe.players[self.universe.me])
@@ -66,6 +66,12 @@ struct TacticalView: View, TacticalOffset {
                 ForEach(self.universe.visiblePlasmas, id: \.plasmaId) { plasma in
                     PlasmaView(plasma: plasma, me: self.universe.players[self.universe.me])
                 }
+                
+                ForEach(self.universe.visibleFriendlyPlayers, id: \.playerId) { player in
+                    PlayerView(player: player, me: self.universe.players[self.universe.me], imageSize: self.playerWidth(screenWidth: geo.size.width), screenWidth: geo.size.width, screenHeight: geo.size.height)
+                        .frame(width: self.playerWidth(screenWidth: geo.size.width * 3), height: self.playerWidth(screenWidth: geo.size.height * 3))
+                }
+
                 //Rectangle().opacity(0.01).pointingMouse { event, location in
                 Rectangle().opacity(0.01)
                     .gesture(DragGesture(minimumDistance: 0.0, coordinateSpace: .local)
@@ -102,7 +108,7 @@ struct TacticalView: View, TacticalOffset {
 
                 }
 
-                ForEach(self.universe.visiblePlayers, id: \.playerId) { player in
+                ForEach(self.universe.visibleEnemyPlayers, id: \.playerId) { player in
                     PlayerView(player: player, me: self.universe.players[self.universe.me], imageSize: self.playerWidth(screenWidth: geo.size.width), screenWidth: geo.size.width, screenHeight: geo.size.height)
                         .frame(width: self.playerWidth(screenWidth: geo.size.width * 3), height: self.playerWidth(screenWidth: geo.size.height * 3))
                         //.border(Color.orange)

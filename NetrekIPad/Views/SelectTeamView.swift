@@ -101,13 +101,16 @@ struct SelectTeamView: View {
                 .font(.title)
             Spacer()
             HStack {
-                VStack(alignment: .leading) {
+                MessagesView(universe: universe)
+                Spacer()
+                TeamListView(universe: universe)
+                /*VStack(alignment: .leading) {
                     ForEach(self.universe.recentMessages, id: \.self) { message in
                         Text(message)
                             .font(.headline)
                     }
                 }
-                Spacer()
+                Spacer()*/
             }
         }.padding()
     }
