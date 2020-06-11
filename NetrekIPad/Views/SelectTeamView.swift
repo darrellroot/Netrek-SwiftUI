@@ -11,7 +11,7 @@ import SwiftUI
 struct SelectTeamView: View {
     @ObservedObject var eligibleTeams: EligibleTeams
     @ObservedObject var universe: Universe
-    
+    @State var launching = false
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var body: some View {
@@ -28,6 +28,7 @@ struct SelectTeamView: View {
                     .fontWeight(.bold)
                     .font(.title)
                 Spacer()
+                self.launching ? Text("Launching...").font(.title).foregroundColor(Color.red) : Text("")
             }
             Spacer()
             HStack {
@@ -62,28 +63,33 @@ struct SelectTeamView: View {
                     Text("Launch Scout")
                         .padding(8)
                         .onTapGesture {
+                            self.launching = true
                             self.appDelegate.selectShip(ship: .scout)
                     }
                     Text("Launch Destroyer")
                         .padding(8)
                         .onTapGesture {
+                            self.launching = true
                             self.appDelegate.selectShip(ship: .destroyer)
                     }
                     Text("Launch Cruiser")
                         .padding(8)
                         .onTapGesture {
+                            self.launching = true
                             self.appDelegate.selectShip(ship: .cruiser)
                     }
                     
                     Text("Launch Battleship")
                         .padding(8)
                         .onTapGesture {
+                            self.launching = true
                             self.appDelegate.selectShip(ship: .battleship)
                     }
                     
                     Text("Launch Assault Ship")
                         .padding(8)
                         .onTapGesture {
+                            self.launching = true
                             self.appDelegate.selectShip(ship: .assault)
                     }
                     

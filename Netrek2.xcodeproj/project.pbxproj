@@ -18,7 +18,6 @@
 		2F2130E8248C1212001D3B83 /* MetaServerEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D87024620F02003CA91F /* MetaServerEntry.swift */; };
 		2F2130EA248CBE4D001D3B83 /* Universe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D89924622CDA003CA91F /* Universe.swift */; };
 		2F2130EB248CBE76001D3B83 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D89F24622D19003CA91F /* Planet.swift */; };
-		2F2130EC248CBE7C001D3B83 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8A524622D36003CA91F /* Player.swift */; };
 		2F2130ED248CBE80001D3B83 /* Plasma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8A224622D36003CA91F /* Plasma.swift */; };
 		2F2130EE248CBE84001D3B83 /* Laser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8A324622D36003CA91F /* Laser.swift */; };
 		2F2130EF248CBE8A001D3B83 /* Torpedo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8A424622D36003CA91F /* Torpedo.swift */; };
@@ -107,6 +106,9 @@
 		2F53CB872491575B00677187 /* Notification+keyboardHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB862491575B00677187 /* Notification+keyboardHeight.swift */; };
 		2F53CB8924915A2500677187 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D88924621FE3003CA91F /* Globals.swift */; };
 		2F53CB8D249167AE00677187 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB8C249167AE00677187 /* HowToPlayView.swift */; };
+		2F53CB8F2491A28300677187 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8A524622D36003CA91F /* Player.swift */; };
+		2F53CB912491A36E00677187 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB902491A36E00677187 /* GameScreen.swift */; };
+		2F53CB942491AB4100677187 /* MessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB932491AB4100677187 /* MessagesController.swift */; };
 		2F97D84E24620CCF003CA91F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D84D24620CCF003CA91F /* AppDelegate.swift */; };
 		2F97D85524620CD0003CA91F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D85424620CD0003CA91F /* Preview Assets.xcassets */; };
 		2F97D85824620CD0003CA91F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D85624620CD0003CA91F /* Main.storyboard */; };
@@ -257,6 +259,8 @@
 		2F53CB842491563000677187 /* Publishers+keyboardHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publishers+keyboardHeight.swift"; sourceTree = "<group>"; };
 		2F53CB862491575B00677187 /* Notification+keyboardHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+keyboardHeight.swift"; sourceTree = "<group>"; };
 		2F53CB8C249167AE00677187 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
+		2F53CB902491A36E00677187 /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
+		2F53CB932491AB4100677187 /* MessagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesController.swift; sourceTree = "<group>"; };
 		2F97D84A24620CCF003CA91F /* Netrek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netrek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F97D84D24620CCF003CA91F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F97D85424620CD0003CA91F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -345,6 +349,7 @@
 			children = (
 				2F53CB832491561700677187 /* Extensions */,
 				2F213127248EB301001D3B83 /* Controllers */,
+				2F213110248D5647001D3B83 /* Model */,
 				2F2130E4248C10A4001D3B83 /* Views */,
 				2F2130E3248C108E001D3B83 /* Global Group */,
 				2F2130CD248C0F88001D3B83 /* LaunchScreen.storyboard */,
@@ -389,8 +394,6 @@
 		2F2130E3248C108E001D3B83 /* Global Group */ = {
 			isa = PBXGroup;
 			children = (
-				2F213123248D8AC9001D3B83 /* Views */,
-				2F213110248D5647001D3B83 /* Model */,
 				2F2130C2248C0F87001D3B83 /* AppDelegate.swift */,
 				2F2130C4248C0F87001D3B83 /* SceneDelegate.swift */,
 				2F2130C8248C0F88001D3B83 /* Assets.xcassets */,
@@ -422,6 +425,7 @@
 				2F97D8782462156C003CA91F /* TcpReader.swift */,
 				2F97D87224620F0B003CA91F /* MetaServer.swift */,
 				2F97D87024620F02003CA91F /* MetaServerEntry.swift */,
+				2F53CB932491AB4100677187 /* MessagesController.swift */,
 			);
 			path = Communication;
 			sourceTree = "<group>";
@@ -432,13 +436,6 @@
 				2F213111248D565E001D3B83 /* EligibleTeams.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		2F213123248D8AC9001D3B83 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		2F213127248EB301001D3B83 /* Controllers */ = {
@@ -570,6 +567,7 @@
 			isa = PBXGroup;
 			children = (
 				2F97D87C246216D7003CA91F /* GameState.swift */,
+				2F53CB902491A36E00677187 /* GameScreen.swift */,
 				2F97D88F2462200E003CA91F /* Team.swift */,
 				2F97D89224622061003CA91F /* ShipType.swift */,
 				2F97D8AE246232C0003CA91F /* Zposition.swift */,
@@ -850,6 +848,7 @@
 				2F213109248D5322001D3B83 /* UserDefaults-extensions.swift in Sources */,
 				2F2130FB248CC317001D3B83 /* SoundController.swift in Sources */,
 				2F2130EA248CBE4D001D3B83 /* Universe.swift in Sources */,
+				2F53CB912491A36E00677187 /* GameScreen.swift in Sources */,
 				2F21311C248D8975001D3B83 /* TractorView.swift in Sources */,
 				2F213108248D5304001D3B83 /* LoginDefault.swift in Sources */,
 				2F21310B248D53BD001D3B83 /* MakePacket.swift in Sources */,
@@ -859,6 +858,7 @@
 				2F53CB8D249167AE00677187 /* HowToPlayView.swift in Sources */,
 				2F53CB852491563000677187 /* Publishers+keyboardHeight.swift in Sources */,
 				2F213112248D565E001D3B83 /* EligibleTeams.swift in Sources */,
+				2F53CB8F2491A28300677187 /* Player.swift in Sources */,
 				2F21312C24900024001D3B83 /* TacticalHudView.swift in Sources */,
 				2F213105248D522D001D3B83 /* LoginInformationController.swift in Sources */,
 				2F213114248D6D63001D3B83 /* ContentView.swift in Sources */,
@@ -883,7 +883,6 @@
 				2F2130EE248CBE84001D3B83 /* Laser.swift in Sources */,
 				2F21310C248D53C7001D3B83 /* packets.swift in Sources */,
 				2F2130C3248C0F87001D3B83 /* AppDelegate.swift in Sources */,
-				2F2130EC248CBE7C001D3B83 /* Player.swift in Sources */,
 				2F2130F9248CC290001D3B83 /* NetworkDelegate.swift in Sources */,
 				2F2130EB248CBE76001D3B83 /* Planet.swift in Sources */,
 				2F21311A248D8949001D3B83 /* PlanetView.swift in Sources */,
@@ -896,6 +895,7 @@
 				2F2130C5248C0F87001D3B83 /* SceneDelegate.swift in Sources */,
 				2F2130F7248CC239001D3B83 /* SlotStatus.swift in Sources */,
 				2F2130F6248CC232001D3B83 /* Rank.swift in Sources */,
+				2F53CB942491AB4100677187 /* MessagesController.swift in Sources */,
 				2F213104248D4ED0001D3B83 /* GameState.swift in Sources */,
 				2F2130F0248CBEAD001D3B83 /* NetrekMath.swift in Sources */,
 				2F21311B248D8954001D3B83 /* PlayerView.swift in Sources */,

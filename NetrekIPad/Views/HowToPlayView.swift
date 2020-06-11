@@ -9,20 +9,23 @@
 import SwiftUI
 
 struct HowToPlayView: View {
-    @Binding var displayHelp: Bool
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Image(systemName: "chevron.left")
-                Text("Select Server")
+                HStack {
+                    Image(systemName: "chevron.left")
+                    Text("Select Server")
+                }
+                .foregroundColor(Color.blue)
+                .onTapGesture {
+                    self.appDelegate.gameScreen = .noServerSelected
+                }
                 Spacer()
-                Text("How To Play")
+                Text("How To Play").font(.largeTitle)
                 Spacer()
-            }.font(.title)
-            .foregroundColor(Color.blue)
-            .onTapGesture {
-                self.displayHelp = false
+                Text("          ")
             }
             Text("Tapping screen fires torpedoes")
             Text("Dragging on screen sets course to end of drag")
@@ -38,6 +41,6 @@ struct HowToPlayView: View {
 
 struct HowToPlay_Previews: PreviewProvider {
     static var previews: some View {
-        HowToPlayView(displayHelp: .constant(true))
+        HowToPlayView()
     }
 }

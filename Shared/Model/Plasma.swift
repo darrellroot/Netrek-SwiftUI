@@ -38,25 +38,27 @@ class Plasma: ObservableObject {
 
     //from SP_PLASMA_INFO 8
     public func update(plasmaId: Int, war: UInt8, status: Int) {
-        self.plasmaId = plasmaId
-        for team in Team.allCases {
-            if UInt8(team.rawValue) & war != 0 {
-                self.war[team] = true
-            } else {
-                self.war[team] = false
-            }
-        }
-        let myTeam = appDelegate.universe.players[appDelegate.universe.me].team
         DispatchQueue.main.async {
-            if self.war[myTeam] == true {
-                self.color = Color.red
-            } else {
-                self.color = Color.green
+            self.plasmaId = plasmaId
+            for team in Team.allCases {
+                if UInt8(team.rawValue) & war != 0 {
+                    self.war[team] = true
+                } else {
+                    self.war[team] = false
+                }
             }
-            self.status = status
-        }
-        if status == 1 {
-            soundPlayed = false
+            let myTeam = self.appDelegate.universe.players[self.appDelegate.universe.me].team
+            //DispatchQueue.main.async {
+                if self.war[myTeam] == true {
+                    self.color = Color.red
+                } else {
+                    self.color = Color.green
+                }
+                self.status = status
+            //}
+            if status == 1 {
+                self.soundPlayed = false
+            }
         }
     }
     // from SP_PLASMA 9
@@ -64,15 +66,15 @@ class Plasma: ObservableObject {
         DispatchQueue.main.async {
             self.positionX = positionX
             self.positionY = positionY
-        }
-        if soundPlayed == false {
-            let me = appDelegate.universe.me
-            let taxiDistance = abs(appDelegate.universe.players[me].positionX - self.positionX) + abs(appDelegate.universe.players[me].positionY - self.positionY)
-            if taxiDistance < NetrekMath.displayDistance / 3 {
-                let volume = 1.0 - (3.0 * Float(taxiDistance) / (NetrekMath.displayDistanceFloat))
-                appDelegate.soundController?.play(sound: .plasma, volume: volume)
-                debugPrint("playing plasma sound volume \(volume)")
-                soundPlayed = true
+            if self.soundPlayed == false {
+                let me = self.appDelegate.universe.me
+                let taxiDistance = abs(self.appDelegate.universe.players[me].positionX - self.positionX) + abs(self.appDelegate.universe.players[me].positionY - self.positionY)
+                if taxiDistance < NetrekMath.displayDistance / 3 {
+                    let volume = 1.0 - (3.0 * Float(taxiDistance) / (NetrekMath.displayDistanceFloat))
+                    self.appDelegate.soundController?.play(sound: .plasma, volume: volume)
+                    debugPrint("playing plasma sound volume \(volume)")
+                    self.soundPlayed = true
+                }
             }
         }
     }

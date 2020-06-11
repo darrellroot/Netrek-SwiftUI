@@ -45,24 +45,26 @@ class Torpedo: ObservableObject {
         self.torpedoId = torpedoId
     }
     func update(war: UInt8, status: UInt8) {
-        for team in Team.allCases {
-            if UInt8(team.rawValue) & war != 0 {
-                self.war[team] = true
-            } else {
-                self.war[team] = false
-            }
-        }
-        let myTeam = appDelegate.universe.players[appDelegate.universe.me].team
         DispatchQueue.main.async {
-            if self.war[myTeam] == true {
-                self.color = Color.red
-            } else {
-                self.color = Color.green
+            for team in Team.allCases {
+                if UInt8(team.rawValue) & war != 0 {
+                    self.war[team] = true
+                } else {
+                    self.war[team] = false
+                }
             }
-            self.status = status
-        }
-        if status == 1 {
-            soundPlayed = false
+            let myTeam = self.appDelegate.universe.players[self.appDelegate.universe.me].team
+            //DispatchQueue.main.async {
+                if self.war[myTeam] == true {
+                    self.color = Color.red
+                } else {
+                    self.color = Color.green
+                }
+                self.status = status
+            //}
+            if status == 1 {
+                self.soundPlayed = false
+            }
         }
     }
     func update(directionNetrek: Int, positionX: Int, positionY: Int) {

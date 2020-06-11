@@ -13,7 +13,6 @@ import Combine
 struct PickServerView: View {
     @ObservedObject var metaServer: MetaServer
     @ObservedObject var universe: Universe
-    @Binding var displayHelp: Bool
 
     @State var manualServer = "" // see serverBinding below
     
@@ -59,7 +58,7 @@ struct PickServerView: View {
                 .font(.title)
                 .foregroundColor(Color.blue)
                 .onTapGesture {
-                    self.displayHelp = true
+                    self.appDelegate.gameScreen = .howToPlay
             }
             /* speech commands did not work, may try again
             Button("Enable Speech Commands") {

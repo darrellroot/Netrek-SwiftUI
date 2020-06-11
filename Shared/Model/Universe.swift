@@ -103,6 +103,7 @@ class Universe: ObservableObject {
     let maxPlasma = 32
     
     @Published private(set) var messages: [String] = []
+    
     var activeMessages: ArraySlice<String> {
         if messages.count >= 15 {
             return messages[messages.count - 15 ..< messages.count]
@@ -110,13 +111,16 @@ class Universe: ObservableObject {
             return messages[0 ..< messages.count]
         }
     }
-    var recentMessages: [String] {
+    
+    //most recent 15 messages
+    @Published var recentMessages: [String] = []
+    /*var recentMessages: [String] {
         if messages.count >= 10 {
             return Array(messages[messages.count - 10 ..< messages.count])
         } else {
             return Array(messages[0 ..< messages.count])
         }
-    }
+    }*/
 
     var lastMessage: String {
         return self.messages.last ?? ""
@@ -124,6 +128,10 @@ class Universe: ObservableObject {
     func gotMessage(_ newMessage: String) {
         DispatchQueue.main.async {
             self.messages.append(newMessage)
+            self.recentMessages.append(newMessage)
+            if self.recentMessages.count > 15 {
+                self.recentMessages.remove(at: 0)
+            }
         }
     }
     init() {

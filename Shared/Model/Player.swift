@@ -155,6 +155,7 @@ class Player: CustomStringConvertible, ObservableObject {
         //initializing hostile dictionary to minimize runtime errors later
         for team in Team.allCases {
             self.hostile[team] = false
+            self.war[team] = false
         }
     }
     

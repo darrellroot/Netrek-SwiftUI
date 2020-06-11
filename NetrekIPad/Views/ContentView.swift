@@ -17,25 +17,27 @@ struct ContentView: View {
     //let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     var body: some View {
-        switch (appDelegate.gameState, universe.players[universe.me].slotStatus, displayHelp) {
-        case (.noServerSelected,_,true):
-            return AnyView(HowToPlayView(displayHelp: $displayHelp))
-        case (.noServerSelected,_,_):
-            return AnyView(PickServerView(metaServer: metaServer, universe: universe,displayHelp: $displayHelp))
-        case (.serverSelected,_,_):
+        switch (appDelegate.gameScreen, universe.players[universe.me].slotStatus) {
+        case (.howToPlay,_):
+            return AnyView(HowToPlayView())
+        case (.noServerSelected,_):
+            return AnyView(PickServerView(metaServer: metaServer, universe: universe))
+        case (.serverSelected,_):
             return AnyView(ServerSelectedView(appDelegate: appDelegate, server: appDelegate.reader?.hostname ?? "unknown"))
-        case (.serverConnected,_,_):
+        case (.serverConnected,_):
             return AnyView(Text("Server Connected"))
-        case (.serverSlotFound,_,_):
+        case (.serverSlotFound,_):
             return AnyView(Text("Server Slot Found"))
-        case (.loginAccepted,.explode,_):
+        case (.loginAccepted,.explode):
             return AnyView(TacticalHudView(universe: universe, help: appDelegate.help))
-        case (.loginAccepted,_,_):
+        case (.loginAccepted,_):
             return AnyView(SelectTeamView(eligibleTeams: self.appDelegate.eligibleTeams, universe: universe))
-        case (.gameActive,_,_):
+        case (.gameActive,_):
             return AnyView(TacticalHudView(universe: universe, help: appDelegate.help))
-        default:
-            return AnyView(Text("Unexpected Error"))
+        //default:
+            //return AnyView(Text("Unexpected Error"))
+        case (.credits, _):
+            return AnyView(Text("Credits"))
         }
     }
 }

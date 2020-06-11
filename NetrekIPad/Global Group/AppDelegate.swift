@@ -24,11 +24,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
         "metaserver.eu.netrek.org", port: 3521)!
     
     var reader: TcpReader?
-    @Published private(set) var gameState: GameState = .noServerSelected
+    
+    //Whenever gameState changes, gameScreen matches
+    //But we can manually change gameScreen to go to help or credits without changing gameState
+    @Published private(set) var gameState: GameState = .noServerSelected {
+        didSet {
+            switch gameState {
+                
+            case .noServerSelected:
+                gameScreen = .noServerSelected
+            case .serverSelected:
+                gameScreen = .serverSelected
+            case .serverConnected:
+                gameScreen = .serverConnected
+            case .serverSlotFound:
+                gameScreen = .serverSlotFound
+            case .loginAccepted:
+                gameScreen = .loginAccepted
+            case .gameActive:
+                gameScreen = .gameActive
+            }
+        }
+    }
+    @Published var gameScreen: GameScreen = .noServerSelected
     var analyzer: PacketAnalyzer?
     @ObservedObject var universe = Universe()
     var clientTypeSent = false
     var soundController: SoundController?
+    var messagesController: MessagesController?
     
     //set this to true when we first set the preferred team, which we only do once
     //var initialTeamSet = false
@@ -49,6 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
         
         self.soundController = SoundController()
         self.keymapController = KeymapController()
+        self.messagesController = MessagesController(universe: self.universe)
         metaServer.update()
         /*if let metaServer = metaServer {
          metaServer.update()
