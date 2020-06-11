@@ -126,7 +126,11 @@ class Universe: ObservableObject {
     }
     
     //most recent 15 messages
-    @Published var recentMessages: [String] = []
+    @Published var recentMessages: [String] = [] {
+        didSet {
+            debugPrint("recent MESSAGE set")
+        }
+    }
     /*var recentMessages: [String] {
         if messages.count >= 10 {
             return Array(messages[messages.count - 10 ..< messages.count])

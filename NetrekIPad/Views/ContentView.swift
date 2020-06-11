@@ -29,11 +29,11 @@ struct ContentView: View {
         case (.serverSlotFound,_):
             return AnyView(Text("Server Slot Found"))
         case (.loginAccepted,.explode):
-            return AnyView(TacticalHudView(universe: universe, help: appDelegate.help))
+            return AnyView(TacticalHudView(universe: universe, me: universe.players[universe.me], help: appDelegate.help))
         case (.loginAccepted,_):
             return AnyView(SelectTeamView(eligibleTeams: self.appDelegate.eligibleTeams, universe: universe))
         case (.gameActive,_):
-            return AnyView(TacticalHudView(universe: universe, help: appDelegate.help))
+            return AnyView(TacticalHudView(universe: universe, me: universe.players[universe.me],help: appDelegate.help))
         //default:
             //return AnyView(Text("Unexpected Error"))
         case (.credits, _):

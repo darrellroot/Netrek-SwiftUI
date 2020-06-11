@@ -243,9 +243,10 @@ class PacketAnalyzer {
             if let messageStringWithNulls = String(data: messageData, encoding: .utf8) {
                 var messageString = messageStringWithNulls.filter { $0 != "\0" }
                 
+                debugPrint("Received SP_WARNING 10 MESSAGE \(messageString) sent to messages")
+
                 messageString.append("\n")
                 messageString = NetrekMath.sanitizeString(messageString)
-                debugPrint("Received SP_WARNING 10 sent to messages")
                 universe.gotMessage(messageString)
                 //debugPrint(messageString)
                 //printData(data, success: true)
@@ -261,10 +262,11 @@ class PacketAnalyzer {
             let messageData = data.subdata(in: range)
             if let messageStringWithNulls = String(data: messageData, encoding: .utf8) {
                 var messageString = messageStringWithNulls.filter { $0 != "\0" }
+                debugPrint("Received SP_PLAYER_INFO MESSAGE \(messageString)")
+
                 messageString.append("\n")
                 messageString = NetrekMath.sanitizeString(messageString)
                 universe.gotMessage(messageString)
-                //debugPrint(messageString)
                 //printData(data, success: true)
             } else {
                 debugPrint("PacketAnalyzer unable to decode message type 11")

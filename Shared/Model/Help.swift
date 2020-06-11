@@ -417,7 +417,7 @@ class Help: ObservableObject {
         """
         ,
         """
-        Nhere is no I in team.
+        There is no I in team.
         """
         ,
         """

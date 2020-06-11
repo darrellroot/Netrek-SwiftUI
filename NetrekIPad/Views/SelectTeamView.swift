@@ -12,7 +12,7 @@ struct SelectTeamView: View {
     @ObservedObject var eligibleTeams: EligibleTeams
     @ObservedObject var universe: Universe
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
+
     var body: some View {
         VStack {
             HStack {
