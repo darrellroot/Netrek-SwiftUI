@@ -38,7 +38,7 @@ struct LeftTacticalControlView: View {
                     .frame(width: geo.size.width,height: geo.size.height / self.numButtons)
                     .border(Color.blue)
                     Spacer()
-                    Button("Beam Down (\(self.me.armies) armies))") {
+                    Button("Beam Down (\(self.me.armies) armies)") {
                         self.appDelegate.keymapController?.execute(.beamDown, location: CGPoint(x: 0, y: 0))
                     }
                     .frame(width: geo.size.width,height: geo.size.height / self.numButtons)

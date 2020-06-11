@@ -32,7 +32,7 @@ class Universe: ObservableObject {
         return players.filter({$0.slotStatus != .free && $0.slotStatus != .observe && $0.team == .orion}).count
     }
 
-
+    @Published var selectionError = ""
 
     
     var visibleTractors: [Player] {
@@ -144,6 +144,30 @@ class Universe: ObservableObject {
             self.recentMessages.append(newMessage)
             if self.recentMessages.count > 15 {
                 self.recentMessages.remove(at: 0)
+            }
+            
+            //only test strings for outfit errors if im not alive
+            //saves cpu
+            guard self.players[self.me].slotStatus != .alive else {
+                return
+            }
+            if newMessage == "I cannot allow that.  Pick another team\n" {
+                self.selectionError = newMessage
+            }
+            if newMessage == "Please confirm change of teams.  Select the new team again.\n" {
+                self.selectionError = newMessage
+            }
+            if newMessage == "That is an illegal ship type.  Try again.\n" {
+                self.selectionError = newMessage
+            }
+            if newMessage == "That ship hasn't been designed yet.  Try again.\n" {
+                self.selectionError = newMessage
+            }
+            if newMessage.contains("You need a rank of") {
+                self.selectionError = newMessage
+            }
+            if newMessage.contains("You need an offense of") {
+                self.selectionError = newMessage
             }
         }
     }
