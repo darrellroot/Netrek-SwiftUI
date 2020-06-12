@@ -25,9 +25,9 @@ struct ContentView: View {
         case (.serverSelected,_):
             return AnyView(ServerSelectedView(appDelegate: appDelegate, server: appDelegate.reader?.hostname ?? "unknown"))
         case (.serverConnected,_):
-            return AnyView(Text("Server Connected"))
+            return AnyView(ServerConnectedView(appDelegate: appDelegate, universe: universe))
         case (.serverSlotFound,_):
-            return AnyView(Text("Server Slot Found"))
+            return AnyView(ServerSlotView(appDelegate: appDelegate))
         case (.loginAccepted,.explode):
             return AnyView(TacticalHudView(universe: universe, me: universe.players[universe.me], help: appDelegate.help))
         case (.loginAccepted,_):

@@ -12,6 +12,8 @@ import SwiftUI
 class Universe: ObservableObject {
     var players: [Player] = []
     
+    @Published var waitQueue = 0
+    
     var activePlayers: [Player] {
         return players.filter({$0.slotStatus != .free && $0.slotStatus != .observe} )
     }

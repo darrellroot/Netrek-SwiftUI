@@ -30,8 +30,9 @@ struct TacticalHudView: View {
                     .border(Color.blue)
                 VStack {
                     HStack {
-                        Text("                                       ").overlay(
-                        Text("Speed \(self.me.speed) Fuel \(self.me.fuel)"))
+                        Text("                                       ")
+                            .overlay(Text("Speed \(self.me.speed) Fuel \(self.me.fuel)"))
+                                .font(.system(.body, design: .monospaced))
                         TextField("New Message", text: self.$newMessage, onCommit: self.sendMessage)
                         
                             .border(Color.primary, width: 1)

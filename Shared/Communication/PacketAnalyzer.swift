@@ -304,6 +304,9 @@ class PacketAnalyzer {
             // SP_QUEUE
             let queue = data.subdata(in: (2..<4)).to(type: UInt16.self).byteSwapped
             debugPrint("Connected to server. Wait queue position \(queue)")
+            DispatchQueue.main.async {
+                self.universe.waitQueue = Int(queue)
+            }
             //printData(data, success: true)
             
         case 14:
