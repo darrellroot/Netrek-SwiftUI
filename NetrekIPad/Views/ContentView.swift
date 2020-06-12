@@ -20,6 +20,10 @@ struct ContentView: View {
         switch (appDelegate.gameScreen, universe.players[universe.me].slotStatus) {
         case (.howToPlay,_):
             return AnyView(HowToPlayView())
+        case (.credits,_):
+            return AnyView(CreditsView(appDelegate: appDelegate))
+        case (.preferences,_):
+            return AnyView(LoginView(loginName: appDelegate.loginInformationController.loginName,loginPassword: appDelegate.loginInformationController.loginPassword, loginUsername: appDelegate.loginInformationController.loginPassword, loginInformationController: appDelegate.loginInformationController))
         case (.noServerSelected,_):
             return AnyView(PickServerView(metaServer: metaServer, universe: universe))
         case (.serverSelected,_):

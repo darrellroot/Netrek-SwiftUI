@@ -19,9 +19,14 @@ struct SelectTeamView: View {
                 HStack {
                     Image(systemName: "chevron.left")
                     Text("Select Server")
-                }.onTapGesture {
+                }.font(.title)
+                .foregroundColor(.blue)
+                .onTapGesture {
                     self.appDelegate.newGameState(.noServerSelected)
                 }
+                Spacer()
+                Text("Server \(appDelegate.reader?.hostname ?? "unknown")")
+                    .font(.title)
                 Spacer()
                 Text("Currently Selected Team: \(eligibleTeams.preferredTeam.description)")
                     .fontWeight(.bold)
@@ -56,7 +61,8 @@ struct SelectTeamView: View {
                         .onTapGesture {
                             self.eligibleTeams.preferredTeam = .orion
                     }
-                }
+                }//Vstack select team
+                    .foregroundColor(.blue)
                 Spacer()
                 VStack(alignment: .leading) {
                     Text("Launch Scout")
@@ -93,24 +99,23 @@ struct SelectTeamView: View {
                     }
                     
                 }//VStack launch ship
+                    .foregroundColor(.blue)
                     .font(.title)
+                    
                 
-            }// HStack
+            }// Top HStack
                 
                 .font(.title)
             Spacer()
             HStack {
                 MessagesView(universe: universe)
                 Spacer()
-                TeamListView(universe: universe)
-                /*VStack(alignment: .leading) {
-                    ForEach(self.universe.recentMessages, id: \.self) { message in
-                        Text(message)
-                            .font(.headline)
-                    }
-                }
-                Spacer()*/
-            }
+                VStack {
+                    HelpView(help: appDelegate.help)
+                    Spacer()
+                    TeamListView(universe: universe)
+                }//Botom right Vstack
+            }//bottom HStack
         }.padding()
             .onAppear {
                 self.universe.selectionError = ""

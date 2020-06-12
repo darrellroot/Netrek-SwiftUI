@@ -54,12 +54,28 @@ struct PickServerView: View {
                 }
             }.font(.title)
             Spacer()
-            Text("How To Play")
-                .font(.title)
-                .foregroundColor(Color.blue)
-                .onTapGesture {
-                    self.appDelegate.gameScreen = .howToPlay
-            }
+            HStack {
+                Text("How To Play")
+                    .font(.title)
+                    .foregroundColor(Color.blue)
+                    .onTapGesture {
+                        self.appDelegate.gameScreen = .howToPlay
+                }
+                Spacer()
+                Text("Preferences")
+                    .font(.title)
+                    .foregroundColor(Color.blue)
+                    .onTapGesture {
+                        self.appDelegate.gameScreen = .preferences
+                }
+                Spacer()
+                Text("Credits")
+                    .font(.title)
+                    .foregroundColor(Color.blue)
+                    .onTapGesture {
+                        self.appDelegate.gameScreen = .credits
+                }
+            }//bottom row Hstack
             /* speech commands did not work, may try again
             Button("Enable Speech Commands") {
                 SFSpeechRecognizer.requestAuthorization { authStatus in
@@ -80,6 +96,7 @@ struct PickServerView: View {
             }*/
             
         }// main Vstack
+            .padding([.leading,.top,.trailing])
             .padding(.bottom, keyboardHeight)
             .onReceive(Publishers.keyboardHeight) {
                 self.keyboardHeight = $0

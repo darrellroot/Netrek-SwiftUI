@@ -17,7 +17,7 @@ struct HowToPlayView: View {
                 HStack {
                     Image(systemName: "chevron.left")
                     Text("Select Server")
-                }
+                }.font(.title)
                 .foregroundColor(Color.blue)
                 .onTapGesture {
                     self.appDelegate.gameScreen = .noServerSelected

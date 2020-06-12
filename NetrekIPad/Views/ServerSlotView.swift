@@ -24,7 +24,7 @@ struct ServerSlotView: View {
                 Spacer()
             }//HStack
             Spacer()
-            Text("Server Slot Found")
+            Text("Server \(appDelegate.reader?.hostname ?? "unknown") Slot Found")
             appDelegate.loginInformationController.loginAuthenticated ? Text("Attempting to login as user \(appDelegate.loginInformationController.loginName)") : Text("Attempting to login as guest")
             Spacer()
         }//VStack

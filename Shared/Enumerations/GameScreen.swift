@@ -20,4 +20,5 @@ enum GameScreen: String, CaseIterable {
     case gameActive
     case howToPlay
     case credits
+    case preferences
 }

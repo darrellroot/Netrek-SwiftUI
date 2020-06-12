@@ -9,7 +9,12 @@
 import SwiftUI
 
 struct LoginView: View {
-    let appDelegate = NSApplication.shared.delegate as! AppDelegate
+    #if os(macOS)
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+    #elseif os(iOS)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    #endif
+
     @State var loginName: String
     @State var loginPassword: String
     @State var loginUsername: String
@@ -29,10 +34,24 @@ struct LoginView: View {
     }
     var body: some View {
         VStack {
+            #if os(iOS)
+            HStack {
+                HStack {
+                    Image(systemName: "chevron.left")
+                    Text("Select Server")
+                }.foregroundColor(.blue)
+                .font(.title)
+                    .onTapGesture {
+                        self.appDelegate.gameScreen = .noServerSelected
+                }
+                Spacer()
+            }
+            #endif
             Picker(selection: $loginInformationController.loginAuthenticated, label: EmptyView()) {
                 Text("            Play as Guest            ").tag(false)
                 Text("Specify Netrek Server Account").tag(true)
             }.pickerStyle(SegmentedPickerStyle())
+                .padding()
                 
             HStack {
                 //Just to make big enough
@@ -42,7 +61,7 @@ struct LoginView: View {
                     }
                 }
                 VStack(alignment: .leading) {
-                    Text("We recommend new players play as guest.  Your Name and Username will be visible to other players.")
+                    Text("We recommend new players play as guest.  If you specify a login name and username they will be visible to other players.")
                     Text("")
                     Text("If you don't already have an account on the server, one will be created for you (assuming your name and username are unique).  Make sure to remember your password.  This netrek client saves your network password in your keychain.")
                     Spacer()
@@ -51,19 +70,25 @@ struct LoginView: View {
                     HStack {
                         Text("Name")
                         TextField(loginInformationController.loginName,text: $loginName)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
-                    Text("Warning: Netrek servers use an old network protocol which is out of our control.  The password is not encrypted on the network.  We recommend you use a different/unique password than other accounts for your Netrek login.")
                     HStack {
                         Text("Password")
                         SecureField(loginInformationController.securePassword,text: $loginPassword)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
                     HStack {
                         Text("Username")
                         TextField(loginInformationController.loginUsername, text: $loginUsername)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
                     Button("Save Login Information") {
                         self.saveInfo()
                     }.disabled(self.validInfo ? false : true)
+                    .padding()
+                    .cornerRadius(8)
+                    .border(self.validInfo ? Color.blue : Color.gray)
+                    .padding([.top,.bottom])
                     Button("Clear Login Information") {
                         self.loginName = ""
                         self.loginPassword = ""
@@ -71,6 +96,11 @@ struct LoginView: View {
                         self.loginInformationController.loginAuthenticated = false
                         self.saveInfo()
                     }
+                    .padding()
+                    .cornerRadius(8)
+                    .border(Color.blue)
+                    Text("Warning: Netrek servers use an old network protocol which is out of our control.  The password is not encrypted on the network.  We recommend you use a different/unique password than other accounts for your Netrek login.")
+                        .padding(.top)
                     Spacer()
                 }//VStack Right
             }

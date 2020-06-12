@@ -30,6 +30,9 @@ class TcpReader {
         self.port = port
         self.delegate = delegate
         let serverEndpoint = NWEndpoint.Host(hostname)
+        guard hostname.count > 2 else {
+            return nil
+        }
         guard port <= UInt16.max else { return nil }
         guard port > 0 else { return nil }
         let port = UInt16(port)
