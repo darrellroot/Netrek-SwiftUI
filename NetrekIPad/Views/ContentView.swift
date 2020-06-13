@@ -40,8 +40,6 @@ struct ContentView: View {
             return AnyView(TacticalHudView(universe: universe, me: universe.players[universe.me],help: appDelegate.help))
         //default:
             //return AnyView(Text("Unexpected Error"))
-        case (.credits, _):
-            return AnyView(Text("Credits"))
         }
     }
 }

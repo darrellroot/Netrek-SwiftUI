@@ -44,14 +44,15 @@ struct LeftTacticalControlView: View {
                     .frame(width: geo.size.width,height: geo.size.height / self.numButtons)
                     .border(Color.blue)
                     Spacer()
+                }
+                VStack {
                     Button("Bomb") {
                         self.appDelegate.keymapController?.execute(.bomb, location: CGPoint(x: 0, y: 0))
                     }
                     .frame(width: geo.size.width,height: geo.size.height / self.numButtons)
                     .border(Color.blue)
                     Spacer()
-                }
-                VStack {
+
                     Button("Cloak") {
                         self.appDelegate.keymapController?.execute(.cloak, location: CGPoint(x: 0, y: 0))
                     }
@@ -65,15 +66,15 @@ struct LeftTacticalControlView: View {
                     .frame(width: geo.size.width,height: geo.size.height / self.numButtons)
                     .border(Color.blue)
                     Spacer()
+                }//Extra VStack exceeding 10
+                VStack {
                     Button("Detonate Own Torps") {
                         self.appDelegate.keymapController?.execute(.detOwn, location: CGPoint(x: 0, y: 0))
                     }
                     .frame(width: geo.size.width,height: geo.size.height / self.numButtons)
                     .border(Color.blue)
-                    
-                }//Extra VStack exceeding 10
-                VStack {
                     Spacer()
+
                     //TODO: Tractor,Pressor
                     
                     Button("Repair\nDamage: \(self.me.damage)") {
@@ -89,19 +90,21 @@ struct LeftTacticalControlView: View {
                     .frame(width: geo.size.width,height: geo.size.height / self.numButtons)
                     .background(self.me.shieldsUp ? Color.green : Color.black)
                     .border(Color.blue)
+                    Spacer()
                 } // VStack for 10
-                Spacer()
-                Button("1st Officer: Self Destruct") {
-                    self.firstSelfDestruct.toggle()
-                    if self.captainSelfDestruct && self.firstSelfDestruct {
-                        self.appDelegate.newGameState(.noServerSelected)
-                    } else {
-                        self.appDelegate.universe.gotMessage("You notice everyone on the bridge looking at the First Officer")
+                VStack {
+                    Button("1st Officer: Self Destruct") {
+                        self.firstSelfDestruct.toggle()
+                        if self.captainSelfDestruct && self.firstSelfDestruct {
+                            self.appDelegate.newGameState(.noServerSelected)
+                        } else {
+                            self.appDelegate.universe.gotMessage("You notice everyone on the bridge looking at the First Officer")
+                        }
                     }
+                    .frame(width: geo.size.width,height: geo.size.height / self.numButtons)
+                    .background(self.firstSelfDestruct ? Color.red : Color.black)
+                    .border(Color.blue)
                 }
-                .frame(width: geo.size.width,height: geo.size.height / self.numButtons)
-                .background(self.firstSelfDestruct ? Color.red : Color.black)
-                .border(Color.blue)
             }//Main VStack
         }//Geometry Reader
     }

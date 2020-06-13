@@ -67,6 +67,13 @@ struct TacticalView: View, TacticalOffset {
                     PlasmaView(plasma: plasma, me: self.universe.players[self.universe.me])
                 }
                 
+                ForEach(self.universe.strategicPlayers, id: \.playerId) { player in
+                    IosPlayerStrategicView(player: player)
+                        .frame(width: self.playerWidth(screenWidth: geo.size.width), height: self.playerWidth(screenWidth: geo.size.height))
+                        .border(Color.blue)
+                        //.offset(x: -10, y: -10)
+                        .offset(x: IosPlayerStrategicView.xPos(me: self.me, player: player, size: geo.size),y: IosPlayerStrategicView.yPos(me: self.me, player: player, size: geo.size))
+                }
                 ForEach(self.universe.visibleFriendlyPlayers, id: \.playerId) { player in
                     PlayerView(player: player, me: self.universe.players[self.universe.me], imageSize: self.playerWidth(screenWidth: geo.size.width), screenWidth: geo.size.width, screenHeight: geo.size.height)
                         .frame(width: self.playerWidth(screenWidth: geo.size.width * 3), height: self.playerWidth(screenWidth: geo.size.height * 3))
