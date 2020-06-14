@@ -34,6 +34,8 @@ struct SelectTeamView: View {
                 Spacer()
             }
             Text(universe.selectionError)
+                .font(.title)
+                .foregroundColor(Color.red)
             Spacer()
             HStack {
                 

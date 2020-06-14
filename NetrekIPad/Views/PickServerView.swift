@@ -46,6 +46,9 @@ struct PickServerView: View {
                 }
             }.font(.title)
             Spacer()
+            Text("We recommend \"Bronco\" servers for new Netrek players")
+                .font(.title)
+            Spacer()
             HStack {
                 Text("Manually Enter Server Hostname or IP Address")
                 TextField("servername", text: serverBinding)
