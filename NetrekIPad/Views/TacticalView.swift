@@ -52,26 +52,31 @@ struct TacticalView: View, TacticalOffset {
                     ForEach(self.universe.explodingPlayers, id: \.playerId) { player in
                         ExplosionView(player: player, me: self.universe.players[self.universe.me])
                     }
+                    ForEach(self.universe.visibleTorpedoes, id: \.torpedoId) { torpedo in
+                        
+                        TorpedoView(torpedo: torpedo, me: self.universe.players[self.universe.me])
+                    }
+                    ForEach(self.universe.explodingTorpedoes, id: \.torpedoId) { torpedo in
+                        DetonationView(torpedo: torpedo, me: self.universe.players[self.universe.me])
+                    }
                 }//extra zstack for 10
-                ForEach(self.universe.visibleTorpedoes, id: \.torpedoId) { torpedo in
-                    
-                    TorpedoView(torpedo: torpedo, me: self.universe.players[self.universe.me])
-                }
-                ForEach(self.universe.explodingTorpedoes, id: \.torpedoId) { torpedo in
-                    DetonationView(torpedo: torpedo, me: self.universe.players[self.universe.me])
-                }
+
                 ForEach(self.universe.visibleLasers, id: \.laserId) { laser in
                     LaserView(laser: laser, me: self.universe.players[self.universe.me])
                 }
                 ForEach(self.universe.visiblePlasmas, id: \.plasmaId) { plasma in
                     PlasmaView(plasma: plasma, me: self.universe.players[self.universe.me])
                 }
-                
-                ForEach(self.universe.strategicPlayers, id: \.playerId) { player in
-                    IosPlayerStrategicView(player: player)
+                ForEach(self.universe.planets, id: \.planetId) { planet in
+                    IosPlanetStrategicView(planet: planet, me: self.me)
+                        .frame(width: self.planetWidth(screenWidth: geo.size.width), height: self.planetWidth(screenWidth: geo.size.height))
+                        .offset(x: IosPlanetStrategicView.xPos(me: self.me, planet: planet, size: geo.size),y: IosPlanetStrategicView.yPos(me: self.me, planet: planet, size: geo.size))
+                }
+
+                ForEach(self.universe.alivePlayers, id: \.playerId) { player in
+                    IosPlayerStrategicView(player: player, me: self.me)
                         .frame(width: self.playerWidth(screenWidth: geo.size.width), height: self.playerWidth(screenWidth: geo.size.height))
-                        .border(Color.blue)
-                        //.offset(x: -10, y: -10)
+                        //.border(Color.blue)
                         .offset(x: IosPlayerStrategicView.xPos(me: self.me, player: player, size: geo.size),y: IosPlayerStrategicView.yPos(me: self.me, player: player, size: geo.size))
                 }
                 ForEach(self.universe.visibleFriendlyPlayers, id: \.playerId) { player in

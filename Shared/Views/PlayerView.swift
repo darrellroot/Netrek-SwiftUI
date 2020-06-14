@@ -32,13 +32,13 @@ struct PlayerView: View, TacticalOffset {
                     .opacity(Double(self.player.shieldStrength) / 100.0)
                 VStack {
                     //self.planet.image
-                    Text(self.player.name).foregroundColor(NetrekMath.color(team: self.player.team))
+                    Text(self.player.name).minimumScaleFactor(0.7).foregroundColor(NetrekMath.color(team: self.player.team))
                     Image(self.player.imageName)
                     .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: self.imageSize, height: self.imageSize)
                         .rotationEffect(Angle(radians: -self.player.direction))
-                    Text("\(self.player.ship?.description ?? "") \(self.player.kills, specifier: "%.2f")").foregroundColor(NetrekMath.color(team: self.player.team))
+                    Text("\(self.player.playerStrategicText) \(self.player.ship?.description ?? "") \(self.player.kills, specifier: "%.2f")").minimumScaleFactor(0.7).foregroundColor(NetrekMath.color(team: self.player.team))
                 }
             }
             .opacity(self.player.cloak && self.me === self.player ? 0.4 : 1.0)

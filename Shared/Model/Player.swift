@@ -256,6 +256,16 @@ class Player: CustomStringConvertible, ObservableObject {
             self.imageName = "mactrek-outlinefleet-ca"
             }
     }
+    public var playerStrategicText: String {
+        if self.cloak == true {
+            return "??"
+        } else {
+            let playerLetter = NetrekMath.playerLetter(playerId: self.playerId)
+            let teamLetter = NetrekMath.teamLetter(team: self.team)
+            return teamLetter + playerLetter
+        }
+    }
+
     public func remakeNode() {
         self.updateNode()
     }

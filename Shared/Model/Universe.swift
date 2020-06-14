@@ -63,8 +63,8 @@ class Universe: ObservableObject {
     //converse of visible players
     //for iPad strategic display
     var strategicPlayers: [Player] {
-        return alivePlayers
-        //return alivePlayers.filter({(abs($0.positionX - players[me].positionX) >= NetrekMath.visualDisplayDistance) && abs($0.positionY - players[me].positionY) >= NetrekMath.visualDisplayDistance})
+        //return alivePlayers
+        return alivePlayers.filter({(abs($0.positionX - players[me].positionX) >= NetrekMath.visualDisplayDistance) && abs($0.positionY - players[me].positionY) >= NetrekMath.visualDisplayDistance})
     }
     
     var visibleFriendlyPlayers: [Player] {
