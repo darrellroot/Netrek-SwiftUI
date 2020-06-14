@@ -21,6 +21,7 @@ struct TacticalView: View, TacticalOffset {
     @ObservedObject var me: Player
     @ObservedObject var help: Help
     @State var lastLaser = Date()
+    @State var nextCommand = ""
     
     //@ObservedObject var preferencesController: PreferencesController
     @State var pt: CGPoint = CGPoint() {
@@ -46,6 +47,11 @@ struct TacticalView: View, TacticalOffset {
                         .font(.headline)
                     }
                     BoundaryView(me: self.universe.players[self.universe.me])
+                    
+                    Text(self.nextCommand)
+                        .offset(y: -geo.size.height / 4)
+                        .font(.title)
+                        .foregroundColor(Color.red)
                     
                     ForEach(self.universe.visibleTractors, id: \.playerId) { target in
                         TractorView(target: target, me: self.universe.players[self.universe.me])
@@ -89,11 +95,22 @@ struct TacticalView: View, TacticalOffset {
                 //Rectangle().opacity(0.01).pointingMouse { event, location in
                 Rectangle().opacity(0.01)
                     .gesture(DragGesture(minimumDistance: 0.0, coordinateSpace: .local)
+                        .onChanged { gesture in
+                            if abs(gesture.translation.width) < 20 && abs(gesture.translation.height) < 20 {
+                                self.nextCommand = "Fire Torpedo"
+                            } else {
+                                let dragMagnitude = sqrt(gesture.translation.width * gesture.translation.width + gesture.translation.height * gesture.translation.height)
+                                let screenMagnitude = (geo.size.width + geo.size.height) / 4
+                                let requestedSpeed = min(Int(13 * dragMagnitude / screenMagnitude),12)
+                                self.nextCommand = "Speed \(requestedSpeed)"
+                            }
+                    }
                         .onEnded { gesture in
+                            self.nextCommand = ""
                             let startLocation = gesture.startLocation
                             let endLocation = gesture.predictedEndLocation
                             debugPrint("drag gesture startLocation \(startLocation) endLocation \(endLocation)")
-                            if abs(startLocation.x - endLocation.x) < geo.size.width / 20 && abs(startLocation.y - endLocation.y) < geo.size.height / 20 {
+                            if abs(gesture.translation.width) < geo.size.width / 20 && abs(gesture.translation.height) < geo.size.height / 20 {
                                 self.mouseDown(control: .leftMouse, eventLocation: startLocation, size: geo.size)
                             } else {
                                 // treat as drag
