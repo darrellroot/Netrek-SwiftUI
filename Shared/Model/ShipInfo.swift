@@ -12,6 +12,14 @@ class ShipInfo {
     var shipType: ShipType
     var torpSpeed: Int
     var phaserRange: Int
+    var phaserRecharge: Double {
+        switch self.shipType {
+        case .battleship:
+            return 0.5
+        default:
+            return 1.0
+        }
+    }
     var maxSpeed: Int
     var maxFuel: Int
     var maxShield: Int

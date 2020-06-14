@@ -20,6 +20,8 @@ struct TacticalView: View, TacticalOffset {
     @ObservedObject var universe: Universe
     @ObservedObject var me: Player
     @ObservedObject var help: Help
+    @State var lastLaser = Date()
+    
     //@ObservedObject var preferencesController: PreferencesController
     @State var pt: CGPoint = CGPoint() {
         didSet {
@@ -115,6 +117,7 @@ struct TacticalView: View, TacticalOffset {
                     .frame(width: self.planetWidth(screenWidth: geo.size.width * 3), height: self.planetWidth(screenWidth: geo.size.height * 3))
                         .onTapGesture {
                             debugPrint("tap gesture planet lock on")
+                            
                             self.appDelegate.keymapController.execute(.lKey, location: CGPoint(x: planet.positionX, y: planet.positionY))
                     }
 
@@ -126,9 +129,31 @@ struct TacticalView: View, TacticalOffset {
                         //.border(Color.orange)
                         .onTapGesture {
                             debugPrint("tap gesture laser")
-                            if player.team != self.universe.players[self.universe.me].team {
-                                self.appDelegate.keymapController.execute(.otherMouse, location: CGPoint(x: player.positionX, y: player.positionY))
+                            let PHASEDIST = 600
+                            let ship = player.ship ?? .cruiser
+                            let phaserRange = PHASEDIST * (self.universe.shipInfo[ship]?.phaserRange ?? 100) / 100 // cruiser ends up at 600, bb ends up at 630
+                            let phaserRangeSquared = phaserRange * phaserRange
+                            let timeSinceLaser = Date().timeIntervalSince(self.lastLaser)
+                            let phaserRecharge = self.universe.shipInfo[ship]?.phaserRecharge ?? 1.0
+                            let rangeSquared = (self.me.positionX - player.positionX) * (self.me.positionX - player.positionX) + (self.me.positionY - player.positionY) * (self.me.positionY - player.positionY)
+                            
+                            if rangeSquared < phaserRangeSquared && timeSinceLaser > phaserRecharge {
+                                // fire phaser
+                                debugPrint("phaser firing timeSinceLaser \(timeSinceLaser)")
+                                if player.team != self.universe.players[self.universe.me].team {
+                                    self.appDelegate.keymapController.execute(.otherMouse, location: CGPoint(x: player.positionX, y: player.positionY))
+                                }
+                                self.lastLaser = Date()
+                            } else {
+                                // fire torpedo
+                                debugPrint("phaser not available, firing torpedo timeSinceLaser \(timeSinceLaser)")
+                                if player.team != self.universe.players[self.universe.me].team {
+                                    self.appDelegate.keymapController.execute(.leftMouse, location: CGPoint(x: player.positionX, y: player.positionY))
+                                }
                             }
+                            debugPrint("phaser me \(self.me.positionX) \(self.me.positionY) target \(player.positionX) \(player.positionY)")
+                            debugPrint("phaser range \(sqrt(Double(rangeSquared)))")
+
                     }
                 }
 
@@ -171,6 +196,7 @@ struct TacticalView: View, TacticalOffset {
          }
          )*/
     }
+    
     func netrekLocation(eventLocation: CGPoint, size: CGSize) -> CGPoint {
         let meX = universe.players[universe.me].positionX
         let meY = universe.players[universe.me].positionY
