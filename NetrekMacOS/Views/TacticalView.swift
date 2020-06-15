@@ -39,14 +39,14 @@ struct TacticalView: View, TacticalOffset {
                     HelpView(help: self.help,preferencesController: self.preferencesController)
                     BoundaryView(me: self.universe.players[self.universe.me])
                     ForEach(self.universe.visiblePlanets, id: \.planetId) { planet in
-                        PlanetView(planet: planet, me: self.universe.players[self.universe.me])
+                        PlanetView(planet: planet, me: self.universe.players[self.universe.me], imageSize: self.planetWidth(screenWidth: geo.size.width),screenWidth: geo.size.width, screenHeight: geo.size.height)
                     }
                     /*ForEach(self.universe.visiblePlayers, id: \.playerId) { player in
                             PlayerView(player: player, me: self.universe.players[self.universe.me])
                      }*/
                     ForEach(self.universe.visiblePlayers, id: \.playerId) { player in
-                        PlayerView(player: player, me: self.universe.players[self.universe.me], imageSize: self.playerWidth(screenWidth: geo.size.width))
-                            .offset(x: self.xOffset(positionX: player.positionX, myPositionX: self.universe.players[self.universe.me].positionX,tacticalWidth: geo.size.width), y: self.yOffset(positionY: player.positionY, myPositionY: self.universe.players[self.universe.me].positionY, tacticalHeight: geo.size.height))
+                        PlayerView(player: player, me: self.universe.players[self.universe.me], imageSize: self.playerWidth(screenWidth: geo.size.width),screenWidth: geo.size.width, screenHeight: geo.size.height)
+                            //.offset(x: self.xOffset(positionX: player.positionX, myPositionX: self.universe.players[self.universe.me].positionX,tacticalWidth: geo.size.width), y: self.yOffset(positionY: player.positionY, myPositionY: self.universe.players[self.universe.me].positionY, tacticalHeight: geo.size.height))
 
                             .frame(width: self.playerWidth(screenWidth: geo.size.width * 3), height: self.playerWidth(screenWidth: geo.size.height * 3))
                                 

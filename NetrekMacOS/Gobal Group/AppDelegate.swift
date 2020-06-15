@@ -549,7 +549,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             disableShipMenu()
             disableServerMenu()
             self.gameState = newState
-            self.analyzer = PacketAnalyzer()
+            self.analyzer = PacketAnalyzer(appDelegate: self)
             // no need to do anything here, handled in the menu function
             break
 
