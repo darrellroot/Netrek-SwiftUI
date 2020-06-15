@@ -22,7 +22,7 @@ struct PlanetView: View, TacticalOffset {
                 Image(self.planet.imageName)
                 .resizable()
                     .aspectRatio(contentMode: .fit)
-                    //.frame(width: self.planetWidth(screenWidth: geo.size.width), height: self.planetWidth(screenWidth: geo.size.height))
+                    .frame(width: self.planetWidth(screenWidth: self.screenWidth), height: self.planetWidth(screenWidth: self.screenHeight))
                     .colorMultiply(NetrekMath.color(team: self.planet.owner))
                     .contentShape(Rectangle())
                 Text(self.planet.name)

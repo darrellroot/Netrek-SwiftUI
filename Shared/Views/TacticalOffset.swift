@@ -14,10 +14,14 @@ protocol TacticalOffset {
 
 extension TacticalOffset {
     func planetWidth(screenWidth: CGFloat) -> CGFloat {
-        return CGFloat(NetrekMath.planetDiameter) * screenWidth / CGFloat(NetrekMath.displayDistance)
+        let width = CGFloat(NetrekMath.planetDiameter) * screenWidth / CGFloat(NetrekMath.displayDistance)
+        //debugPrint("planet width \(width)")
+        return width
     }
     func playerWidth(screenWidth: CGFloat) -> CGFloat {
-        return CGFloat(NetrekMath.playerSize) * screenWidth / CGFloat(NetrekMath.displayDistance)
+        let width = CGFloat(NetrekMath.playerSize) * screenWidth / CGFloat(NetrekMath.displayDistance)
+        //debugPrint("player width \(width)")
+        return width
     }
     func torpedoWidth(screenWidth: CGFloat) -> CGFloat {
         return CGFloat(NetrekMath.torpedoSize) * screenWidth / CGFloat(NetrekMath.displayDistance)

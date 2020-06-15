@@ -27,15 +27,21 @@ struct HowToPlayView: View {
                 Spacer()
                 Text("          ")
             }
-            Text("Tapping on screen fires torpedoes")
-            Text("Dragging on screen sets course to end of drag")
-            Text("Dragging on screen sets speed to magnitude of drag")
-            Text("First tap on enemy ship fires laser")
-            Text("More taps on enemy ship fires torpedoes")
-            Text("Lasers recharge in 1 second")
-            Text("Tapping on planet locks onto planet for orbit")
-            Spacer()
-            Text("See www.netrek.org to learn about Netrek strategy")
+            VStack(alignment: .leading) {
+                Text("Tapping on screen fires torpedoes").padding(.bottom)
+                Text("Dragging on screen sets course to end of drag").padding(.bottom)
+                Text("Dragging on screen sets speed to magnitude of drag").padding(.bottom)
+                Text("First tap on enemy ship fires laser").padding(.bottom)
+                Text("More taps on enemy ship fires torpedoes").padding(.bottom)
+            }
+            VStack(alignment: .leading) {
+                Text("Lasers recharge in 1 second").padding(.bottom)
+                Text("Tapping on planet locks onto planet for orbit")
+                Spacer()
+                Text("To exit, click on both \"Captain: Self Destruct\" and \"1st Officer: Self Destruct\"")
+                Spacer()
+                Text("See www.netrek.org to learn about Netrek strategy")
+            }
         }.font(.title)
         .padding()
     }

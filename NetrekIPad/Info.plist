@@ -36,10 +36,6 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Your microphone may be used for audio commands such as "shield", "cloak", "orbit", "repair"</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>Speech recognition may be used for audio commands such as "shield", "cloak", "orbit", "repair".</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
