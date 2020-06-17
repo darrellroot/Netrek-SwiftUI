@@ -13,6 +13,8 @@ import Combine
 struct PickServerView: View {
     @ObservedObject var metaServer: MetaServer
     @ObservedObject var universe: Universe
+    @Environment(\.horizontalSizeClass) var hSizeClass
+    @Environment(\.verticalSizeClass) var vSizeClass
 
     @State var manualServer = "" // see serverBinding below
     
@@ -20,7 +22,33 @@ struct PickServerView: View {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    //@Environment(\.horizontalSizeClass) var hSizeClass
+    //@Environment(\.verticalSizeClass) var vSizeClass
+    var bigText: Font {
+        guard let vSizeClass = vSizeClass else {
+            return Font.headline
+        }
+        switch vSizeClass {
+        case .regular:
+            return .title
+        case .compact:
+            return .headline
+        }
+    }
+    var regularText: Font {
+        guard let vSizeClass = vSizeClass else {
+            return Font.body
+        }
+        switch vSizeClass {
+            
+        case .regular:
+            return .headline
+        case .compact:
+            return Font.body
+        }
+    }
     var body: some View {
+        
         let serverBinding = Binding<String> ( get: {
             self.manualServer
         }, set: {
@@ -31,10 +59,10 @@ struct PickServerView: View {
         return VStack(alignment: .leading) {
             HStack {
                 Spacer()
-                Text("Netrek").font(.largeTitle)
+                Text("Netrek").font(bigText)
                 Spacer()
             }
-            Text("Pick Server").font(.title)
+            Text("Pick Server").font(bigText)
             VStack(alignment: .leading) {
                 ForEach(metaServer.servers.keys.sorted(), id: \.self) { hostname in
                     Text("\(hostname) \(self.metaServer.servers[hostname]?.type.description ?? "Unknown") players \(self.metaServer.servers[hostname]?.players ?? 0)")
@@ -44,10 +72,10 @@ struct PickServerView: View {
                     }
                     .padding(8)
                 }
-            }.font(.title)
+            }.font(bigText)
             Spacer()
             Text("We recommend \"Bronco\" servers for new Netrek players")
-                .font(.title)
+                .font(regularText)
             Spacer()
             HStack {
                 Text("Manually Enter Server Hostname or IP Address")
@@ -55,25 +83,25 @@ struct PickServerView: View {
                 Button("Connect to Manual Server") {
                     _ = self.appDelegate.selectServer(hostname: self.manualServer)
                 }
-            }.font(.title)
+            }.font(regularText)
             Spacer()
             HStack {
                 Text("How To Play")
-                    .font(.title)
+                    .font(bigText)
                     .foregroundColor(Color.blue)
                     .onTapGesture {
                         self.appDelegate.gameScreen = .howToPlay
                 }
                 Spacer()
                 Text("Preferences")
-                    .font(.title)
+                    .font(bigText)
                     .foregroundColor(Color.blue)
                     .onTapGesture {
                         self.appDelegate.gameScreen = .preferences
                 }
                 Spacer()
                 Text("Credits")
-                    .font(.title)
+                    .font(bigText)
                     .foregroundColor(Color.blue)
                     .onTapGesture {
                         self.appDelegate.gameScreen = .credits
