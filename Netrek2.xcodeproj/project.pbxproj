@@ -114,7 +114,6 @@
 		2F53CB9A2493301600677187 /* ServerConnectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB992493301600677187 /* ServerConnectedView.swift */; };
 		2F53CB9C2493325900677187 /* ServerSlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB9B2493325900677187 /* ServerSlotView.swift */; };
 		2F53CB9E2493EBE600677187 /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB9D2493EBE600677187 /* CreditsView.swift */; };
-		2F53CBA02493EBF700677187 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB9F2493EBF700677187 /* PreferencesView.swift */; };
 		2F53CBA12493F31E00677187 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C1982248629C000604F21 /* LoginView.swift */; };
 		2F53CBA32495897A00677187 /* IosPlayerStrategicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CBA22495897A00677187 /* IosPlayerStrategicView.swift */; };
 		2F53CBA52495E22A00677187 /* IosPlanetStrategicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CBA42495E22A00677187 /* IosPlanetStrategicView.swift */; };
@@ -275,7 +274,6 @@
 		2F53CB992493301600677187 /* ServerConnectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConnectedView.swift; sourceTree = "<group>"; };
 		2F53CB9B2493325900677187 /* ServerSlotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSlotView.swift; sourceTree = "<group>"; };
 		2F53CB9D2493EBE600677187 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
-		2F53CB9F2493EBF700677187 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		2F53CBA22495897A00677187 /* IosPlayerStrategicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IosPlayerStrategicView.swift; sourceTree = "<group>"; };
 		2F53CBA42495E22A00677187 /* IosPlanetStrategicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IosPlanetStrategicView.swift; sourceTree = "<group>"; };
 		2F97D84A24620CCF003CA91F /* Netrek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netrek.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -425,7 +423,6 @@
 				2F2130E5248C10E8001D3B83 /* PickServerView.swift */,
 				2F53CB8C249167AE00677187 /* HowToPlayView.swift */,
 				2F53CB9D2493EBE600677187 /* CreditsView.swift */,
-				2F53CB9F2493EBF700677187 /* PreferencesView.swift */,
 				2F53CB81249153C100677187 /* ServerSelectedView.swift */,
 				2F213115248D6EEC001D3B83 /* SelectTeamView.swift */,
 				2F53CB972491F33B00677187 /* MessagesView.swift */,
@@ -924,7 +921,6 @@
 				2F213122248D89B9001D3B83 /* TacticalOffset.swift in Sources */,
 				2F213125248D8AE9001D3B83 /* TacticalView.swift in Sources */,
 				2F2130E6248C10E8001D3B83 /* PickServerView.swift in Sources */,
-				2F53CBA02493EBF700677187 /* PreferencesView.swift in Sources */,
 				2F53CB872491575B00677187 /* Notification+keyboardHeight.swift in Sources */,
 				2F2130C5248C0F87001D3B83 /* SceneDelegate.swift in Sources */,
 				2F2130F7248CC239001D3B83 /* SlotStatus.swift in Sources */,

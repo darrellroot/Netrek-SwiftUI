@@ -23,6 +23,33 @@ struct TacticalHudView: View {
     @State var newMessage: String = ""
     @State var sendToAll = true
     
+    @Environment(\.horizontalSizeClass) var hSizeClass
+    @Environment(\.verticalSizeClass) var vSizeClass
+
+    var bigText: Font {
+        guard let vSizeClass = vSizeClass else {
+            return Font.headline
+        }
+        switch vSizeClass {
+        case .regular:
+            return .title
+        case .compact:
+            return .headline
+        }
+    }
+    var regularText: Font {
+        guard let vSizeClass = vSizeClass else {
+            return Font.body
+        }
+        switch vSizeClass {
+            
+        case .regular:
+            return .headline
+        case .compact:
+            return Font.body
+        }
+    }
+
     var body: some View {
         return GeometryReader { geo in
             HStack {
@@ -53,24 +80,34 @@ struct TacticalHudView: View {
 
                     }
                     .frame(width: geo.size.width * 0.80)
-                    .padding(.top)
+                    .layoutPriority(1)
 
                     TacticalView(universe: self.universe, me: self.universe.players[self.universe.me], help: self.help)
-                        .frame(width: geo.size.width * 0.84)
+                        .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.8)
                     .clipped()
                     HStack {
-                        Text("Set Speed").padding(.leading)
-                        Slider(value: self.$me.throttle, in: 0...12,step: 1) { onEditingChanged in
+                        Stepper(
+                            onIncrement: {
+                                self.me.throttle += 1
+                                self.appDelegate.keymapController.setSpeed(Int(self.me.throttle))
+                        },
+                            onDecrement: {
+                                self.me.throttle -= 1
+                                self.appDelegate.keymapController.setSpeed(Int(self.me.throttle))
+                        }) {
+                            Text("Requested Speed \(self.me.throttle)")
+                        }//end Stepper
+                            .padding([.leading,.trailing])
+                    }// HStack
+                        /*Slider(value: self.$me.throttle, in: 0...12,step: 1) { onEditingChanged in
                             debugPrint("slider \(onEditingChanged)")
                             //slider closure is called with true while dragging, then false when dragging done
                             if !onEditingChanged {
                                 self.appDelegate.keymapController.setSpeed(Int(self.me.throttle))
                             }
                         }
-                        Text("\(Int(self.me.throttle))").padding(.trailing)
-                    }
+                        Text("\(Int(self.me.throttle))").padding(.trailing)*/
                 }//VStack tactical
-                
             }//HStack
         }//Geo Reader
     }// var body

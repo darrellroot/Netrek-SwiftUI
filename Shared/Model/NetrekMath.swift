@@ -14,7 +14,12 @@ import SwiftUI
 
 class NetrekMath {
 
+    #if os(macOS)
     static let displayDistance = 3000
+    #elseif os(iOS)
+    static let displayDistance = 1500
+    #endif
+    
     static let visualDisplayDistance = 6 * NetrekMath.displayDistance / 10
     
     static let displayDistanceFloat: Float = Float(displayDistance)

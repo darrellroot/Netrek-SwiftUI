@@ -63,12 +63,15 @@ struct PickServerView: View {
                 Spacer()
             }
             Text("Pick Server").font(bigText)
-            VStack(alignment: .leading) {
+            List {
                 ForEach(metaServer.servers.keys.sorted(), id: \.self) { hostname in
-                    Text("\(hostname) \(self.metaServer.servers[hostname]?.type.description ?? "Unknown") players \(self.metaServer.servers[hostname]?.players ?? 0)")
-                            .onTapGesture {
-                                debugPrint("server \(hostname) selected")
-                                _ = self.appDelegate.selectServer(hostname: hostname)
+                    HStack {
+                        Text("\(hostname) \(self.metaServer.servers[hostname]?.type.description ?? "Unknown") players \(self.metaServer.servers[hostname]?.players ?? 0)")
+                                .onTapGesture {
+                                    debugPrint("server \(hostname) selected")
+                                    _ = self.appDelegate.selectServer(hostname: hostname)
+                        }
+                        Spacer()
                     }
                     .padding(8)
                 }

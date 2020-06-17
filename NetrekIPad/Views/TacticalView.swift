@@ -12,8 +12,10 @@ struct TacticalView: View, TacticalOffset {
     
     #if os(macOS)
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
+    let minHeight: CGFloat? = 500
     #elseif os(iOS)
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let minHeight: CGFloat? = nil
     #endif
     
     //@EnvironmentObject var universe: Universe
@@ -22,6 +24,33 @@ struct TacticalView: View, TacticalOffset {
     @ObservedObject var help: Help
     @State var lastLaser = Date()
     @State var nextCommand = ""
+    @Environment(\.horizontalSizeClass) var hSizeClass
+    @Environment(\.verticalSizeClass) var vSizeClass
+
+    var bigText: Font {
+        guard let vSizeClass = vSizeClass else {
+            return Font.headline
+        }
+        switch vSizeClass {
+        case .regular:
+            return .title
+        case .compact:
+            return .headline
+        }
+    }
+    var regularText: Font {
+        guard let vSizeClass = vSizeClass else {
+            return Font.body
+        }
+        switch vSizeClass {
+            
+        case .regular:
+            return .headline
+        case .compact:
+            return Font.body
+        }
+    }
+
     
     //@ObservedObject var preferencesController: PreferencesController
     @State var pt: CGPoint = CGPoint() {
@@ -44,13 +73,13 @@ struct TacticalView: View, TacticalOffset {
                     VStack {
                         Spacer()
                         Text(self.universe.lastMessage)
-                        .font(.headline)
+                            .font(self.bigText)
                     }
                     BoundaryView(me: self.universe.players[self.universe.me])
                     
                     Text(self.nextCommand)
                         .offset(y: -geo.size.height / 4)
-                        .font(.title)
+                        .font(self.bigText)
                         .foregroundColor(Color.red)
                     
                     ForEach(self.universe.visibleTractors, id: \.playerId) { target in
@@ -113,10 +142,16 @@ struct TacticalView: View, TacticalOffset {
                             debugPrint("drag gesture startLocation \(startLocation) endLocation \(endLocation)")
                             let tapXfromCenter = abs(geo.size.width / 2 - endLocation.x)
                             let tapYfromCenter = abs(geo.size.height / 2 - endLocation.y)
+                            let percentTapXFromCenter = tapXfromCenter / (geo.size.width / 2)
+                            let percentTapYFromCenter = tapYfromCenter / (geo.size.height / 2)
                             
-                            let tapDistanceSquared = tapXfromCenter * tapXfromCenter + tapYfromCenter * tapYfromCenter
-                            let strategicScanSquared = geo.size.width * geo.size.width * 0.3 * 0.3
-                            if tapDistanceSquared > strategicScanSquared {
+                            let tapPercentSquared = percentTapXFromCenter * percentTapXFromCenter + percentTapYFromCenter * percentTapYFromCenter
+                            
+                            let boundary: CGFloat = 0.3
+                            //let tapDistanceSquared = tapXfromCenter * tapXfromCenter + tapYfromCenter * tapYfromCenter
+                            //let strategicScanSquared = geo.size.width * geo.size.width * 0.3 * 0.3
+                            //if tapDistanceSquared > strategicScanSquared {
+                            if tapPercentSquared > boundary {
                                 // outside strategic scan "circle"
                                 // interpret as course change
                                 self.mouseDown(control: .rightMouse, eventLocation: endLocation, size: geo.size)
@@ -218,7 +253,8 @@ struct TacticalView: View, TacticalOffset {
                 
                 
             }
-        }.frame(minWidth: 500, idealWidth: 800, maxWidth: nil, minHeight: 500, idealHeight: 800, maxHeight: nil, alignment: .center)
+        }
+        .frame(minWidth: 500, idealWidth: 800, maxWidth: nil, minHeight: minHeight, idealHeight: 800, maxHeight: nil, alignment: .center)
         .border(me.alertCondition.color)
         /*.gesture(DragGesture(minimumDistance: 0.0)
          .onChanged { tap in

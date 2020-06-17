@@ -12,6 +12,32 @@ struct SelectTeamView: View {
     @ObservedObject var eligibleTeams: EligibleTeams
     @ObservedObject var universe: Universe
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    @Environment(\.horizontalSizeClass) var hSizeClass
+    @Environment(\.verticalSizeClass) var vSizeClass
+
+    var bigText: Font {
+        guard let vSizeClass = vSizeClass else {
+            return Font.headline
+        }
+        switch vSizeClass {
+        case .regular:
+            return .title
+        case .compact:
+            return .headline
+        }
+    }
+    var regularText: Font {
+        guard let vSizeClass = vSizeClass else {
+            return Font.body
+        }
+        switch vSizeClass {
+            
+        case .regular:
+            return .headline
+        case .compact:
+            return Font.body
+        }
+    }
 
     var body: some View {
         VStack {
@@ -19,27 +45,27 @@ struct SelectTeamView: View {
                 HStack {
                     Image(systemName: "chevron.left")
                     Text("Select Server")
-                }.font(.title)
+                }.font(bigText)
                 .foregroundColor(.blue)
                 .onTapGesture {
                     self.appDelegate.newGameState(.noServerSelected)
                 }
                 Spacer()
                 Text("Server \(appDelegate.reader?.hostname ?? "unknown")")
-                    .font(.title)
+                    .font(bigText)
                 Spacer()
                 Text("Currently Selected Team: \(eligibleTeams.preferredTeam.description)")
                     .fontWeight(.bold)
-                    .font(.title)
+                    .font(bigText)
                 Spacer()
             }
             Text(universe.selectionError)
-                .font(.title)
+                .font(bigText)
                 .foregroundColor(Color.red)
             Spacer()
             HStack {
-                
-                VStack(alignment: .leading) {
+                List {
+                //VStack(alignment: .leading) {
                     Text("Select Team Federation \(universe.federationPlayers) Players")
                         .fontWeight(eligibleTeams.fedEligible ? .bold : .regular)
                         .onTapGesture {
@@ -66,7 +92,8 @@ struct SelectTeamView: View {
                 }//Vstack select team
                     .foregroundColor(.blue)
                 Spacer()
-                VStack(alignment: .leading) {
+                List {
+                //VStack(alignment: .leading) {
                     Text("Launch Scout")
                         .padding(8)
                         .onTapGesture {
@@ -102,17 +129,19 @@ struct SelectTeamView: View {
                     
                 }//VStack launch ship
                     .foregroundColor(.blue)
-                    .font(.title)
+                    .font(bigText)
                     
                 
             }// Top HStack
                 
-                .font(.title)
+                .font(bigText)
             Spacer()
             HStack {
-                MessagesView(universe: universe)
+                ScrollView {
+                    MessagesView(universe: universe)
+                }
                 Spacer()
-                VStack {
+                ScrollView {
                     HelpView(help: appDelegate.help)
                     Spacer()
                     TeamListView(universe: universe)

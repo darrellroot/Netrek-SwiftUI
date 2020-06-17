@@ -77,7 +77,7 @@ class Player: CustomStringConvertible, ObservableObject {
             self.updateImage()
         }
     }
-    @Published var throttle: Double = 0.0 // used for "me" by tacticalView
+    @Published var throttle: Int = 0 // used for "me" by tacticalView
     
     @Published private(set) var positionX: Int = NetrekMath.galacticSize / 2
     @Published private(set) var positionY: Int = NetrekMath.galacticSize / 2
@@ -99,7 +99,7 @@ class Player: CustomStringConvertible, ObservableObject {
     private(set) var slotStatus: SlotStatus = .free {
         didSet {
             if slotStatus == .explode && (appDelegate.universe.players[appDelegate.universe.me].slotStatus == .alive || appDelegate.universe.players[appDelegate.universe.me].slotStatus == .explode) {
-                self.throttle = 0.0
+                self.throttle = 0
                 let taxiDistance = abs(appDelegate.universe.players[appDelegate.universe.me].lastAlivePositionX - self.positionX) + abs(appDelegate.universe.players[appDelegate.universe.me].lastAlivePositionY - self.positionY)
                 let volume = 1 - (Float(taxiDistance) / NetrekMath.displayDistanceFloat)
                 if volume > 0 {
@@ -119,7 +119,7 @@ class Player: CustomStringConvertible, ObservableObject {
     private(set) var orbit = false {
         didSet {
             if orbit {
-                self.throttle = 1.0
+                self.throttle = 1
             }
         }
     }
