@@ -528,6 +528,7 @@ class KeymapController {
             
             let repairState = players[me].repair
             let cpRepair = MakePacket.cpRepair(state: !repairState )
+            universe.players[me].throttle = 0.0 // used by slider in tacticalView
             appDelegate.reader?.send(content: cpRepair)
         case .fireLaser:
             guard appDelegate.gameState == .gameActive else { return }

@@ -77,6 +77,8 @@ class Player: CustomStringConvertible, ObservableObject {
             self.updateImage()
         }
     }
+    @Published var throttle: Double = 0.0 // used for "me" by tacticalView
+    
     @Published private(set) var positionX: Int = NetrekMath.galacticSize / 2
     @Published private(set) var positionY: Int = NetrekMath.galacticSize / 2
     private(set) var me: Bool = false
@@ -97,6 +99,7 @@ class Player: CustomStringConvertible, ObservableObject {
     private(set) var slotStatus: SlotStatus = .free {
         didSet {
             if slotStatus == .explode && (appDelegate.universe.players[appDelegate.universe.me].slotStatus == .alive || appDelegate.universe.players[appDelegate.universe.me].slotStatus == .explode) {
+                self.throttle = 0.0
                 let taxiDistance = abs(appDelegate.universe.players[appDelegate.universe.me].lastAlivePositionX - self.positionX) + abs(appDelegate.universe.players[appDelegate.universe.me].lastAlivePositionY - self.positionY)
                 let volume = 1 - (Float(taxiDistance) / NetrekMath.displayDistanceFloat)
                 if volume > 0 {
@@ -113,7 +116,13 @@ class Player: CustomStringConvertible, ObservableObject {
     //private let cloakAction = SKAction.fadeOut(withDuration: 0.7)
     //private let unCloakAction = SKAction.fadeIn(withDuration: 0.7)
     //private let playerCloakAction = SKAction.fadeAlpha(to: 0.2, duration: 0.7)
-    private(set) var orbit = false
+    private(set) var orbit = false {
+        didSet {
+            if orbit {
+                self.throttle = 1.0
+            }
+        }
+    }
     private(set) var cloak = false /* {
         didSet {
             if oldValue == false && cloak == true {

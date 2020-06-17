@@ -95,22 +95,37 @@ struct TacticalView: View, TacticalOffset {
                 //Rectangle().opacity(0.01).pointingMouse { event, location in
                 Rectangle().opacity(0.01)
                     .gesture(DragGesture(minimumDistance: 0.0, coordinateSpace: .local)
-                        .onChanged { gesture in
+                        /*.onChanged { gesture in
                             if abs(gesture.translation.width) < 20 && abs(gesture.translation.height) < 20 {
-                                self.nextCommand = "Fire Torpedo"
+                               {
+                         self.nextCommand = "Fire Torpedo"
                             } else {
                                 let dragMagnitude = sqrt(gesture.translation.width * gesture.translation.width + gesture.translation.height * gesture.translation.height)
                                 let screenMagnitude = (geo.size.width + geo.size.height) / 4
                                 let requestedSpeed = min(Int(13 * dragMagnitude / screenMagnitude),12)
                                 self.nextCommand = "Speed \(requestedSpeed)"
                             }
-                    }
+                    }*/
                         .onEnded { gesture in
                             self.nextCommand = ""
                             let startLocation = gesture.startLocation
                             let endLocation = gesture.predictedEndLocation
                             debugPrint("drag gesture startLocation \(startLocation) endLocation \(endLocation)")
-                            if abs(gesture.translation.width) < geo.size.width / 20 && abs(gesture.translation.height) < geo.size.height / 20 {
+                            let tapXfromCenter = abs(geo.size.width / 2 - endLocation.x)
+                            let tapYfromCenter = abs(geo.size.height / 2 - endLocation.y)
+                            
+                            let tapDistanceSquared = tapXfromCenter * tapXfromCenter + tapYfromCenter * tapYfromCenter
+                            let strategicScanSquared = geo.size.width * geo.size.width * 0.3 * 0.3
+                            if tapDistanceSquared > strategicScanSquared {
+                                // outside strategic scan "circle"
+                                // interpret as course change
+                                self.mouseDown(control: .rightMouse, eventLocation: endLocation, size: geo.size)
+                            } else {
+                                // inside strategic scan "circle"
+                                // interpret as torpedo
+                                self.mouseDown(control: .leftMouse, eventLocation: endLocation, size: geo.size)
+                            }
+                            /*if abs(gesture.translation.width) < geo.size.width / 20 && abs(gesture.translation.height) < geo.size.height / 20 {
                                 self.mouseDown(control: .leftMouse, eventLocation: startLocation, size: geo.size)
                             } else {
                                 // treat as drag
@@ -125,8 +140,7 @@ struct TacticalView: View, TacticalOffset {
                                     return
                                 }
                                 self.appDelegate.keymapController.setSpeed(requestedSpeed)
-                                
-                            }
+                            }*/
                         }
                 )
                 ForEach(self.universe.visiblePlanets, id: \.planetId) { planet in
