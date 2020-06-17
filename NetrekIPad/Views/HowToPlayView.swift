@@ -28,15 +28,17 @@ struct HowToPlayView: View {
                 Text("          ")
             }
             VStack(alignment: .leading) {
-                Text("Tapping on screen fires torpedoes").padding(.bottom)
-                Text("Dragging on screen sets course to end of drag").padding(.bottom)
-                Text("Dragging on screen sets speed to magnitude of drag").padding(.bottom)
+                Text("Tapping on screen near center fires torpedoes").padding(.bottom)
+                Text("Tapping on screen near edge sets course").padding(.bottom)
+                Text("Slider at bottom sets desired speed").padding(.bottom)
                 Text("First tap on enemy ship fires laser").padding(.bottom)
                 Text("More taps on enemy ship fires torpedoes").padding(.bottom)
             }
             VStack(alignment: .leading) {
                 Text("Lasers recharge in 1 second").padding(.bottom)
                 Text("Tapping on planet locks onto planet for orbit")
+                Text("\"Circle\" of planet and player indicators show long-range scans")
+                Text("Long range scans in BOLD have extra armies or 2+ kills")
                 Spacer()
                 Text("To exit, click on both \"Captain: Self Destruct\" and \"1st Officer: Self Destruct\"")
                 Spacer()
