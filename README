@@ -1,4 +1,6 @@
-# SwiftNetrek 2.0 build 10
+
+
+This repository has 2 targets: Netrek for MacOS and Netrek for iPadOS.  Most of the data model and many of the views are reused between the two targets. 
 
 SwiftNetrek - 5 June 2020
 
