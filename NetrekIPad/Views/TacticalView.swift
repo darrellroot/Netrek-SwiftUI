@@ -110,13 +110,13 @@ struct TacticalView: View, TacticalOffset {
                     PlasmaView(plasma: plasma, me: self.universe.players[self.universe.me], universe: self.universe, screenWidth: geo.size.width, screenHeight: geo.size.height)
                 }
                 ForEach(self.universe.planets, id: \.planetId) { planet in
-                    IosPlanetStrategicView(planet: planet, me: self.me)
+                    IosPlanetStrategicView(planet: planet, me: self.me, universe: self.universe, screenWidth: geo.size.width, screenHeight: geo.size.height)
                         //.frame(width: self.planetWidth(screenWidth: geo.size.width), height: self.planetWidth(screenWidth: geo.size.height))
                         .offset(x: IosPlanetStrategicView.xPos(me: self.me, planet: planet, size: geo.size),y: IosPlanetStrategicView.yPos(me: self.me, planet: planet, size: geo.size))
                 }
 
                 ForEach(self.universe.alivePlayers, id: \.playerId) { player in
-                    IosPlayerStrategicView(player: player, me: self.me)
+                    IosPlayerStrategicView(player: player, me: self.me, universe: self.universe, screenWidth: geo.size.width, screenHeight: geo.size.height)
                         //.frame(width: self.playerWidth(screenWidth: geo.size.width), height: self.playerWidth(screenWidth: geo.size.height))
                         //.border(Color.blue)
                         .offset(x: IosPlayerStrategicView.xPos(me: self.me, player: player, size: geo.size),y: IosPlayerStrategicView.yPos(me: self.me, player: player, size: geo.size))

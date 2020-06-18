@@ -64,7 +64,8 @@ extension TacticalOffset {
         } else {
             viewPositionX = 5000
         }
-        let x = CGFloat(positionX - viewPositionX) * (visualWidth / CGFloat(NetrekMath.galacticSize)) * tacticalWidth / 1000
+        //let x = CGFloat(positionX - viewPositionX) * (visualWidth / CGFloat(NetrekMath.galacticSize)) * tacticalWidth / 1000
+        let x = CGFloat(positionX - viewPositionX) * tacticalWidth / visualWidth
         return x
     }
     //This calculation is relative to SwiftUI view
@@ -75,7 +76,9 @@ extension TacticalOffset {
         } else {
             viewPositionY = 5000
         }
-        let y = CGFloat(viewPositionY - positionY) * (visualHeight / CGFloat(NetrekMath.galacticSize)) * tacticalHeight / 1000
+        //let y = CGFloat(viewPositionY - positionY) * (visualHeight / CGFloat(NetrekMath.galacticSize)) * tacticalHeight / 1000
+        let y = -1 * CGFloat(positionY - viewPositionY) * tacticalHeight / visualHeight
+
         return y
     }
 }

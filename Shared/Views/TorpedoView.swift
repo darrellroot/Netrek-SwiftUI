@@ -20,9 +20,9 @@ struct TorpedoView: View, TacticalOffset {
         //if torpedo.status == 1 {
             return GeometryReader { geo in
                 self.torpedo.color
-                    .frame(width: self.torpedoWidth(screenWidth: geo.size.width, visualWidth: self.universe.visualWidth), height: self.torpedoWidth(screenWidth: geo.size.height, visualWidth: self.universe.visualWidth))
+                    .frame(width: self.torpedoWidth(screenWidth: self.screenWidth, visualWidth: self.universe.visualWidth), height: self.torpedoWidth(screenWidth: self.screenWidth, visualWidth: self.universe.visualWidth))
                         .contentShape(Rectangle())
-                    .offset(x: self.xOffset(positionX: self.torpedo.positionX, myPositionX: self.me.positionX,tacticalWidth: self.screenWidth, visualWidth: self.universe.visualWidth), y: self.yOffset(positionY: self.torpedo.positionY, myPositionY: self.me.positionY, tacticalHeight: self.universe.visualWidth * self.screenHeight / self.screenWidth, visualHeight: self.universe.visualWidth * self.screenHeight / self.screenWidth))
+                    .offset(x: self.xOffset(positionX: self.torpedo.positionX, myPositionX: self.me.positionX,tacticalWidth: self.screenWidth, visualWidth: self.universe.visualWidth), y: self.yOffset(positionY: self.torpedo.positionY, myPositionY: self.me.positionY, tacticalHeight: self.screenHeight, visualHeight: self.universe.visualWidth * self.screenHeight / self.screenWidth))
                 
 
                 //.opacity(self.torpedo.status == 1 ? 1 : 0)

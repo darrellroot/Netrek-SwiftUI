@@ -11,7 +11,10 @@ import SwiftUI
 struct IosPlayerStrategicView: View {
     @ObservedObject var player: Player
     @ObservedObject var me: Player
-    
+    @ObservedObject var universe: Universe
+    var screenWidth: CGFloat
+    var screenHeight: CGFloat
+
     static func xPos(me: Player, player: Player, size: CGSize) -> CGFloat {
         var angle: CGFloat
         if player.positionX - me.positionX == 0 {
@@ -44,21 +47,23 @@ struct IosPlayerStrategicView: View {
         }.foregroundColor(self.playerColor)
             .opacity(self.opacity)
     }
-    var distance: Double {
-        let xDiff = Double(abs(me.positionX - player.positionX))
-        let yDiff = Double(abs(me.positionY - player.positionY))
+    var distance: Double {  // returns distance in terms of "half visual display distance" units
+        let xDiff = CGFloat(abs(me.positionX - player.positionX)) / (universe.visualWidth * 0.5)
+        let yDiff = CGFloat(abs(me.positionY - player.positionY)) / (universe.visualWidth * 0.5 * screenHeight / screenWidth)
         let distance = sqrt(xDiff * xDiff + yDiff * yDiff)
-        return 100 * distance / Double(NetrekMath.galacticSize)
+        return Double(distance)
     }
     var opacity: Double {
         if self.visible == false {
             return 0
         } else {
             switch self.distance {
-            case 0..<100:
-                return 1.0 - distance / 70
-            case 100...:
-                return 0.0
+            case 0..<1:
+                return 1.0
+            case 1..<3:
+                return 1 - ((self.distance - 1.0) / 2)
+            case 3...:
+                return 0
             case ...0:
                 //should not get here
                 return 1.0
@@ -70,17 +75,17 @@ struct IosPlayerStrategicView: View {
         }
     }
     var visible: Bool {
-        if abs(me.positionX - player.positionX) > NetrekMath.visualDisplayDistance * 2 {
+        if abs(me.positionX - player.positionX) > Int(self.universe.visualWidth * 2) {
             return false
         }
-        if abs(me.positionY - player.positionY) > NetrekMath.visualDisplayDistance * 2 {
+        if abs(me.positionY - player.positionY) > Int(self.universe.visualWidth * 2 * screenHeight / screenWidth) {
             return false
         }
 
-        if abs(me.positionX - player.positionX) > NetrekMath.visualDisplayDistance {
+        if abs(me.positionX - player.positionX) > Int(self.universe.visualWidth) / 2 {
             return true
         }
-        if abs(me.positionY - player.positionY) > NetrekMath.visualDisplayDistance {
+        if abs(me.positionY - player.positionY) > Int(self.universe.visualWidth * screenHeight / (screenWidth * 2)) {
             return true
         }
         return false

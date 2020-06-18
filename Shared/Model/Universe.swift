@@ -59,22 +59,22 @@ class Universe: ObservableObject {
         return players.filter({$0.slotStatus == .explode} )
     }
     var visiblePlayers: [Player] {
-        return alivePlayers.filter({(abs($0.positionX - players[me].positionX) < NetrekMath.visualDisplayDistance) && abs($0.positionY - players[me].positionY) < NetrekMath.visualDisplayDistance })
+        return alivePlayers.filter({(abs($0.positionX - players[me].positionX) < Int(visualWidth / 2)) && abs($0.positionY - players[me].positionY) < Int(visualWidth / 2) })
     }
     
     //converse of visible players
     //for iPad strategic display
     var strategicPlayers: [Player] {
         //return alivePlayers
-        return alivePlayers.filter({(abs($0.positionX - players[me].positionX) >= NetrekMath.visualDisplayDistance) && abs($0.positionY - players[me].positionY) >= NetrekMath.visualDisplayDistance})
+        return alivePlayers.filter({(abs($0.positionX - players[me].positionX) >= Int(visualWidth / 2)) && abs($0.positionY - players[me].positionY) >= Int(visualWidth / 2)})
     }
     
     var visibleFriendlyPlayers: [Player] {
-        return alivePlayers.filter({(abs($0.positionX - players[me].positionX) < NetrekMath.visualDisplayDistance) && abs($0.positionY - players[me].positionY) < NetrekMath.visualDisplayDistance && $0.team == players[me].team })
+        return alivePlayers.filter({(abs($0.positionX - players[me].positionX) < Int(visualWidth / 2)) && abs($0.positionY - players[me].positionY) < Int(visualWidth / 2) && $0.team == players[me].team })
     }
 
     var visibleEnemyPlayers: [Player] {
-        return alivePlayers.filter({(abs($0.positionX - players[me].positionX) < NetrekMath.visualDisplayDistance) && abs($0.positionY - players[me].positionY) < NetrekMath.visualDisplayDistance && $0.team != players[me].team })
+        return alivePlayers.filter({(abs($0.positionX - players[me].positionX) < Int(visualWidth / 2)) && abs($0.positionY - players[me].positionY) < Int(visualWidth / 2) && $0.team != players[me].team })
     }
 
     
@@ -82,7 +82,7 @@ class Universe: ObservableObject {
     var planets: [Planet] = []
     
     var visiblePlanets: [Planet] {
-        return planets.filter({(abs($0.positionX - players[me].positionX) < NetrekMath.visualDisplayDistance) && abs($0.positionY - players[me].positionY) < NetrekMath.visualDisplayDistance })
+        return planets.filter({(abs($0.positionX - players[me].positionX) < Int(visualWidth) / 2) && abs($0.positionY - players[me].positionY) < Int(visualWidth) / 2 })
     }
     
     var torpedoes: [Torpedo] = []
@@ -95,7 +95,7 @@ class Universe: ObservableObject {
 
     
     var visibleTorpedoes: [Torpedo] {
-        return activeTorpedoes.filter({(abs($0.positionX - players[me].positionX) < NetrekMath.visualDisplayDistance) && abs($0.positionY - players[me].positionY) < NetrekMath.visualDisplayDistance })
+        return activeTorpedoes.filter({(abs($0.positionX - players[me].positionX) < Int(visualWidth / 2)) && abs($0.positionY - players[me].positionY) < Int(visualWidth / 2) })
     }
     
     var lasers: [Laser] = []
@@ -103,7 +103,7 @@ class Universe: ObservableObject {
         return lasers.filter({$0.status != 0 } )
     }
     var visibleLasers: [Laser] {
-        return activeLasers.filter({(abs($0.positionX - players[me].positionX) < NetrekMath.visualDisplayDistance) && abs($0.positionY - players[me].positionY) < NetrekMath.visualDisplayDistance })
+        return activeLasers.filter({(abs($0.positionX - players[me].positionX) < Int(visualWidth / 2)) && abs($0.positionY - players[me].positionY) < Int(visualWidth / 2) })
     }
     
     var plasmas: [Plasma] = []
@@ -111,7 +111,7 @@ class Universe: ObservableObject {
         return plasmas.filter({$0.status != 0 } )
     }
     var visiblePlasmas: [Plasma] {
-        return activePlasmas.filter({(abs($0.positionX - players[me].positionX) < NetrekMath.visualDisplayDistance) && abs($0.positionY - players[me].positionY) < NetrekMath.visualDisplayDistance })
+        return activePlasmas.filter({(abs($0.positionX - players[me].positionX) < Int(visualWidth / 2)) && abs($0.positionY - players[me].positionY) < Int(visualWidth / 2) })
     }
 
     var shipInfo: [ShipType:ShipInfo] = [:]
