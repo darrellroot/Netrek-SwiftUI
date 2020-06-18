@@ -43,7 +43,7 @@ struct IosPlayerStrategicView: View {
     var body: some View {
         VStack {
             Text(self.playerText)
-                .fontWeight(self.visible && self.player.kills > 1.9 ? .bold : .regular)
+                .fontWeight(self.visible && self.player.kills > 1.9 ? .heavy : .light)
         }.foregroundColor(self.playerColor)
             .opacity(self.opacity)
     }

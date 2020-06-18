@@ -43,7 +43,7 @@ struct IosPlanetStrategicView: View {
 
     var body: some View {
         VStack {
-            Text(self.planet.shortName).foregroundColor(NetrekMath.color(team: self.planet.owner)).fontWeight(self.planet.armies > 4 ? .heavy : .regular)
+            Text(self.planet.shortName).foregroundColor(NetrekMath.color(team: self.planet.owner)).fontWeight(self.planet.armies > 4 ? .heavy : .light)
         }
             .opacity(self.opacity)
     }
