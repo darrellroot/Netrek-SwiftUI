@@ -59,9 +59,10 @@ struct HowToPlayView: View {
                             Text("Tapping on screen near center fires torpedoes").padding(.bottom)
                             Text("Tapping on screen near center fires torpedoes").padding(.bottom)
                             Text("Tapping on screen near edge sets course").padding(.bottom)
-                            Text("Slider at bottom sets desired speed").padding(.bottom)
+                            Text("Stepper at bottom right sets desired speed").padding(.bottom)
                             Text("First tap on enemy ship fires laser").padding(.bottom)
                             Text("More taps on enemy ship fires torpedoes").padding(.bottom)
+                            Text("Pinch tactical screen to zoom in or out").padding(.bottom)
                         }
                         VStack(alignment: .leading) {
                             Text("Lasers recharge in 1 second").padding(.bottom)

@@ -16,17 +16,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="123" translatesAutoresizingMaskIntoConstraints="NO" id="j5q-K4-5qy">
-                                <rect key="frame" x="285" y="378.5" width="796.5" height="267"/>
+                                <rect key="frame" x="349" y="384.5" width="668.5" height="255"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Netrek" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ru-ja-20C">
-                                        <rect key="frame" x="313.5" y="0.0" width="169.5" height="72"/>
+                                        <rect key="frame" x="249.5" y="0.0" width="169.5" height="72"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The original Internet team game" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Tl-io-bkP">
-                                        <rect key="frame" x="0.0" y="195" width="796.5" height="72"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        <rect key="frame" x="0.0" y="195" width="668.5" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>

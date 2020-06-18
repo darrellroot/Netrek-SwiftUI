@@ -27,7 +27,7 @@ struct TacticalView: View, TacticalOffset {
     @Environment(\.horizontalSizeClass) var hSizeClass
     @Environment(\.verticalSizeClass) var vSizeClass
 
-    //@GestureState var scale: CGFloat = 1.0
+    @GestureState var scale: CGFloat = 1.0
     
     var bigText: Font {
         guard let vSizeClass = vSizeClass else {
@@ -131,7 +131,7 @@ struct TacticalView: View, TacticalOffset {
                 //Rectangle().opacity(0.01).pointingMouse { event, location in
                 Rectangle().opacity(0.01)
                 .gesture(MagnificationGesture()
-                    .updating(self.universe.$scale, body: { (value, scale, transaction) in
+                    .updating(self.$scale, body: { (value, scale, transaction) in
                         scale = value.magnitude
                         self.universe.visualWidth = 3000 / scale
                     })

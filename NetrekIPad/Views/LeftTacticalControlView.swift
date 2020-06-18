@@ -16,11 +16,46 @@ struct LeftTacticalControlView: View {
     
     let numButtons: CGFloat = 12.0
     
+    var DestructCaptain: String {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            return "Destruct 1"
+        default:
+            return "Captain: Self Destruct"
+        }
+    }
+    var DestructOfficer: String {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            return "Destruct 2"
+        default:
+            return "1st Officer: Self Destruct"
+        }
+    }
+    var DetOwn: String {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            return "Det Own"
+        default:
+            return "Det Own Torps"
+        }
+    }
+
+    var DetEnemy: String {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            return "Det Enemy"
+        default:
+            return "Det Enemy Torps"
+        }
+    }
+
+
     var body: some View {
         GeometryReader { geo in
             VStack {
                 VStack {
-                    Button("Captain: Self Destruct") {
+                    Button(self.DestructCaptain) {
                         self.captainSelfDestruct.toggle()
                         if self.captainSelfDestruct && self.firstSelfDestruct {
                             self.appDelegate.newGameState(.noServerSelected)
@@ -60,7 +95,7 @@ struct LeftTacticalControlView: View {
                     .background(self.me.cloak ? Color.red : Color.black)
                     .border(Color.blue)
                     Spacer()
-                    Button("Detonate Enemy Torps") {
+                    Button(self.DetEnemy) {
                         self.appDelegate.keymapController?.execute(.detEnemy, location: CGPoint(x: 0, y: 0))
                     }
                     .frame(width: geo.size.width,height: geo.size.height / self.numButtons)
@@ -68,7 +103,7 @@ struct LeftTacticalControlView: View {
                     Spacer()
                 }//Extra VStack exceeding 10
                 VStack {
-                    Button("Detonate Own Torps") {
+                    Button(self.DetOwn) {
                         self.appDelegate.keymapController?.execute(.detOwn, location: CGPoint(x: 0, y: 0))
                     }
                     .frame(width: geo.size.width,height: geo.size.height / self.numButtons)
@@ -77,7 +112,7 @@ struct LeftTacticalControlView: View {
 
                     //TODO: Tractor,Pressor
                     
-                    Button("Repair\nDamage: \(self.me.damage)") {
+                    Button("Repair \(self.me.damage)") {
                         self.appDelegate.keymapController?.execute(.repair, location: CGPoint(x: 0, y: 0))
                     }
                     .frame(width: geo.size.width,height: geo.size.height / self.numButtons)
@@ -93,7 +128,7 @@ struct LeftTacticalControlView: View {
                     Spacer()
                 } // VStack for 10
                 VStack {
-                    Button("1st Officer: Self Destruct") {
+                    Button(self.DestructOfficer) {
                         self.firstSelfDestruct.toggle()
                         if self.captainSelfDestruct && self.firstSelfDestruct {
                             self.appDelegate.newGameState(.noServerSelected)

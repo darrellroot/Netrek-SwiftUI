@@ -14,8 +14,9 @@ class Universe: ObservableObject {
     
     let defaultVisualWidth: CGFloat = 3000
     @Published var visualWidth: CGFloat = 3000 // 30% of galactic size 10000.  Netrek size 100,000
-
     @Published var waitQueue = 0
+    
+    //let device = UIDevice.current.userInterfaceIdiom
     
     var activePlayers: [Player] {
         return players.filter({$0.slotStatus != .free && $0.slotStatus != .observe} )

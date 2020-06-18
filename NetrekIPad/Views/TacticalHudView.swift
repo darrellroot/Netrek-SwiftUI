@@ -49,23 +49,66 @@ struct TacticalHudView: View {
             return Font.body
         }
     }
+    
+    var SendToAll: String {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            return "All"
+        case .pad:
+            return "Send To All"
+        default:
+            return "Send To All"
+        }
+    }
+    var SendToMyTeam: String {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            return "Team"
+        case .pad:
+            return "Send To My Team"
+        default:
+            return "Send To My Team"
+        }
+    }
+    var Speed: String {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            return "S"
+        case .pad:
+            return "Speed"
+        default:
+            return "Speed"
+        }
+    }
+    var Fuel: String {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            return "F"
+        case .pad:
+            return "Fuel"
+        default:
+            return "Fuel"
+        }
+    }
+
+
 
     var body: some View {
         return GeometryReader { geo in
             HStack {
                 LeftTacticalControlView(me: self.universe.players[self.universe.me])
-                    .frame(width: geo.size.width * 0.12, height: geo.size.height)
+                    .frame(width: geo.size.width * 0.15, height: geo.size.height)
                     .border(Color.blue)
                 VStack {
                     HStack {
                         Text("                                       ")
-                            .overlay(Text("Speed \(self.me.speed) Fuel \(self.me.fuel)"))
+                            .overlay(Text("\(self.Speed) \(self.me.speed) \(self.Fuel) \(self.me.fuel)"))
                                 .font(.system(.body, design: .monospaced))
                         TextField("New Message", text: self.$newMessage, onCommit: self.sendMessage)
                         
                             .border(Color.primary, width: 1)
-                            
-                        Toggle(self.sendToAll ? "Send To All" : "Send To My Team", isOn: self.$sendToAll).toggleStyle(SwitchToggleStyle())
+                        
+                        Toggle(self.sendToAll ? self.SendToAll : self.SendToMyTeam, isOn: self.$sendToAll).toggleStyle(SwitchToggleStyle())
                             .frame(width: geo.size.width * 0.20)
                         Button("Escort") {
                             self.appDelegate.messagesController?.sendEscort()
@@ -79,7 +122,7 @@ struct TacticalHudView: View {
                         .border(Color.blue)
 
                     }
-                    .frame(width: geo.size.width * 0.80)
+                    .frame(width: geo.size.width * 0.77)
                     .layoutPriority(1)
 
                     TacticalView(universe: self.universe, me: self.universe.players[self.universe.me], help: self.help)
