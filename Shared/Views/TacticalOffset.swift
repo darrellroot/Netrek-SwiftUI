@@ -13,21 +13,22 @@ protocol TacticalOffset {
 }
 
 extension TacticalOffset {
-    func planetWidth(screenWidth: CGFloat) -> CGFloat {
-        let width = CGFloat(NetrekMath.planetDiameter) * screenWidth / CGFloat(NetrekMath.displayDistance)
+    func planetWidth(screenWidth: CGFloat, visualWidth: CGFloat) -> CGFloat {
+        //let width = CGFloat(NetrekMath.planetDiameter) * screenWidth / CGFloat(NetrekMath.displayDistance)
+        let width = CGFloat(NetrekMath.planetDiameter) * screenWidth / visualWidth
         //debugPrint("planet width \(width)")
         return width
     }
-    func playerWidth(screenWidth: CGFloat) -> CGFloat {
-        let width = CGFloat(NetrekMath.playerSize) * screenWidth / CGFloat(NetrekMath.displayDistance)
+    func playerWidth(screenWidth: CGFloat, visualWidth: CGFloat) -> CGFloat {
+        let width = CGFloat(NetrekMath.playerSize) * screenWidth / visualWidth
         //debugPrint("player width \(width)")
         return width
     }
-    func torpedoWidth(screenWidth: CGFloat) -> CGFloat {
-        return CGFloat(NetrekMath.torpedoSize) * screenWidth / CGFloat(NetrekMath.displayDistance)
+    func torpedoWidth(screenWidth: CGFloat, visualWidth: CGFloat) -> CGFloat {
+        return CGFloat(NetrekMath.torpedoSize) * screenWidth / visualWidth
     }
-    func plasmaWidth(screenWidth: CGFloat) -> CGFloat {
-        return CGFloat(NetrekMath.plasmaSize) * screenWidth / CGFloat(NetrekMath.displayDistance)
+    func plasmaWidth(screenWidth: CGFloat, visualWidth: CGFloat) -> CGFloat {
+        return CGFloat(NetrekMath.plasmaSize) * screenWidth / visualWidth
     }
 
 
@@ -48,33 +49,33 @@ extension TacticalOffset {
         return CGFloat(myPositionY) + screenNetrekDelta
     }
     
-    func xAbsolute(positionX: Int, myPositionX: Int, tacticalWidth: CGFloat) -> CGFloat {
-        return xOffset(positionX: positionX, myPositionX: myPositionX, tacticalWidth: tacticalWidth) + tacticalWidth / 2
+    func xAbsolute(positionX: Int, myPositionX: Int, tacticalWidth: CGFloat, visualWidth: CGFloat) -> CGFloat {
+        return xOffset(positionX: positionX, myPositionX: myPositionX, tacticalWidth: tacticalWidth, visualWidth: visualWidth) + tacticalWidth / 2
     }
-    func yAbsolute(positionY: Int, myPositionY: Int, tacticalHeight: CGFloat) -> CGFloat {
-        return yOffset(positionY: positionY, myPositionY: myPositionY, tacticalHeight: tacticalHeight) + tacticalHeight / 2
+    func yAbsolute(positionY: Int, myPositionY: Int, tacticalHeight: CGFloat, visualHeight: CGFloat) -> CGFloat {
+        return yOffset(positionY: positionY, myPositionY: myPositionY, tacticalHeight: tacticalHeight, visualHeight: visualHeight) + tacticalHeight / 2
     }
 
     //This calculation is relative to SwiftUI view
-    func xOffset(positionX: Int, myPositionX: Int, tacticalWidth: CGFloat) -> CGFloat {
+    func xOffset(positionX: Int, myPositionX: Int, tacticalWidth: CGFloat, visualWidth: CGFloat) -> CGFloat {
         let viewPositionX: Int
         if myPositionX > -20000 && myPositionX < 20000 {
             viewPositionX = myPositionX
         } else {
             viewPositionX = 5000
         }
-        let x = CGFloat(positionX - viewPositionX) * (CGFloat(NetrekMath.displayDistance) / CGFloat(NetrekMath.galacticSize)) * tacticalWidth / 1000
+        let x = CGFloat(positionX - viewPositionX) * (visualWidth / CGFloat(NetrekMath.galacticSize)) * tacticalWidth / 1000
         return x
     }
     //This calculation is relative to SwiftUI view
-    func yOffset(positionY: Int, myPositionY: Int, tacticalHeight: CGFloat) -> CGFloat {
+    func yOffset(positionY: Int, myPositionY: Int, tacticalHeight: CGFloat, visualHeight: CGFloat) -> CGFloat {
         let viewPositionY: Int
         if myPositionY > -20000 && myPositionY < 20000 {
             viewPositionY = myPositionY
         } else {
             viewPositionY = 5000
         }
-        let y = CGFloat(viewPositionY - positionY) * (CGFloat(NetrekMath.displayDistance) / CGFloat(NetrekMath.galacticSize)) * tacticalHeight / 1000
+        let y = CGFloat(viewPositionY - positionY) * (visualHeight / CGFloat(NetrekMath.galacticSize)) * tacticalHeight / 1000
         return y
     }
 }

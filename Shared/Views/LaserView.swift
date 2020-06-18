@@ -17,6 +17,10 @@ struct LaserView: View, TacticalOffset {
     @State var opacity = 1.0
     @ObservedObject var laser: Laser
     @ObservedObject var me: Player
+    @ObservedObject var universe: Universe
+    var screenWidth: CGFloat
+    var screenHeight: CGFloat
+
     //@ViewBuilder
     var body: some View {
         //if torpedo.status == 1 {
@@ -26,8 +30,8 @@ struct LaserView: View, TacticalOffset {
                     path.move(to: CGPoint(x: 20, y: 20))
                     path.addLine(to: CGPoint(x:300, y: 300))*/
                 Path { path in
-                    path.move(to: CGPoint(x: self.xAbsolute(positionX: self.laser.positionX, myPositionX: self.me.positionX, tacticalWidth: geo.size.width), y: self.yAbsolute(positionY: self.laser.positionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height)))
-                    path.addLine(to: CGPoint(x: self.xAbsolute(positionX: self.laser.targetPositionX, myPositionX: self.me.positionX, tacticalWidth: geo.size.width), y: self.yAbsolute(positionY: self.laser.targetPositionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height)))
+                    path.move(to: CGPoint(x: self.xAbsolute(positionX: self.laser.positionX, myPositionX: self.me.positionX, tacticalWidth: self.screenWidth, visualWidth: self.universe.visualWidth), y: self.yAbsolute(positionY: self.laser.positionY, myPositionY: self.me.positionY, tacticalHeight: self.screenHeight, visualHeight: self.universe.visualWidth * self.screenHeight / self.screenWidth)))
+                    path.addLine(to: CGPoint(x: self.xAbsolute(positionX: self.laser.targetPositionX, myPositionX: self.me.positionX, tacticalWidth: self.screenWidth, visualWidth: self.universe.visualWidth), y: self.yAbsolute(positionY: self.laser.targetPositionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height, visualHeight: self.universe.visualWidth * self.screenHeight / self.screenWidth)))
                 }.stroke(Color.red, lineWidth: 3)
 
             
@@ -43,7 +47,7 @@ struct LaserView: View, TacticalOffset {
     func sourceX(tacWidth: CGFloat) -> CGFloat {
         guard let netrekSourceX = appDelegate.universe.players[safe: self.laser.laserId]?.positionX else { return 0.0 }
         //guard let netrekSourceY = appDelegate.universe.players[safe: self.laser.laserId]?.positionY else { return }
-        let screenSourceX = self.xOffset(positionX: netrekSourceX, myPositionX: self.me.positionX,tacticalWidth: tacWidth)
+        let screenSourceX = self.xOffset(positionX: netrekSourceX, myPositionX: self.me.positionX,tacticalWidth: tacWidth, visualWidth: self.universe.visualWidth)
         if laser.laserId == appDelegate.universe.me { debugPrint("laser positionX \(self.laser.positionX) myPositionX \(self.me.positionX) tacWidth \(tacWidth) x \(screenSourceX)")
         }
         return screenSourceX
@@ -51,7 +55,7 @@ struct LaserView: View, TacticalOffset {
     func sourceY(tacHeight: CGFloat) -> CGFloat {
         //guard let netrekSourceX = appDelegate.universe.players[safe: self.laser.laserId]?.positionX else { return 0.0 }
         guard let netrekSourceY = appDelegate.universe.players[safe: self.laser.laserId]?.positionY else { return 0.0 }
-        let screenSourceY = self.yOffset(positionY: netrekSourceY, myPositionY: self.me.positionY,tacticalHeight: tacHeight)
+        let screenSourceY = self.yOffset(positionY: netrekSourceY, myPositionY: self.me.positionY,tacticalHeight: tacHeight, visualHeight: self.universe.visualWidth * self.screenHeight / self.screenWidth)
         if laser.laserId == appDelegate.universe.me {
             debugPrint("laser positionY \(self.laser.positionY) myPositionY \(self.me.positionY) tacWidth \(tacHeight) x \(screenSourceY)")
         }

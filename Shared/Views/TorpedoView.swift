@@ -11,14 +11,18 @@ import SwiftUI
 struct TorpedoView: View, TacticalOffset {
     @ObservedObject var torpedo: Torpedo
     @ObservedObject var me: Player
+    @ObservedObject var universe: Universe
+    var screenWidth: CGFloat
+    var screenHeight: CGFloat
+
     //@ViewBuilder
     var body: some View {
         //if torpedo.status == 1 {
             return GeometryReader { geo in
                 self.torpedo.color
-                    .frame(width: self.torpedoWidth(screenWidth: geo.size.width), height: self.torpedoWidth(screenWidth: geo.size.height))
+                    .frame(width: self.torpedoWidth(screenWidth: geo.size.width, visualWidth: self.universe.visualWidth), height: self.torpedoWidth(screenWidth: geo.size.height, visualWidth: self.universe.visualWidth))
                         .contentShape(Rectangle())
-                    .offset(x: self.xOffset(positionX: self.torpedo.positionX, myPositionX: self.me.positionX,tacticalWidth: geo.size.width), y: self.yOffset(positionY: self.torpedo.positionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height))
+                    .offset(x: self.xOffset(positionX: self.torpedo.positionX, myPositionX: self.me.positionX,tacticalWidth: self.screenWidth, visualWidth: self.universe.visualWidth), y: self.yOffset(positionY: self.torpedo.positionY, myPositionY: self.me.positionY, tacticalHeight: self.universe.visualWidth * self.screenHeight / self.screenWidth, visualHeight: self.universe.visualWidth * self.screenHeight / self.screenWidth))
                 
 
                 //.opacity(self.torpedo.status == 1 ? 1 : 0)

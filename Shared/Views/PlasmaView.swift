@@ -11,14 +11,18 @@ import SwiftUI
 struct PlasmaView: View, TacticalOffset {
     @ObservedObject var plasma: Plasma
     @ObservedObject var me: Player
+    @ObservedObject var universe: Universe
+    var screenWidth: CGFloat
+    var screenHeight: CGFloat
+
     //@ViewBuilder
     var body: some View {
         //if torpedo.status == 1 {
             return GeometryReader { geo in
                 self.plasma.color
-                    .frame(width: self.plasmaWidth(screenWidth: geo.size.width), height: self.plasmaWidth(screenWidth: geo.size.height))
+                    .frame(width: self.plasmaWidth(screenWidth: self.screenWidth, visualWidth: self.universe.visualWidth), height: self.plasmaWidth(screenWidth: self.screenHeight, visualWidth: self.universe.visualWidth))
                         .contentShape(Rectangle())
-                    .offset(x: self.xOffset(positionX: self.plasma.positionX, myPositionX: self.me.positionX,tacticalWidth: geo.size.width), y: self.yOffset(positionY: self.plasma.positionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height))
+                    .offset(x: self.xOffset(positionX: self.plasma.positionX, myPositionX: self.me.positionX,tacticalWidth: self.screenWidth, visualWidth: self.universe.visualWidth), y: self.yOffset(positionY: self.plasma.positionY, myPositionY: self.me.positionY, tacticalHeight: self.screenHeight, visualHeight: self.universe.visualWidth * self.screenHeight / self.screenWidth))
                 .opacity(self.plasma.status == 1 ? 1 : 0)
                     //.animation(Animation.linear)
             }

@@ -11,6 +11,10 @@ import SwiftUI
 struct DetonationView: View, TacticalOffset {
     @ObservedObject var torpedo: Torpedo
     @ObservedObject var me: Player
+    @ObservedObject var universe: Universe
+    var screenWidth: CGFloat
+    var screenHeight: CGFloat
+
     @State var scale: CGFloat = 0.0
     @State var opacity: Double = 1.0
     
@@ -20,8 +24,8 @@ struct DetonationView: View, TacticalOffset {
                 .scale(self.scale)
                 .fill(Color.red)
                 .opacity(self.opacity)
-                .frame(width: self.torpedoWidth(screenWidth: geo.size.width * 1.1), height: self.torpedoWidth(screenWidth: geo.size.height * 1.1 ))
-            .offset(x: self.xOffset(positionX: self.torpedo.positionX, myPositionX: self.me.positionX,tacticalWidth: geo.size.width), y: self.yOffset(positionY: self.torpedo.positionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height))
+                .frame(width: self.torpedoWidth(screenWidth: geo.size.width,visualWidth: self.universe.visualWidth), height: self.torpedoWidth(screenWidth: geo.size.height, visualWidth: self.universe.visualWidth))
+                .offset(x: self.xOffset(positionX: self.torpedo.positionX, myPositionX: self.me.positionX,tacticalWidth: self.screenWidth, visualWidth: self.universe.visualWidth), y: self.yOffset(positionY: self.torpedo.positionY, myPositionY: self.me.positionY, tacticalHeight: geo.size.height, visualHeight: self.universe.visualWidth * self.screenHeight / self.screenWidth))
         }.onAppear {
             return withAnimation(.linear(duration: 1.0)) {
                 self.scale = 6
