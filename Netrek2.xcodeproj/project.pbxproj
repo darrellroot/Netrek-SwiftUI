@@ -1084,7 +1084,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"NetrekIPad/Preview Content\"";
 				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
 				ENABLE_PREVIEWS = YES;
@@ -1094,7 +1094,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.netrek;
 				PRODUCT_NAME = Netrek;
 				SDKROOT = iphoneos;
@@ -1108,7 +1108,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"NetrekIPad/Preview Content\"";
 				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
 				ENABLE_PREVIEWS = YES;
@@ -1118,7 +1118,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.netrek;
 				PRODUCT_NAME = Netrek;
 				SDKROOT = iphoneos;
