@@ -517,6 +517,7 @@
 				2F2789E0248852D300038FBD /* TractorView.swift */,
 				2F2789E224897E9500038FBD /* BoundaryView.swift */,
 				2F2789E42489822F00038FBD /* HelpView.swift */,
+				2F2C1982248629C000604F21 /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -669,7 +670,6 @@
 				2F45A7FE246480EE00AA2A3F /* NSCommandedWindow.swift */,
 				2F2C197E24857CCB00604F21 /* ManualServerView.swift */,
 				2F2C19802485D80B00604F21 /* PreferencesView.swift */,
-				2F2C1982248629C000604F21 /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

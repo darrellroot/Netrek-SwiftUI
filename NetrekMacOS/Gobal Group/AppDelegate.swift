@@ -240,7 +240,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
         // No existing loginwindows
-        let loginView = LoginView(loginName: loginInformationController.loginName,loginPassword: loginInformationController.loginPassword, loginUsername: loginInformationController.loginPassword, loginInformationController: loginInformationController)
+        let loginView = LoginView(loginName: loginInformationController.loginName,loginPassword: loginInformationController.loginPassword, userInfo: loginInformationController.userInfo, loginInformationController: loginInformationController)
         let loginWindow = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 500, height: 700),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
@@ -587,7 +587,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             debugPrint("AppDelegate.newGameState: .serverSlotFound")
             let cpLogin: Data
             if self.loginInformationController.loginAuthenticated == true && self.loginInformationController.validInfo {
-                cpLogin = MakePacket.cpLogin(name: self.loginInformationController.loginName, password: self.loginInformationController.loginPassword, login: self.loginInformationController.loginUsername)
+                cpLogin = MakePacket.cpLogin(name: self.loginInformationController.loginName, password: self.loginInformationController.loginPassword, login: self.loginInformationController.userInfo)
             } else {
                 cpLogin = MakePacket.cpLogin(name: "guest", password: "", login: "")
             }

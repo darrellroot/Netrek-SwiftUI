@@ -17,7 +17,7 @@ struct LoginView: View {
     
     @State var loginName: String
     @State var loginPassword: String
-    @State var loginUsername: String
+    @State var userInfo: String
     @ObservedObject var loginInformationController: LoginInformationController
     
     var validInfo: Bool {
@@ -27,7 +27,7 @@ struct LoginView: View {
         if loginPassword.count == 0 {
             return false
         }
-        if loginUsername.count == 0 {
+        if userInfo.count == 0 {
             return false
         }
         return true
@@ -62,7 +62,7 @@ struct LoginView: View {
                         }
                     }
                     VStack(alignment: .leading) {
-                        Text("We recommend new players play as guest.  If you specify a login name and username they will be visible to other players.")
+                        Text("We recommend new players play as guest.  If you specify a login name and UserInfo they will be visible to other players.")
                         Text("")
                         Text("If you don't already have an account on the server, one will be created for you (assuming your name and username are unique).  Make sure to remember your password.  This netrek client saves your network password in your keychain.")
                         Spacer()
@@ -79,27 +79,26 @@ struct LoginView: View {
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                         }
                         HStack {
-                            Text("Username")
-                            TextField(loginInformationController.loginUsername, text: $loginUsername)
+                            Text("UserInfo")
+                            TextField(loginInformationController.userInfo, text: $userInfo)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                         }
                         Button("Save Login Information") {
                             self.saveInfo()
                         }.disabled(self.validInfo ? false : true)
-                            .padding()
                             .cornerRadius(8)
-                            .border(self.validInfo ? Color.blue : Color.gray)
+                            //.border(self.validInfo ? Color.blue : Color.gray)
                             .padding([.top,.bottom])
                         Button("Clear Login Information") {
                             self.loginName = ""
                             self.loginPassword = ""
-                            self.loginUsername = ""
+                            self.userInfo = ""
                             self.loginInformationController.loginAuthenticated = false
                             self.saveInfo()
                         }
-                        .padding()
+                        //.padding()
                         .cornerRadius(8)
-                        .border(Color.blue)
+                        //.border(Color.blue)
                         Text("Warning: Netrek servers use an old network protocol which is out of our control.  The password is not encrypted on the network.  We recommend you use a different/unique password than other accounts for your Netrek login.")
                             .padding(.top)
                         Spacer()
@@ -109,9 +108,9 @@ struct LoginView: View {
         }.padding(8)
     }
     func saveInfo() {
-        self.loginInformationController.updateUsername(username: self.loginUsername)
-        self.loginInformationController.updatePassword(password: self.loginPassword)
         self.loginInformationController.updateName(name: self.loginName)
+        self.loginInformationController.updatePassword(password: self.loginPassword)
+        self.loginInformationController.updateUserInfo(userInfo: self.userInfo)
     }
 }
 

@@ -50,8 +50,6 @@ class NetrekMath {
         outputString = outputString.replacingOccurrences(of: "phaser", with: "laser")
         outputString = outputString.replacingOccurrences(of: "Phaser", with: "Laser")
         outputString = outputString.replacingOccurrences(of: "KLI", with: "KAZ")
-
-
         return outputString
     }
     static func directionNetrek2radian(_ directionNetrek: UInt8) -> Double {

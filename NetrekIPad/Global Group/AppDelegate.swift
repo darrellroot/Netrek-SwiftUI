@@ -266,7 +266,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
             debugPrint("AppDelegate.newGameState: .serverSlotFound")
             let cpLogin: Data
             if self.loginInformationController.loginAuthenticated == true && self.loginInformationController.validInfo {
-                cpLogin = MakePacket.cpLogin(name: self.loginInformationController.loginName, password: self.loginInformationController.loginPassword, login: self.loginInformationController.loginUsername)
+                cpLogin = MakePacket.cpLogin(name: self.loginInformationController.loginName, password: self.loginInformationController.loginPassword, login: self.loginInformationController.userInfo)
             } else {
                 cpLogin = MakePacket.cpLogin(name: "guest", password: "", login: "")
             }

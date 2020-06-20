@@ -23,7 +23,7 @@ struct ContentView: View {
         case (.credits,_):
             return AnyView(CreditsView(appDelegate: appDelegate))
         case (.preferences,_):
-            return AnyView(LoginView(loginName: appDelegate.loginInformationController.loginName,loginPassword: appDelegate.loginInformationController.loginPassword, loginUsername: appDelegate.loginInformationController.loginPassword, loginInformationController: appDelegate.loginInformationController))
+            return AnyView(LoginView(loginName: appDelegate.loginInformationController.loginName,loginPassword: appDelegate.loginInformationController.loginPassword, userInfo: appDelegate.loginInformationController.userInfo, loginInformationController: appDelegate.loginInformationController))
         case (.noServerSelected,_):
             return AnyView(PickServerView(metaServer: metaServer, universe: universe))
         case (.serverSelected,_):

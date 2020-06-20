@@ -9,6 +9,6 @@
 import Foundation
 enum LoginDefault: String {
     case loginName = "loginName"
-    case loginUserName = "loginUserName"
+    case userInfo = "userInfo"
     case loginAuthenticated = "loginAuthenticated"
 }

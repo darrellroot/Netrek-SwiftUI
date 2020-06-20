@@ -15,7 +15,7 @@ class LoginInformationController: ObservableObject {
 
     @Published var loginName: String = ""
     @Published var loginPassword: String = ""
-    @Published var loginUsername: String = ""
+    @Published var userInfo: String = ""
     @Published var loginAuthenticated = false {
         didSet {
             self.updateLoginAuthenticated(loginAuthenticated: loginAuthenticated)
@@ -28,7 +28,7 @@ class LoginInformationController: ObservableObject {
         if loginPassword.count == 0 {
             return false
         }
-        if loginUsername.count == 0 {
+        if userInfo.count == 0 {
             return false
         }
         return true
@@ -54,8 +54,8 @@ class LoginInformationController: ObservableObject {
         if let loginName = defaults.string(forKey: LoginDefault.loginName.rawValue) {
             self.loginName = loginName
         }
-        if let loginUsername = defaults.string(forKey: LoginDefault.loginUserName.rawValue) {
-            self.loginUsername = loginUsername
+        if let userInfo = defaults.string(forKey: LoginDefault.userInfo.rawValue) {
+            self.userInfo = userInfo
         }
         self.loginAuthenticated = defaults.bool(forKey: LoginDefault.loginAuthenticated.rawValue)
             
@@ -91,14 +91,14 @@ class LoginInformationController: ObservableObject {
     static func getPasswordKeychain() -> String? {
         return KeychainService.loadPassword(service: keychainService, account: keychainAccount)
     }
-    func updateUsername(username: String) {
-        self.loginUsername = username
-        if username != "" {
+    func updateUserInfo(userInfo: String) {
+        self.userInfo = userInfo
+        if userInfo != "" {
             //appDelegate.loginUserName = username
-            defaults.setString(string: username, forKey: LoginDefault.loginUserName.rawValue)
+            defaults.setString(string: userInfo, forKey: LoginDefault.userInfo.rawValue)
         } else {
             //appDelegate.loginPassword = nil
-            defaults.removeObject(forKey: LoginDefault.loginUserName.rawValue)
+            defaults.removeObject(forKey: LoginDefault.userInfo.rawValue)
         }
     }
     func updateLoginAuthenticated(loginAuthenticated: Bool) {
