@@ -387,10 +387,10 @@
                                                 <action selector="refreshMetaserverNetrekOrg:" target="Voe-Tx-rLC" id="ZMe-P4-OUc"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Refresh from http://metaserver.eu.netrek.org:3521" id="6Lb-ir-9TM">
+                                        <menuItem title="Refresh from http://metaserver2.netrek.org:3521" id="6Lb-ir-9TM">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="refreshMetaserverEuNetrekOrg:" target="Voe-Tx-rLC" id="vdJ-Yb-cMd"/>
+                                                <action selector="refreshMetaserver2NetrekOrg:" target="Voe-Tx-rLC" id="i7s-dA-ToL"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="QOD-IP-DE0"/>

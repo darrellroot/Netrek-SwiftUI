@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
     var clientFeatures: [String] = ["FEATURE_PACKETS","SHIP_CAP","SP_GENERIC_32","TIPS"]
     
     var metaServer: MetaServer = MetaServer(primary: "metaserver.netrek.org", backup:
-        "metaserver.eu.netrek.org", port: 3521)!
+        "metaserver2.netrek.org", port: 3521)!
     
     var reader: TcpReader?
     

@@ -80,7 +80,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.keymapController = KeymapController()
 
         setupBlankMenu()
-        metaServer = MetaServer(primary: "metaserver.netrek.org", backup: "metaserver.eu.netrek.org", port: 3521)
+        metaServer = MetaServer(primary: "metaserver.netrek.org", backup: "metaserver2.netrek.org", port: 3521)
         if let metaServer = metaServer {
             metaServer.update()
         }
@@ -150,13 +150,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     @IBAction func refreshMetaserverNetrekOrg(_ sender: NSMenuItem) {
-        metaServer = MetaServer(primary: "metaserver.netrek.org",backup: "metaserver.eu.netrek.org", port: 3521)
+        metaServer = MetaServer(primary: "metaserver.netrek.org",backup: "metaserver1.netrek.org", port: 3521)
         if let metaServer = metaServer {
             metaServer.update()
         }
     }
-    @IBAction func refreshMetaserverEuNetrekOrg(_ sender: NSMenuItem) {
-        metaServer = MetaServer(primary: "metaserver.netrek.org", backup: "metaserver.eu.netrek.org", port: 3521)
+    @IBAction func refreshMetaserver2NetrekOrg(_ sender: NSMenuItem) {
+        metaServer = MetaServer(primary: "metaserver.netrek.org", backup: "metaserver2.netrek.org", port: 3521)
         if let metaServer = metaServer {
             metaServer.update()
         }

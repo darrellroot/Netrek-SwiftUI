@@ -26,12 +26,12 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>metaserver.eu.netrek.org</key>
+			<key>metaserver.netrek.org</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>
-			<key>metaserver.netrek.org</key>
+			<key>metaserver2.netrek.org</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>

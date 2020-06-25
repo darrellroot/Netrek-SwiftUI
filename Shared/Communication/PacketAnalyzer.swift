@@ -187,8 +187,8 @@ class PacketAnalyzer {
             let playerID = Int(data[1])
             let directionNetrek = UInt8(data[2])
             let speed = Int(data[3])
-            let positionX = NetrekMath.netrekX2GameX(Int(data.subdata(in: (4..<8)).to(type: UInt32.self).byteSwapped))
-            let positionY = NetrekMath.netrekY2GameY(Int(data.subdata(in: (8..<12)).to(type: UInt32.self).byteSwapped))
+            let positionX = NetrekMath.netrekX2GameX(Int(data.subdata(in: (4..<8)).to(type: Int32.self).byteSwapped))
+            let positionY = NetrekMath.netrekY2GameY(Int(data.subdata(in: (8..<12)).to(type: Int32.self).byteSwapped))
             universe.updatePlayer(playerId: playerID, directionNetrek: directionNetrek, speed: speed, positionX: positionX, positionY: positionY)
             debugPrint("Received SP_PLAYER 4 playerID \(playerID) directionNetrek \(directionNetrek) speed \(speed) positionX \(positionX) positionY \(positionY)")
 
@@ -509,6 +509,7 @@ class PacketAnalyzer {
             debugPrint("Received SP_PLANET_LOC 26 name \(name) planetID \(planetID) positionX \(positionX) positionY \(positionY)")
             //printData(data, success: true)
 
+        
         case 32:
             let version = Int(data[1])
             guard version == 98 else {
