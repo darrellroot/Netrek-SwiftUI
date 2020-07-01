@@ -31,7 +31,7 @@ class MakePacket {
         return information
     }
     
-    // CP_MEESSAGE 1
+    // CP_MESSAGE 1
     static func cpMessage(message: String, team: Team?, individual: UInt8) -> Data {
         let message_length = 80
         var packet = CP_MESSAGE()

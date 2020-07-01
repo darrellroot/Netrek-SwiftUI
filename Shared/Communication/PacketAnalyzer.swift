@@ -196,7 +196,7 @@ class PacketAnalyzer {
             // SP_TORP_INFO
             let war = UInt8(data[1])  //mask of teams torp is hostile to
             let status = UInt8(data[2]) // new status of torp, TFREE, TDET, etc
-            // pad
+            let pad1 = UInt8(data[3])
             let torpedoNumber = Int(data.subdata(in: (4..<6)).to(type: UInt16.self).byteSwapped)
             universe.updateTorpedo(torpedoNumber: torpedoNumber, war: war, status: status)
             debugPrint("Received SP_TORP_INFO 5 torpedoNumber \(torpedoNumber) war \(war) status \(status) ")
