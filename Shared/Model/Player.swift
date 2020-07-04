@@ -60,11 +60,20 @@ class Player: CustomStringConvertible, ObservableObject {
     private(set) var whyDead: Int?
     private(set) var whoDead: Int?
     
+    //stats mostly from SP_STATS 23
     private(set) var tournamentKills: Int = 0
     private(set) var tournamentLosses: Int = 0
+    private(set) var overallKills: Int = 0
+    private(set) var overallLosses: Int = 0
     private(set) var tournamentTicks: Int = 0
     private(set) var tournamentPlanets: Int = 0
     private(set) var tournamentArmies: Int = 0
+    private(set) var starbaseKills: Int = 0
+    private(set) var starbaseLosses: Int = 0
+    private(set) var practiceArmies: Int = 0
+    private(set) var practicePlanets: Int = 0
+    private(set) var maxKills: Double = 0.0
+    private(set) var sbMaxKills: Double = 0.0
     
     private(set) var playing = false
     private(set) var team: Team = .independent {
@@ -575,12 +584,20 @@ class Player: CustomStringConvertible, ObservableObject {
         }*/
     }
     // from SP_STATS 23
-    public func updatePlayer(playerId: Int, tournamentKills: Int, tournamentLosses: Int, tournamentTicks: Int, tournamentPlanets: Int, tournamentArmies: Int) {
+    public func updatePlayer(playerId: Int, tournamentKills: Int, tournamentLosses: Int, overallKills: Int, overallLosses: Int, tournamentTicks: Int, tournamentPlanets: Int, tournamentArmies: Int, starbaseKills: Int, starbaseLosses: Int, practiceArmies: Int, practicePlanets: Int, maxKills: Double, sbMaxKills: Double) {
         self.tournamentKills = tournamentKills
         self.tournamentLosses = tournamentLosses
+        self.overallKills = overallKills
+        self.overallLosses = overallLosses
         self.tournamentTicks = tournamentTicks
         self.tournamentPlanets = tournamentPlanets
         self.tournamentArmies = tournamentArmies
+        self.starbaseKills = starbaseKills
+        self.starbaseLosses = starbaseLosses
+        self.practiceArmies = practiceArmies
+        self.practicePlanets = practicePlanets
+        self.maxKills = maxKills
+        self.sbMaxKills = sbMaxKills
     }
 
     public func update(rank: Int, name: String, login: String) {

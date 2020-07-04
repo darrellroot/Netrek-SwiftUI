@@ -157,6 +157,7 @@ class MakePacket {
     
     // CP 10 war not implemented
     
+    // CP_PRACTR 11
     static func cpPractice() -> Data {
         debugPrint("Sending CP_PRACTR 11")
         var packet = CP_PRACTR()
