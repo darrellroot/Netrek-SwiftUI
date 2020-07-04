@@ -27,6 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var manualServerWindows: [NSWindow] = []
     var preferencesWindows: [NSWindow] = []
     var loginWindows: [NSWindow] = []
+    var detailedStatisticsWindows: [NSWindow] = []
     
     var metaServer: MetaServer?
     var reader: TcpReader?
@@ -228,6 +229,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         preferencesWindow.makeKeyAndOrderFront(nil)
         self.preferencesWindows.append(preferencesWindow)
     }
+    
+    @IBAction func showDetailedStatistics(_ sender: NSMenuItem) {
+        let detailedStatisticsView = DetailedStatisticsView(universe: universe)
+        let detailedStatisticsWindow = NSWindow(
+            contentRect: NSRect(x: 600, y: 600, width: 600, height: 600),
+            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+            backing: .buffered, defer: false)
+        detailedStatisticsWindow.isReleasedWhenClosed = false
+        detailedStatisticsWindow.setFrameAutosaveName("Detailed Statistics")
+        detailedStatisticsWindow.title = "Detailed Statistics"
+        detailedStatisticsWindow.contentView = NSHostingView(rootView: detailedStatisticsView)
+        detailedStatisticsWindow.makeKeyAndOrderFront(nil)
+        self.detailedStatisticsWindows.append(detailedStatisticsWindow)
+
+    }
+    
     @IBAction func setLoginInformation(_ sender: NSMenuItem) {
         // there can only be one loginWindow!
         for (index,loginWindow) in loginWindows.enumerated().reversed() {

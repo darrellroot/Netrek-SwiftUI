@@ -306,13 +306,31 @@ class Universe: ObservableObject {
         self.players[safe: playerId]?.update(directionNetrek: directionNetrek, speed: speed, positionX: positionX, positionY: positionY)
     }
     
-    public func updatePlayer(playerId: Int, tournamentKills: Int, tournamentLosses: Int, tournamentTicks: Int, tournamentPlanets: Int, tournamentArmies: Int) {
+    public func updatePlayer(playerID: Int, tournamentKills: Int, tournamentLosses: Int, overallKills: Int, overallLosses: Int, tournamentTicks: Int, tournamentPlanets: Int, tournamentArmies: Int, starbaseKills: Int, starbaseLosses: Int, practiceArmies: Int, practicePlanets: Int, maxKills: Double, sbMaxKills: Double) {
+        if self.players[safe: playerID] == nil {
+            let newPlayer = Player(playerId: playerID)
+            self.players[playerID] = newPlayer
+        }
+        self.players[safe: playerID]?.updatePlayer(playerId: playerID, tournamentKills: tournamentKills, tournamentLosses: tournamentLosses,
+        overallKills: overallKills,
+        overallLosses: overallLosses,
+        tournamentTicks: tournamentTicks,
+        tournamentPlanets: tournamentPlanets,
+        tournamentArmies: tournamentArmies,
+        starbaseKills: starbaseKills,
+        starbaseLosses: starbaseLosses,
+        practiceArmies: practiceArmies,
+        practicePlanets: practicePlanets,
+        maxKills: maxKills,
+        sbMaxKills: sbMaxKills)
+    }
+    /*public func updatePlayer(playerId: Int, tournamentKills: Int, tournamentLosses: Int, tournamentTicks: Int, tournamentPlanets: Int, tournamentArmies: Int) {
         if self.players[safe: playerId] == nil {
             let newPlayer = Player(playerId: playerId)
             self.players[playerId] = newPlayer
         }
         self.players[safe: playerId]?.updatePlayer(playerId: playerId, tournamentKills: tournamentKills, tournamentLosses: tournamentLosses, tournamentTicks: tournamentTicks, tournamentPlanets: tournamentPlanets, tournamentArmies: tournamentArmies)
-    }
+    }*/
 
     
     public func updateMe(myPlayerId: Int, hostile: UInt32, war: UInt32, armies: Int, tractor: Int, flags: UInt32, damage: Int, shieldStrength: Int, fuel: Int, engineTemp: Int, weaponsTemp: Int, whyDead: Int, whoDead: Int) {

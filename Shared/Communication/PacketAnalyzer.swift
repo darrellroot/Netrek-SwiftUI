@@ -320,9 +320,9 @@ class PacketAnalyzer {
             let time = (data.subdata(in: (20..<24)).to(type: UInt32.self).byteSwapped)
             let timeProd = (data.subdata(in: (24..<28)).to(type: Int32.self).byteSwapped)
             debugPrint("Received SP_STATUS 14 tourn \(tourn) armsBomb \(armsBomb) planets \(planets) kills \(kills) losses \(losses) time \(time) timeProd \(timeProd)")
-            let messageString = "Your stats: bombed \(armsBomb) armies, captured \(planets) planets, killed \(kills) enemies, died \(losses) times in \(time/3600) hours"
-            universe.gotMessage(messageString)
-            //debugPrint(messageString)
+            // These stats are server-wide and useless
+            //let messageString = "Your stats: bombed \(armsBomb) armies, captured \(planets) planets, killed \(kills) enemies, died \(losses) times in \(time/3600) hours"
+            //universe.gotMessage(messageString)
         case 15:
             //SP_PLANET
             let planetID = Int(data[1])
@@ -447,14 +447,25 @@ class PacketAnalyzer {
             let tournamentArmies = Int(data.subdata(in: (28..<32)).to(type: UInt32.self).byteSwapped)
             let starbaseKills = Int(data.subdata(in: (32..<36)).to(type: UInt32.self).byteSwapped)
             let starbaseLosses = Int(data.subdata(in: (36..<40)).to(type: UInt32.self).byteSwapped)
-            let intramuralArmies = Int(data.subdata(in: (40..<44)).to(type: UInt32.self).byteSwapped)
-            let intramuralPlanets = Int(data.subdata(in: (44..<48)).to(type: UInt32.self).byteSwapped)
+            let practiceArmies = Int(data.subdata(in: (40..<44)).to(type: UInt32.self).byteSwapped)
+            let practicePlanets = Int(data.subdata(in: (44..<48)).to(type: UInt32.self).byteSwapped)
             let maxKills100 = Int(data.subdata(in: (48..<52)).to(type: UInt32.self).byteSwapped)
             let starbaseMaxKills100 = Int(data.subdata(in: (52..<56)).to(type: UInt32.self).byteSwapped)
             let maxKills = Double(maxKills100) / 100.0
-            let starbaseMaxKills = Double(starbaseMaxKills100) / 100.0
-            appDelegate.universe.updatePlayer(playerId: playerID, tournamentKills: tournamentKills, tournamentLosses: tournamentLosses, tournamentTicks: tournamentTicks, tournamentPlanets: tournamentPlanets, tournamentArmies: tournamentArmies)
-            debugPrint("Received SP_STATS 23  tkills \(tournamentKills) tlosses \(tournamentLosses) overallKills \(overallKills) overallLosses \(overallLosses) tTicks \(tournamentTicks) tPlanets \(tournamentPlanets) tArmies \(tournamentArmies) sbKills \(starbaseKills) sbLosses \(starbaseLosses) intramuralArmies \(intramuralArmies) intramuralPlanets \(intramuralPlanets) maxKills \(maxKills) starbaseMaxKills \(starbaseMaxKills)")
+            let sbMaxKills = Double(starbaseMaxKills100) / 100.0
+            appDelegate.universe.updatePlayer(playerID: playerID, tournamentKills: tournamentKills, tournamentLosses: tournamentLosses,
+                overallKills: overallKills,
+                overallLosses: overallLosses,
+                tournamentTicks: tournamentTicks,
+                tournamentPlanets: tournamentPlanets,
+                tournamentArmies: tournamentArmies,
+                starbaseKills: starbaseKills,
+                starbaseLosses: starbaseLosses,
+                practiceArmies: practiceArmies,
+                practicePlanets: practicePlanets,
+                maxKills: maxKills,
+                sbMaxKills: sbMaxKills)
+            debugPrint("Received SP_STATS 23 playerID \(playerID) tkills \(tournamentKills) tlosses \(tournamentLosses) overallKills \(overallKills) overallLosses \(overallLosses) tTicks \(tournamentTicks) tPlanets \(tournamentPlanets) tArmies \(tournamentArmies) sbKills \(starbaseKills) sbLosses \(starbaseLosses) practiceArmies \(practiceArmies) practicePlanets \(practicePlanets) maxKills \(maxKills) starbaseMaxKills \(sbMaxKills)")
             //TODO need to process this data
         case 24:
             debugPrint("Received SP_PL_LOGIN 24")

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F13952624AFF4BD00373B0C /* DetailedStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F13952524AFF4BD00373B0C /* DetailedStatisticsView.swift */; };
 		2F2130C3248C0F87001D3B83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2130C2248C0F87001D3B83 /* AppDelegate.swift */; };
 		2F2130C5248C0F87001D3B83 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2130C4248C0F87001D3B83 /* SceneDelegate.swift */; };
 		2F2130C9248C0F88001D3B83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F2130C8248C0F88001D3B83 /* Assets.xcassets */; };
@@ -216,6 +217,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F13952524AFF4BD00373B0C /* DetailedStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedStatisticsView.swift; sourceTree = "<group>"; };
 		2F2130C0248C0F86001D3B83 /* Netrek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netrek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F2130C2248C0F87001D3B83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F2130C4248C0F87001D3B83 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -670,6 +672,7 @@
 				2F45A7FE246480EE00AA2A3F /* NSCommandedWindow.swift */,
 				2F2C197E24857CCB00604F21 /* ManualServerView.swift */,
 				2F2C19802485D80B00604F21 /* PreferencesView.swift */,
+				2F13952524AFF4BD00373B0C /* DetailedStatisticsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -958,6 +961,7 @@
 				2F97D8902462200E003CA91F /* Team.swift in Sources */,
 				2F97D8A024622D1A003CA91F /* Planet.swift in Sources */,
 				2F44597524675CED00C3F9A1 /* PlanetStrategicView.swift in Sources */,
+				2F13952624AFF4BD00373B0C /* DetailedStatisticsView.swift in Sources */,
 				2F97D8EB24624014003CA91F /* TacticalView.swift in Sources */,
 				2F2C197F24857CCB00604F21 /* ManualServerView.swift in Sources */,
 				2F97D87124620F02003CA91F /* MetaServerEntry.swift in Sources */,
