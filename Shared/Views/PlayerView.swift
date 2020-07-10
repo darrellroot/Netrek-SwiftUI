@@ -29,8 +29,9 @@ struct PlayerView: View, TacticalOffset {
                 Circle()
                     .stroke(Color.green)
                     .frame(width: self.imageSize, height: self.imageSize)
-                    .opacity(self.player.shieldsUp ? 1.0 : 0.0)
-                    .opacity(Double(self.player.shieldStrength) / 100.0)
+                    .opacity(self.shieldOpacity)
+                    //.opacity(self.player.shieldsUp ? 1.0 : 0.0)
+                    //.opacity(Double(self.player.shieldStrength) / 100.0)
                 VStack {
                     //self.planet.image
                     Text(self.player.name)
@@ -53,6 +54,15 @@ struct PlayerView: View, TacticalOffset {
 
             .animation(Animation.linear)
 
+        }
+    }
+    //.opacity(self.player.shieldsUp ? 1.0 : 0.0)
+    //.opacity(Double(self.player.shieldStrength) / 100.0)
+    var shieldOpacity: Double {
+        if self.player.shieldsUp == false {
+            return 0.0
+        } else {
+            return max(0.2,Double(self.player.shieldStrength) / 100.0)
         }
     }
 }
