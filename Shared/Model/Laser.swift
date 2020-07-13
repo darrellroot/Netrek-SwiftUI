@@ -74,6 +74,12 @@ class Laser: ObservableObject {
             self.targetPositionX = Int(Double(source.positionX) + cos(self.direction) * laserRange)
             self.targetPositionY = Int(Double(source.positionY) + sin(self.direction) * laserRange)
         case 4: // hit plasma TODO
+            guard let target = appDelegate.universe.plasmas[safe: target] else {
+                return
+            }
+            //let sourcePoint = CGPoint(x: source.positionX, y: source.positionY)
+            self.targetPositionX = target.positionX
+            self.targetPositionY = target.positionY
             break
 
         default: // should not get here

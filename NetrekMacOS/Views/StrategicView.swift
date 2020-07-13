@@ -18,7 +18,7 @@ struct StrategicView: View {
             ZStack {
                 Rectangle().colorInvert()
                 ForEach(0 ..< self.universe.maxPlanets) { planetId in
-                    PlanetStrategicView(planet: self.universe.planets[planetId])
+                    PlanetStrategicView(planet: self.universe.planets[planetId], me: self.universe.players[self.universe.me])
                 }
                 ForEach(0 ..< self.universe.maxPlayers) { playerId in
                     PlayerStrategicView(player: self.universe.players[playerId])

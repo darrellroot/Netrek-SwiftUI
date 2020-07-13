@@ -103,6 +103,9 @@ struct TacticalView: View, TacticalOffset {
                     ForEach(self.universe.explodingTorpedoes, id: \.torpedoId) { torpedo in
                         DetonationView(torpedo: torpedo, me: self.universe.players[self.universe.me], universe: self.universe, screenWidth: geo.size.width, screenHeight: geo.size.height)
                     }
+                    ForEach(self.universe.explodingPlasmas, id: \.plasmaId) { plasma in
+                        DetonationPlasmaView(plasma: plasma, me: self.universe.players[self.universe.me], universe: self.universe, screenWidth: geo.size.width, screenHeight: geo.size.height)
+                    }
                 }//extra zstack for 10
 
                 ForEach(self.universe.visibleLasers, id: \.laserId) { laser in

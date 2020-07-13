@@ -112,6 +112,10 @@ class Universe: ObservableObject {
     var activePlasmas: [Plasma] {
         return plasmas.filter({$0.status != 0 } )
     }
+    var explodingPlasmas: [Plasma] {
+        return plasmas.filter({$0.status == 2 || $0.status == 3 } )
+    }
+
     var visiblePlasmas: [Plasma] {
         return activePlasmas.filter({(abs($0.positionX - players[me].positionX) < Int(visualWidth / 2)) && abs($0.positionY - players[me].positionY) < Int(visualWidth / 2) })
     }
