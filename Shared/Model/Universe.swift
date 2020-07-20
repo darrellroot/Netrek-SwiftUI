@@ -135,8 +135,9 @@ class Universe: ObservableObject {
     @Published private(set) var messages: [String] = []
     
     var activeMessages: ArraySlice<String> {
-        if messages.count >= 15 {
-            return messages[messages.count - 15 ..< messages.count]
+        let messagesToDisplay = 20
+        if messages.count >= messagesToDisplay {
+            return messages[messages.count - messagesToDisplay ..< messages.count]
         } else {
             return messages[0 ..< messages.count]
         }
