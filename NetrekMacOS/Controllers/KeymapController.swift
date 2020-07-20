@@ -398,7 +398,7 @@ class KeymapController {
                 // planet is closer
                 guard let closestPlanet = closestPlanetOptional else { return }
                 DispatchQueue.main.async {
-                    closestPlanet.showInfo()
+                    closestPlanet.showInfo(team: players[me].team)
                 }
             }
             

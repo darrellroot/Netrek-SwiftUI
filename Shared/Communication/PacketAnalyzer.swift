@@ -185,6 +185,7 @@ class PacketAnalyzer {
         case 4:
             // SP_PLAYER py-struct
             let playerID = Int(data[1])
+            debugPrint("Received SP_PLAYER 4 playerID \(playerID)")
             let directionNetrek = UInt8(data[2])
             let speed = Int(data[3])
             let positionX = NetrekMath.netrekX2GameX(Int(data.subdata(in: (4..<8)).to(type: Int32.self).byteSwapped))

@@ -13,7 +13,6 @@
 		2F2130C9248C0F88001D3B83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F2130C8248C0F88001D3B83 /* Assets.xcassets */; };
 		2F2130CC248C0F88001D3B83 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F2130CB248C0F88001D3B83 /* Preview Assets.xcassets */; };
 		2F2130CF248C0F88001D3B83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F2130CD248C0F88001D3B83 /* LaunchScreen.storyboard */; };
-		2F2130DA248C0F88001D3B83 /* NetrekIPadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2130D9248C0F88001D3B83 /* NetrekIPadTests.swift */; };
 		2F2130E6248C10E8001D3B83 /* PickServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2130E5248C10E8001D3B83 /* PickServerView.swift */; };
 		2F2130E7248C1204001D3B83 /* MetaServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D87224620F0B003CA91F /* MetaServer.swift */; };
 		2F2130E8248C1212001D3B83 /* MetaServerEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D87024620F02003CA91F /* MetaServerEntry.swift */; };
@@ -84,7 +83,6 @@
 		2F2C1B8B2487196400604F21 /* Netrek.help in Resources */ = {isa = PBXBuildFile; fileRef = 2F2C1B8A2487196400604F21 /* Netrek.help */; };
 		2F44288C2463555A0051D7BE /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44288B2463555A0051D7BE /* PlanetView.swift */; };
 		2F44288D24635BDA0051D7BE /* NetrekMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8952462208D003CA91F /* NetrekMath.swift */; };
-		2F44288E24635BF20051D7BE /* NetrekMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8952462208D003CA91F /* NetrekMath.swift */; };
 		2F44289024636B690051D7BE /* TacticalOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44288F24636B690051D7BE /* TacticalOffset.swift */; };
 		2F44289324636E540051D7BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F44289224636E540051D7BE /* Assets.xcassets */; };
 		2F44289424636E540051D7BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F44289224636E540051D7BE /* Assets.xcassets */; };
@@ -118,10 +116,12 @@
 		2F53CBA12493F31E00677187 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C1982248629C000604F21 /* LoginView.swift */; };
 		2F53CBA32495897A00677187 /* IosPlayerStrategicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CBA22495897A00677187 /* IosPlayerStrategicView.swift */; };
 		2F53CBA52495E22A00677187 /* IosPlanetStrategicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CBA42495E22A00677187 /* IosPlanetStrategicView.swift */; };
+		2F74491424BCFD5300CF378D /* DetonationPlasmaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F74491324BCFD5300CF378D /* DetonationPlasmaView.swift */; };
+		2F74491524BCFD5300CF378D /* DetonationPlasmaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F74491324BCFD5300CF378D /* DetonationPlasmaView.swift */; };
+		2F74493124BD0E8500CF378D /* NetrekMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8952462208D003CA91F /* NetrekMath.swift */; };
 		2F97D84E24620CCF003CA91F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D84D24620CCF003CA91F /* AppDelegate.swift */; };
 		2F97D85524620CD0003CA91F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D85424620CD0003CA91F /* Preview Assets.xcassets */; };
 		2F97D85824620CD0003CA91F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D85624620CD0003CA91F /* Main.storyboard */; };
-		2F97D86424620CD0003CA91F /* Netrek2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D86324620CD0003CA91F /* Netrek2Tests.swift */; };
 		2F97D87124620F02003CA91F /* MetaServerEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D87024620F02003CA91F /* MetaServerEntry.swift */; };
 		2F97D87324620F0B003CA91F /* MetaServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D87224620F0B003CA91F /* MetaServer.swift */; };
 		2F97D87624621199003CA91F /* Collection-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D87524621199003CA91F /* Collection-extensions.swift */; };
@@ -207,6 +207,13 @@
 			remoteGlobalIDString = 2F2130BF248C0F86001D3B83;
 			remoteInfo = NetrekIPad;
 		};
+		2F74492C24BD0E4600CF378D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2F97D84224620CCF003CA91F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2F97D84924620CCF003CA91F;
+			remoteInfo = Netrek;
+		};
 		2F97D86024620CD0003CA91F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2F97D84224620CCF003CA91F /* Project object */;
@@ -226,8 +233,6 @@
 		2F2130CE248C0F88001D3B83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F2130D0248C0F88001D3B83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F2130D5248C0F88001D3B83 /* NetrekIPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetrekIPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F2130D9248C0F88001D3B83 /* NetrekIPadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetrekIPadTests.swift; sourceTree = "<group>"; };
-		2F2130DB248C0F88001D3B83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F2130E5248C10E8001D3B83 /* PickServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickServerView.swift; sourceTree = "<group>"; };
 		2F213111248D565E001D3B83 /* EligibleTeams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EligibleTeams.swift; sourceTree = "<group>"; };
 		2F213113248D6D63001D3B83 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -278,6 +283,8 @@
 		2F53CB9D2493EBE600677187 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 		2F53CBA22495897A00677187 /* IosPlayerStrategicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IosPlayerStrategicView.swift; sourceTree = "<group>"; };
 		2F53CBA42495E22A00677187 /* IosPlanetStrategicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IosPlanetStrategicView.swift; sourceTree = "<group>"; };
+		2F74491324BCFD5300CF378D /* DetonationPlasmaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetonationPlasmaView.swift; sourceTree = "<group>"; };
+		2F74492724BD0E4600CF378D /* NetrekTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetrekTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F97D84A24620CCF003CA91F /* Netrek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netrek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F97D84D24620CCF003CA91F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F97D85424620CD0003CA91F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -285,8 +292,6 @@
 		2F97D85924620CD0003CA91F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F97D85A24620CD0003CA91F /* Netrek2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Netrek2.entitlements; sourceTree = "<group>"; };
 		2F97D85F24620CD0003CA91F /* Netrek2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Netrek2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F97D86324620CD0003CA91F /* Netrek2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Netrek2Tests.swift; sourceTree = "<group>"; };
-		2F97D86524620CD0003CA91F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F97D87024620F02003CA91F /* MetaServerEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetaServerEntry.swift; sourceTree = "<group>"; };
 		2F97D87224620F0B003CA91F /* MetaServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetaServer.swift; sourceTree = "<group>"; };
 		2F97D87524621199003CA91F /* Collection-extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection-extensions.swift"; sourceTree = "<group>"; };
@@ -344,6 +349,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2F74492424BD0E4600CF378D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2F97D84724620CCF003CA91F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -382,15 +394,6 @@
 				2F2130CB248C0F88001D3B83 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		2F2130D8248C0F88001D3B83 /* NetrekIPadTests */ = {
-			isa = PBXGroup;
-			children = (
-				2F2130D9248C0F88001D3B83 /* NetrekIPadTests.swift */,
-				2F2130DB248C0F88001D3B83 /* Info.plist */,
-			);
-			path = NetrekIPadTests;
 			sourceTree = "<group>";
 		};
 		2F2130E2248C0FC4001D3B83 /* Shared */ = {
@@ -516,6 +519,7 @@
 				2F44596E2466324100C3F9A1 /* PlasmaView.swift */,
 				2F44596C2465EFB300C3F9A1 /* LaserView.swift */,
 				2F2789DE24872C8900038FBD /* DetonationView.swift */,
+				2F74491324BCFD5300CF378D /* DetonationPlasmaView.swift */,
 				2F2789E0248852D300038FBD /* TractorView.swift */,
 				2F2789E224897E9500038FBD /* BoundaryView.swift */,
 				2F2789E42489822F00038FBD /* HelpView.swift */,
@@ -531,8 +535,6 @@
 				2F2130E2248C0FC4001D3B83 /* Shared */,
 				2F2130C1248C0F87001D3B83 /* NetrekIPad */,
 				2F97D84C24620CCF003CA91F /* NetrekMacOS */,
-				2F97D86224620CD0003CA91F /* Netrek2Tests */,
-				2F2130D8248C0F88001D3B83 /* NetrekIPadTests */,
 				2F97D84B24620CCF003CA91F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -544,6 +546,7 @@
 				2F97D85F24620CD0003CA91F /* Netrek2Tests.xctest */,
 				2F2130C0248C0F86001D3B83 /* Netrek.app */,
 				2F2130D5248C0F88001D3B83 /* NetrekIPadTests.xctest */,
+				2F74492724BD0E4600CF378D /* NetrekTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -568,15 +571,6 @@
 				2F97D85424620CD0003CA91F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		2F97D86224620CD0003CA91F /* Netrek2Tests */ = {
-			isa = PBXGroup;
-			children = (
-				2F97D86324620CD0003CA91F /* Netrek2Tests.swift */,
-				2F97D86524620CD0003CA91F /* Info.plist */,
-			);
-			path = Netrek2Tests;
 			sourceTree = "<group>";
 		};
 		2F97D8742462118D003CA91F /* Extensions */ = {
@@ -617,8 +611,8 @@
 		2F97D89824622CCE003CA91F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2F97D8952462208D003CA91F /* NetrekMath.swift */,
 				2F97D89924622CDA003CA91F /* Universe.swift */,
+				2F97D8952462208D003CA91F /* NetrekMath.swift */,
 				2F97D89C24622CED003CA91F /* ShipInfo.swift */,
 				2F97D89F24622D19003CA91F /* Planet.swift */,
 				2F97D8A324622D36003CA91F /* Laser.swift */,
@@ -715,6 +709,24 @@
 			productReference = 2F2130D5248C0F88001D3B83 /* NetrekIPadTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		2F74492624BD0E4600CF378D /* NetrekTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F74492E24BD0E4600CF378D /* Build configuration list for PBXNativeTarget "NetrekTests" */;
+			buildPhases = (
+				2F74492324BD0E4600CF378D /* Sources */,
+				2F74492424BD0E4600CF378D /* Frameworks */,
+				2F74492524BD0E4600CF378D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2F74492D24BD0E4600CF378D /* PBXTargetDependency */,
+			);
+			name = NetrekTests;
+			productName = NetrekTests;
+			productReference = 2F74492724BD0E4600CF378D /* NetrekTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		2F97D84924620CCF003CA91F /* Netrek */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F97D86824620CD0003CA91F /* Build configuration list for PBXNativeTarget "Netrek" */;
@@ -757,7 +769,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "Darrell Root";
 				TargetAttributes = {
 					2F2130BF248C0F86001D3B83 = {
@@ -766,6 +778,10 @@
 					2F2130D4248C0F88001D3B83 = {
 						CreatedOnToolsVersion = 11.5;
 						TestTargetID = 2F2130BF248C0F86001D3B83;
+					};
+					2F74492624BD0E4600CF378D = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 2F97D84924620CCF003CA91F;
 					};
 					2F97D84924620CCF003CA91F = {
 						CreatedOnToolsVersion = 11.4.1;
@@ -794,6 +810,7 @@
 				2F97D85E24620CD0003CA91F /* Netrek2Tests */,
 				2F2130BF248C0F86001D3B83 /* NetrekIPad */,
 				2F2130D4248C0F88001D3B83 /* NetrekIPadTests */,
+				2F74492624BD0E4600CF378D /* NetrekTests */,
 			);
 		};
 /* End PBXProject section */
@@ -818,6 +835,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2F2130D3248C0F88001D3B83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F74492524BD0E4600CF378D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -877,6 +901,7 @@
 				2F53CB912491A36E00677187 /* GameScreen.swift in Sources */,
 				2F53CB9A2493301600677187 /* ServerConnectedView.swift in Sources */,
 				2F21311C248D8975001D3B83 /* TractorView.swift in Sources */,
+				2F74491524BCFD5300CF378D /* DetonationPlasmaView.swift in Sources */,
 				2F213108248D5304001D3B83 /* LoginDefault.swift in Sources */,
 				2F21310B248D53BD001D3B83 /* MakePacket.swift in Sources */,
 				2F213107248D524C001D3B83 /* PreferencesController.swift in Sources */,
@@ -940,7 +965,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F2130DA248C0F88001D3B83 /* NetrekIPadTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F74492324BD0E4600CF378D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F74493124BD0E8500CF378D /* NetrekMath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -975,6 +1007,7 @@
 				2F97D8A624622D36003CA91F /* Plasma.swift in Sources */,
 				2F44597B2467AE4500C3F9A1 /* MessagesView.swift in Sources */,
 				2F97D8AA24622D36003CA91F /* Torpedo.swift in Sources */,
+				2F74491424BCFD5300CF378D /* DetonationPlasmaView.swift in Sources */,
 				2F97D88424621F29003CA91F /* NetworkDelegate.swift in Sources */,
 				2F97D88A24621FE3003CA91F /* Globals.swift in Sources */,
 				2F4459792467647800C3F9A1 /* StrategicOffset.swift in Sources */,
@@ -1015,8 +1048,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F44288E24635BF20051D7BE /* NetrekMath.swift in Sources */,
-				2F97D86424620CD0003CA91F /* Netrek2Tests.swift in Sources */,
 				2F97D89424622061003CA91F /* ShipType.swift in Sources */,
 				2F97D87E246216D7003CA91F /* GameState.swift in Sources */,
 				2F97D8D9246235C9003CA91F /* KeychainService.swift in Sources */,
@@ -1056,6 +1087,11 @@
 			target = 2F2130BF248C0F86001D3B83 /* NetrekIPad */;
 			targetProxy = 2F2130D6248C0F88001D3B83 /* PBXContainerItemProxy */;
 		};
+		2F74492D24BD0E4600CF378D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2F97D84924620CCF003CA91F /* Netrek */;
+			targetProxy = 2F74492C24BD0E4600CF378D /* PBXContainerItemProxy */;
+		};
 		2F97D86124620CD0003CA91F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2F97D84924620CCF003CA91F /* Netrek */;
@@ -1088,7 +1124,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"NetrekIPad/Preview Content\"";
 				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
 				ENABLE_PREVIEWS = YES;
@@ -1098,7 +1134,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.netrek;
 				PRODUCT_NAME = Netrek;
 				SDKROOT = iphoneos;
@@ -1112,7 +1148,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"NetrekIPad/Preview Content\"";
 				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
 				ENABLE_PREVIEWS = YES;
@@ -1122,7 +1158,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.netrek;
 				PRODUCT_NAME = Netrek;
 				SDKROOT = iphoneos;
@@ -1179,10 +1215,51 @@
 			};
 			name = Release;
 		};
+		2F74492F24BD0E4600CF378D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
+				INFOPLIST_FILE = NetrekTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.NetrekTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Netrek.app/Contents/MacOS/Netrek";
+			};
+			name = Debug;
+		};
+		2F74493024BD0E4600CF378D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
+				INFOPLIST_FILE = NetrekTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.NetrekTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Netrek.app/Contents/MacOS/Netrek";
+			};
+			name = Release;
+		};
 		2F97D86624620CD0003CA91F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1243,6 +1320,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1300,7 +1378,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"NetrekMacOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1311,7 +1389,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.netrek;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1326,7 +1404,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"NetrekMacOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1337,7 +1415,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.netrek;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1405,6 +1483,15 @@
 			buildConfigurations = (
 				2F2130DE248C0F88001D3B83 /* Debug */,
 				2F2130DF248C0F88001D3B83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F74492E24BD0E4600CF378D /* Build configuration list for PBXNativeTarget "NetrekTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F74492F24BD0E4600CF378D /* Debug */,
+				2F74493024BD0E4600CF378D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

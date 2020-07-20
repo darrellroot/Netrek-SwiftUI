@@ -290,6 +290,7 @@ class MakePacket {
         return data
     }
 
+    // CP_TRACTOR 24
     static func cpTractor(on: Bool, playerID: UInt8) -> Data {
         debugPrint("Sending CP_TRACTOR 24 on \(on) playerID \(playerID)")
         var packet = CP_TRACTOR()
@@ -303,6 +304,7 @@ class MakePacket {
         return data
     }
     
+    // CP_PRESSOR 25
     static func cpPressor(on: Bool, playerID: UInt8) -> Data {
         debugPrint("Sending CP_REPRESS 25 on \(on) playerID \(playerID)")
         var packet = CP_REPRESS()

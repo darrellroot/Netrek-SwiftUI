@@ -61,6 +61,7 @@ enum MetaServerType: String, CaseIterable {
     case dead = "D"
     case tournament = "T"
     case sturgeon = "S"
+    case empire = "E"
     
     var description: String {
         switch self {
@@ -82,6 +83,8 @@ enum MetaServerType: String, CaseIterable {
             return "Tournament"
         case .sturgeon:
             return "Sturgeon"
+        case .empire:
+            return "Empire"
         }
     }
 }

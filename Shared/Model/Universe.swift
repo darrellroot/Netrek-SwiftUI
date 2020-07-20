@@ -112,6 +112,10 @@ class Universe: ObservableObject {
     var activePlasmas: [Plasma] {
         return plasmas.filter({$0.status != 0 } )
     }
+    var explodingPlasmas: [Plasma] {
+        return plasmas.filter({$0.status == 2 || $0.status == 3 } )
+    }
+
     var visiblePlasmas: [Plasma] {
         return activePlasmas.filter({(abs($0.positionX - players[me].positionX) < Int(visualWidth / 2)) && abs($0.positionY - players[me].positionY) < Int(visualWidth / 2) })
     }
@@ -131,8 +135,9 @@ class Universe: ObservableObject {
     @Published private(set) var messages: [String] = []
     
     var activeMessages: ArraySlice<String> {
-        if messages.count >= 15 {
-            return messages[messages.count - 15 ..< messages.count]
+        let messagesToDisplay = 20
+        if messages.count >= messagesToDisplay {
+            return messages[messages.count - messagesToDisplay ..< messages.count]
         } else {
             return messages[0 ..< messages.count]
         }

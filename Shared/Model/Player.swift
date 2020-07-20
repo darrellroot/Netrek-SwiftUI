@@ -76,7 +76,7 @@ class Player: CustomStringConvertible, ObservableObject {
     private(set) var sbMaxKills: Double = 0.0
     
     private(set) var playing = false
-    private(set) var team: Team = .independent {
+    @Published private(set) var team: Team = .independent {
         didSet {
             self.updateImage()
         }

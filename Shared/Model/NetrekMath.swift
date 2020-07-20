@@ -60,6 +60,28 @@ class NetrekMath {
             return answer + 2.0 * Double.pi
         }
     }
+    
+    //angleDiff is used in netrek-server-swift but we put the tests in netrek client because we dont know how to test in swift package manager yet.  sorry
+    static func angleDiff(_ angle1: Double, _ angle2: Double) -> Double {
+        //returns diff between two angles, including dealing with 2*pi case
+        // inputs must be between 0 and 2*Pi
+        switch angle1 - angle2 {
+        case 0:
+            return 0.0
+        case 0 ..< Double.pi:
+            return angle1 - angle2
+        case -Double.pi ..< 0:
+            return angle1 - angle2
+        case Double.pi...:
+            return Double.pi - (angle1 - (angle2 + Double.pi))
+        case ...Double.pi:
+            return Double.pi * 2 + angle2 - angle1
+        default:
+            // should not get here
+            return 0.0
+        }
+    }
+
     static func directionNetrek2radian(_ directionNetrek: UInt8) -> CGFloat {
         let answer = CGFloat(Double.pi * ((Double(directionNetrek) / -128.0) + 0.5))
         if answer > 0 {
