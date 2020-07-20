@@ -35,8 +35,10 @@ class MetaServer: ObservableObject {
         //self.url = url
         let pickled = MetaServerEntry(hostname: "pickled.netrek.org", port: 2592, age: 1000, players: 0, type: .bronco)
         let continuum = MetaServerEntry(hostname: "continuum.us.netrek.org", port: 2592, age: 1000, players: 0, type: .bronco)
-            self.servers[pickled.hostname] = pickled
-            self.servers[continuum.hostname] = continuum
+        let networkmom = MetaServerEntry(hostname: "netrek.networkmom.net", port: 2592, age: 1000, players: 0, type: .empire)
+        self.servers[networkmom.hostname] = networkmom
+        self.servers[pickled.hostname] = pickled
+        self.servers[continuum.hostname] = continuum
     }
 
     func update() {

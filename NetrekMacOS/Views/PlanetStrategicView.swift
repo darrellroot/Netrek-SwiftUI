@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PlanetStrategicView: View, StrategicOffset {
     @ObservedObject var planet: Planet
-    var me: Player
+    @ObservedObject var me: Player
     var body: some View {
         return GeometryReader { geo in
             ZStack {
