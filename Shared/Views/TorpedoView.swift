@@ -24,9 +24,10 @@ struct TorpedoView: View, TacticalOffset {
                         .contentShape(Rectangle())
                     .offset(x: self.xOffset(positionX: self.torpedo.positionX, myPositionX: self.me.positionX,tacticalWidth: self.screenWidth, visualWidth: self.universe.visualWidth), y: self.yOffset(positionY: self.torpedo.positionY, myPositionY: self.me.positionY, tacticalHeight: self.screenHeight, visualHeight: self.universe.visualWidth * self.screenHeight / self.screenWidth))
                 
-
                 //.opacity(self.torpedo.status == 1 ? 1 : 0)
-                    //.animation(Animation.linear)
+                //.animation(Animation.linear(duration: 0.1))
+                    
+                    //.animation(Animation.linear(duration: 0.1))
             }
         //}
     }

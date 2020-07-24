@@ -19,25 +19,25 @@ struct ContentView: View {
     var body: some View {
         switch (appDelegate.gameScreen, universe.players[universe.me].slotStatus) {
         case (.howToPlay,_):
-            return AnyView(HowToPlayView())
+            return HowToPlayView()
         case (.credits,_):
-            return AnyView(CreditsView(appDelegate: appDelegate))
+            return CreditsView(appDelegate: appDelegate)
         case (.preferences,_):
-            return AnyView(LoginView(loginName: appDelegate.loginInformationController.loginName,loginPassword: appDelegate.loginInformationController.loginPassword, userInfo: appDelegate.loginInformationController.userInfo, loginInformationController: appDelegate.loginInformationController))
+            return LoginView(loginName: appDelegate.loginInformationController.loginName,loginPassword: appDelegate.loginInformationController.loginPassword, userInfo: appDelegate.loginInformationController.userInfo, loginInformationController: appDelegate.loginInformationController)
         case (.noServerSelected,_):
-            return AnyView(PickServerView(metaServer: metaServer, universe: universe))
+            return PickServerView(metaServer: metaServer, universe: universe)
         case (.serverSelected,_):
-            return AnyView(ServerSelectedView(appDelegate: appDelegate, server: appDelegate.reader?.hostname ?? "unknown"))
+            return ServerSelectedView(appDelegate: appDelegate, server: appDelegate.reader?.hostname ?? "unknown")
         case (.serverConnected,_):
-            return AnyView(ServerConnectedView(appDelegate: appDelegate, universe: universe))
+            return ServerConnectedView(appDelegate: appDelegate, universe: universe)
         case (.serverSlotFound,_):
-            return AnyView(ServerSlotView(appDelegate: appDelegate))
+            return ServerSlotView(appDelegate: appDelegate)
         case (.loginAccepted,.explode):
-            return AnyView(TacticalHudView(universe: universe, me: universe.players[universe.me], help: appDelegate.help))
+            return TacticalHudView(universe: universe, me: universe.players[universe.me], help: appDelegate.help)
         case (.loginAccepted,_):
-            return AnyView(SelectTeamView(eligibleTeams: self.appDelegate.eligibleTeams, universe: universe))
+            return SelectTeamView(eligibleTeams: self.appDelegate.eligibleTeams, universe: universe)
         case (.gameActive,_):
-            return AnyView(TacticalHudView(universe: universe, me: universe.players[universe.me],help: appDelegate.help))
+            return TacticalHudView(universe: universe, me: universe.players[universe.me],help: appDelegate.help)
         //default:
             //return AnyView(Text("Unexpected Error"))
         }

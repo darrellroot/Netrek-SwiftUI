@@ -10,6 +10,7 @@ import Cocoa
 import SwiftUI
 import Network
 
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
@@ -65,7 +66,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let timerInterval = 1.0 / Double(UPDATE_RATE)
     var timer: Timer?
     var timerCount = 0
-
     
     @IBAction func disconnectGame(_ sender: NSMenuItem) {
         self.newGameState(.noServerSelected)
@@ -95,7 +95,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         let tacticalView = TacticalView(universe: universe, help: help, preferencesController: preferencesController)
-        let strategicView = StrategicView(universe: universe)
+        let strategicView = StrategicView(universe: universe, updateCounter: universe.seconds)
 
         // Create the window and set the content view. 
         tacticalWindow = NSCommandedWindow(
@@ -520,7 +520,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func timerFired() {
         timerCount = timerCount + 1
         //debugPrint("AppDelegate.timerFired \(Date())")
-        self.universe.objectWillChange.send()
+        //self.universe.objectWillChange.send()
+        if timerCount % Int(UPDATE_RATE) == 0 {
+            self.universe.seconds.count += 1
+        }
         switch self.gameState {
             
         case .noServerSelected:
@@ -535,7 +538,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             break
         case .gameActive:
             if (timerCount % 100) == 0 {
-                debugPrint("Setting needs display for playerListViewController")
                 // send cpUpdate once every 10 seconds to prevent ghostbust
                 let cpUpdates = MakePacket.cpUpdates()
                 reader?.send(content: cpUpdates)

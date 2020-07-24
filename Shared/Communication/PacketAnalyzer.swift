@@ -96,6 +96,8 @@ class PacketAnalyzer {
         /*DispatchQueue.main.async() {
             self.appDelegate.tacticalViewController?.scene.packetUpdate()
         }*/
+        universe.serverUpdate.count += 1
+        
         appDelegate.reader?.receive()
     }
 

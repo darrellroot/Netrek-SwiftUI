@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct PlayerStrategicView: View, StrategicOffset {
-    @ObservedObject var player: Player
+    var player: Player
+    @ObservedObject var updateCounter: UpdateCounter
     var body: some View {
         return GeometryReader { geo in
             Text(self.playerText).foregroundColor(self.playerColor)

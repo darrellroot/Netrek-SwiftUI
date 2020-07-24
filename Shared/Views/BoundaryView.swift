@@ -25,6 +25,7 @@ struct BoundaryView: View, TacticalOffset {
             }.offset(x: geo.size.width / 2, y: geo.size.height / 2)
                 .stroke(Color.blue,style:  StrokeStyle(lineWidth: self.playerWidth(screenWidth: geo.size.width, visualWidth: self.universe.visualWidth)))
                 .opacity(0.5)
+                .animation(Animation.linear(duration: 0.1))
         }
     }
 }
