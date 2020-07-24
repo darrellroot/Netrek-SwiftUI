@@ -9,8 +9,9 @@
 import SwiftUI
 
 struct StatisticsView: View {
-    @ObservedObject var universe: Universe
-    @ObservedObject var me: Player
+    var universe: Universe
+    var me: Player
+    @ObservedObject var updateCounter = Universe.universe.seconds
     
     var body: some View {
         VStack(alignment: .leading) {

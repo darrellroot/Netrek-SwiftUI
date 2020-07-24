@@ -11,8 +11,8 @@ import SwiftUI
 struct StrategicView: View {
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
     
-    var universe: Universe
-    @ObservedObject var updateCounter: UpdateCounter
+    var universe = Universe.universe
+    @ObservedObject var updateCounter = Universe.universe.seconds
     
     var body: some View {
         return GeometryReader { geo in

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PlayerStrategicView: View, StrategicOffset {
     var player: Player
-    @ObservedObject var updateCounter: UpdateCounter
+    @ObservedObject var updateCounter = Universe.universe.seconds
     var body: some View {
         return GeometryReader { geo in
             Text(self.playerText).foregroundColor(self.playerColor)

@@ -16,7 +16,7 @@ class PacketAnalyzer {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     #endif*/
     let appDelegate: AppDelegate
-    let universe: Universe
+    let universe = Universe.universe
     var leftOverData: Data?
     
     let msg_len = 80
@@ -27,7 +27,6 @@ class PacketAnalyzer {
     
     init(appDelegate: AppDelegate) {
         self.appDelegate = appDelegate
-        universe = appDelegate.universe
     }
     
     func analyze(incomingData: Data) {
@@ -96,7 +95,7 @@ class PacketAnalyzer {
         /*DispatchQueue.main.async() {
             self.appDelegate.tacticalViewController?.scene.packetUpdate()
         }*/
-        universe.serverUpdate.count += 1
+        universe.serverUpdate.increment()
         
         appDelegate.reader?.receive()
     }
@@ -456,7 +455,7 @@ class PacketAnalyzer {
             let starbaseMaxKills100 = Int(data.subdata(in: (52..<56)).to(type: UInt32.self).byteSwapped)
             let maxKills = Double(maxKills100) / 100.0
             let sbMaxKills = Double(starbaseMaxKills100) / 100.0
-            appDelegate.universe.updatePlayer(playerID: playerID, tournamentKills: tournamentKills, tournamentLosses: tournamentLosses,
+            Universe.universe.updatePlayer(playerID: playerID, tournamentKills: tournamentKills, tournamentLosses: tournamentLosses,
                 overallKills: overallKills,
                 overallLosses: overallLosses,
                 tournamentTicks: tournamentTicks,

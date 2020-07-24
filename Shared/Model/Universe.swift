@@ -10,14 +10,16 @@ import Foundation
 import SwiftUI
 
 class Universe: ObservableObject {
+    static var universe = Universe()
+    
     var players: [Player] = []
     
     let defaultVisualWidth: CGFloat = 3000
     @Published var visualWidth: CGFloat = 3000 // 30% of galactic size 10000.  Netrek size 100,000
     @Published var waitQueue = 0
     
-    var seconds = UpdateCounter()
-    var serverUpdate = UpdateCounter()
+    var seconds = UpdateCounter(name: "Seconds")
+    var serverUpdate = UpdateCounter(name: "ServerUpdate")
 
     //let device = UIDevice.current.userInterfaceIdiom
     

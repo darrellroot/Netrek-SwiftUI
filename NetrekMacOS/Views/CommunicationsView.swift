@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct CommunicationsView: View {
-    @ObservedObject var universe: Universe
+    @ObservedObject var universe = Universe.universe
 
     var body: some View {
         HStack {

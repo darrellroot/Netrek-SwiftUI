@@ -10,12 +10,13 @@ import Cocoa
 import SwiftUI
 import Network
 
-
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     let defaults = UserDefaults.standard
     let preferencesController = PreferencesController(defaults: UserDefaults.standard)
+    
+    let universe = Universe.universe
     
     let help = Help()
     
@@ -34,7 +35,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var reader: TcpReader?
     private(set) var gameState: GameState = .noServerSelected
     var analyzer: PacketAnalyzer?
-    @ObservedObject var universe = Universe()
     var clientTypeSent = false
     var soundController: SoundController?
 
@@ -94,8 +94,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.disableShipMenu()
 
         // Create the SwiftUI view that provides the window contents.
-        let tacticalView = TacticalView(universe: universe, help: help, preferencesController: preferencesController)
-        let strategicView = StrategicView(universe: universe, updateCounter: universe.seconds)
+        let tacticalView = TacticalView(help: help, preferencesController: preferencesController)
+        let strategicView = StrategicView()
 
         // Create the window and set the content view. 
         tacticalWindow = NSCommandedWindow(
@@ -126,7 +126,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         strategicWindow.contentView = NSHostingView(rootView: strategicView)
         strategicWindow.makeKeyAndOrderFront(nil)
 
-        let communicationsView = CommunicationsView(universe: universe)
+        let communicationsView = CommunicationsView()
         communicationsWindow = NSWindow(
             contentRect: NSRect(x: 0, y: 320, width: 1000, height: 300),
             styleMask: [.titled, .miniaturizable, .resizable, .fullSizeContentView],
@@ -180,7 +180,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //return // for testing blank menu only
         debugPrint("AppDelegate.metaserverUpdated")
         if let metaServer = metaServer {
-            universe.gotMessage("Server list updated from metaserver")
+            Universe.universe.gotMessage("Server list updated from metaserver")
             serverMenu.removeAllItems()
             let servers = Array(metaServer.servers.values).map { $0.hostname}.sorted()
             
@@ -231,7 +231,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func showDetailedStatistics(_ sender: NSMenuItem) {
-        let detailedStatisticsView = DetailedStatisticsView(universe: universe)
+        let detailedStatisticsView = DetailedStatisticsView()
         let detailedStatisticsWindow = NSWindow(
             contentRect: NSRect(x: 600, y: 600, width: 600, height: 600),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
@@ -522,7 +522,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //debugPrint("AppDelegate.timerFired \(Date())")
         //self.universe.objectWillChange.send()
         if timerCount % Int(UPDATE_RATE) == 0 {
-            self.universe.seconds.count += 1
+            Universe.universe.seconds.increment()
         }
         switch self.gameState {
             
@@ -554,11 +554,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         case .noServerSelected:
             self.resetConnection()
             help.nextTip()
-            universe.reset()
+            Universe.universe.reset()
             enableServerMenu()
             disableShipMenu()
             self.gameState = newState
-            universe.gotMessage("AppDelegate GameState \(newState) we may have been ghostbusted!  Resetting.  Try again\n")
+            Universe.universe.gotMessage("AppDelegate GameState \(newState) we may have been ghostbusted!  Resetting.  Try again\n")
             debugPrint("AppDelegate GameState \(newState) we may have been ghostbusted!  Resetting.  Try again\n")
             self.refreshMetaserver()
             break

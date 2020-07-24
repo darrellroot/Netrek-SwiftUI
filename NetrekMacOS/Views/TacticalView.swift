@@ -18,7 +18,8 @@ struct TacticalView: View, TacticalOffset {
     #endif
     
     //@EnvironmentObject var universe: Universe
-    @ObservedObject var universe: Universe
+    var universe = Universe.universe
+    @ObservedObject var serverUpdate = Universe.universe.serverUpdate
     @ObservedObject var help: Help
     @ObservedObject var preferencesController: PreferencesController
     @State var pt: CGPoint = CGPoint() {
