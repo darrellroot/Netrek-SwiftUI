@@ -64,7 +64,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     let timerInterval = 1.0 / Double(UPDATE_RATE)
     var timer: Timer?
-    @State var timerCount = 0
+    var timerCount = 0
 
     
     @IBAction func disconnectGame(_ sender: NSMenuItem) {
