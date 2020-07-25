@@ -22,11 +22,11 @@ struct TacticalView: View, TacticalOffset {
     @ObservedObject var serverUpdate = Universe.universe.serverUpdate
     @ObservedObject var help: Help
     @ObservedObject var preferencesController: PreferencesController
-    @State var pt: CGPoint = CGPoint() {
+    /*@State var pt: CGPoint = CGPoint() {
         didSet {
             debugPrint("point \(pt)")
         }
-    }
+    }*/
     var fakeTorpedo = Torpedo(torpedoId: 999)
     var fakeLaser = Laser(laserId: 999)
     var fakePlasma = Plasma(plasmaId: 999)
@@ -125,6 +125,7 @@ struct TacticalView: View, TacticalOffset {
         let finalX = meX + deltaX
         let finalY = meY - deltaY
         let location = CGPoint(x: finalX, y: finalY)
+        debugPrint("mouse down location \(location)")
         self.appDelegate.keymapController.execute(control,location: location)
     }
     

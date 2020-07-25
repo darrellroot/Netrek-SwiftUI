@@ -126,7 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
     @objc func timerFired() {
         timerCount = timerCount + 1
         //debugPrint("AppDelegate.timerFired \(Date())")
-        self.universe.objectWillChange.send()
+        //self.universe.objectWillChange.send()
         switch self.gameState {
             
         case .noServerSelected:
