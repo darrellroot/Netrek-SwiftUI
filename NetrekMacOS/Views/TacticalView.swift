@@ -119,11 +119,12 @@ struct TacticalView: View, TacticalOffset {
         let meX = universe.players[universe.me].positionX
         let meY = universe.players[universe.me].positionY
         let diffX = Int(eventLocation.x) - (Int(size.width) / 2)
-        let diffY = Int(eventLocation.y) - (Int(size.height) / 2)
+        let diffY = eventLocation.y - (size.height) / 2
         let deltaX = NetrekMath.displayDistance * diffX / Int(size.width)
-        let deltaY = NetrekMath.displayDistance * diffY / Int(size.height)
+        let aspectRatio = size.width / size.height
+        let deltaY = (CGFloat(NetrekMath.displayDistance) / aspectRatio) * diffY / size.height
         let finalX = meX + deltaX
-        let finalY = meY - deltaY
+        let finalY = meY - Int(deltaY)
         let location = CGPoint(x: finalX, y: finalY)
         debugPrint("mouse down location \(location)")
         self.appDelegate.keymapController.execute(control,location: location)
