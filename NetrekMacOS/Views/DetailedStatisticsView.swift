@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct DetailedStatisticsView: View {
-    @ObservedObject var universe: Universe
+    @ObservedObject var universe = Universe.universe
     var body: some View {
         VStack {
             HStack {

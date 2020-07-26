@@ -9,9 +9,11 @@
 import SwiftUI
 
 struct IosPlayerStrategicView: View {
-    @ObservedObject var player: Player
-    @ObservedObject var me: Player
-    @ObservedObject var universe: Universe
+    @ObservedObject var seconds = Universe.universe.seconds
+
+    var player: Player
+    var me: Player
+    var universe = Universe.universe
     var screenWidth: CGFloat
     var screenHeight: CGFloat
 

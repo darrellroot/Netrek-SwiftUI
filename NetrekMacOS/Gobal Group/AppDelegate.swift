@@ -16,6 +16,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let defaults = UserDefaults.standard
     let preferencesController = PreferencesController(defaults: UserDefaults.standard)
     
+    let universe = Universe.universe
+    
     let help = Help()
     
     var serverFeatures: [String] = []
@@ -33,9 +35,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var reader: TcpReader?
     private(set) var gameState: GameState = .noServerSelected
     var analyzer: PacketAnalyzer?
-    @ObservedObject var universe = Universe()
     var clientTypeSent = false
-    var soundController: SoundController?
+    //var soundController: SoundController?
 
     var serverByTag: [Int:String] = [:]
     
@@ -64,8 +65,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     let timerInterval = 1.0 / Double(UPDATE_RATE)
     var timer: Timer?
-    @State var timerCount = 0
-
+    var timerCount = 0
     
     @IBAction func disconnectGame(_ sender: NSMenuItem) {
         self.newGameState(.noServerSelected)
@@ -77,7 +77,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //Always run in dark mode
         NSApp.appearance = NSAppearance(named: .darkAqua)
 
-        self.soundController = SoundController()
+        //self.soundController = SoundController()
         self.keymapController = KeymapController()
 
         setupBlankMenu()
@@ -94,8 +94,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.disableShipMenu()
 
         // Create the SwiftUI view that provides the window contents.
-        let tacticalView = TacticalView(universe: universe, help: help, preferencesController: preferencesController)
-        let strategicView = StrategicView(universe: universe)
+        let tacticalView = TacticalView(help: help, preferencesController: preferencesController)
+        let strategicView = StrategicView()
 
         // Create the window and set the content view. 
         tacticalWindow = NSCommandedWindow(
@@ -126,7 +126,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         strategicWindow.contentView = NSHostingView(rootView: strategicView)
         strategicWindow.makeKeyAndOrderFront(nil)
 
-        let communicationsView = CommunicationsView(universe: universe)
+        let communicationsView = CommunicationsView()
         communicationsWindow = NSWindow(
             contentRect: NSRect(x: 0, y: 320, width: 1000, height: 300),
             styleMask: [.titled, .miniaturizable, .resizable, .fullSizeContentView],
@@ -180,7 +180,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //return // for testing blank menu only
         debugPrint("AppDelegate.metaserverUpdated")
         if let metaServer = metaServer {
-            universe.gotMessage("Server list updated from metaserver")
+            Universe.universe.gotMessage("Server list updated from metaserver")
             serverMenu.removeAllItems()
             let servers = Array(metaServer.servers.values).map { $0.hostname}.sorted()
             
@@ -231,7 +231,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func showDetailedStatistics(_ sender: NSMenuItem) {
-        let detailedStatisticsView = DetailedStatisticsView(universe: universe)
+        let detailedStatisticsView = DetailedStatisticsView()
         let detailedStatisticsWindow = NSWindow(
             contentRect: NSRect(x: 600, y: 600, width: 600, height: 600),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
@@ -520,7 +520,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func timerFired() {
         timerCount = timerCount + 1
         //debugPrint("AppDelegate.timerFired \(Date())")
-        self.universe.objectWillChange.send()
+        //self.universe.objectWillChange.send()
+        if timerCount % Int(UPDATE_RATE) == 0 {
+            Universe.universe.seconds.increment()
+        }
         switch self.gameState {
             
         case .noServerSelected:
@@ -535,7 +538,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             break
         case .gameActive:
             if (timerCount % 100) == 0 {
-                debugPrint("Setting needs display for playerListViewController")
                 // send cpUpdate once every 10 seconds to prevent ghostbust
                 let cpUpdates = MakePacket.cpUpdates()
                 reader?.send(content: cpUpdates)
@@ -552,11 +554,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         case .noServerSelected:
             self.resetConnection()
             help.nextTip()
-            universe.reset()
+            Universe.universe.reset()
             enableServerMenu()
             disableShipMenu()
             self.gameState = newState
-            universe.gotMessage("AppDelegate GameState \(newState) we may have been ghostbusted!  Resetting.  Try again\n")
+            Universe.universe.gotMessage("AppDelegate GameState \(newState) we may have been ghostbusted!  Resetting.  Try again\n")
             debugPrint("AppDelegate GameState \(newState) we may have been ghostbusted!  Resetting.  Try again\n")
             self.refreshMetaserver()
             break

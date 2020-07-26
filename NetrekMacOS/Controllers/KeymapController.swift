@@ -249,18 +249,18 @@ class KeymapController {
     }
     public func setKeymap(control: Control, command: Command) {
         self.keymap[control] = command
-        appDelegate.defaults.set(command.rawValue, forKey: control.rawValue)
+        UserDefaults.standard.set(command.rawValue, forKey: control.rawValue)
     }
     func resetKeymaps() {
         for control in Control.allCases {
-            appDelegate.defaults.removeObject(forKey: control.rawValue)
+            UserDefaults.standard.removeObject(forKey: control.rawValue)
         }
         self.setDefaults()
-        appDelegate.defaults.synchronize()
+        UserDefaults.standard.synchronize()
     }
     func loadSavedKeymaps() {
         for control in Control.allCases {
-            if let commandString = appDelegate.defaults.string(forKey: control.rawValue) {
+            if let commandString = UserDefaults.standard.string(forKey: control.rawValue) {
                 for command in Command.allCases {
                     if command.rawValue == commandString {
                         keymap[control] = command
@@ -277,9 +277,9 @@ class KeymapController {
         }
     }
     func execute(_ command: Command, location: CGPoint?) {
-        let universe = appDelegate.universe
-        let players = appDelegate.universe.players
-        let me = appDelegate.universe.me
+        let universe = Universe.universe
+        let players = Universe.universe.players
+        let me = Universe.universe.me
         switch command {
             
         case .nothing:
@@ -346,19 +346,19 @@ class KeymapController {
             guard appDelegate.gameState == .gameActive else { return }
             let cpCloak = MakePacket.cpCloak(state: true )
             appDelegate.reader?.send(content: cpCloak)
-            appDelegate.soundController?.play(sound: .shield, volume: 1.0)
+            SoundController.soundController.play(sound: .shield, volume: 1.0)
         case .cloakDown:
             guard appDelegate.gameState == .gameActive else { return }
             let cpCloak = MakePacket.cpCloak(state: false )
             appDelegate.reader?.send(content: cpCloak)
-            appDelegate.soundController?.play(sound: .shield, volume: 1.0)
+            SoundController.soundController.play(sound: .shield, volume: 1.0)
             
         case .cloak:
             guard appDelegate.gameState == .gameActive else { return }
             let cloakState = players[me].cloak
             let cpCloak = MakePacket.cpCloak(state: !cloakState )
             appDelegate.reader?.send(content: cpCloak)
-            appDelegate.soundController?.play(sound: .shield, volume: 1.0)
+            SoundController.soundController.play(sound: .shield, volume: 1.0)
             
         case .coup:
             let cpCoup = MakePacket.cpCoup()
@@ -368,19 +368,19 @@ class KeymapController {
             guard appDelegate.gameState == .gameActive else { return }
             let cpDetTorps = MakePacket.cpDetTorps()
             appDelegate.reader?.send(content: cpDetTorps)
-            appDelegate.soundController?.play(sound: .detonate, volume: 0.5)
+            SoundController.soundController.play(sound: .detonate, volume: 0.5)
             
         case .detOwn:
-            let me = appDelegate.universe.me
+            let me = Universe.universe.me
             guard appDelegate.gameState == .gameActive else { return }
             for count in 0..<8 {
                 let myTorpNum = UInt8(me * 8 + count)
                 let cpDetMyTorps = MakePacket.cpDetMyTorps(torpNum: myTorpNum)
                 appDelegate.reader?.send(content: cpDetMyTorps)
             }
-            appDelegate.soundController?.play(sound: .detonate, volume: 0.5)
+            SoundController.soundController.play(sound: .detonate, volume: 0.5)
         case .dockingPermission:
-            let me = appDelegate.universe.me
+            let me = Universe.universe.me
             let cpDockperm = MakePacket.cpDockperm(state: !players[me].dockok)
             appDelegate.reader?.send(content: cpDockperm)
         case .information:
@@ -410,7 +410,7 @@ class KeymapController {
                 debugPrint("KeymapController.execute.setCourse location is nil...holding steady")
                 return
             }
-            let me = appDelegate.universe.me
+            let me = Universe.universe.me
             let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(players[me].positionX), mePositionY: Double(players[me].positionY), destinationX: Double(location.x), destinationY: Double(location.y))
             if let cpDirection = MakePacket.cpDirection(netrekDirection: netrekDirection) {
                 appDelegate.reader?.send(content: cpDirection)
@@ -427,7 +427,7 @@ class KeymapController {
                 let cpShield = MakePacket.cpShield(up: true)
                 appDelegate.reader?.send(content: cpShield)
             }
-            appDelegate.soundController?.play(sound: .shield, volume: 1.0)
+            SoundController.soundController.play(sound: .shield, volume: 1.0)
         case .tractorPressorOff:
             let cpTractor = MakePacket.cpTractor(on: false, playerID: 0)
             appDelegate.reader?.send(content: cpTractor)
@@ -461,7 +461,7 @@ class KeymapController {
             guard let target = closestPlayerOptional else {
                 return
             }
-            let me = appDelegate.universe.me
+            let me = Universe.universe.me
             if target.me == true { return }
             guard target.playerId >= 0 else { return }
             guard target.playerId < 256 else { return }
@@ -496,7 +496,7 @@ class KeymapController {
             guard let closestPlayer = closestPlayerOptional else {
                 return
             }
-            let me = appDelegate.universe.me
+            let me = Universe.universe.me
             if closestPlayer.me == true { return }
             guard closestPlayer.playerId >= 0 else { return }
             guard closestPlayer.playerId < 256 else { return }
@@ -514,14 +514,14 @@ class KeymapController {
             
             let cpShield = MakePacket.cpShield(up: false)
             appDelegate.reader?.send(content: cpShield)
-            appDelegate.soundController?.play(sound: .shield, volume: 1.0)
+            SoundController.soundController.play(sound: .shield, volume: 1.0)
             
         case .raiseShields:
             guard appDelegate.gameState == .gameActive else { return }
             
             let cpShield = MakePacket.cpShield(up: true)
             appDelegate.reader?.send(content: cpShield)
-            appDelegate.soundController?.play(sound: .shield, volume: 1.0)
+            SoundController.soundController.play(sound: .shield, volume: 1.0)
             
         case .repair:
             guard appDelegate.gameState == .gameActive else { return }
@@ -538,7 +538,7 @@ class KeymapController {
                 debugPrint("KeymapController.execute.fireLaser location is nil...holding fire")
                 return
             }
-            let me = appDelegate.universe.me
+            let me = Universe.universe.me
             let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(players[me].positionX), mePositionY: Double(players[me].positionY), destinationX: Double(targetLocation.x), destinationY: Double(targetLocation.y))
             let cpLaser = MakePacket.cpLaser(netrekDirection: netrekDirection)
             appDelegate.reader?.send(content: cpLaser)
@@ -551,7 +551,7 @@ class KeymapController {
                 debugPrint("KeymapController.execute.fireTorpedo location is nil...holding fire")
                 return
             }
-            let me = appDelegate.universe.me
+            let me = Universe.universe.me
             let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(players[me].positionX), mePositionY: Double(players[me].positionY), destinationX: Double(targetLocation.x), destinationY: Double(targetLocation.y))
             let cpTorp = MakePacket.cpTorp(netrekDirection: netrekDirection)
             appDelegate.reader?.send(content: cpTorp)
@@ -563,7 +563,7 @@ class KeymapController {
                 debugPrint("KeymapController.execute.firePlasma location is nil...holding fire")
                 return
             }
-            let me = appDelegate.universe.me
+            let me = Universe.universe.me
             let netrekDirection = NetrekMath.calculateNetrekDirection(mePositionX: Double(players[me].positionX), mePositionY: Double(players[me].positionY), destinationX: Double(targetLocation.x), destinationY: Double(targetLocation.y))
             let cpPlasma = MakePacket.cpPlasma(netrekDirection: netrekDirection)
             appDelegate.reader?.send(content: cpPlasma)
@@ -587,14 +587,14 @@ class KeymapController {
             var closestPlayerDistance = 10000
             var closestPlayer: Player?
             
-            for planet in appDelegate.universe.planets {
+            for planet in Universe.universe.planets {
                 let thisPlanetDistance = abs(planet.positionX - lockLocationX) + abs(planet.positionY - lockLocationY)
                 if thisPlanetDistance < closestPlanetDistance {
                     closestPlanetDistance = thisPlanetDistance
                     closestPlanet = planet
                 }
             }
-            for player in appDelegate.universe.players {
+            for player in Universe.universe.players {
                 if player.ship == .starbase && player.me == false {
                     let thisPlayerDistance = abs(player.positionX - lockLocationX) + abs(player.positionY - lockLocationY)
                     if thisPlayerDistance < closestPlayerDistance {
@@ -634,14 +634,14 @@ class KeymapController {
             var closestPlayerDistance = 10000
             var closestPlayer: Player?
             
-            for planet in appDelegate.universe.planets {
+            for planet in Universe.universe.planets {
                 let thisPlanetDistance = abs(planet.positionX - lockLocationX) + abs(planet.positionY - lockLocationY)
                 if thisPlanetDistance < closestPlanetDistance {
                     closestPlanetDistance = thisPlanetDistance
                     closestPlanet = planet
                 }
             }
-            for player in appDelegate.universe.players {
+            for player in Universe.universe.players {
                 if player.me == false {
                     let thisPlayerDistance = abs(player.positionX - lockLocationX) + abs(player.positionY - lockLocationY)
                     if thisPlayerDistance < closestPlayerDistance {
@@ -673,7 +673,7 @@ class KeymapController {
     private func findClosestPlanet(location: CGPoint) -> (planet: Planet?,distance: Int) {
         var closestPlanetDistance = 10000
         var closestPlanet: Planet?
-        for planet in appDelegate.universe.planets {
+        for planet in Universe.universe.planets {
             let thisPlanetDistance = abs(planet.positionX - Int(location.x)) + abs(planet.positionY - Int(location.y))
             if thisPlanetDistance < closestPlanetDistance {
                 closestPlanetDistance = thisPlanetDistance
@@ -685,7 +685,7 @@ class KeymapController {
     private func findClosestPlayer(location: CGPoint) -> (player: Player?, distance: Int) {
         var closestPlayerDistance = 10000
         var closestPlayer: Player?
-        for player in appDelegate.universe.players {
+        for player in Universe.universe.players {
             if player.me == false {
                 let thisPlayerDistance = abs(player.positionX - Int(location.x)) + abs(player.positionY - Int(location.y))
                 if thisPlayerDistance < closestPlayerDistance {

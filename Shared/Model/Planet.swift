@@ -158,7 +158,7 @@ class Planet: CustomStringConvertible, ObservableObject, Identifiable {
             }
         }
         debugPrint("\(self.name) \(infoString)")
-        appDelegate.universe.gotMessage("\(self.name) \(infoString)")
+        Universe.universe.gotMessage("\(self.name) \(infoString)")
     }
 
     public func update(name: String, positionX: Int, positionY: Int) {

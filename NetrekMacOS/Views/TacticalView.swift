@@ -18,14 +18,15 @@ struct TacticalView: View, TacticalOffset {
     #endif
     
     //@EnvironmentObject var universe: Universe
-    @ObservedObject var universe: Universe
+    var universe = Universe.universe
+    @ObservedObject var serverUpdate = Universe.universe.serverUpdate
     @ObservedObject var help: Help
     @ObservedObject var preferencesController: PreferencesController
-    @State var pt: CGPoint = CGPoint() {
+    /*@State var pt: CGPoint = CGPoint() {
         didSet {
             debugPrint("point \(pt)")
         }
-    }
+    }*/
     var fakeTorpedo = Torpedo(torpedoId: 999)
     var fakeLaser = Laser(laserId: 999)
     var fakePlasma = Plasma(plasmaId: 999)
@@ -118,12 +119,14 @@ struct TacticalView: View, TacticalOffset {
         let meX = universe.players[universe.me].positionX
         let meY = universe.players[universe.me].positionY
         let diffX = Int(eventLocation.x) - (Int(size.width) / 2)
-        let diffY = Int(eventLocation.y) - (Int(size.height) / 2)
+        let diffY = eventLocation.y - (size.height) / 2
         let deltaX = NetrekMath.displayDistance * diffX / Int(size.width)
-        let deltaY = NetrekMath.displayDistance * diffY / Int(size.height)
+        let aspectRatio = size.width / size.height
+        let deltaY = (CGFloat(NetrekMath.displayDistance) / aspectRatio) * diffY / size.height
         let finalX = meX + deltaX
-        let finalY = meY - deltaY
+        let finalY = meY - Int(deltaY)
         let location = CGPoint(x: finalX, y: finalY)
+        debugPrint("mouse down location \(location)")
         self.appDelegate.keymapController.execute(control,location: location)
     }
     

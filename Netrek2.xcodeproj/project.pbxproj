@@ -197,6 +197,8 @@
 		2F97D8E7246236EE003CA91F /* Data-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8E6246236EE003CA91F /* Data-extensions.swift */; };
 		2F97D8E8246236EE003CA91F /* Data-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8E6246236EE003CA91F /* Data-extensions.swift */; };
 		2F97D8EB24624014003CA91F /* TacticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8EA24624014003CA91F /* TacticalView.swift */; };
+		2FA55BDF24CB678B00096817 /* UpdateCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA55BDE24CB678B00096817 /* UpdateCounter.swift */; };
+		2FA55BE024CB678B00096817 /* UpdateCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA55BDE24CB678B00096817 /* UpdateCounter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -332,6 +334,7 @@
 		2F97D8E3246236A2003CA91F /* SlotStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotStatus.swift; sourceTree = "<group>"; };
 		2F97D8E6246236EE003CA91F /* Data-extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data-extensions.swift"; sourceTree = "<group>"; };
 		2F97D8EA24624014003CA91F /* TacticalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacticalView.swift; sourceTree = "<group>"; };
+		2FA55BDE24CB678B00096817 /* UpdateCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCounter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -620,6 +623,7 @@
 				2F97D8A524622D36003CA91F /* Player.swift */,
 				2F97D8A424622D36003CA91F /* Torpedo.swift */,
 				2F2789E62489861600038FBD /* Help.swift */,
+				2FA55BDE24CB678B00096817 /* UpdateCounter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -923,6 +927,7 @@
 				2F213120248D898B001D3B83 /* PlasmaView.swift in Sources */,
 				2F53CBA12493F31E00677187 /* LoginView.swift in Sources */,
 				2F2130F1248CC0ED001D3B83 /* Team.swift in Sources */,
+				2FA55BE024CB678B00096817 /* UpdateCounter.swift in Sources */,
 				2F21311F248D8988001D3B83 /* TorpedoView.swift in Sources */,
 				2F21310E248D5479001D3B83 /* Data-extensions.swift in Sources */,
 				2F53CB82249153C100677187 /* ServerSelectedView.swift in Sources */,
@@ -1005,6 +1010,7 @@
 				2F97D88D24621FE8003CA91F /* packets.swift in Sources */,
 				2F97D88724621FBE003CA91F /* PacketAnalyzer.swift in Sources */,
 				2F97D8A624622D36003CA91F /* Plasma.swift in Sources */,
+				2FA55BDF24CB678B00096817 /* UpdateCounter.swift in Sources */,
 				2F44597B2467AE4500C3F9A1 /* MessagesView.swift in Sources */,
 				2F97D8AA24622D36003CA91F /* Torpedo.swift in Sources */,
 				2F74491424BCFD5300CF378D /* DetonationPlasmaView.swift in Sources */,
@@ -1124,7 +1130,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"NetrekIPad/Preview Content\"";
 				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
 				ENABLE_PREVIEWS = YES;
@@ -1134,7 +1140,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.netrek;
 				PRODUCT_NAME = Netrek;
 				SDKROOT = iphoneos;
@@ -1148,7 +1154,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"NetrekIPad/Preview Content\"";
 				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
 				ENABLE_PREVIEWS = YES;
@@ -1158,7 +1164,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.netrek;
 				PRODUCT_NAME = Netrek;
 				SDKROOT = iphoneos;
@@ -1378,7 +1384,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"NetrekMacOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1389,7 +1395,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.netrek;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1404,7 +1410,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"NetrekMacOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1415,7 +1421,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.netrek;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

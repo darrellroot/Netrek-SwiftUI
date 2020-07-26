@@ -16,12 +16,6 @@ struct PlayerView: View, TacticalOffset {
     var screenWidth: CGFloat
     var screenHeight: CGFloat
     
-    #if os(macOS)
-    let appDelegate = NSApplication.shared.delegate as! AppDelegate
-    #elseif os(iOS)
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    #endif
-
     
     var body: some View {
         return GeometryReader { geo in

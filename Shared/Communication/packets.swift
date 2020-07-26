@@ -372,7 +372,9 @@ struct CP_UPDATES {
     let pad1: UInt8 = 0
     let pad2: UInt8 = 0
     let pad3: UInt8 = 0
-    let usecs: UInt32 = UInt32(100000).bigEndian
+//    let usecs: UInt32 = UInt32(100000).bigEndian
+    //let usecs: UInt32 = UInt32(50000).bigEndian
+    let usecs: UInt32 = UInt32(1000000 / UPDATE_RATE).bigEndian
     
     var size: Int {
         return 8

@@ -10,11 +10,6 @@ import Foundation
 import SwiftUI
 
 class MakePacket {
-    #if os(macOS)
-    static let appDelegate = NSApplication.shared.delegate as! AppDelegate
-    #elseif os(iOS)
-    static let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    #endif
 
     static func make16Tuple(string: String) -> (UInt8,UInt8,UInt8,UInt8,UInt8,UInt8,UInt8,UInt8,UInt8,UInt8,UInt8,UInt8,UInt8,UInt8,UInt8,UInt8) {
         var temp: [UInt8] = []

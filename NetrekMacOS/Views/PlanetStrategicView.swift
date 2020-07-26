@@ -9,8 +9,10 @@
 import SwiftUI
 
 struct PlanetStrategicView: View, StrategicOffset {
-    @ObservedObject var planet: Planet
-    @ObservedObject var me: Player
+    var planet: Planet
+    @ObservedObject var updateCounter = Universe.universe.seconds
+//    @ObservedObject var me: Player
+    var me: Player
     var body: some View {
         return GeometryReader { geo in
             ZStack {

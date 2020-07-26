@@ -10,13 +10,8 @@ import Foundation
 import SwiftUI
 class PacketAnalyzer {
     
-    /*#if os(macOS)
-    let appDelegate = NSApplication.shared.delegate as! AppDelegate
-    #elseif os(iOS)
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    #endif*/
     let appDelegate: AppDelegate
-    let universe: Universe
+    let universe = Universe.universe
     var leftOverData: Data?
     
     let msg_len = 80
@@ -27,7 +22,6 @@ class PacketAnalyzer {
     
     init(appDelegate: AppDelegate) {
         self.appDelegate = appDelegate
-        universe = appDelegate.universe
     }
     
     func analyze(incomingData: Data) {
@@ -96,6 +90,8 @@ class PacketAnalyzer {
         /*DispatchQueue.main.async() {
             self.appDelegate.tacticalViewController?.scene.packetUpdate()
         }*/
+        universe.serverUpdate.increment()
+        
         appDelegate.reader?.receive()
     }
 
@@ -454,7 +450,7 @@ class PacketAnalyzer {
             let starbaseMaxKills100 = Int(data.subdata(in: (52..<56)).to(type: UInt32.self).byteSwapped)
             let maxKills = Double(maxKills100) / 100.0
             let sbMaxKills = Double(starbaseMaxKills100) / 100.0
-            appDelegate.universe.updatePlayer(playerID: playerID, tournamentKills: tournamentKills, tournamentLosses: tournamentLosses,
+            Universe.universe.updatePlayer(playerID: playerID, tournamentKills: tournamentKills, tournamentLosses: tournamentLosses,
                 overallKills: overallKills,
                 overallLosses: overallLosses,
                 tournamentTicks: tournamentTicks,
@@ -569,7 +565,7 @@ class PacketAnalyzer {
             debugPrint("Received SP_SHIP_CAP 39 operation \(operation) shipType \(shipType) torpSpeed \(torpSpeed) phaserRange \(phaserRange) maxSpeed \(maxSpeed) maxFuel \(maxFuel) maxShield \(maxShield) maxDamage \(maxDamage) maxWpnTmp \(maxWpnTmp) maxEngTmp \(maxEngTmp) width \(width) height \(height) maxArmies \(maxArmies) letter \(letter) shipName \(shipName) s_desig1 \(s_desig1) s_desig2 \(s_desig2) bitmap \(bitmap)")
             for ship in ShipType.allCases {
                 if ship.rawValue == shipType {
-                    appDelegate.universe.shipinfo(shipType: ship, torpSpeed: torpSpeed, phaserRange: phaserRange, maxSpeed: maxSpeed, maxFuel: maxFuel, maxShield: maxShield, maxDamage: maxDamage, maxWpnTmp: maxWpnTmp, maxEngTmp: maxEngTmp, width: width, height: height, maxArmies: maxArmies)
+                    Universe.universe.shipinfo(shipType: ship, torpSpeed: torpSpeed, phaserRange: phaserRange, maxSpeed: maxSpeed, maxFuel: maxFuel, maxShield: maxShield, maxDamage: maxDamage, maxWpnTmp: maxWpnTmp, maxEngTmp: maxEngTmp, width: width, height: height, maxArmies: maxArmies)
 
                 }
             }

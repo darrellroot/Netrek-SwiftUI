@@ -47,7 +47,7 @@ class Plasma: ObservableObject {
                     self.war[team] = false
                 }
             }
-            let myTeam = self.appDelegate.universe.players[self.appDelegate.universe.me].team
+            let myTeam = Universe.universe.players[Universe.universe.me].team
             //DispatchQueue.main.async {
                 if self.war[myTeam] == true {
                     self.color = Color.red
@@ -67,11 +67,11 @@ class Plasma: ObservableObject {
             self.positionX = positionX
             self.positionY = positionY
             if self.soundPlayed == false {
-                let me = self.appDelegate.universe.me
-                let taxiDistance = abs(self.appDelegate.universe.players[me].positionX - self.positionX) + abs(self.appDelegate.universe.players[me].positionY - self.positionY)
+                let me = Universe.universe.me
+                let taxiDistance = abs(Universe.universe.players[me].positionX - self.positionX) + abs(Universe.universe.players[me].positionY - self.positionY)
                 if taxiDistance < NetrekMath.displayDistance / 3 {
                     let volume = 1.0 - (3.0 * Float(taxiDistance) / (NetrekMath.displayDistanceFloat))
-                    self.appDelegate.soundController?.play(sound: .plasma, volume: volume)
+                    SoundController.soundController.play(sound: .plasma, volume: volume)
                     debugPrint("playing plasma sound volume \(volume)")
                     self.soundPlayed = true
                 }

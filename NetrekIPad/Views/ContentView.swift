@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @ObservedObject var serverUpdate = Universe.universe.serverUpdate
     @ObservedObject var metaServer: MetaServer
     @ObservedObject var universe: Universe
     @ObservedObject var appDelegate: AppDelegate

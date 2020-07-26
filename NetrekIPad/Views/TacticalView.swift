@@ -19,8 +19,10 @@ struct TacticalView: View, TacticalOffset {
     #endif
     
     //@EnvironmentObject var universe: Universe
-    @ObservedObject var universe: Universe
-    @ObservedObject var me: Player
+    @ObservedObject var serverUpdate = Universe.universe.serverUpdate
+
+    var universe: Universe
+    var me: Player
     @ObservedObject var help: Help
     @State var lastLaser = Date()
     @State var nextCommand = ""
@@ -73,7 +75,6 @@ struct TacticalView: View, TacticalOffset {
         return GeometryReader { geo in
             
             return ZStack {
-
                 ZStack { //more than 10 items in function builder}
                     Rectangle().colorInvert()
                     HelpView(help: self.help)
