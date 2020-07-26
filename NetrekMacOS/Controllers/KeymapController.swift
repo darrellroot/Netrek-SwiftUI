@@ -249,18 +249,18 @@ class KeymapController {
     }
     public func setKeymap(control: Control, command: Command) {
         self.keymap[control] = command
-        appDelegate.defaults.set(command.rawValue, forKey: control.rawValue)
+        UserDefaults.standard.set(command.rawValue, forKey: control.rawValue)
     }
     func resetKeymaps() {
         for control in Control.allCases {
-            appDelegate.defaults.removeObject(forKey: control.rawValue)
+            UserDefaults.standard.removeObject(forKey: control.rawValue)
         }
         self.setDefaults()
-        appDelegate.defaults.synchronize()
+        UserDefaults.standard.synchronize()
     }
     func loadSavedKeymaps() {
         for control in Control.allCases {
-            if let commandString = appDelegate.defaults.string(forKey: control.rawValue) {
+            if let commandString = UserDefaults.standard.string(forKey: control.rawValue) {
                 for command in Command.allCases {
                     if command.rawValue == commandString {
                         keymap[control] = command

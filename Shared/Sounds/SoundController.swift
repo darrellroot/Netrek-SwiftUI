@@ -22,7 +22,6 @@ class SoundController {
     
     static let soundController = SoundController()
     
-    let appDelegate: AppDelegate
     let soundDisabledKey = "soundDisabled"
     private(set) var soundDisabled = false
     let soundThreads = 8
@@ -30,13 +29,8 @@ class SoundController {
     //private var audioList: [AVAudioPlayer] = []
     private var soundList: [Sound:[AVAudioPlayer]] = [:]
     init() {
-        #if os(macOS)
-        appDelegate = NSApplication.shared.delegate as! AppDelegate
-        #elseif os(iOS)
-        appDelegate = UIApplication.shared.delegate as! AppDelegate
-        #endif
 
-        self.soundDisabled = appDelegate.defaults.bool(forKey: soundDisabledKey)
+        self.soundDisabled = UserDefaults.standard.bool(forKey: soundDisabledKey)
         
         for soundCandidate in Sound.allCases {
             if let pathToSound = Bundle.main.url(forResource: soundCandidate.rawValue, withExtension: "") {
@@ -54,11 +48,11 @@ class SoundController {
     }
     public func enableSound() {
         self.soundDisabled = false
-        appDelegate.defaults.set(false,forKey: soundDisabledKey)
+        UserDefaults.standard.set(false,forKey: soundDisabledKey)
     }
     public func disableSound() {
         self.soundDisabled = true
-        appDelegate.defaults.set(true,forKey: soundDisabledKey)
+        UserDefaults.standard.set(true,forKey: soundDisabledKey)
     }
     
     public func play(sound: Sound, volume: Float) {

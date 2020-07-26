@@ -12,7 +12,7 @@ import SwiftUI
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
     
-    let defaults = UserDefaults.standard
+    //let defaults = UserDefaults.standard
     
     let help = Help()
     //did not work
