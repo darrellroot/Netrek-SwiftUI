@@ -45,8 +45,8 @@ class Laser: ObservableObject {
             self.status = status
             self.directionNetrek = directionNetrek
             self.direction = 2.0 * Double.pi * Double(directionNetrek) / 256.0
-            self.positionX = self.appDelegate.universe.players[laserId].positionX
-            self.positionY = self.appDelegate.universe.players[laserId].positionY
+            self.positionX = Universe.universe.players[laserId].positionX
+            self.positionY = Universe.universe.players[laserId].positionY
             self.target = target
             if self.status != 0 {
                 self.displayLaser()
@@ -54,16 +54,16 @@ class Laser: ObservableObject {
         }
     }
     public func displayLaser() {
-        guard let source = appDelegate.universe.players[safe: self.laserId] else { return }
-        let me = appDelegate.universe.me
-        let taxiDistance = abs(appDelegate.universe.players[me].positionX - source.positionX) + abs(appDelegate.universe.players[me].positionY - source.positionY)
+        guard let source = Universe.universe.players[safe: self.laserId] else { return }
+        let me = Universe.universe.me
+        let taxiDistance = abs(Universe.universe.players[me].positionX - source.positionX) + abs(Universe.universe.players[me].positionY - source.positionY)
         guard taxiDistance < NetrekMath.displayDistance / 2 else { return }
         let volume = 1.0 - (2.0 * Float(taxiDistance) / (NetrekMath.displayDistanceFloat))
-        appDelegate.soundController?.play(sound: .laser, volume: volume)
+        SoundController.soundController.play(sound: .laser, volume: volume)
         switch self.status{
             
         case 1: // hit
-            guard let target = appDelegate.universe.players[safe: target] else {
+            guard let target = Universe.universe.players[safe: target] else {
                 return
             }
             //let sourcePoint = CGPoint(x: source.positionX, y: source.positionY)
@@ -74,7 +74,7 @@ class Laser: ObservableObject {
             self.targetPositionX = Int(Double(source.positionX) + cos(self.direction) * laserRange)
             self.targetPositionY = Int(Double(source.positionY) + sin(self.direction) * laserRange)
         case 4: // hit plasma TODO
-            guard let target = appDelegate.universe.plasmas[safe: target] else {
+            guard let target = Universe.universe.plasmas[safe: target] else {
                 return
             }
             //let sourcePoint = CGPoint(x: source.positionX, y: source.positionY)

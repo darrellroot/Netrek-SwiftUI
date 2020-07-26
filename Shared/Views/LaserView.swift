@@ -9,11 +9,6 @@
 import SwiftUI
 
 struct LaserView: View, TacticalOffset {
-    #if os(macOS)
-    let appDelegate = NSApplication.shared.delegate as! AppDelegate
-    #elseif os(iOS)
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    #endif
     @State var opacity = 1.0
     @ObservedObject var laser: Laser
     @ObservedObject var me: Player
@@ -45,18 +40,18 @@ struct LaserView: View, TacticalOffset {
         //}
     }
     func sourceX(tacWidth: CGFloat) -> CGFloat {
-        guard let netrekSourceX = appDelegate.universe.players[safe: self.laser.laserId]?.positionX else { return 0.0 }
+        guard let netrekSourceX = Universe.universe.players[safe: self.laser.laserId]?.positionX else { return 0.0 }
         //guard let netrekSourceY = appDelegate.universe.players[safe: self.laser.laserId]?.positionY else { return }
         let screenSourceX = self.xOffset(positionX: netrekSourceX, myPositionX: self.me.positionX,tacticalWidth: tacWidth, visualWidth: self.universe.visualWidth)
-        if laser.laserId == appDelegate.universe.me { debugPrint("laser positionX \(self.laser.positionX) myPositionX \(self.me.positionX) tacWidth \(tacWidth) x \(screenSourceX)")
+        if laser.laserId == Universe.universe.me { debugPrint("laser positionX \(self.laser.positionX) myPositionX \(self.me.positionX) tacWidth \(tacWidth) x \(screenSourceX)")
         }
         return screenSourceX
     }
     func sourceY(tacHeight: CGFloat) -> CGFloat {
-        //guard let netrekSourceX = appDelegate.universe.players[safe: self.laser.laserId]?.positionX else { return 0.0 }
-        guard let netrekSourceY = appDelegate.universe.players[safe: self.laser.laserId]?.positionY else { return 0.0 }
+        //guard let netrekSourceX = Universe.universe.players[safe: self.laser.laserId]?.positionX else { return 0.0 }
+        guard let netrekSourceY = Universe.universe.players[safe: self.laser.laserId]?.positionY else { return 0.0 }
         let screenSourceY = self.yOffset(positionY: netrekSourceY, myPositionY: self.me.positionY,tacticalHeight: tacHeight, visualHeight: self.universe.visualWidth * self.screenHeight / self.screenWidth)
-        if laser.laserId == appDelegate.universe.me {
+        if laser.laserId == Universe.universe.me {
             debugPrint("laser positionY \(self.laser.positionY) myPositionY \(self.me.positionY) tacWidth \(tacHeight) x \(screenSourceY)")
         }
 

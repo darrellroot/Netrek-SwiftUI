@@ -24,7 +24,7 @@ class MessagesController {
     
     func sendMayday() {
         guard appDelegate.gameState == .gameActive else { return }
-        let me = appDelegate.universe.players[appDelegate.universe.me]
+        let me = Universe.universe.players[Universe.universe.me]
         let (planetOptional,_) = findClosestPlanet(location: CGPoint(x: me.positionX,y: me.positionY))
         guard let planet = planetOptional else { return }
 
@@ -33,7 +33,7 @@ class MessagesController {
     }
     func sendEscort() {
         guard appDelegate.gameState == .gameActive else { return }
-        let me = appDelegate.universe.players[appDelegate.universe.me]
+        let me = Universe.universe.players[Universe.universe.me]
         let (planetOptional,_) = findClosestPlanet(location: CGPoint(x: me.positionX,y: me.positionY))
         guard let planet = planetOptional else { return }
 
@@ -59,7 +59,7 @@ class MessagesController {
     private func findClosestPlanet(location: CGPoint) -> (planet: Planet?,distance: Int) {
         var closestPlanetDistance = 10000
         var closestPlanet: Planet?
-        for planet in appDelegate.universe.planets {
+        for planet in Universe.universe.planets {
             let thisPlanetDistance = abs(planet.positionX - Int(location.x)) + abs(planet.positionY - Int(location.y))
             if thisPlanetDistance < closestPlanetDistance {
                 closestPlanetDistance = thisPlanetDistance

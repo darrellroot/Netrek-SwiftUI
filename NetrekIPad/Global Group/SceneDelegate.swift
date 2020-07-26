@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         //let pickServerView = PickServerView(metaServer: appDelegate.metaServer, universe: appDelegate.universe)
-        let contentView = ContentView(metaServer: appDelegate.metaServer, universe: appDelegate.universe, appDelegate: appDelegate)
+        let contentView = ContentView(metaServer: appDelegate.metaServer, universe: Universe.universe, appDelegate: appDelegate)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

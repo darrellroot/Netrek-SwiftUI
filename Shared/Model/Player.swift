@@ -111,12 +111,14 @@ class Player: CustomStringConvertible, ObservableObject {
     private(set) var kills = 0.0
     private(set) var slotStatus: SlotStatus = .free {
         didSet {
-            if slotStatus == .explode && (appDelegate.universe.players[appDelegate.universe.me].slotStatus == .alive || appDelegate.universe.players[appDelegate.universe.me].slotStatus == .explode) {
+            if slotStatus == .explode && (Universe.universe.players[Universe.universe.me].slotStatus == .alive || Universe.universe.players[Universe.universe.me].slotStatus == .explode) {
                 self.throttle = 0
-                let taxiDistance = abs(appDelegate.universe.players[appDelegate.universe.me].lastAlivePositionX - self.positionX) + abs(appDelegate.universe.players[appDelegate.universe.me].lastAlivePositionY - self.positionY)
+                let xDistance = abs(Universe.universe.players[Universe.universe.me].lastAlivePositionX - self.positionX)
+                let yDistance = abs(Universe.universe.players[Universe.universe.me].lastAlivePositionY - self.positionY)
+                let taxiDistance = xDistance + yDistance
                 let volume = 1 - (Float(taxiDistance) / NetrekMath.displayDistanceFloat)
                 if volume > 0 {
-                    appDelegate.soundController?.play(sound: .explosion, volume: volume)
+                    SoundController.soundController.play(sound: .explosion, volume: volume)
                 }
             }
         }
@@ -200,7 +202,7 @@ class Player: CustomStringConvertible, ObservableObject {
         if self.cloak == true { return }
         let infoString: String = "\(self.name) \(self.ship?.description ?? "??") \(self.kills) kills"
         let playerLetter = NetrekMath.playerLetter(playerId: self.playerId)
-        appDelegate.universe.gotMessage("\(self.team.letter)\(playerLetter) \(infoString)")
+        Universe.universe.gotMessage("\(self.team.letter)\(playerLetter) \(infoString)")
     }
 
     func updateImage() {

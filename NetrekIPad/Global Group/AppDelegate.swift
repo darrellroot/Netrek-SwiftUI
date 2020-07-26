@@ -48,9 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
     }
     @Published var gameScreen: GameScreen = .noServerSelected
     var analyzer: PacketAnalyzer?
-    @ObservedObject var universe = Universe()
     var clientTypeSent = false
-    var soundController: SoundController?
+    //var soundController: SoundController?
     var messagesController: MessagesController?
     
     //set this to true when we first set the preferred team, which we only do once
@@ -64,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
     
     let timerInterval = 1.0 / Double(UPDATE_RATE)
     var timer: Timer?
-    @State var timerCount = 0
+    var timerCount = 0
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -72,9 +71,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
         let function = #function
         debugPrint("\(file):\(function)")
 
-        self.soundController = SoundController()
+        //self.soundController = SoundController()
         self.keymapController = KeymapController()
-        self.messagesController = MessagesController(universe: self.universe)
+        self.messagesController = MessagesController(universe: Universe.universe)
         metaServer.update()
         
         timer = Timer(timeInterval: timerInterval , target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
@@ -127,6 +126,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
         timerCount = timerCount + 1
         //debugPrint("AppDelegate.timerFired \(Date())")
         //self.universe.objectWillChange.send()
+        if timerCount % Int(UPDATE_RATE) == 0 {
+            Universe.universe.seconds.increment()
+        }
         switch self.gameState {
             
         case .noServerSelected:
@@ -210,11 +212,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
         case .noServerSelected:
             self.resetConnection()
             self.help.nextTip()
-            self.universe.reset()
+            Universe.universe.reset()
             //enableServerMenu()
             //disableShipMenu()
             self.gameState = newState
-            self.universe.gotMessage("AppDelegate GameState \(newState) we may have been ghostbusted!  Resetting.  Try again\n")
+            Universe.universe.gotMessage("AppDelegate GameState \(newState) we may have been ghostbusted!  Resetting.  Try again\n")
             debugPrint("AppDelegate GameState \(newState) we may have been ghostbusted!  Resetting.  Try again\n")
             self.refreshMetaserver()
             break

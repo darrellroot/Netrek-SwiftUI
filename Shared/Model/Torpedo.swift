@@ -12,13 +12,6 @@ import Combine
 
 class Torpedo: ObservableObject {
     
-    #if os(macOS)
-    lazy var appDelegate = NSApplication.shared.delegate as! AppDelegate
-    #elseif os(iOS)
-    lazy var appDelegate = UIApplication.shared.delegate as! AppDelegate
-    #endif
-
-    
     var torpedoId: Int = 0
     @Published var status: UInt8 = 0
     //0 = inactive, 1=active, 2 = exploding?
@@ -53,7 +46,7 @@ class Torpedo: ObservableObject {
                     self.war[team] = false
                 }
             }
-            let myTeam = self.appDelegate.universe.players[self.appDelegate.universe.me].team
+            let myTeam = Universe.universe.players[Universe.universe.me].team
             //DispatchQueue.main.async {
                 if self.war[myTeam] == true {
                     self.color = Color.red
@@ -76,12 +69,12 @@ class Torpedo: ObservableObject {
             self.positionY = positionY
         }
         if soundPlayed == false {
-            let me = appDelegate.universe.players[appDelegate.universe.me]
+            let me = Universe.universe.players[Universe.universe.me]
             let taxiDistance = abs(me.positionX - self.positionX) + abs(me.positionY - self.positionY)
             if taxiDistance < NetrekMath.displayDistance / 4 {
                 let volume = 1.0 - (4.0 * Float(taxiDistance) / (NetrekMath.displayDistanceFloat))
                 
-                appDelegate.soundController?.play(sound: .torpedo, volume: volume)
+                SoundController.soundController.play(sound: .torpedo, volume: volume)
                 debugPrint("playing torpedo sound volume \(volume)")
                 soundPlayed = true
             }

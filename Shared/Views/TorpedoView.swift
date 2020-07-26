@@ -9,9 +9,10 @@
 import SwiftUI
 
 struct TorpedoView: View, TacticalOffset {
-    @ObservedObject var torpedo: Torpedo
-    @ObservedObject var me: Player
-    @ObservedObject var universe: Universe
+    var torpedo: Torpedo
+    var me: Player
+    var universe: Universe
+    @ObservedObject var serverUpdate = Universe.universe.serverUpdate
     var screenWidth: CGFloat
     var screenHeight: CGFloat
 

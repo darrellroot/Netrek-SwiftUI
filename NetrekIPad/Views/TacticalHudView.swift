@@ -16,6 +16,7 @@ struct TacticalHudView: View {
     #endif
     
     //@EnvironmentObject var universe: Universe
+    @ObservedObject var serverUpdate = Universe.universe.serverUpdate
     @ObservedObject var universe: Universe
     @ObservedObject var me: Player
     @ObservedObject var help: Help

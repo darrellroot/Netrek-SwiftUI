@@ -570,7 +570,7 @@ class PacketAnalyzer {
             debugPrint("Received SP_SHIP_CAP 39 operation \(operation) shipType \(shipType) torpSpeed \(torpSpeed) phaserRange \(phaserRange) maxSpeed \(maxSpeed) maxFuel \(maxFuel) maxShield \(maxShield) maxDamage \(maxDamage) maxWpnTmp \(maxWpnTmp) maxEngTmp \(maxEngTmp) width \(width) height \(height) maxArmies \(maxArmies) letter \(letter) shipName \(shipName) s_desig1 \(s_desig1) s_desig2 \(s_desig2) bitmap \(bitmap)")
             for ship in ShipType.allCases {
                 if ship.rawValue == shipType {
-                    appDelegate.universe.shipinfo(shipType: ship, torpSpeed: torpSpeed, phaserRange: phaserRange, maxSpeed: maxSpeed, maxFuel: maxFuel, maxShield: maxShield, maxDamage: maxDamage, maxWpnTmp: maxWpnTmp, maxEngTmp: maxEngTmp, width: width, height: height, maxArmies: maxArmies)
+                    Universe.universe.shipinfo(shipType: ship, torpSpeed: torpSpeed, phaserRange: phaserRange, maxSpeed: maxSpeed, maxFuel: maxFuel, maxShield: maxShield, maxDamage: maxDamage, maxWpnTmp: maxWpnTmp, maxEngTmp: maxEngTmp, width: width, height: height, maxArmies: maxArmies)
 
                 }
             }

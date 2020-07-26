@@ -20,6 +20,8 @@ enum Sound: String, CaseIterable {
 }
 class SoundController {
     
+    static let soundController = SoundController()
+    
     let appDelegate: AppDelegate
     let soundDisabledKey = "soundDisabled"
     private(set) var soundDisabled = false
