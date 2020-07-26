@@ -10,11 +10,6 @@ import Foundation
 import SwiftUI
 class PacketAnalyzer {
     
-    /*#if os(macOS)
-    let appDelegate = NSApplication.shared.delegate as! AppDelegate
-    #elseif os(iOS)
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    #endif*/
     let appDelegate: AppDelegate
     let universe = Universe.universe
     var leftOverData: Data?

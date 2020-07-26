@@ -36,7 +36,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private(set) var gameState: GameState = .noServerSelected
     var analyzer: PacketAnalyzer?
     var clientTypeSent = false
-    var soundController: SoundController?
+    //var soundController: SoundController?
 
     var serverByTag: [Int:String] = [:]
     
@@ -77,7 +77,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //Always run in dark mode
         NSApp.appearance = NSAppearance(named: .darkAqua)
 
-        self.soundController = SoundController()
+        //self.soundController = SoundController()
         self.keymapController = KeymapController()
 
         setupBlankMenu()
