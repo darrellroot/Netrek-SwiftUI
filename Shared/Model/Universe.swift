@@ -11,8 +11,23 @@ import SwiftUI
 
 class Universe: ObservableObject {
     static var universe = Universe()
-    
+    private(set) var gameState: GameState = .noServerSelected
+
     var players: [Player] = []
+    var reader: TcpReader?
+    var analyzer: PacketAnalyzer?
+    var clientTypeSent = false
+    var serverFeatures: [String] = []
+    var clientFeatures: [String] = ["FEATURE_PACKETS","SHIP_CAP","SP_GENERIC_32","TIPS"]
+
+    let loginInformationController = LoginInformationController()
+
+    let metaServer = MetaServer(primary: "metaserver.netrek.org", backup: "metaserver2.netrek.org", port: 3521)
+
+    let help = Help()
+
+    var serverMenuEnabled = false
+    var shipMenuEnabled = false
     
     let defaultVisualWidth: CGFloat = 3000
     @Published var visualWidth: CGFloat = 3000 // 30% of galactic size 10000.  Netrek size 100,000
@@ -316,6 +331,10 @@ class Universe: ObservableObject {
         self.players[safe: playerId]?.update(directionNetrek: directionNetrek, speed: speed, positionX: positionX, positionY: positionY)
     }
     
+    public func metaserverUpdated() {
+        debugPrint("Metaserver updated not implemented")
+    }
+    
     public func updatePlayer(playerID: Int, tournamentKills: Int, tournamentLosses: Int, overallKills: Int, overallLosses: Int, tournamentTicks: Int, tournamentPlanets: Int, tournamentArmies: Int, starbaseKills: Int, starbaseLosses: Int, practiceArmies: Int, practicePlanets: Int, maxKills: Double, sbMaxKills: Double) {
         if self.players[safe: playerID] == nil {
             let newPlayer = Player(playerId: playerID)
@@ -409,6 +428,152 @@ class Universe: ObservableObject {
             self.shipInfo[shipType] = newShipInfo
         }
     }
+    
+    func resetConnection() {
+        debugPrint("AppDelegate.resetConnection")
+        if gameState == .gameActive || gameState == .serverConnected || gameState == .serverSlotFound || gameState == .loginAccepted {
+            let cp_bye = MakePacket.cpBye()
+            self.reader?.send(content: cp_bye)
+        }
+        if self.reader != nil {
+            self.reader?.resetConnection()
+        }
+        self.reader = nil
+    }
 
+    func refreshMetaserver() {
+        if let metaServer = metaServer {
+            metaServer.update()
+        }
+    }
 
+    public func newGameState(_ newState: GameState ) {
+        debugPrint("Game State: moving from \(self.gameState.rawValue) to \(newState.rawValue)\n")
+        switch newState {
+
+        case .noServerSelected:
+            self.resetConnection()
+            help.nextTip()
+            Universe.universe.reset()
+            self.serverMenuEnabled = true
+            self.shipMenuEnabled = false
+            //enableServerMenu()
+            //disableShipMenu()
+            self.gameState = newState
+            Universe.universe.gotMessage("AppDelegate GameState \(newState) we may have been ghostbusted!  Resetting.  Try again\n")
+            debugPrint("AppDelegate GameState \(newState) we may have been ghostbusted!  Resetting.  Try again\n")
+            self.refreshMetaserver()
+            break
+
+        case .serverSelected:
+            help.nextTip()
+            self.shipMenuEnabled = false
+            self.serverMenuEnabled = false
+            //disableShipMenu()
+            //disableServerMenu()
+            self.gameState = newState
+            self.analyzer = PacketAnalyzer(universe: self)
+            // no need to do anything here, handled in the menu function
+            break
+
+        case .serverConnected:
+            help.nextTip()
+            self.shipMenuEnabled = false
+            self.serverMenuEnabled = false
+            //disableShipMenu()
+            //disableServerMenu()
+            self.clientTypeSent = false
+            self.gameState = newState
+
+            guard let reader = reader else {
+                self.newGameState(.noServerSelected)
+                return
+            }
+            let cpSocket = MakePacket.cpSocket()
+            DispatchQueue.global(qos: .background).async{
+                reader.send(content: cpSocket)
+            }
+            for feature in clientFeatures {
+                let cpFeature: Data
+                if feature == "SP_GENERIC_32" {
+                    cpFeature = MakePacket.cpFeatures(feature: feature,arg1: 2)
+                } else {
+                    cpFeature = MakePacket.cpFeatures(feature: feature)
+                }
+                DispatchQueue.global(qos: .background).asyncAfter(deadline: .now()+0.1) {
+                    self.reader?.send(content: cpFeature)
+                }
+            }
+
+        case .serverSlotFound:
+            self.shipMenuEnabled = false
+            self.serverMenuEnabled = false
+            //disableShipMenu()
+            //disableServerMenu()
+            self.gameState = newState
+            debugPrint("AppDelegate.newGameState: .serverSlotFound")
+            let cpLogin: Data
+            if self.loginInformationController.loginAuthenticated == true && self.loginInformationController.validInfo {
+                cpLogin = MakePacket.cpLogin(name: self.loginInformationController.loginName, password: self.loginInformationController.loginPassword, login: self.loginInformationController.userInfo)
+            } else {
+                cpLogin = MakePacket.cpLogin(name: "guest", password: "", login: "")
+            }
+            if let reader = reader {
+                DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 0.2) {
+
+                    reader.send(content: cpLogin)
+                }
+            } else {
+                debugPrint("ERROR: AppDelegate.newGameState.serverSlot found: no reader")
+                self.newGameState(.noServerSelected)
+            }
+        case .loginAccepted:
+            help.nextTip()
+            self.shipMenuEnabled = true
+            self.serverMenuEnabled = false
+            //self.enableShipMenu()
+            //self.disableServerMenu()
+            /*DispatchQueue.main.async {
+                self.playerListViewController?.view.needsDisplay = true
+            }*/
+            self.gameState = newState
+
+        case .gameActive:
+            help.noTip()
+            self.shipMenuEnabled = true
+            self.serverMenuEnabled = false
+            //self.enableShipMenu()
+            //self.disableServerMenu()
+            /*DispatchQueue.main.async {
+                self.playerListViewController?.view.needsDisplay = true
+            }*/
+            self.gameState = newState
+            if !clientTypeSent {
+                let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
+                let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "unknown"
+                let data = MakePacket.cpMessage(message: "I am using the Swift Netrek Client version \(appVersion) build \(buildVersion) on MacOS", team: .ogg, individual: 0)
+                    clientTypeSent = true
+                    self.reader?.send(content: data)
+            }
+        }
+    }
+    
+    public func updateTeamMenu(mask: UInt8) {
+        var fedEligible = true
+        var romEligible = true
+        var kazariEligible = true
+        var oriEligible = true
+        if mask & UInt8(Team.federation.rawValue) == 0 {
+            fedEligible = false
+        }
+        if mask & UInt8(Team.roman.rawValue) == 0 {            romEligible = false
+        }
+        if mask & UInt8(Team.kazari.rawValue) == 0 {
+            kazariEligible = false
+        }
+        if mask & UInt8(Team.orion.rawValue) == 0 {
+            oriEligible = false
+        }
+    }
 }
+

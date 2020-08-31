@@ -10,11 +10,6 @@ import Foundation
 import SwiftUI
 
 class Plasma: ObservableObject {
-    #if os(macOS)
-    lazy var appDelegate = NSApplication.shared.delegate as! AppDelegate
-    #elseif os(iOS)
-    lazy var appDelegate = UIApplication.shared.delegate as! AppDelegate
-    #endif
 
     private(set) var plasmaId: Int
     @Published private(set) var status = 0

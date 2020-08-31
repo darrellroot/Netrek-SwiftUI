@@ -13,9 +13,6 @@ import AppKit
 import SwiftUI
 
 class MetaServer: ObservableObject {
-    #if os(macOS)
-    let appDelegate = NSApplication.shared.delegate as! AppDelegate
-    #endif
     let metahosts: [String]  //primary server hostname
     let port: Int
     //let url: URL
@@ -105,7 +102,7 @@ class MetaServer: ObservableObject {
                     }
                     #if os(macOS)
                     DispatchQueue.main.async {
-                        self.appDelegate.metaserverUpdated()
+                        Universe.universe.metaserverUpdated()
                     }
                     #endif
                 }

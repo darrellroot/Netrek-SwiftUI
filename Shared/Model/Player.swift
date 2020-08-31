@@ -35,12 +35,6 @@ class Player: CustomStringConvertible, ObservableObject {
     static let PRESSORFLAG: UInt32 = 0x800000
     static let DOCKOKFLAG: UInt32 = 0x1000000
 
-    #if os(macOS)
-    lazy var appDelegate = NSApplication.shared.delegate as! AppDelegate
-    #elseif os(iOS)
-    lazy var appDelegate = UIApplication.shared.delegate as! AppDelegate
-    #endif
-
     var detonated = false //set to true when blowing up
 
     private(set) var playerId: Int = 0
@@ -308,12 +302,12 @@ class Player: CustomStringConvertible, ObservableObject {
             case .explode:
                 //self.playerTacticalNode.isHidden = true
                 if me && self.lastSlotStatus == .alive {
-                    appDelegate.newGameState(.loginAccepted)
+                    Universe.universe.newGameState(.loginAccepted)
             }
             case .dead:
                 //self.playerTacticalNode.isHidden = true
                 if me && self.lastSlotStatus == .alive {
-                    appDelegate.newGameState(.loginAccepted)
+                    Universe.universe.newGameState(.loginAccepted)
             }
             case .observe:
                 //self.playerTacticalNode.isHidden = true

@@ -100,6 +100,55 @@
 		2F45A7FA2464763200AA2A3F /* PointingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7F92464763200AA2A3F /* PointingView.swift */; };
 		2F45A7FC24647A4C00AA2A3F /* KeymapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7FB24647A4C00AA2A3F /* KeymapController.swift */; };
 		2F45A7FF246480EE00AA2A3F /* NSCommandedWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7FE246480EE00AA2A3F /* NSCommandedWindow.swift */; };
+		2F52459424F2E6C000F65D47 /* Netrek3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F52459324F2E6C000F65D47 /* Netrek3App.swift */; };
+		2F52459624F2E6C000F65D47 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F52459524F2E6C000F65D47 /* ContentView.swift */; };
+		2F52459824F2E6C200F65D47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F52459724F2E6C200F65D47 /* Assets.xcassets */; };
+		2F52459B24F2E6C200F65D47 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F52459A24F2E6C200F65D47 /* Preview Assets.xcassets */; };
+		2F5245A724F2E6C200F65D47 /* Netrek3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5245A624F2E6C200F65D47 /* Netrek3Tests.swift */; };
+		2F5245B224F2E6C200F65D47 /* Netrek3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5245B124F2E6C200F65D47 /* Netrek3UITests.swift */; };
+		2F5245BD24F441C300F65D47 /* Universe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D89924622CDA003CA91F /* Universe.swift */; };
+		2F5245BE24F441CB00F65D47 /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E62489861600038FBD /* Help.swift */; };
+		2F5245BF24F441E100F65D47 /* TcpReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8782462156C003CA91F /* TcpReader.swift */; };
+		2F5245C024F441E900F65D47 /* packets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D88C24621FE8003CA91F /* packets.swift */; };
+		2F5245C124F441ED00F65D47 /* PacketAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D88624621FBE003CA91F /* PacketAnalyzer.swift */; };
+		2F5245C224F441F400F65D47 /* MetaServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D87224620F0B003CA91F /* MetaServer.swift */; };
+		2F5245C324F441F700F65D47 /* MetaServerEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D87024620F02003CA91F /* MetaServerEntry.swift */; };
+		2F5245C424F4420100F65D47 /* MessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB932491AB4100677187 /* MessagesController.swift */; };
+		2F5245C524F4420700F65D47 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D88924621FE3003CA91F /* Globals.swift */; };
+		2F5245C624F4420E00F65D47 /* UserDefaults-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8E02462366F003CA91F /* UserDefaults-extensions.swift */; };
+		2F5245C724F4421200F65D47 /* Collection-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D87524621199003CA91F /* Collection-extensions.swift */; };
+		2F5245C824F4422F00F65D47 /* SoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8CA24623315003CA91F /* SoundController.swift */; };
+		2F5245C924F4423100F65D47 /* 175265__jonccox__gun-thumper.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D8B2246232FB003CA91F /* 175265__jonccox__gun-thumper.wav */; };
+		2F5245CA24F4423400F65D47 /* 175267__jonccox__gun-plasma.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D8B3246232FB003CA91F /* 175267__jonccox__gun-plasma.wav */; };
+		2F5245CB24F4423700F65D47 /* 399303__deleted-user-5405837__explosion-012.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D8B4246232FB003CA91F /* 399303__deleted-user-5405837__explosion-012.mp3 */; };
+		2F5245CC24F4423A00F65D47 /* 175269__jonccox__gun-zap2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D8B5246232FB003CA91F /* 175269__jonccox__gun-zap2.wav */; };
+		2F5245CD24F4423D00F65D47 /* 175262__jonccox__gun-cannon.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D8B6246232FB003CA91F /* 175262__jonccox__gun-cannon.wav */; };
+		2F5245CE24F4424000F65D47 /* 175270__jonccox__gun-zap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D8B7246232FB003CA91F /* 175270__jonccox__gun-zap.wav */; };
+		2F5245CF24F4424400F65D47 /* 175266__jonccox__gun-spark.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D8B8246232FB003CA91F /* 175266__jonccox__gun-spark.wav */; };
+		2F5245D024F4424700F65D47 /* 71852__ludvique__digital-whoosh-soft.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2F97D8B9246232FB003CA91F /* 71852__ludvique__digital-whoosh-soft.wav */; };
+		2F5245D124F4424C00F65D47 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D87C246216D7003CA91F /* GameState.swift */; };
+		2F5245D224F4425C00F65D47 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D88F2462200E003CA91F /* Team.swift */; };
+		2F5245D324F4426400F65D47 /* ShipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D89224622061003CA91F /* ShipType.swift */; };
+		2F5245D524F4427B00F65D47 /* AlertCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8D424623572003CA91F /* AlertCondition.swift */; };
+		2F5245D624F442BB00F65D47 /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E82489B8DF00038FBD /* PreferencesController.swift */; };
+		2F5245D824F442EF00F65D47 /* KeymapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7FB24647A4C00AA2A3F /* KeymapController.swift */; };
+		2F5245D924F442F100F65D47 /* LoginInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8D1246234A7003CA91F /* LoginInformationController.swift */; };
+		2F5245DA24F4435D00F65D47 /* NetrekMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8952462208D003CA91F /* NetrekMath.swift */; };
+		2F5245DB24F4436100F65D47 /* ShipInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D89C24622CED003CA91F /* ShipInfo.swift */; };
+		2F5245DC24F4436400F65D47 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D89F24622D19003CA91F /* Planet.swift */; };
+		2F5245DD24F4436700F65D47 /* Laser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8A324622D36003CA91F /* Laser.swift */; };
+		2F5245DE24F4436B00F65D47 /* Plasma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8A224622D36003CA91F /* Plasma.swift */; };
+		2F5245DF24F4436E00F65D47 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8A524622D36003CA91F /* Player.swift */; };
+		2F5245E024F4437000F65D47 /* Torpedo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8A424622D36003CA91F /* Torpedo.swift */; };
+		2F5245E124F4438300F65D47 /* UpdateCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA55BDE24CB678B00096817 /* UpdateCounter.swift */; };
+		2F5245E224F443FA00F65D47 /* MakePacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D87F24621E94003CA91F /* MakePacket.swift */; };
+		2F5245E324FDA93400F65D47 /* SlotStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8E3246236A2003CA91F /* SlotStatus.swift */; };
+		2F5245E424FDAA1600F65D47 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8DA24623623003CA91F /* Rank.swift */; };
+		2F5245E524FDADA800F65D47 /* PlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8DD2462364F003CA91F /* PlayerStatus.swift */; };
+		2F5245E624FDAF4C00F65D47 /* NetworkDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D88324621F29003CA91F /* NetworkDelegate.swift */; };
+		2F5245E724FDAF5D00F65D47 /* LoginDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8CD24623422003CA91F /* LoginDefault.swift */; };
+		2F5245E824FDB19000F65D47 /* Data-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8E6246236EE003CA91F /* Data-extensions.swift */; };
+		2F5245E924FDB3AA00F65D47 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8D7246235C9003CA91F /* KeychainService.swift */; };
 		2F53CB82249153C100677187 /* ServerSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB81249153C100677187 /* ServerSelectedView.swift */; };
 		2F53CB852491563000677187 /* Publishers+keyboardHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB842491563000677187 /* Publishers+keyboardHeight.swift */; };
 		2F53CB872491575B00677187 /* Notification+keyboardHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB862491575B00677187 /* Notification+keyboardHeight.swift */; };
@@ -181,7 +230,6 @@
 		2F97D8CE24623422003CA91F /* LoginDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8CD24623422003CA91F /* LoginDefault.swift */; };
 		2F97D8CF24623422003CA91F /* LoginDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8CD24623422003CA91F /* LoginDefault.swift */; };
 		2F97D8D2246234A7003CA91F /* LoginInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8D1246234A7003CA91F /* LoginInformationController.swift */; };
-		2F97D8D3246234A7003CA91F /* LoginInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8D1246234A7003CA91F /* LoginInformationController.swift */; };
 		2F97D8D524623572003CA91F /* AlertCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8D424623572003CA91F /* AlertCondition.swift */; };
 		2F97D8D624623572003CA91F /* AlertCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8D424623572003CA91F /* AlertCondition.swift */; };
 		2F97D8D8246235C9003CA91F /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8D7246235C9003CA91F /* KeychainService.swift */; };
@@ -208,6 +256,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2F2130BF248C0F86001D3B83;
 			remoteInfo = NetrekIPad;
+		};
+		2F5245A324F2E6C200F65D47 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2F97D84224620CCF003CA91F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2F52459024F2E6C000F65D47;
+			remoteInfo = Netrek3;
+		};
+		2F5245AE24F2E6C200F65D47 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2F97D84224620CCF003CA91F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2F52459024F2E6C000F65D47;
+			remoteInfo = Netrek3;
 		};
 		2F74492C24BD0E4600CF378D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -272,6 +334,19 @@
 		2F45A7F92464763200AA2A3F /* PointingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointingView.swift; sourceTree = "<group>"; };
 		2F45A7FB24647A4C00AA2A3F /* KeymapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeymapController.swift; sourceTree = "<group>"; };
 		2F45A7FE246480EE00AA2A3F /* NSCommandedWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCommandedWindow.swift; sourceTree = "<group>"; };
+		2F52459124F2E6C000F65D47 /* Netrek3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netrek3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F52459324F2E6C000F65D47 /* Netrek3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Netrek3App.swift; sourceTree = "<group>"; };
+		2F52459524F2E6C000F65D47 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2F52459724F2E6C200F65D47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2F52459A24F2E6C200F65D47 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2F52459C24F2E6C200F65D47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F52459D24F2E6C200F65D47 /* Netrek3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Netrek3.entitlements; sourceTree = "<group>"; };
+		2F5245A224F2E6C200F65D47 /* Netrek3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Netrek3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F5245A624F2E6C200F65D47 /* Netrek3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Netrek3Tests.swift; sourceTree = "<group>"; };
+		2F5245A824F2E6C200F65D47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F5245AD24F2E6C200F65D47 /* Netrek3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Netrek3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F5245B124F2E6C200F65D47 /* Netrek3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Netrek3UITests.swift; sourceTree = "<group>"; };
+		2F5245B324F2E6C200F65D47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F53CB81249153C100677187 /* ServerSelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSelectedView.swift; sourceTree = "<group>"; };
 		2F53CB842491563000677187 /* Publishers+keyboardHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publishers+keyboardHeight.swift"; sourceTree = "<group>"; };
 		2F53CB862491575B00677187 /* Notification+keyboardHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+keyboardHeight.swift"; sourceTree = "<group>"; };
@@ -352,6 +427,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2F52458E24F2E6C000F65D47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F52459F24F2E6C200F65D47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F5245AA24F2E6C200F65D47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2F74492424BD0E4600CF378D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -402,6 +498,7 @@
 		2F2130E2248C0FC4001D3B83 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				2F5245D724F442C400F65D47 /* Controllers */,
 				2F97D8742462118D003CA91F /* Extensions */,
 				2F53CB8E24919B4E00677187 /* Views */,
 				2F53CB882491597200677187 /* Global */,
@@ -494,6 +591,55 @@
 			path = "Gobal Group";
 			sourceTree = "<group>";
 		};
+		2F52459224F2E6C000F65D47 /* Netrek3 */ = {
+			isa = PBXGroup;
+			children = (
+				2F52459324F2E6C000F65D47 /* Netrek3App.swift */,
+				2F52459524F2E6C000F65D47 /* ContentView.swift */,
+				2F52459724F2E6C200F65D47 /* Assets.xcassets */,
+				2F52459C24F2E6C200F65D47 /* Info.plist */,
+				2F52459D24F2E6C200F65D47 /* Netrek3.entitlements */,
+				2F52459924F2E6C200F65D47 /* Preview Content */,
+			);
+			path = Netrek3;
+			sourceTree = "<group>";
+		};
+		2F52459924F2E6C200F65D47 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2F52459A24F2E6C200F65D47 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2F5245A524F2E6C200F65D47 /* Netrek3Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2F5245A624F2E6C200F65D47 /* Netrek3Tests.swift */,
+				2F5245A824F2E6C200F65D47 /* Info.plist */,
+			);
+			path = Netrek3Tests;
+			sourceTree = "<group>";
+		};
+		2F5245B024F2E6C200F65D47 /* Netrek3UITests */ = {
+			isa = PBXGroup;
+			children = (
+				2F5245B124F2E6C200F65D47 /* Netrek3UITests.swift */,
+				2F5245B324F2E6C200F65D47 /* Info.plist */,
+			);
+			path = Netrek3UITests;
+			sourceTree = "<group>";
+		};
+		2F5245D724F442C400F65D47 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2F2789E82489B8DF00038FBD /* PreferencesController.swift */,
+				2F97D8D1246234A7003CA91F /* LoginInformationController.swift */,
+				2F45A7FB24647A4C00AA2A3F /* KeymapController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		2F53CB832491561700677187 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -538,6 +684,9 @@
 				2F2130E2248C0FC4001D3B83 /* Shared */,
 				2F2130C1248C0F87001D3B83 /* NetrekIPad */,
 				2F97D84C24620CCF003CA91F /* NetrekMacOS */,
+				2F52459224F2E6C000F65D47 /* Netrek3 */,
+				2F5245A524F2E6C200F65D47 /* Netrek3Tests */,
+				2F5245B024F2E6C200F65D47 /* Netrek3UITests */,
 				2F97D84B24620CCF003CA91F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -550,6 +699,9 @@
 				2F2130C0248C0F86001D3B83 /* Netrek.app */,
 				2F2130D5248C0F88001D3B83 /* NetrekIPadTests.xctest */,
 				2F74492724BD0E4600CF378D /* NetrekTests.xctest */,
+				2F52459124F2E6C000F65D47 /* Netrek3.app */,
+				2F5245A224F2E6C200F65D47 /* Netrek3Tests.xctest */,
+				2F5245AD24F2E6C200F65D47 /* Netrek3UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -579,6 +731,7 @@
 		2F97D8742462118D003CA91F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2F97D8E6246236EE003CA91F /* Data-extensions.swift */,
 				2F97D8E02462366F003CA91F /* UserDefaults-extensions.swift */,
 				2F97D87524621199003CA91F /* Collection-extensions.swift */,
 			);
@@ -598,7 +751,6 @@
 				2F97D8DA24623623003CA91F /* Rank.swift */,
 				2F97D8DD2462364F003CA91F /* PlayerStatus.swift */,
 				2F97D8E3246236A2003CA91F /* SlotStatus.swift */,
-				2F97D8E6246236EE003CA91F /* Data-extensions.swift */,
 			);
 			path = Enumerations;
 			sourceTree = "<group>";
@@ -647,10 +799,7 @@
 		2F97D8D02462349D003CA91F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2F97D8D1246234A7003CA91F /* LoginInformationController.swift */,
 				2F97D8D7246235C9003CA91F /* KeychainService.swift */,
-				2F45A7FB24647A4C00AA2A3F /* KeymapController.swift */,
-				2F2789E82489B8DF00038FBD /* PreferencesController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -713,6 +862,59 @@
 			productReference = 2F2130D5248C0F88001D3B83 /* NetrekIPadTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		2F52459024F2E6C000F65D47 /* Netrek3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F5245BA24F2E6C200F65D47 /* Build configuration list for PBXNativeTarget "Netrek3" */;
+			buildPhases = (
+				2F52458D24F2E6C000F65D47 /* Sources */,
+				2F52458E24F2E6C000F65D47 /* Frameworks */,
+				2F52458F24F2E6C000F65D47 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Netrek3;
+			productName = Netrek3;
+			productReference = 2F52459124F2E6C000F65D47 /* Netrek3.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2F5245A124F2E6C200F65D47 /* Netrek3Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F5245BB24F2E6C200F65D47 /* Build configuration list for PBXNativeTarget "Netrek3Tests" */;
+			buildPhases = (
+				2F52459E24F2E6C200F65D47 /* Sources */,
+				2F52459F24F2E6C200F65D47 /* Frameworks */,
+				2F5245A024F2E6C200F65D47 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2F5245A424F2E6C200F65D47 /* PBXTargetDependency */,
+			);
+			name = Netrek3Tests;
+			productName = Netrek3Tests;
+			productReference = 2F5245A224F2E6C200F65D47 /* Netrek3Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2F5245AC24F2E6C200F65D47 /* Netrek3UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F5245BC24F2E6C200F65D47 /* Build configuration list for PBXNativeTarget "Netrek3UITests" */;
+			buildPhases = (
+				2F5245A924F2E6C200F65D47 /* Sources */,
+				2F5245AA24F2E6C200F65D47 /* Frameworks */,
+				2F5245AB24F2E6C200F65D47 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2F5245AF24F2E6C200F65D47 /* PBXTargetDependency */,
+			);
+			name = Netrek3UITests;
+			productName = Netrek3UITests;
+			productReference = 2F5245AD24F2E6C200F65D47 /* Netrek3UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		2F74492624BD0E4600CF378D /* NetrekTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F74492E24BD0E4600CF378D /* Build configuration list for PBXNativeTarget "NetrekTests" */;
@@ -772,7 +974,7 @@
 		2F97D84224620CCF003CA91F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "Darrell Root";
 				TargetAttributes = {
@@ -782,6 +984,17 @@
 					2F2130D4248C0F88001D3B83 = {
 						CreatedOnToolsVersion = 11.5;
 						TestTargetID = 2F2130BF248C0F86001D3B83;
+					};
+					2F52459024F2E6C000F65D47 = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					2F5245A124F2E6C200F65D47 = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = 2F52459024F2E6C000F65D47;
+					};
+					2F5245AC24F2E6C200F65D47 = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = 2F52459024F2E6C000F65D47;
 					};
 					2F74492624BD0E4600CF378D = {
 						CreatedOnToolsVersion = 11.5;
@@ -815,6 +1028,9 @@
 				2F2130BF248C0F86001D3B83 /* NetrekIPad */,
 				2F2130D4248C0F88001D3B83 /* NetrekIPadTests */,
 				2F74492624BD0E4600CF378D /* NetrekTests */,
+				2F52459024F2E6C000F65D47 /* Netrek3 */,
+				2F5245A124F2E6C200F65D47 /* Netrek3Tests */,
+				2F5245AC24F2E6C200F65D47 /* Netrek3UITests */,
 			);
 		};
 /* End PBXProject section */
@@ -839,6 +1055,37 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2F2130D3248C0F88001D3B83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F52458F24F2E6C000F65D47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F5245D024F4424700F65D47 /* 71852__ludvique__digital-whoosh-soft.wav in Resources */,
+				2F5245CE24F4424000F65D47 /* 175270__jonccox__gun-zap.wav in Resources */,
+				2F5245CF24F4424400F65D47 /* 175266__jonccox__gun-spark.wav in Resources */,
+				2F5245CA24F4423400F65D47 /* 175267__jonccox__gun-plasma.wav in Resources */,
+				2F52459B24F2E6C200F65D47 /* Preview Assets.xcassets in Resources */,
+				2F5245C924F4423100F65D47 /* 175265__jonccox__gun-thumper.wav in Resources */,
+				2F5245CD24F4423D00F65D47 /* 175262__jonccox__gun-cannon.wav in Resources */,
+				2F52459824F2E6C200F65D47 /* Assets.xcassets in Resources */,
+				2F5245CB24F4423700F65D47 /* 399303__deleted-user-5405837__explosion-012.mp3 in Resources */,
+				2F5245CC24F4423A00F65D47 /* 175269__jonccox__gun-zap2.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F5245A024F2E6C200F65D47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F5245AB24F2E6C200F65D47 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -973,6 +1220,66 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2F52458D24F2E6C000F65D47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F5245BD24F441C300F65D47 /* Universe.swift in Sources */,
+				2F5245E624FDAF4C00F65D47 /* NetworkDelegate.swift in Sources */,
+				2F5245C224F441F400F65D47 /* MetaServer.swift in Sources */,
+				2F5245BF24F441E100F65D47 /* TcpReader.swift in Sources */,
+				2F5245E224F443FA00F65D47 /* MakePacket.swift in Sources */,
+				2F5245DC24F4436400F65D47 /* Planet.swift in Sources */,
+				2F5245D924F442F100F65D47 /* LoginInformationController.swift in Sources */,
+				2F5245C324F441F700F65D47 /* MetaServerEntry.swift in Sources */,
+				2F5245C124F441ED00F65D47 /* PacketAnalyzer.swift in Sources */,
+				2F5245D324F4426400F65D47 /* ShipType.swift in Sources */,
+				2F5245E724FDAF5D00F65D47 /* LoginDefault.swift in Sources */,
+				2F5245E824FDB19000F65D47 /* Data-extensions.swift in Sources */,
+				2F5245DD24F4436700F65D47 /* Laser.swift in Sources */,
+				2F5245E924FDB3AA00F65D47 /* KeychainService.swift in Sources */,
+				2F5245E024F4437000F65D47 /* Torpedo.swift in Sources */,
+				2F5245DE24F4436B00F65D47 /* Plasma.swift in Sources */,
+				2F5245C524F4420700F65D47 /* Globals.swift in Sources */,
+				2F5245E124F4438300F65D47 /* UpdateCounter.swift in Sources */,
+				2F5245C424F4420100F65D47 /* MessagesController.swift in Sources */,
+				2F5245E324FDA93400F65D47 /* SlotStatus.swift in Sources */,
+				2F52459624F2E6C000F65D47 /* ContentView.swift in Sources */,
+				2F5245E424FDAA1600F65D47 /* Rank.swift in Sources */,
+				2F5245C624F4420E00F65D47 /* UserDefaults-extensions.swift in Sources */,
+				2F5245D624F442BB00F65D47 /* PreferencesController.swift in Sources */,
+				2F5245E524FDADA800F65D47 /* PlayerStatus.swift in Sources */,
+				2F5245DA24F4435D00F65D47 /* NetrekMath.swift in Sources */,
+				2F5245C024F441E900F65D47 /* packets.swift in Sources */,
+				2F5245D824F442EF00F65D47 /* KeymapController.swift in Sources */,
+				2F5245BE24F441CB00F65D47 /* Help.swift in Sources */,
+				2F5245C824F4422F00F65D47 /* SoundController.swift in Sources */,
+				2F5245DB24F4436100F65D47 /* ShipInfo.swift in Sources */,
+				2F5245D224F4425C00F65D47 /* Team.swift in Sources */,
+				2F5245D524F4427B00F65D47 /* AlertCondition.swift in Sources */,
+				2F5245D124F4424C00F65D47 /* GameState.swift in Sources */,
+				2F52459424F2E6C000F65D47 /* Netrek3App.swift in Sources */,
+				2F5245DF24F4436E00F65D47 /* Player.swift in Sources */,
+				2F5245C724F4421200F65D47 /* Collection-extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F52459E24F2E6C200F65D47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F5245A724F2E6C200F65D47 /* Netrek3Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F5245A924F2E6C200F65D47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F5245B224F2E6C200F65D47 /* Netrek3UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2F74492324BD0E4600CF378D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1066,7 +1373,6 @@
 				2F97D87724621199003CA91F /* Collection-extensions.swift in Sources */,
 				2F97D8A924622D36003CA91F /* Laser.swift in Sources */,
 				2F97D8DC24623623003CA91F /* Rank.swift in Sources */,
-				2F97D8D3246234A7003CA91F /* LoginInformationController.swift in Sources */,
 				2F97D88B24621FE3003CA91F /* Globals.swift in Sources */,
 				2F97D8DF2462364F003CA91F /* PlayerStatus.swift in Sources */,
 				2F97D8AB24622D36003CA91F /* Torpedo.swift in Sources */,
@@ -1092,6 +1398,16 @@
 			isa = PBXTargetDependency;
 			target = 2F2130BF248C0F86001D3B83 /* NetrekIPad */;
 			targetProxy = 2F2130D6248C0F88001D3B83 /* PBXContainerItemProxy */;
+		};
+		2F5245A424F2E6C200F65D47 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2F52459024F2E6C000F65D47 /* Netrek3 */;
+			targetProxy = 2F5245A324F2E6C200F65D47 /* PBXContainerItemProxy */;
+		};
+		2F5245AF24F2E6C200F65D47 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2F52459024F2E6C000F65D47 /* Netrek3 */;
+			targetProxy = 2F5245AE24F2E6C200F65D47 /* PBXContainerItemProxy */;
 		};
 		2F74492D24BD0E4600CF378D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1218,6 +1534,146 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetrekIPad.app/NetrekIPad";
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2F5245B424F2E6C200F65D47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = Netrek3/Netrek3.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Netrek3/Preview Content\"";
+				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Netrek3/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.Netrek3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		2F5245B524F2E6C200F65D47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = Netrek3/Netrek3.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Netrek3/Preview Content\"";
+				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Netrek3/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.Netrek3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		2F5245B624F2E6C200F65D47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
+				INFOPLIST_FILE = Netrek3Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.Netrek3Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Netrek3.app/Contents/MacOS/Netrek3";
+			};
+			name = Debug;
+		};
+		2F5245B724F2E6C200F65D47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
+				INFOPLIST_FILE = Netrek3Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.Netrek3Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Netrek3.app/Contents/MacOS/Netrek3";
+			};
+			name = Release;
+		};
+		2F5245B824F2E6C200F65D47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
+				INFOPLIST_FILE = Netrek3UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.Netrek3UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Netrek3;
+			};
+			name = Debug;
+		};
+		2F5245B924F2E6C200F65D47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8DU2Q8ABKY;
+				INFOPLIST_FILE = Netrek3UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.networkmom.Netrek3UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Netrek3;
 			};
 			name = Release;
 		};
@@ -1489,6 +1945,33 @@
 			buildConfigurations = (
 				2F2130DE248C0F88001D3B83 /* Debug */,
 				2F2130DF248C0F88001D3B83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F5245BA24F2E6C200F65D47 /* Build configuration list for PBXNativeTarget "Netrek3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F5245B424F2E6C200F65D47 /* Debug */,
+				2F5245B524F2E6C200F65D47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F5245BB24F2E6C200F65D47 /* Build configuration list for PBXNativeTarget "Netrek3Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F5245B624F2E6C200F65D47 /* Debug */,
+				2F5245B724F2E6C200F65D47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F5245BC24F2E6C200F65D47 /* Build configuration list for PBXNativeTarget "Netrek3UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F5245B824F2E6C200F65D47 /* Debug */,
+				2F5245B924F2E6C200F65D47 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

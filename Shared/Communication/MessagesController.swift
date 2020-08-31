@@ -10,11 +10,6 @@ import Foundation
 import SwiftUI
 
 class MessagesController {
-    #if os(macOS)
-    let appDelegate = NSApplication.shared.delegate as! AppDelegate
-    #elseif os(iOS)
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    #endif
     
     var universe: Universe
     
@@ -23,7 +18,7 @@ class MessagesController {
     }
     
     func sendMayday() {
-        guard appDelegate.gameState == .gameActive else { return }
+        guard universe.gameState == .gameActive else { return }
         let me = Universe.universe.players[Universe.universe.me]
         let (planetOptional,_) = findClosestPlanet(location: CGPoint(x: me.positionX,y: me.positionY))
         guard let planet = planetOptional else { return }
@@ -32,7 +27,7 @@ class MessagesController {
         self.sendMessage(message: message, sendToAll: false)
     }
     func sendEscort() {
-        guard appDelegate.gameState == .gameActive else { return }
+        guard universe.gameState == .gameActive else { return }
         let me = Universe.universe.players[Universe.universe.me]
         let (planetOptional,_) = findClosestPlanet(location: CGPoint(x: me.positionX,y: me.positionY))
         guard let planet = planetOptional else { return }
@@ -50,10 +45,10 @@ class MessagesController {
         }
         if sendToAll {
             let data = MakePacket.cpMessage(message: message, team: .independent, individual: 0)
-            self.appDelegate.reader?.send(content: data)
+            universe.reader?.send(content: data)
         } else {
             let data = MakePacket.cpMessage(message: message, team: self.universe.players[self.universe.me].team, individual: 0)
-            self.appDelegate.reader?.send(content: data)
+            universe.reader?.send(content: data)
         }
     }
     private func findClosestPlanet(location: CGPoint) -> (planet: Planet?,distance: Int) {
