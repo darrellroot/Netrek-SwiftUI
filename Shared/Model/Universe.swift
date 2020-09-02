@@ -13,6 +13,13 @@ class Universe: ObservableObject {
     static var universe = Universe()
     private(set) var gameState: GameState = .noServerSelected
 
+    var preferredTeam: Team = .federation
+    var preferredShip: ShipType = .cruiser
+    
+    let timerInterval = 1.0 / Double(UPDATE_RATE)
+    var timer: Timer?
+    var timerCount = 0
+
     var players: [Player] = []
     var reader: TcpReader?
     var analyzer: PacketAnalyzer?
@@ -229,6 +236,7 @@ class Universe: ObservableObject {
         for plasmaId in 0 ..< maxPlasma {
             plasmas.append(Plasma(plasmaId: plasmaId))
         }
+        
         //self.me = players[0]
     }
     public func reset() {
@@ -575,5 +583,46 @@ class Universe: ObservableObject {
             oriEligible = false
         }
     }
+    
+    @objc func timerFired() {
+        self.timerCount = self.timerCount + 1
+        //debugPrint("AppDelegate.timerFired \(Date())")
+        //self.universe.objectWillChange.send()
+        if timerCount % Int(UPDATE_RATE) == 0 {
+            self.seconds.increment()
+        }
+        switch self.gameState {
+            
+        case .noServerSelected:
+            break
+        case .serverSelected:
+            break
+        case .serverConnected:
+            break
+        case .serverSlotFound:
+            break
+        case .loginAccepted:
+            break
+        case .gameActive:
+            if (timerCount % 100) == 0 {
+                // send cpUpdate once every 10 seconds to prevent ghostbust
+                let cpUpdates = MakePacket.cpUpdates()
+                reader?.send(content: cpUpdates)
+            }
+            break
+        }
+    }
 }
+
+extension Universe: NetworkDelegate {
+    func gotData(data: Data, from: String, port: Int) {
+        debugPrint("appdelegate got data \(data.count) bytes")
+        //debugPrint("appdelegate data index \(data.startIndex) \(data.endIndex)")
+        if data.count > 0 {
+            analyzer?.analyze(incomingData: data)
+        }
+        //debugPrint(String(data: data, encoding: .utf8))
+    }
+}
+
 
