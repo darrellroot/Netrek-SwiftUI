@@ -14,7 +14,7 @@ class Universe: ObservableObject {
     private(set) var gameState: GameState = .noServerSelected
 
     @Published var preferredTeam: Team = .federation
-    var preferredShip: ShipType = .cruiser
+    //var preferredShip: ShipType = .cruiser
     
     let timerInterval = 1.0 / Double(UPDATE_RATE)
     var timer: Timer?

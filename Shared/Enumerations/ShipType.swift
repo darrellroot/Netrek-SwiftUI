@@ -17,6 +17,25 @@ enum ShipType: Int, CaseIterable {
     case starbase = 5
     case battlecruiser = 6
     //case att = 7
+    var longDescription: String {
+        switch self {
+        
+        case .scout:
+            return "Scout"
+        case .destroyer:
+            return "Destroyer"
+        case .cruiser:
+            return "Cruiser"
+        case .battleship:
+            return "Battleship"
+        case .assault:
+            return "Assault"
+        case .starbase:
+            return "Starbase"
+        case .battlecruiser:
+            return "Battlecruiser"
+        }
+    }
     var description: String {
         switch self {
             

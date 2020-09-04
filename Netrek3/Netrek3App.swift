@@ -62,6 +62,32 @@ struct Netrek3App: App {
                     }
                 }
             }
+            CommandMenu("Launch Ship") {
+                ForEach(ShipType.allCases, id: \.self) {
+                    ship in
+                    Button(action: {
+                        selectShip(ship: ship)
+                    }) {
+                        Text(ship.longDescription)
+                    }
+                }
+            }
+        }
+    }
+    private func selectShip(ship: ShipType) {
+        if universe.gameState == .loginAccepted {
+            if let reader = universe.reader {
+                let cpUpdates = MakePacket.cpUpdates()
+                    reader.send(content: cpUpdates)
+                let cpOutfit = MakePacket.cpOutfit(team: universe.preferredTeam, ship: ship)
+                reader.send(content: cpOutfit)
+            }
+        }
+        if universe.gameState == .gameActive {
+            if let reader = universe.reader {
+                let cpRefit = MakePacket.cpRefit(newShip: ship)
+                reader.send(content: cpRefit)
+            }
         }
     }
     
