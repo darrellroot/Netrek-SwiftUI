@@ -149,6 +149,25 @@
 		2F5245E724FDAF5D00F65D47 /* LoginDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8CD24623422003CA91F /* LoginDefault.swift */; };
 		2F5245E824FDB19000F65D47 /* Data-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8E6246236EE003CA91F /* Data-extensions.swift */; };
 		2F5245E924FDB3AA00F65D47 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8D7246235C9003CA91F /* KeychainService.swift */; };
+		2F5245EA2500A7F700F65D47 /* TacticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8EA24624014003CA91F /* TacticalView.swift */; };
+		2F5245EB2500A7FA00F65D47 /* StrategicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4459722467438400C3F9A1 /* StrategicView.swift */; };
+		2F5245EC2500A99F00F65D47 /* TacticalOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44288F24636B690051D7BE /* TacticalOffset.swift */; };
+		2F5245ED2500AA7B00F65D47 /* TractorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E0248852D300038FBD /* TractorView.swift */; };
+		2F5245EE2500AA8D00F65D47 /* ExplosionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C197C2484BA4800604F21 /* ExplosionView.swift */; };
+		2F5245EF2500AA9500F65D47 /* TorpedoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44596A2464B45E00C3F9A1 /* TorpedoView.swift */; };
+		2F5245F02500AAA100F65D47 /* DetonationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789DE24872C8900038FBD /* DetonationView.swift */; };
+		2F5245F12500AAAB00F65D47 /* DetonationPlasmaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F74491324BCFD5300CF378D /* DetonationPlasmaView.swift */; };
+		2F5245F22500AAB500F65D47 /* LaserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44596C2465EFB300C3F9A1 /* LaserView.swift */; };
+		2F5245F32500AAC000F65D47 /* PlasmaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44596E2466324100C3F9A1 /* PlasmaView.swift */; };
+		2F5245F42500AAD500F65D47 /* PlanetStrategicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44597424675CED00C3F9A1 /* PlanetStrategicView.swift */; };
+		2F5245F52500AB0E00F65D47 /* StrategicOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4459782467647800C3F9A1 /* StrategicOffset.swift */; };
+		2F5245F62500AB3B00F65D47 /* PlayerStrategicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F445976246763E900C3F9A1 /* PlayerStrategicView.swift */; };
+		2F5245F72500AB4C00F65D47 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E42489822F00038FBD /* HelpView.swift */; };
+		2F5245F82500AB5C00F65D47 /* BoundaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2789E224897E9500038FBD /* BoundaryView.swift */; };
+		2F5245F92500AB6600F65D47 /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44288B2463555A0051D7BE /* PlanetView.swift */; };
+		2F5245FA2500AB6B00F65D47 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44289524639C840051D7BE /* PlayerView.swift */; };
+		2F5245FB2500AC5A00F65D47 /* PointingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45A7F92464763200AA2A3F /* PointingView.swift */; };
+		2F5245FD2502D63200F65D47 /* TeamMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5245FC2502D63200F65D47 /* TeamMenuView.swift */; };
 		2F53CB82249153C100677187 /* ServerSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB81249153C100677187 /* ServerSelectedView.swift */; };
 		2F53CB852491563000677187 /* Publishers+keyboardHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB842491563000677187 /* Publishers+keyboardHeight.swift */; };
 		2F53CB872491575B00677187 /* Notification+keyboardHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53CB862491575B00677187 /* Notification+keyboardHeight.swift */; };
@@ -347,6 +366,7 @@
 		2F5245AD24F2E6C200F65D47 /* Netrek3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Netrek3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F5245B124F2E6C200F65D47 /* Netrek3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Netrek3UITests.swift; sourceTree = "<group>"; };
 		2F5245B324F2E6C200F65D47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F5245FC2502D63200F65D47 /* TeamMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMenuView.swift; sourceTree = "<group>"; };
 		2F53CB81249153C100677187 /* ServerSelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSelectedView.swift; sourceTree = "<group>"; };
 		2F53CB842491563000677187 /* Publishers+keyboardHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publishers+keyboardHeight.swift"; sourceTree = "<group>"; };
 		2F53CB862491575B00677187 /* Notification+keyboardHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+keyboardHeight.swift"; sourceTree = "<group>"; };
@@ -600,6 +620,7 @@
 				2F52459C24F2E6C200F65D47 /* Info.plist */,
 				2F52459D24F2E6C200F65D47 /* Netrek3.entitlements */,
 				2F52459924F2E6C200F65D47 /* Preview Content */,
+				2F5245FC2502D63200F65D47 /* TeamMenuView.swift */,
 			);
 			path = Netrek3;
 			sourceTree = "<group>";
@@ -1225,14 +1246,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F5245BD24F441C300F65D47 /* Universe.swift in Sources */,
+				2F5245EB2500A7FA00F65D47 /* StrategicView.swift in Sources */,
 				2F5245E624FDAF4C00F65D47 /* NetworkDelegate.swift in Sources */,
 				2F5245C224F441F400F65D47 /* MetaServer.swift in Sources */,
+				2F5245FD2502D63200F65D47 /* TeamMenuView.swift in Sources */,
 				2F5245BF24F441E100F65D47 /* TcpReader.swift in Sources */,
 				2F5245E224F443FA00F65D47 /* MakePacket.swift in Sources */,
+				2F5245EA2500A7F700F65D47 /* TacticalView.swift in Sources */,
 				2F5245DC24F4436400F65D47 /* Planet.swift in Sources */,
 				2F5245D924F442F100F65D47 /* LoginInformationController.swift in Sources */,
 				2F5245C324F441F700F65D47 /* MetaServerEntry.swift in Sources */,
 				2F5245C124F441ED00F65D47 /* PacketAnalyzer.swift in Sources */,
+				2F5245EC2500A99F00F65D47 /* TacticalOffset.swift in Sources */,
 				2F5245D324F4426400F65D47 /* ShipType.swift in Sources */,
 				2F5245E724FDAF5D00F65D47 /* LoginDefault.swift in Sources */,
 				2F5245E824FDB19000F65D47 /* Data-extensions.swift in Sources */,
@@ -1245,17 +1270,32 @@
 				2F5245C424F4420100F65D47 /* MessagesController.swift in Sources */,
 				2F5245E324FDA93400F65D47 /* SlotStatus.swift in Sources */,
 				2F52459624F2E6C000F65D47 /* ContentView.swift in Sources */,
+				2F5245F22500AAB500F65D47 /* LaserView.swift in Sources */,
+				2F5245F52500AB0E00F65D47 /* StrategicOffset.swift in Sources */,
 				2F5245E424FDAA1600F65D47 /* Rank.swift in Sources */,
 				2F5245C624F4420E00F65D47 /* UserDefaults-extensions.swift in Sources */,
+				2F5245EF2500AA9500F65D47 /* TorpedoView.swift in Sources */,
+				2F5245F02500AAA100F65D47 /* DetonationView.swift in Sources */,
 				2F5245D624F442BB00F65D47 /* PreferencesController.swift in Sources */,
 				2F5245E524FDADA800F65D47 /* PlayerStatus.swift in Sources */,
+				2F5245F82500AB5C00F65D47 /* BoundaryView.swift in Sources */,
+				2F5245F12500AAAB00F65D47 /* DetonationPlasmaView.swift in Sources */,
 				2F5245DA24F4435D00F65D47 /* NetrekMath.swift in Sources */,
+				2F5245ED2500AA7B00F65D47 /* TractorView.swift in Sources */,
+				2F5245EE2500AA8D00F65D47 /* ExplosionView.swift in Sources */,
 				2F5245C024F441E900F65D47 /* packets.swift in Sources */,
+				2F5245F32500AAC000F65D47 /* PlasmaView.swift in Sources */,
+				2F5245F62500AB3B00F65D47 /* PlayerStrategicView.swift in Sources */,
 				2F5245D824F442EF00F65D47 /* KeymapController.swift in Sources */,
+				2F5245F72500AB4C00F65D47 /* HelpView.swift in Sources */,
 				2F5245BE24F441CB00F65D47 /* Help.swift in Sources */,
 				2F5245C824F4422F00F65D47 /* SoundController.swift in Sources */,
 				2F5245DB24F4436100F65D47 /* ShipInfo.swift in Sources */,
+				2F5245FA2500AB6B00F65D47 /* PlayerView.swift in Sources */,
+				2F5245F42500AAD500F65D47 /* PlanetStrategicView.swift in Sources */,
+				2F5245F92500AB6600F65D47 /* PlanetView.swift in Sources */,
 				2F5245D224F4425C00F65D47 /* Team.swift in Sources */,
+				2F5245FB2500AC5A00F65D47 /* PointingView.swift in Sources */,
 				2F5245D524F4427B00F65D47 /* AlertCondition.swift in Sources */,
 				2F5245D124F4424C00F65D47 /* GameState.swift in Sources */,
 				2F52459424F2E6C000F65D47 /* Netrek3App.swift in Sources */,

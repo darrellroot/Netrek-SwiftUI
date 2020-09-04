@@ -9,14 +9,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var universe: Universe
+    @ObservedObject var help: Help
+    @ObservedObject var preferencesController: PreferencesController
+    var keymapController: KeymapController
+    
     var body: some View {
+        VStack {
+            HStack {
+                TacticalView(universe: universe, help: help, preferencesController: preferencesController, keymapController: keymapController)
+                StrategicView(keymap: keymapController)
+            }
+        }
         Text("Hello, world!")
             .padding()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+/*struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
-}
+}*/

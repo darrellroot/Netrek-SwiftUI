@@ -10,7 +10,8 @@ import SwiftUI
 
 @main
 struct Netrek3App: App {
-    let universe = Universe.universe
+    
+    @ObservedObject var universe = Universe.universe
     let help = Help()
     let defaults = UserDefaults.standard
     let preferencesController = PreferencesController(defaults: UserDefaults.standard)
@@ -29,9 +30,12 @@ struct Netrek3App: App {
     let loginInformationController = LoginInformationController()
     var keymapController = KeymapController()
 
+    
     var body: some Scene {
+        
         WindowGroup {
-            ContentView()
+            ContentView(universe: universe, help: help, preferencesController: preferencesController, keymapController: keymapController)
+                .environment(\.colorScheme, .dark)
         }
         .commands {
             CommandMenu("Refresh Server List") {
@@ -46,6 +50,16 @@ struct Netrek3App: App {
                     connectToServer(server: "pickled.netrek.org")
                 }) {
                     Text("pickled.netrek.org")
+                }
+            }
+            CommandMenu("Preferred Team") {
+                ForEach([Team.federation,Team.roman,Team.kazari,Team.orion], id: \.self) { team in
+                    Button(action: {
+                        self.universe.preferredTeam = team
+                        debugPrint("preferred team \(team)")
+                    }) {
+                        TeamMenuView(team: team, universe: universe)
+                    }
                 }
             }
         }

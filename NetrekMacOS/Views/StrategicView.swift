@@ -9,10 +9,10 @@
 import SwiftUI
 
 struct StrategicView: View {
-    let appDelegate = NSApplication.shared.delegate as! AppDelegate
     
     var universe = Universe.universe
     @ObservedObject var updateCounter = Universe.universe.seconds
+    var keymap: KeymapController
     
     var body: some View {
         return GeometryReader { geo in
@@ -54,14 +54,14 @@ struct StrategicView: View {
         let netrekX = CGFloat(NetrekMath.galacticSize) * eventLocation.x / size.width
         let netrekY = CGFloat(NetrekMath.galacticSize) -  (CGFloat(NetrekMath.galacticSize) * eventLocation.y / size.height)
         let location = CGPoint(x: netrekX, y: netrekY)
-        self.appDelegate.keymapController.execute(control,location: location)
+        keymap.execute(control,location: location)
     }
     func keyDown(with event: NSEvent, location: CGPoint) {
         debugPrint("StrategicScene.keyDown characters \(String(describing: event.characters))")
-        guard let keymap = appDelegate.keymapController else {
+        /*guard let keymap = appDelegate.keymapController else {
             debugPrint("StrategicScene.keyDown unable to find keymapController")
             return
-        }
+        }*/
         
         switch event.characters?.first {
         case "0":
