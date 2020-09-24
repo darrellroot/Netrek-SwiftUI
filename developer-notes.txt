@@ -1,0 +1,6 @@
+I would be happy to consider (and hopefully accept) contributions to the https://github.com/darrellroot/Netrek-SwiftUI project.
+
+Most of my development was on the MacOS client.  The iOS client is not great—the game is too complex for an iOS interface.  I did my best but would be happy to see improvements.
+
+On MacOS my main issue with using SwiftUI was getting mouse event locations for primary/secondary/tertiary mouse button hits.  As a result the app uses three different windows, resulting in undesirable "focus does not follow mouse" behavior.
+
