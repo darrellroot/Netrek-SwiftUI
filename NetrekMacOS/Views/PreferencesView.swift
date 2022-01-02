@@ -73,6 +73,8 @@ struct PreferencesView: View {
                 self.activePreference.readCommand()
             }
             Toggle("Hide Hints",isOn: $preferencesController.hideHints)
+            //UDP not implemented
+            //Toggle("Prefer UDP",isOn: $preferencesController.preferUdp)
             
         }//VStack
         .padding(8)
