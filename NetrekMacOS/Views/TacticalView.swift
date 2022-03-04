@@ -22,6 +22,7 @@ struct TacticalView: View, TacticalOffset {
     @ObservedObject var serverUpdate = Universe.universe.serverUpdate
     @ObservedObject var help: Help
     @ObservedObject var preferencesController: PreferencesController
+
     /*@State var pt: CGPoint = CGPoint() {
         didSet {
             debugPrint("point \(pt)")

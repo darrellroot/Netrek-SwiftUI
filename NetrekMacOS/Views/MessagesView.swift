@@ -12,7 +12,7 @@ struct MessagesView: View {
     @ObservedObject var universe: Universe
     @State var newMessage: String = ""
     @State var sendToAll = true
-    
+    @FocusState var textFieldFocused
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
     
     //TODO use MessagesController
@@ -21,6 +21,8 @@ struct MessagesView: View {
         VStack(alignment: .leading) {
             HStack {
                 TextField("New Message", text: $newMessage, onCommit: sendMessage)
+                    .focused($textFieldFocused)
+                    
                 Text("Send To My Team")
                 Toggle("", isOn: $sendToAll).toggleStyle(SwitchToggleStyle())
                 Text("Send To All")
