@@ -23,6 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var serverFeatures: [String] = []
     var clientFeatures: [String] = ["FEATURE_PACKETS","SHIP_CAP","SP_GENERIC_32","TIPS"]
 
+    var everythingWindow: NSWindow!
     var tacticalWindow: NSWindow!
     var strategicWindow: NSWindow!
     var communicationsWindow: NSWindow!
@@ -96,6 +97,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Create the SwiftUI view that provides the window contents.
         let tacticalView = TacticalView(help: help, preferencesController: preferencesController)
         let strategicView = StrategicView()
+
+        let everythingView = EverythingView(help: help, preferencesController: preferencesController)
+        
+        everythingWindow = NSCommandedWindow(contentRect: NSRect(x: 0, y: 800, width: 1000, height: 800),styleMask: [.titled, .miniaturizable, .resizable, .fullSizeContentView],
+                                             backing: .buffered, defer: false)
+        everythingWindow.setFrameAutosaveName("temp37")
+        everythingWindow.contentView = NSHostingView(rootView: everythingView)
+        everythingWindow.standardWindowButton(NSWindow.ButtonType.closeButton)?.isHidden = true
+        //The title name impacts the keypress location algorithm, see NSCommmandedWindow
+        everythingWindow.title = "Netrek"
+        everythingWindow.makeKeyAndOrderFront(nil)
 
         // Create the window and set the content view. 
         tacticalWindow = NSCommandedWindow(

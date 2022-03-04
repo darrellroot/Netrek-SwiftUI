@@ -199,6 +199,7 @@
 		2F97D8EB24624014003CA91F /* TacticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F97D8EA24624014003CA91F /* TacticalView.swift */; };
 		2FA55BDF24CB678B00096817 /* UpdateCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA55BDE24CB678B00096817 /* UpdateCounter.swift */; };
 		2FA55BE024CB678B00096817 /* UpdateCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA55BDE24CB678B00096817 /* UpdateCounter.swift */; };
+		2FFA11ED27D2A8E300629BD2 /* EverythingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA11EC27D2A8E300629BD2 /* EverythingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -335,6 +336,7 @@
 		2F97D8E6246236EE003CA91F /* Data-extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data-extensions.swift"; sourceTree = "<group>"; };
 		2F97D8EA24624014003CA91F /* TacticalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacticalView.swift; sourceTree = "<group>"; };
 		2FA55BDE24CB678B00096817 /* UpdateCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCounter.swift; sourceTree = "<group>"; };
+		2FFA11EC27D2A8E300629BD2 /* EverythingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EverythingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -484,14 +486,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		2F45A7FD2464807F00AA2A3F /* Gobal Group */ = {
+		2F45A7FD2464807F00AA2A3F /* Global Group */ = {
 			isa = PBXGroup;
 			children = (
 				2F97D84D24620CCF003CA91F /* AppDelegate.swift */,
 				2F97D85624620CD0003CA91F /* Main.storyboard */,
 				2F44289224636E540051D7BE /* Assets.xcassets */,
 			);
-			path = "Gobal Group";
+			path = "Global Group";
 			sourceTree = "<group>";
 		};
 		2F53CB832491561700677187 /* Extensions */ = {
@@ -558,7 +560,7 @@
 			isa = PBXGroup;
 			children = (
 				2F2C1AF52487183E00604F21 /* Resources */,
-				2F45A7FD2464807F00AA2A3F /* Gobal Group */,
+				2F45A7FD2464807F00AA2A3F /* Global Group */,
 				2F97D85A24620CD0003CA91F /* Netrek2.entitlements */,
 				2F97D85924620CD0003CA91F /* Info.plist */,
 				2F97D8E924623FFD003CA91F /* Views */,
@@ -658,6 +660,7 @@
 		2F97D8E924623FFD003CA91F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2FFA11EC27D2A8E300629BD2 /* EverythingView.swift */,
 				2F97D8EA24624014003CA91F /* TacticalView.swift */,
 				2F4459722467438400C3F9A1 /* StrategicView.swift */,
 				2F44597E2467AEA300C3F9A1 /* CommunicationsView.swift */,
@@ -1018,6 +1021,7 @@
 				2F97D88A24621FE3003CA91F /* Globals.swift in Sources */,
 				2F4459792467647800C3F9A1 /* StrategicOffset.swift in Sources */,
 				2F45A7FA2464763200AA2A3F /* PointingView.swift in Sources */,
+				2FFA11ED27D2A8E300629BD2 /* EverythingView.swift in Sources */,
 				2F2789DF24872C8900038FBD /* DetonationView.swift in Sources */,
 				2F97D8CB24623315003CA91F /* SoundController.swift in Sources */,
 				2F97D8E7246236EE003CA91F /* Data-extensions.swift in Sources */,
