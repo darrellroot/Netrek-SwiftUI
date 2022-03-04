@@ -19,7 +19,7 @@ struct TorpedoView: View, TacticalOffset {
     //@ViewBuilder
     var body: some View {
         //if torpedo.status == 1 {
-            return GeometryReader { geo in
+            //return GeometryReader { geo in
                 self.torpedo.color
                     .frame(width: self.torpedoWidth(screenWidth: self.screenWidth, visualWidth: self.universe.visualWidth), height: self.torpedoWidth(screenWidth: self.screenWidth, visualWidth: self.universe.visualWidth))
                         .contentShape(Rectangle())
@@ -31,7 +31,7 @@ struct TorpedoView: View, TacticalOffset {
                     //.animation(Animation.linear(duration: 0.1))
             }
         //}
-    }
+    //}
 }
 
 /*struct TorpedoView_Previews: PreviewProvider {

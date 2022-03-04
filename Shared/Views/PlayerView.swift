@@ -18,7 +18,7 @@ struct PlayerView: View, TacticalOffset {
     
     
     var body: some View {
-        return GeometryReader { geo in
+        //return geometryReader { geo in
             ZStack {
                 Circle()
                     .stroke(Color.green)
@@ -48,7 +48,7 @@ struct PlayerView: View, TacticalOffset {
 
             .animation(Animation.linear)
 
-        }
+        //}
     }
     //.opacity(self.player.shieldsUp ? 1.0 : 0.0)
     //.opacity(Double(self.player.shieldStrength) / 100.0)

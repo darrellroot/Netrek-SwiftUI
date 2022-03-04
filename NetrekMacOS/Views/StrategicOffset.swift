@@ -14,10 +14,12 @@ protocol StrategicOffset {
 
 extension StrategicOffset {
     func screenX(netrekPositionX: Int,screenWidth: CGFloat) -> CGFloat {
-        return (screenWidth * CGFloat(netrekPositionX) / CGFloat(NetrekMath.galacticSize)) - screenWidth / 2
+        //return (screenWidth * CGFloat(netrekPositionX) / CGFloat(NetrekMath.galacticSize)) - screenWidth / 2
+        return (screenWidth * CGFloat(netrekPositionX) / CGFloat(NetrekMath.galacticSize)) //- screenWidth / 2
     }
     func screenY(netrekPositionY: Int,screenHeight: CGFloat) -> CGFloat {
-        return -(screenHeight * CGFloat(netrekPositionY) / CGFloat(NetrekMath.galacticSize)) + screenHeight / 2
+        //return -(screenHeight * CGFloat(netrekPositionY) / CGFloat(NetrekMath.galacticSize)) + screenHeight / 2
+        return -(screenHeight * CGFloat(netrekPositionY) / CGFloat(NetrekMath.galacticSize)) + screenHeight /// 2
     }
 
 }
