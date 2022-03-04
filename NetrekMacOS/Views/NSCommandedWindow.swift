@@ -21,9 +21,24 @@ class NSCommandedWindow : NSWindow, TacticalOffset {
         var location: CGPoint? = nil
         let windowLocation = self.mouseLocationOutsideOfEventStream
         if let viewLocation = self.contentView?.convert(windowLocation, from: self.contentView?.window?.contentView), let contentView = self.contentView {
+            // tactical view is top-left, strategic view is top-right
+            // communications is everything else
+            
+            let tacticalSize = frame.size.width / 2 // strategicSize == tacticalSize
+            if viewLocation.x < tacticalSize && viewLocation.y < tacticalSize {
+                // mouse is in the tactical view
+                let netrekLocationX = viewXOffset(positionX: Int(viewLocation.x), myPositionX: appDelegate.universe.players[appDelegate.universe.me].positionX, tacticalWidth: tacticalSize)
+                let netrekLocationY = viewYOffset(positionY: Int(viewLocation.y), myPositionY: appDelegate.universe.players[appDelegate.universe.me].positionY, tacticalHeight: tacticalSize)
+                location = CGPoint(x: netrekLocationX, y: netrekLocationY)
+            } else if viewLocation.x > tacticalSize && viewLocation.y < tacticalSize {
+                // mouse is in the strategic view
+                let netrekX = CGFloat(NetrekMath.galacticSize) * (viewLocation.x - tacticalSize) / contentView.frame.size.width
+                let netrekY = (CGFloat(NetrekMath.galacticSize) * viewLocation.y / contentView.frame.size.height)
+                location = CGPoint(x: netrekX, y: netrekY)
+            }
             //location = self.scene?.convertPoint(fromView: viewLocation)
             //location = viewLocation
-            if self.title == "Strategic" {
+            /*if self.title == "Strategic" {
                 let netrekX = CGFloat(NetrekMath.galacticSize) * viewLocation.x / contentView.frame.size.width
                 let netrekY = (CGFloat(NetrekMath.galacticSize) * viewLocation.y / contentView.frame.size.height)
                 location = CGPoint(x: netrekX, y: netrekY)
@@ -31,8 +46,8 @@ class NSCommandedWindow : NSWindow, TacticalOffset {
                 let netrekLocationX = viewXOffset(positionX: Int(viewLocation.x), myPositionX: appDelegate.universe.players[appDelegate.universe.me].positionX, tacticalWidth: contentView.frame.size.width)
                 let netrekLocationY = viewYOffset(positionY: Int(viewLocation.y), myPositionY: appDelegate.universe.players[appDelegate.universe.me].positionY, tacticalHeight: contentView.frame.size.height)
                 location = CGPoint(x: netrekLocationX, y: netrekLocationY)
-            }
-            debugPrint("TacticalScene.keyDown characters \(String(describing: event.characters)) location viewLocation \(viewLocation) netrekLocation \(String(describing: location))")
+            }*/
+            debugPrint("EverythingWindow.keyDown characters \(String(describing: event.characters)) location viewLocation \(viewLocation) netrekLocation \(String(describing: location))")
         } else {
             location = CGPoint()
         }

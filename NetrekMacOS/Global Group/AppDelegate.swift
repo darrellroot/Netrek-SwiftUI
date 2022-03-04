@@ -24,9 +24,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var clientFeatures: [String] = ["FEATURE_PACKETS","SHIP_CAP","SP_GENERIC_32","TIPS"]
 
     var everythingWindow: NSWindow!
-    var tacticalWindow: NSWindow!
-    var strategicWindow: NSWindow!
-    var communicationsWindow: NSWindow!
+    //var tacticalWindow: NSWindow!
+    //var strategicWindow: NSWindow!
+    //var communicationsWindow: NSWindow!
     var manualServerWindows: [NSWindow] = []
     var preferencesWindows: [NSWindow] = []
     var loginWindows: [NSWindow] = []
@@ -95,8 +95,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.disableShipMenu()
 
         // Create the SwiftUI view that provides the window contents.
-        let tacticalView = TacticalView(help: help, preferencesController: preferencesController)
-        let strategicView = StrategicView()
+        //let tacticalView = TacticalView(help: help, preferencesController: preferencesController)
+        //let strategicView = StrategicView()
 
         let everythingView = EverythingView(help: help, preferencesController: preferencesController)
         
@@ -109,7 +109,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         everythingWindow.title = "Netrek"
         everythingWindow.makeKeyAndOrderFront(nil)
 
-        // Create the window and set the content view. 
+        /*// Create the window and set the content view.
         tacticalWindow = NSCommandedWindow(
             contentRect: NSRect(x: 0, y: 800, width: 500, height: 500),
             styleMask: [.titled, .miniaturizable, .resizable, .fullSizeContentView],
@@ -122,9 +122,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //The title name impacts the keypress location algorithm, see NSCommmandedWindow
         tacticalWindow.title = "Tactical"
         
-        tacticalWindow.makeKeyAndOrderFront(nil)
+        tacticalWindow.makeKeyAndOrderFront(nil)*/
         
-        strategicWindow = NSCommandedWindow(
+        /*strategicWindow = NSCommandedWindow(
             contentRect: NSRect(x: 500, y: 800, width: 500, height: 500),
             styleMask: [.titled, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)
@@ -136,9 +136,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         strategicWindow.standardWindowButton(NSWindow.ButtonType.closeButton)?.isHidden = true
 
         strategicWindow.contentView = NSHostingView(rootView: strategicView)
-        strategicWindow.makeKeyAndOrderFront(nil)
+        strategicWindow.makeKeyAndOrderFront(nil)*/
 
-        let communicationsView = CommunicationsView()
+        /*let communicationsView = CommunicationsView()
         communicationsWindow = NSWindow(
             contentRect: NSRect(x: 0, y: 320, width: 1000, height: 300),
             styleMask: [.titled, .miniaturizable, .resizable, .fullSizeContentView],
@@ -148,7 +148,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         communicationsWindow.title = "Communications"
         communicationsWindow.contentView = NSHostingView(rootView: communicationsView)
         communicationsWindow.makeKeyAndOrderFront(nil)
-        communicationsWindow.standardWindowButton(NSWindow.ButtonType.closeButton)?.isHidden = true
+        communicationsWindow.standardWindowButton(NSWindow.ButtonType.closeButton)?.isHidden = true*/
     }
     
 
