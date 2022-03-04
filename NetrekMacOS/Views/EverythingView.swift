@@ -16,7 +16,7 @@ struct EverythingView: View {
     
     var body: some View {
         GeometryReader { geo in
-            VStack {
+            VStack(spacing: 0) {
                 HStack(spacing: 0) {
                     TacticalView(help: help, preferencesController: preferencesController)
                         .frame(width: geo.size.width / 2, height: geo.size.width / 2)
@@ -24,15 +24,20 @@ struct EverythingView: View {
                         .onTapGesture {
                             textFieldFocused = false
                         }
+                        .clipped()
 
                     StrategicView()
                         .frame(width: geo.size.width / 2, height: geo.size.width / 2)
+                        .border(universe.players[Universe.universe.me].alertCondition.color.opacity(0.5), width: 10)
                         .onTapGesture {
                             textFieldFocused = false
                         }
+                        .clipped()
                 }
                 CommunicationsView(textFieldFocused: _textFieldFocused)
-                    .frame(width: geo.size.width, height: geo.size.width * 0.6)
+                    .frame(width: geo.size.width)
+                    .border(universe.players[Universe.universe.me].alertCondition.color.opacity(0.5), width: 3)
+                    .clipped()
             }
         }
     }
