@@ -45,7 +45,7 @@ extension TacticalOffset {
         // from NSView coordinates
         let screenDelta = CGFloat(positionY) - tacticalHeight / 2
         let screenPercentDelta = screenDelta / tacticalHeight
-        let screenNetrekDelta = screenPercentDelta * CGFloat(NetrekMath.displayDistance)
+        let screenNetrekDelta = -screenPercentDelta * CGFloat(NetrekMath.displayDistance)
         return CGFloat(myPositionY) + screenNetrekDelta
     }
     

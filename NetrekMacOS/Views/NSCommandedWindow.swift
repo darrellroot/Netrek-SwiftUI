@@ -23,17 +23,18 @@ class NSCommandedWindow : NSWindow, TacticalOffset {
         if let viewLocation = self.contentView?.convert(windowLocation, from: self.contentView?.window?.contentView), let contentView = self.contentView {
             // tactical view is top-left, strategic view is top-right
             // communications is everything else
-            
+            //let messageHeight = frame.size.height - (frame.size.width / 2)
+            let yMousePosition = frame.size.height - viewLocation.y
             let tacticalSize = frame.size.width / 2 // strategicSize == tacticalSize
-            if viewLocation.x < tacticalSize && viewLocation.y < tacticalSize {
+            if viewLocation.x < tacticalSize && yMousePosition < tacticalSize {
                 // mouse is in the tactical view
                 let netrekLocationX = viewXOffset(positionX: Int(viewLocation.x), myPositionX: appDelegate.universe.players[appDelegate.universe.me].positionX, tacticalWidth: tacticalSize)
-                let netrekLocationY = viewYOffset(positionY: Int(viewLocation.y), myPositionY: appDelegate.universe.players[appDelegate.universe.me].positionY, tacticalHeight: tacticalSize)
+                let netrekLocationY = viewYOffset(positionY: Int(yMousePosition), myPositionY: appDelegate.universe.players[appDelegate.universe.me].positionY, tacticalHeight: tacticalSize)
                 location = CGPoint(x: netrekLocationX, y: netrekLocationY)
-            } else if viewLocation.x > tacticalSize && viewLocation.y < tacticalSize {
+            } else if viewLocation.x > tacticalSize && yMousePosition < tacticalSize {
                 // mouse is in the strategic view
-                let netrekX = CGFloat(NetrekMath.galacticSize) * (viewLocation.x - tacticalSize) / contentView.frame.size.width
-                let netrekY = (CGFloat(NetrekMath.galacticSize) * viewLocation.y / contentView.frame.size.height)
+                let netrekX = CGFloat(NetrekMath.galacticSize) * (viewLocation.x - tacticalSize) / tacticalSize
+                let netrekY = CGFloat(NetrekMath.galacticSize) - (CGFloat(NetrekMath.galacticSize) * yMousePosition / tacticalSize)
                 location = CGPoint(x: netrekX, y: netrekY)
             }
             //location = self.scene?.convertPoint(fromView: viewLocation)
