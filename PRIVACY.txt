@@ -1,0 +1,12 @@
+Swift Netrek Client Privacy Policy
+
+The “Netrek” client published by Darrell Root (formerly Network Mom LLC) in the MacOS App Store and on this website is referred to as the “Swift Netrek Client” in this policy.
+Darrell does not want your private information and does not use the “Swift Netrek Client” to harvest your private information. But using the “Swift Netrek client” requires connecting to Netrek servers which are outside of our control.
+
+1. The “Swift Netrek Client” requires outbound network connections to play the game and update the list of game servers. It does not use outbound network connections for any other purpose.
+
+2. Playing the game Netrek requires that the “Swift Netrek Client” connect to Netrek game servers on the Internet. These are public-domain game servers run by volunteers outside of our control. The servers receive client IP address and login information (name, username, and password as entered in on the login information window). The servers also receive any chat messages sent. The servers may log this information.
+
+3. The password sent to the Netrek game servers is sent via an obsolete network protocol outside of our control. This protocol is _not_ encrypted. We recommend you use a different Netrek password than any other account, and do not consider this password secure. Alternatively, play as a guest.
+
+4. The “Swift Netrek Client” does not include any 3rd party app metrics or advertisement libraries.
