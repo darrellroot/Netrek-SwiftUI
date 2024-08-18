@@ -1,0 +1,38 @@
+Netrek is the _original_ Internet team strategy game. First implemented in 1989, Netrek pits two teams of up to 8 players each against each other for control of the galaxy.
+
+Use torpedoes and lasers to destroy enemy ships.
+
+Bomb enemy planets.
+
+Land armies to capture planets.
+
+Work as a team to wipe your enemy from the galaxy.
+
+This Netrek client is implemented in Swift and SwiftUI and is open source at https://github.com/darrellroot/Netrek-SwiftUI
+
+Historic information and documentation about Netrek is available at http://www.netrek.org
+
+Join the "Netrek-forever" Google group to get notifications of scheduled "human" games. In the meantime practice against the robots!
+
+Starting Instructions:
+1) Select a server (we recommend a "Bronco" style server such as pickled.netrek.org).
+2) Launch cruiser.
+3) A "Team not allowed" message may appear. If that happens select a different team and repeat #2.
+
+If no other humans are playing, practice against the robots!
+
+Game controls:
+
+Tapping near center of the screen fires torpedoes.
+Tapping near the edge of the screen sets course.
+Stepper in bottom-right sets speed.
+The first tap on an enemy ship fires a laser.
+More taps on enemy ships fire torpedoes.
+Lasers recharge in 1 second.
+Tapping on a planet locks onto the planet for orbit.
+Pinch to zoom in the tactical window.
+Exit by clicking both self destruct buttons.
+
+At this time, the iOS and iPadOS versions of Netrek are not recommend for the "hockey" variant of the game due to lack of tractor/pressor controls.
+
+For questions or support email networkmom@proton.me
